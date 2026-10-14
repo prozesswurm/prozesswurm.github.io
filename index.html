@@ -59,7 +59,8 @@ button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid va
 
 /* Kopf */
 .top{display:flex;align-items:center;gap:14px}
-.top svg{flex:none}
+.top .wimg{flex:none}
+.wimg{object-fit:contain;display:block}
 .top h1{font-size:28px;font-weight:800}
 .top p{margin:2px 0 0;color:var(--muted);font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
@@ -82,7 +83,7 @@ button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid va
 .layer[data-l="0"] .code{background:var(--l1);color:var(--fg)} .layer[data-l="1"] .code{background:var(--l2);color:var(--fg)}
 .layer[data-l="2"] .code{background:var(--l3);color:var(--fg)} .layer[data-l="3"] .code{background:var(--l4)}
 .layer[data-l="4"] .code{background:var(--l5)} .layer[data-l="5"] .code{background:var(--l6)}
-.layer .code svg{position:absolute;right:-18px;bottom:6px;z-index:2}
+.layer .code .wimg{position:absolute;right:-18px;bottom:6px;z-index:2}
 .layer .body{padding:12px 14px;min-width:0}
 .layer h3{font-size:17px;font-weight:800}
 .layer p{margin:2px 0 0;font-size:14px;color:var(--muted)}
@@ -126,7 +127,7 @@ button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid va
 .example{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
 .song{display:inline-flex;gap:8px;align-items:center;margin-top:4px;font-weight:700;font-size:14.5px}
 .aha{margin-top:24px;padding:20px 18px;border-radius:var(--r);background:var(--worm-soft);color:var(--worm-ink);font-family:var(--display);font-weight:800;font-size:21px;line-height:1.25;display:flex;gap:12px;align-items:flex-start}
-.aha svg{flex:none;margin-top:2px}
+.aha .wimg{flex:none;margin-top:2px}
 textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);padding:10px 12px;font:inherit;font-size:15px}
 .hint{font-size:13px;color:var(--muted);margin-top:4px}
 .tpl{background:var(--surface);border:1px dashed var(--soil);border-radius:var(--r);padding:14px}
@@ -145,7 +146,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .opt[disabled]{cursor:default}
 .fb{margin-top:10px;font-size:14.5px;display:flex;gap:10px;align-items:flex-start}
 .fb.k{color:var(--kuddel)} .fb.w{color:var(--worm-ink)}
-.fb svg{flex:none}
+.fb svg,.fb .wimg{flex:none}
 .reveal{border:2px dashed var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;width:100%;text-align:left;color:var(--muted);font-weight:700}
 .answer{border-left:4px solid var(--worm);padding:6px 0 6px 12px;color:var(--fg)}
 .primary{display:block;width:100%;margin-top:22px;border:0;border-radius:12px;padding:14px;background:var(--worm);color:#fff;font-family:var(--display);font-weight:800;font-size:17px}
@@ -223,7 +224,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 
 <div class="app">
   <header class="top">
-    <svg width="64" height="48" aria-hidden="true"><use href="#wurm"/></svg>
+    <img src="wurm.png" width="72" height="65" alt="Prozesswurm" class="wimg">
     <div>
       <div class="eyebrow">Prozesswurm Lernwerkstatt</div>
       <h1>SALVE!</h1>
@@ -445,7 +446,7 @@ function renderLadder(){
     const state = n===tot ? `<span class="chip ok">geschafft</span>` : (i===cur ? `<span class="chip ok">du bist hier</span>` : ``);
     const br = lv.branches ? `<span class="branches">${lv.branches.map(b=>`<span class="chip">${esc(b.name)} ${countDone(b.ids)}/${b.ids.length}</span>`).join('')}</span>` : ``;
     return `<button type="button" class="layer" data-l="${i}" aria-label="Stufe ${lv.code}: ${esc(lv.name)}">
-      <span class="code">${lv.code}${i===cur?`<svg width="40" height="30" aria-hidden="true"><use href="#wurm"/></svg>`:''}</span>
+      <span class="code">${lv.code}${i===cur?`<img src="wurm.png" width="40" height="36" alt="" class="wimg">`:''}</span>
       <span class="body"><h3>${esc(lv.name)}</h3><p>${esc(lv.sub)}</p>${br}
       <span class="row"><span class="bar"><i style="width:${n/tot*100}%"></i></span><span>${n} / ${tot}</span>${state}</span></span></button>`;
   }).join('');
@@ -509,7 +510,7 @@ function openLesson(id){
     <div class="block"><h3>Mini-Übung</h3><p>${esc(l.task)}</p>
       <textarea id="note-${id}" placeholder="Deine Antwort, nur für dich">${esc(S.notes[id]||'')}</textarea>
       <div class="hint">Bleibt in diesem Browser gespeichert.</div></div>
-    <div class="aha"><svg width="44" height="33" aria-hidden="true"><use href="#wurm"/></svg><span>${esc(l.aha)}</span></div>
+    <div class="aha"><img src="wurm.png" width="48" height="44" alt="" class="wimg"><span>${esc(l.aha)}</span></div>
     ${l.tpl?`<div class="block"><h3>Zum Mitnehmen</h3><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
       <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div>`:''}
     <div class="block"><h3>Kurzer Check</h3>${checks}</div>
@@ -526,7 +527,7 @@ function openLesson(id){
     qEl.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
       const oi=+b.dataset.o, fb=qEl.querySelector('.fb'); fb.hidden=false;
       if(oi===q.a){ qEl.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add('right');
-        fb.className='fb w'; fb.innerHTML=`<svg width="32" height="24" aria-hidden="true"><use href="#wurm"/></svg><span>${pick(WURM)}</span>`; got.add(qi); unlock();
+        fb.className='fb w'; fb.innerHTML=`<img src="wurm.png" width="30" height="27" alt="" class="wimg"><span>${pick(WURM)}</span>`; got.add(qi); unlock();
       } else { b.classList.add('wrong'); b.disabled=true;
         fb.className='fb k'; fb.innerHTML=`<svg width="26" height="26" aria-hidden="true"><use href="#kuddel"/></svg><span>${pick(KUDDEL)}</span>`; }
     });
@@ -560,7 +561,7 @@ function renderDeck(){
   const dots = `<div class="dots" aria-hidden="true">${set.map(i=>`<i class="${S.known.includes(i)?'k':''} ${queue[pos]===i?'c':''}"></i>`).join('')}</div>`;
   if(!queue.length || pos>=queue.length){
     const all = set.every(i=>S.known.includes(i));
-    d.innerHTML = `${dots}<div class="done-box"><svg width="64" height="48" aria-hidden="true"><use href="#wurm"/></svg>
+    d.innerHTML = `${dots}<div class="done-box"><img src="wurm.png" width="72" height="65" style="margin:0 auto" alt="" class="wimg">
       <h3 style="margin-top:8px">${all?`Alle Begriffe hier sitzen.`:`Runde geschafft.`}</h3>
       <p class="hint">${all?`Mit „Von vorn“ kannst du jederzeit wiederholen.`:`Die Karten, die noch nicht sitzen, kommen jetzt nochmal.`}</p>
       ${all?'':'<button type="button" class="know" id="nextRound" style="margin-top:12px;width:100%">Nächste Runde</button>'}</div>`;
