@@ -192,6 +192,15 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .nav button{flex:1;border:0;background:none;border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12.5px;font-weight:700;color:var(--muted)}
 .nav button[aria-current="page"]{background:var(--worm-soft);color:var(--worm-ink)}
 .nav svg{width:22px;height:22px}
+/* Gespräch Kuddelmuddel / Prozesswurm */
+.talk{display:grid;gap:8px;margin:0 0 18px}
+.say{display:flex;gap:10px;align-items:flex-start;border-radius:var(--r);padding:10px 12px;font-size:14.5px}
+.say p{margin:0;min-width:0}
+.say svg,.say .wimg{flex:none}
+.say.k{background:var(--kuddel-soft);color:var(--fg);margin-right:28px}
+.say.k b{color:var(--kuddel)}
+.say.w{background:var(--worm-soft);color:var(--fg);margin-left:28px}
+.say.w b{color:var(--worm-ink)}
 /* Feedback */
 .fb-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px}
 .fb-card label{font-weight:700;display:block;margin-bottom:6px}
@@ -255,6 +264,10 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
   <section class="view" id="v-home">
     <h2 class="section-title">Grab dich durch die Stufen</h2>
     <p class="section-sub">Aufgebaut wie beim Sprachenlernen: A1 und A2 legen das Fundament, B1 und B2 machen dich sicher in der Praxis. Ab C1 wählst du deine Vertiefung, C2 ist der Blick aufs ganze Unternehmen.</p>
+    <div class="talk">
+      <div class="say k"><svg width="40" height="40" aria-hidden="true"><use href="#kuddel"/></svg><p><b>Doktor Kuddelmuddel:</b> Prozesse lernen? Wer will denn sowas? Und wozu brauch ich den Schmarrn überhaupt?</p></div>
+      <div class="say w"><img src="wurm.png" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Weil du jeden Tag in Prozessen steckst, ob du willst oder nicht. Fang bei A1 an, eine Lektion dauert fünf Minuten.</p></div>
+    </div>
     <div class="depth"><span>Oberfläche</span><span>Tiefe</span></div>
     <div class="ladder" id="ladder"></div>
     <div class="ask"><img src="wurm.png" width="44" height="40" alt="" class="wimg"><p><b>Fehlt dir ein Thema?</b> Sag's mir, dann grab ich mich rein.</p><button type="button" class="secondary" data-feedback="">Feedback geben</button></div>
@@ -454,7 +467,7 @@ const CARDS = [
  [`C2`,`Governance`,`Spielregeln, die als Leitplanken wirken, nicht als Stoppschilder.`]
 ];
 
-const KUDDEL = [`Doktor Kuddelmuddel reibt sich die Hände.`,`Doktor Kuddelmuddel jubelt. Noch ein Versuch?`,`Da hat dir Doktor Kuddelmuddel ein Bein gestellt.`,`Kuddelmuddel kichert im Hintergrund.`];
+const KUDDEL = [`Doktor Kuddelmuddel reibt sich die Hände.`,`Doktor Kuddelmuddel jubelt. Noch ein Versuch?`,`Da hat dir Doktor Kuddelmuddel ein Bein gestellt.`,`Doktor Kuddelmuddel kichert im Hintergrund.`];
 const WURM = [`Sauber gegraben!`,`Der Prozesswurm nickt zufrieden.`,`Genau so.`,`Knoten gelöst.`];
 
 /* Speicher nur im eigenen Browser; alte Version wird übernommen */
