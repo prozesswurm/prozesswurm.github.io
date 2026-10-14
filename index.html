@@ -265,7 +265,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
     <h2 class="section-title">Grab dich durch die Stufen</h2>
     <p class="section-sub">Aufgebaut wie beim Sprachenlernen: A1 und A2 legen das Fundament, B1 und B2 machen dich sicher in der Praxis. Ab C1 wählst du deine Vertiefung, C2 ist der Blick aufs ganze Unternehmen.</p>
     <div class="talk">
-      <div class="say k"><svg width="40" height="40" aria-hidden="true"><use href="#kuddel"/></svg><p><b>Doktor Kuddelmuddel:</b> Prozesse lernen? Wer will denn sowas? Und wozu brauch ich den Schmarrn überhaupt?</p></div>
+      <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> Prozesse lernen? Wer will denn sowas? Und wozu brauch ich den Schmarrn überhaupt?</p></div>
       <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Weil du jeden Tag in Prozessen steckst, ob du willst oder nicht. Fang bei A1 an, eine Lektion dauert fünf Minuten.</p></div>
     </div>
     <div class="depth"><span>Oberfläche</span><span>Tiefe</span></div>
@@ -599,7 +599,7 @@ function openLesson(id){
       if(oi===q.a){ qEl.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add('right');
         fb.className='fb w'; fb.innerHTML=`<img src="wurm.png?v=2" width="30" height="27" alt="" class="wimg"><span>${pick(WURM)}</span>`; got.add(qi); unlock();
       } else { b.classList.add('wrong'); b.disabled=true;
-        fb.className='fb k'; fb.innerHTML=`<svg width="26" height="26" aria-hidden="true"><use href="#kuddel"/></svg><span>${pick(KUDDEL)}</span>`; }
+        fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>${pick(KUDDEL)}</span>`; }
     });
   });
   else v.querySelectorAll('.q').forEach(qEl=>{
