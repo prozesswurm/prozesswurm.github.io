@@ -22,9 +22,13 @@
 <meta name="copyright" content="© 2026 Prozesswurm">
 <title>Prozesswurm Lernwerkstatt</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
+/* Schriften liegen auf dem eigenen Server (keine Verbindung zu Google Fonts) */
+@font-face{font-family:"Bricolage Grotesque";font-weight:600;font-display:swap;src:url(fonts/bricolage-grotesque-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Bricolage Grotesque";font-weight:800;font-display:swap;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
 /* Layout: Handy-App. Die Stufen A1 bis C2 liegen wie Erdschichten untereinander; je tiefer der Prozesswurm gräbt, desto weiter ist man. */
 :root{
   --bg:#F2F5F0; --surface:#FFFFFF; --sunk:#E6EBE2; --line:#D3DBCE;
@@ -205,6 +209,14 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .say.w{background:var(--worm-soft);color:var(--fg);margin-left:28px}
 .say.w b{color:var(--worm-ink)}
 .legal{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.5;color:var(--muted);text-align:center}
+.bot{display:flex;gap:12px;align-items:center;text-decoration:none;color:var(--fg);background:var(--surface);border:2px solid var(--worm);border-radius:var(--r);padding:12px 14px;margin:0 0 18px}
+.lesson .bot{margin:24px 0 0}
+.bot span{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+.bot b{font-family:var(--display);font-size:17px;color:var(--worm-ink)}
+.bot small{font-size:13px;color:var(--muted)}
+.bot i{font-style:normal;font-size:22px;color:var(--worm-ink)}
+.bot:hover{background:var(--worm-soft)}
+.bot .wimg{flex:none}
 /* Feedback */
 .fb-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px}
 .fb-card label{font-weight:700;display:block;margin-bottom:6px}
@@ -272,6 +284,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
       <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> Prozesse lernen? Wer will denn sowas? Und wozu brauch ich den Schmarrn überhaupt?</p></div>
       <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Weil du jeden Tag in Prozessen steckst, ob du willst oder nicht. Fang bei A1 an, eine Lektion dauert fünf Minuten.</p></div>
     </div>
+    <a class="bot" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="start"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><span><b>Frag den Prozesswurm</b><small>Der Chatbot kennt alle Inhalte und antwortet rund um die Uhr. Öffnet sich bei Google, du brauchst ein Google-Konto.</small></span><i aria-hidden="true">→</i></a>
     <div class="depth"><span>Oberfläche</span><span>Tiefe</span></div>
     <div class="ladder" id="ladder"></div>
     <div class="ask"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Fehlt dir ein Thema?</b> Sag's mir, dann grab ich mich rein.</p><button type="button" class="secondary" data-feedback="">Feedback geben</button></div>
@@ -386,7 +399,7 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
       </div>
     </div>
   </section>
-  <footer class="legal">© 2026 Prozesswurm · Alle Texte, Lektionen und die Figuren Prozesswurm und Doktor Kuddelmuddel sind urheberrechtlich geschützt. Teilen gern mit Link, kopieren und weiterverwenden nur mit Erlaubnis.</footer>
+  <footer class="legal">© 2026 Prozesswurm · Alle Texte, Lektionen und die Figuren Prozesswurm und Doktor Kuddelmuddel sind urheberrechtlich geschützt. Teilen gern mit Link, kopieren und weiterverwenden nur mit Erlaubnis.<br><a href="https://www.prozesswurm.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.prozesswurm.de" target="_blank" rel="noopener">prozesswurm.de</a></footer>
 </div>
 
 <nav class="nav" aria-label="Bereiche">
@@ -592,6 +605,7 @@ function openLesson(id){
       <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div>`:''}
     <div class="block"><h3>Kurzer Check</h3>${checks}</div>
     <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':(l.quiz?'Erst den Check beantworten':'Erst alle Antworten aufdecken')}</button>
+    <a class="bot" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="lektion"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><span><b>Noch Fragen zu „${esc(l.t)}“?</b><small>Frag den Prozesswurm-Chatbot. Öffnet sich bei Google (Google-Konto nötig).</small></span><i aria-hidden="true">→</i></a>
     <div class="ask"><p>Unklar, zu trocken oder fehlt was? Sag's dem Prozesswurm.</p><button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zur Lektion</button></div>`;
   show('lesson'); window.scrollTo(0,0);
 
@@ -701,7 +715,7 @@ function openFeedback(ctxText){
   const c=$('#fbCtx'); c.hidden=!ctxText; c.textContent = ctxText ? `Bezieht sich auf: ${ctxText}` : '';
   show('feedback'); window.scrollTo(0,0);
 }
-document.addEventListener('click', e=>{ const b=e.target.closest('[data-feedback]'); if(b) openFeedback(b.dataset.feedback); });
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-feedback]'); if(b) openFeedback(b.dataset.feedback); const c=e.target.closest('[data-bot]'); if(c) gc('chatbot-'+c.dataset.bot,'Chatbot geöffnet',true); });
 $('#rate').addEventListener('click', e=>{ const b=e.target.closest('[data-r]'); if(!b) return; rating=+b.dataset.r;
   $('#rate').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b))); });
 $('#fbAgain').onclick=()=>openFeedback('');
