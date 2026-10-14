@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
-/* Layout: Handy-App. Die Stufen A1 bis C2 liegen wie Erdschichten untereinander; je tiefer der Wurm gräbt, desto weiter ist man. */
+/* Layout: Handy-App. Die Stufen A1 bis C2 liegen wie Erdschichten untereinander; je tiefer der Prozesswurm gräbt, desto weiter ist man. */
 :root{
   --bg:#F2F5F0; --surface:#FFFFFF; --sunk:#E6EBE2; --line:#D3DBCE;
   --fg:#1C241D; --muted:#5A675C; --soil:#6B5341;
@@ -275,7 +275,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
         </div>
       </div>
       <div><label for="fbText">Was gefällt dir, was nervt?</label>
-        <textarea id="fbText" placeholder="Ehrlich ist gut. Der Wurm verträgt das."></textarea></div>
+        <textarea id="fbText" placeholder="Ehrlich ist gut. Der Prozesswurm verträgt das."></textarea></div>
       <div><label for="fbTopic">Welches Thema fehlt dir?</label>
         <input type="text" id="fbTopic" placeholder="z. B. Prozesse mit Excel dokumentieren"></div>
       <div><label for="fbMail">Deine E-Mail <span style="font-weight:400;color:var(--muted)">(freiwillig, nur für eine Antwort)</span></label>
@@ -455,7 +455,7 @@ const CARDS = [
 ];
 
 const KUDDEL = [`Doktor Kuddelmuddel reibt sich die Hände.`,`Doktor Kuddelmuddel jubelt. Noch ein Versuch?`,`Da hat dir Doktor Kuddelmuddel ein Bein gestellt.`,`Kuddelmuddel kichert im Hintergrund.`];
-const WURM = [`Sauber gegraben!`,`Der Wurm nickt zufrieden.`,`Genau so.`,`Knoten gelöst.`];
+const WURM = [`Sauber gegraben!`,`Der Prozesswurm nickt zufrieden.`,`Genau so.`,`Knoten gelöst.`];
 
 /* Speicher nur im eigenen Browser; alte Version wird übernommen */
 const KEY = `wurmLernwerkstatt.v2`;
@@ -571,7 +571,7 @@ function openLesson(id){
       <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div>`:''}
     <div class="block"><h3>Kurzer Check</h3>${checks}</div>
     <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':(l.quiz?'Erst den Check beantworten':'Erst alle Antworten aufdecken')}</button>
-    <div class="ask"><p>Unklar, zu trocken oder fehlt was? Sag's dem Wurm.</p><button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zur Lektion</button></div>`;
+    <div class="ask"><p>Unklar, zu trocken oder fehlt was? Sag's dem Prozesswurm.</p><button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zur Lektion</button></div>`;
   show('lesson'); window.scrollTo(0,0);
 
   v.querySelector('[data-back]').onclick = ()=> openLevel(ctx.i, ctx.key);
@@ -599,7 +599,7 @@ function openLesson(id){
     const nextId = ctx.ids.find(x=>!isDone(x));
     if(nextId){ toast(`Lektion geschafft`); openLesson(nextId); return; }
     const lv = LEVELS[ctx.i];
-    if(countDone(lv.ids)===lv.ids.length) toast(`Stufe ${lv.code} geschafft. Der Wurm gräbt tiefer.`);
+    if(countDone(lv.ids)===lv.ids.length) toast(`Stufe ${lv.code} geschafft. Der Prozesswurm gräbt tiefer.`);
     else toast(`Abschnitt geschafft`);
     openLevel(ctx.i, ctx.key);
   };
