@@ -17,6 +17,7 @@
 <meta property="og:description" content="81 Lektionen Prozessmanagement von A1 bis C2.">
 <meta property="og:image" content="https://prozesswurm.github.io/icon-512.png">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <title>Prozesswurm Lernwerkstatt</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -522,8 +523,11 @@ function renderLadder(){
 }
 
 let curLevel=0, curBranch=null;
+/* Besucherzählung (GoatCounter, ohne Cookies) */
+function gc(path,title,ev){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:path,title:title||path,event:!!ev}); }catch(e){} }
+
 function openLevel(i, branchKey){
-  curLevel=i; const lv=LEVELS[i];
+  curLevel=i; const lv=LEVELS[i]; gc('/stufe/'+lv.code+(branchKey?'-'+branchKey:''), 'Stufe '+lv.code);
   if(lv.branches){ curBranch = branchKey || curBranch || (lv.branches.find(b=>countDone(b.ids)<b.ids.length)||lv.branches[0]).key; } else curBranch=null;
   const ids = lv.branches ? lv.branches.find(b=>b.key===curBranch).ids : lv.ids;
   const next = ids.find(id=>!isDone(id));
@@ -561,7 +565,7 @@ function expHtml(l){
 }
 
 function openLesson(id){
-  const l=L[id], ctx=levelIdsFor(id), pos=ctx.ids.indexOf(id);
+  const l=L[id], ctx=levelIdsFor(id), pos=ctx.ids.indexOf(id); gc('/lektion/'+id, l.t);
   const v=$('#v-lesson');
   const checks = l.quiz ? l.quiz.map((q,qi)=>`<div class="q" data-q="${qi}"><p>${esc(q.q)}</p><div class="opts">
         ${q.o.map((o,oi)=>`<button type="button" class="opt" data-o="${oi}">${esc(o)}</button>`).join('')}</div><div class="fb" hidden></div></div>`).join('')
@@ -607,7 +611,7 @@ function openLesson(id){
   });
 
   $('#finishBtn').onclick = ()=>{
-    if(!isDone(id)){ S.done.push(id); save(); }
+    if(!isDone(id)){ S.done.push(id); save(); gc('lektion-geschafft/'+id, l.t, true); }
     stats(); renderLadder();
     const nextId = ctx.ids.find(x=>!isDone(x));
     if(nextId){ toast(`Lektion geschafft`); openLesson(nextId); return; }
@@ -671,7 +675,7 @@ function show(name){
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
-  const t=b.dataset.tab; if(t==='cards'){ renderFilters(); buildQueue(); renderDeck(); }
+  const t=b.dataset.tab; if(t!=='home') gc('/'+t); if(t==='cards'){ renderFilters(); buildQueue(); renderDeck(); }
   if(t==='home') renderLadder();
   if(t==='feedback'){ openFeedback(''); return; }
   show(t); window.scrollTo(0,0);
@@ -708,7 +712,7 @@ $('#fbForm').addEventListener('submit', async e=>{
   try{
     await fetch(FORM, {method:`POST`, mode:`no-cors`, body});
     $('#fbForm').reset(); rating=0; $('#rate').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
-    $('#fbForm').hidden=true; $('#fbThanks').hidden=false; window.scrollTo(0,0);
+    $('#fbForm').hidden=true; $('#fbThanks').hidden=false; gc('feedback-gesendet','Feedback gesendet',true); window.scrollTo(0,0);
   }catch(err){
     toast(`Hat nicht geklappt. Schreib mir gern an prozesswurm@gmail.com`);
   }finally{ btn.disabled=false; btn.textContent=`Feedback abschicken`; }
