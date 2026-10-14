@@ -192,6 +192,21 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .nav button{flex:1;border:0;background:none;border-radius:12px;padding:8px 4px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12.5px;font-weight:700;color:var(--muted)}
 .nav button[aria-current="page"]{background:var(--worm-soft);color:var(--worm-ink)}
 .nav svg{width:22px;height:22px}
+/* Feedback */
+.fb-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px}
+.fb-card label{font-weight:700;display:block;margin-bottom:6px}
+.fb-card input[type=text],.fb-card input[type=email]{width:100%;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);padding:10px 12px;font:inherit;font-size:15px}
+.fb-card input:focus-visible{outline:3px solid var(--worm);outline-offset:2px}
+.rate{display:flex;gap:8px}
+.rate button{flex:1;border:2px solid var(--line);background:var(--bg);border-radius:12px;padding:8px 2px;font-family:var(--display);font-weight:800;font-size:18px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.rate button small{font-family:var(--body);font-size:11px;font-weight:700;color:var(--muted)}
+.rate button[aria-pressed="true"]{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
+.mail-box{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:12px 14px}
+.mail-box b{font-family:var(--display);user-select:all;word-break:break-all}
+.ask{margin-top:24px;display:flex;gap:12px;align-items:center;background:var(--surface);border:1px dashed var(--soil);border-radius:var(--r);padding:14px}
+.ask p{margin:0;flex:1;min-width:0;font-size:14.5px}
+.ask .secondary{flex:none}
+.thanks{text-align:center;padding:22px}
 .toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom, 0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:99px;font-weight:700;font-size:14px;opacity:0;transition:opacity .25s;pointer-events:none;z-index:20;max-width:calc(100% - 32px);text-align:center}
 .toast.show{opacity:1}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
@@ -242,6 +257,44 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
     <p class="section-sub">Aufgebaut wie beim Sprachenlernen: A1 und A2 legen das Fundament, B1 und B2 machen dich sicher in der Praxis. Ab C1 wählst du deine Vertiefung, C2 ist der Blick aufs ganze Unternehmen.</p>
     <div class="depth"><span>Oberfläche</span><span>Tiefe</span></div>
     <div class="ladder" id="ladder"></div>
+    <div class="ask"><img src="wurm.png" width="44" height="40" alt="" class="wimg"><p><b>Fehlt dir ein Thema?</b> Sag's mir, dann grab ich mich rein.</p><button type="button" class="secondary" data-feedback="">Feedback geben</button></div>
+  </section>
+
+  <section class="view" id="v-feedback" hidden>
+    <h2 class="section-title">Dein Feedback</h2>
+    <p class="section-sub">Die Lernwerkstatt ist ein Hobbyprojekt und wächst mit euren Wünschen. Was hilft dir, was fehlt, worüber soll die nächste Lektion gehen?</p>
+    <form class="fb-card" id="fbForm" novalidate>
+      <div>
+        <span class="eyebrow" style="display:block;margin-bottom:6px">Wie hilfreich ist die Lernwerkstatt für dich?</span>
+        <div class="rate" id="rate" role="group" aria-label="Bewertung von 1 bis 5">
+          <button type="button" data-r="1" aria-pressed="false">1<small>kaum</small></button>
+          <button type="button" data-r="2" aria-pressed="false">2<small></small></button>
+          <button type="button" data-r="3" aria-pressed="false">3<small>okay</small></button>
+          <button type="button" data-r="4" aria-pressed="false">4<small></small></button>
+          <button type="button" data-r="5" aria-pressed="false">5<small>sehr</small></button>
+        </div>
+      </div>
+      <div><label for="fbText">Was gefällt dir, was nervt?</label>
+        <textarea id="fbText" placeholder="Ehrlich ist gut. Der Wurm verträgt das."></textarea></div>
+      <div><label for="fbTopic">Welches Thema fehlt dir?</label>
+        <input type="text" id="fbTopic" placeholder="z. B. Prozesse mit Excel dokumentieren"></div>
+      <div><label for="fbMail">Deine E-Mail <span style="font-weight:400;color:var(--muted)">(freiwillig, nur für eine Antwort)</span></label>
+        <input type="email" id="fbMail" placeholder="name@beispiel.de" autocomplete="email"></div>
+      <input type="hidden" id="fbLesson" value="">
+      <div class="hint" id="fbCtx" hidden></div>
+      <button type="submit" class="primary" id="fbSend" style="margin-top:4px">Feedback abschicken</button>
+      <p class="hint" style="margin:0">Landet direkt beim Prozesswurm. Bitte keine vertraulichen Firmendaten eintragen.</p>
+    </form>
+    <div class="fb-card thanks" id="fbThanks" hidden>
+      <img src="wurm.png" width="80" height="72" alt="" class="wimg" style="margin:0 auto">
+      <h3>Danke dir!</h3>
+      <p class="hint" style="margin:0">Dein Feedback ist unterwegs. Aus den Wünschen werden neue Lektionen.</p>
+      <button type="button" class="secondary" id="fbAgain" style="justify-self:center">Noch etwas schreiben</button>
+    </div>
+    <h3 class="section-title" style="font-size:18px">Lieber per E-Mail?</h3>
+    <div class="mail-box"><b id="mailAddr">prozesswurm@gmail.com</b>
+      <button type="button" class="secondary copy" data-copy="mailAddr">Kopieren</button>
+      <a href="mailto:prozesswurm@gmail.com?subject=Lernwerkstatt">E-Mail öffnen</a></div>
   </section>
 
   <section class="view" id="v-level" hidden></section>
@@ -329,6 +382,9 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
     <button type="button" data-tab="cheat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 4h6l1 2h3v15H5V6h3z"/><path d="M9 12l2 2 4-4"/></svg>
       Spickzettel</button>
+    <button type="button" data-tab="feedback">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5" stroke-linecap="round"/></svg>
+      Feedback</button>
   </div>
 </nav>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -514,7 +570,8 @@ function openLesson(id){
     ${l.tpl?`<div class="block"><h3>Zum Mitnehmen</h3><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
       <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div>`:''}
     <div class="block"><h3>Kurzer Check</h3>${checks}</div>
-    <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':(l.quiz?'Erst den Check beantworten':'Erst alle Antworten aufdecken')}</button>`;
+    <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':(l.quiz?'Erst den Check beantworten':'Erst alle Antworten aufdecken')}</button>
+    <div class="ask"><p>Unklar, zu trocken oder fehlt was? Sag's dem Wurm.</p><button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zur Lektion</button></div>`;
   show('lesson'); window.scrollTo(0,0);
 
   v.querySelector('[data-back]').onclick = ()=> openLevel(ctx.i, ctx.key);
@@ -596,13 +653,14 @@ document.addEventListener('click', async e=>{
 
 /* Navigation */
 function show(name){
-  ['home','level','lesson','cards','cheat'].forEach(n=>$('#v-'+n).hidden = n!==name);
+  ['home','level','lesson','cards','cheat','feedback'].forEach(n=>$('#v-'+n).hidden = n!==name);
   const tab = (name==='level'||name==='lesson') ? 'home' : name;
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
   const t=b.dataset.tab; if(t==='cards'){ renderFilters(); buildQueue(); renderDeck(); }
   if(t==='home') renderLadder();
+  if(t==='feedback'){ openFeedback(''); return; }
   show(t); window.scrollTo(0,0);
 });
 $('#ladder').addEventListener('click', e=>{ const s=e.target.closest('.layer'); if(s) openLevel(+s.dataset.l); });
@@ -610,6 +668,37 @@ $('#v-level').addEventListener('click', e=>{
   const s=e.target.closest('.stop'); if(s){ openLesson(s.dataset.id); return; }
   const t=e.target.closest('[data-branch]'); if(t){ openLevel(curLevel, t.dataset.branch); return; }
   if(e.target.closest('[data-go="home"]')){ renderLadder(); show('home'); window.scrollTo(0,0); }
+});
+
+/* Feedback: landet im Google-Formular "Lernwerkstatt Feedback" */
+const FORM = `https://docs.google.com/forms/d/e/1FAIpQLSeNfVLrIUk2QDsDupR5Bur8Obm-NrljXl8FxhUSBG0wHgVneQ/formResponse`;
+const F = {rate:`entry.162698282`, text:`entry.1878057326`, topic:`entry.250781899`, mail:`entry.1416048129`, lesson:`entry.359299222`};
+let rating = 0;
+function openFeedback(ctxText){
+  $('#fbForm').hidden=false; $('#fbThanks').hidden=true;
+  $('#fbLesson').value = ctxText||'';
+  const c=$('#fbCtx'); c.hidden=!ctxText; c.textContent = ctxText ? `Bezieht sich auf: ${ctxText}` : '';
+  show('feedback'); window.scrollTo(0,0);
+}
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-feedback]'); if(b) openFeedback(b.dataset.feedback); });
+$('#rate').addEventListener('click', e=>{ const b=e.target.closest('[data-r]'); if(!b) return; rating=+b.dataset.r;
+  $('#rate').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed', String(x===b))); });
+$('#fbAgain').onclick=()=>openFeedback('');
+$('#fbForm').addEventListener('submit', async e=>{
+  e.preventDefault();
+  const text=$('#fbText').value.trim(), topic=$('#fbTopic').value.trim();
+  if(!rating && !text && !topic){ toast(`Schreib kurz was oder gib eine Bewertung`); return; }
+  const body=new URLSearchParams();
+  body.append(F.rate, rating?String(rating):``); body.append(F.text, text); body.append(F.topic, topic);
+  body.append(F.mail, $('#fbMail').value.trim()); body.append(F.lesson, $('#fbLesson').value || `allgemein`);
+  const btn=$('#fbSend'); btn.disabled=true; btn.textContent=`Wird gesendet …`;
+  try{
+    await fetch(FORM, {method:`POST`, mode:`no-cors`, body});
+    $('#fbForm').reset(); rating=0; $('#rate').querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));
+    $('#fbForm').hidden=true; $('#fbThanks').hidden=false; window.scrollTo(0,0);
+  }catch(err){
+    toast(`Hat nicht geklappt. Schreib mir gern an prozesswurm@gmail.com`);
+  }finally{ btn.disabled=false; btn.textContent=`Feedback abschicken`; }
 });
 
 stats(); renderLadder(); renderFilters(); buildQueue(); renderDeck();
