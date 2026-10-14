@@ -18,6 +18,8 @@
 <meta property="og:image" content="https://prozesswurm.github.io/icon-512.png">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<meta name="author" content="Prozesswurm">
+<meta name="copyright" content="© 2026 Prozesswurm">
 <title>Prozesswurm Lernwerkstatt</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -202,6 +204,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .say.k b{color:var(--kuddel)}
 .say.w{background:var(--worm-soft);color:var(--fg);margin-left:28px}
 .say.w b{color:var(--worm-ink)}
+.legal{margin-top:36px;padding-top:14px;border-top:1px solid var(--line);font-size:12.5px;line-height:1.5;color:var(--muted);text-align:center}
 /* Feedback */
 .fb-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:14px}
 .fb-card label{font-weight:700;display:block;margin-bottom:6px}
@@ -383,6 +386,7 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
       </div>
     </div>
   </section>
+  <footer class="legal">© 2026 Prozesswurm · Alle Texte, Lektionen und die Figuren Prozesswurm und Doktor Kuddelmuddel sind urheberrechtlich geschützt. Teilen gern mit Link, kopieren und weiterverwenden nur mit Erlaubnis.</footer>
 </div>
 
 <nav class="nav" aria-label="Bereiche">
@@ -664,7 +668,7 @@ $('#deckReset').onclick=()=>{ const set=cardIdx(); S.known=S.known.filter(i=>!se
 document.addEventListener('click', async e=>{
   const b=e.target.closest('.copy'); if(!b) return;
   const el=document.getElementById(b.dataset.copy);
-  try{ await navigator.clipboard.writeText(el.textContent); toast(`Kopiert`); }
+  try{ await navigator.clipboard.writeText(el.textContent + (b.dataset.copy==='mailAddr' ? '' : '\n\n© Prozesswurm · prozesswurm.github.io')); toast(`Kopiert`); }
   catch(err){ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast(`Text markiert, jetzt kopieren`); }
 });
 
