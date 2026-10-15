@@ -274,6 +274,14 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .save-in input{flex:1 1 200px;min-width:0;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;background:var(--bg);color:var(--fg)}
 .iab{background:#FFF4D6;color:#5A4500;border:1px solid #E8D28F;border-radius:12px;padding:12px 14px;font-size:14.5px;margin:0 0 14px}
 .iab b{display:block;margin-bottom:2px}
+.nl-strip{display:flex;gap:14px;align-items:center;text-decoration:none;color:#fff;background:#1D7432;border-radius:var(--r);padding:14px 16px;margin:0 0 18px;box-shadow:0 6px 18px rgba(29,116,50,.25)}
+.nl-strip .wimg{flex:none;background:#fff;border-radius:50%;padding:6px;width:56px;height:56px;object-fit:contain}
+.nl-strip span{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.nl-strip b{font-family:var(--display);font-size:18px;line-height:1.2}
+.nl-strip small{font-size:13.5px;opacity:.92}
+.nl-strip em{flex:none;font-style:normal;background:#fff;color:#1D7432;border-radius:999px;padding:9px 14px;font-family:var(--display);font-weight:800;font-size:14.5px}
+.nl-strip:hover{filter:brightness(1.08)}
+@media (max-width:460px){.nl-strip{flex-wrap:wrap}.nl-strip em{width:100%;text-align:center}}
 .nl-card{margin-top:24px;background:var(--worm-ink,#1D7432);color:#fff;border-radius:var(--r);padding:18px;display:grid;gap:10px}
 .nl-card h3{margin:0;font-family:var(--display);font-weight:800;font-size:19px}
 .nl-card p{margin:0;font-size:14.5px}
@@ -337,6 +345,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
       <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Weil du jeden Tag in Prozessen steckst, ob du willst oder nicht. Fang bei A1 an, eine Lektion dauert fünf Minuten.</p></div>
     </div>
     <a class="bot" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="start"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><span><b>Frag den Prozesswurm</b><small>Der Chatbot kennt alle Inhalte und antwortet rund um die Uhr. Öffnet sich bei Google, du brauchst ein Google-Konto.</small></span><i aria-hidden="true">→</i></a>
+    <a class="nl-strip" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-top"><img src="wurm.png?v=2" alt="" class="wimg"><span><b>Der Montags-Wurm in dein Postfach</b><small>Jeden Montag fünf Minuten Prozesswissen mit dem Prozesswurm und Doktor Kuddelmuddel. Jederzeit abbestellbar.</small></span><em>Kostenlos abonnieren</em></a>
     <div class="depth"><span>Oberfläche</span><span>Tiefe</span></div>
     <div class="ladder" id="ladder"></div>
     <h2 class="section-title">Deine Abzeichen</h2>
@@ -1049,7 +1058,9 @@ function openCert(key, celebrate){
       </div>
       <p class="hint" style="margin:0">Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation. Dein Name bleibt in diesem Browser. Er steht nur dann im Link, wenn du die Urkunde teilst oder bei LinkedIn einträgst.</p>
     </div>
+    <a class="nl-strip" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-urkunde"><img src="wurm.png?v=2" alt="" class="wimg"><span><b>Bleib dran: der Montags-Wurm</b><small>Bis zur nächsten Stufe jeden Montag ein Stück Prozesswissen per E-Mail. Kostenlos.</small></span><em>Kostenlos abonnieren</em></a>
     ${celebrate?`<button type="button" class="primary" data-go="home">Weiter graben</button>`:''}`;
+  v.querySelectorAll('[data-nl]').forEach(a=>a.addEventListener('click',()=>gc('montags-wurm/'+a.dataset.nl,'Klick Montags-Wurm',true)));
   show('cert'); window.scrollTo(0,0);
   v.querySelectorAll('[data-go="home"]').forEach(x=>x.onclick=()=>{ renderLadder(); renderBadges(); show('home'); window.scrollTo(0,0); });
   $('#certName').addEventListener('input', e=>{ S.name=e.target.value; save(); clearTimeout(certTimer); certTimer=setTimeout(()=>refreshCert(b),250); });
