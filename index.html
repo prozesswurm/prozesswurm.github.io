@@ -15,7 +15,7 @@
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta property="og:title" content="Prozesswurm Lernwerkstatt">
 <meta property="og:description" content="81 Lektionen Prozessmanagement von A1 bis C2.">
-<meta property="og:image" content="https://prozesswurm.github.io/icon-512.png">
+<meta property="og:image" content="https://prozesswurm.github.io/app-og.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <meta name="author" content="Prozesswurm">
@@ -265,6 +265,20 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .rate button[aria-pressed="true"]{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
 .mail-box{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:12px 14px}
 .mail-box b{font-family:var(--display);user-select:all;word-break:break-all}
+.save-card{margin-top:24px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:grid;gap:12px}
+.save-card h3{margin:0;font-family:var(--display);font-weight:800;font-size:18px}
+.save-card p{margin:0;font-size:14.5px}
+.save-row{display:flex;flex-wrap:wrap;gap:8px}
+.save-row button,.save-row a{flex:1 1 180px;text-align:center;text-decoration:none;color:var(--fg)}
+.save-in{display:flex;gap:8px;flex-wrap:wrap}
+.save-in input{flex:1 1 200px;min-width:0;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;background:var(--bg);color:var(--fg)}
+.iab{background:#FFF4D6;color:#5A4500;border:1px solid #E8D28F;border-radius:12px;padding:12px 14px;font-size:14.5px;margin:0 0 14px}
+.iab b{display:block;margin-bottom:2px}
+.nl-card{margin-top:24px;background:var(--worm-ink,#1D7432);color:#fff;border-radius:var(--r);padding:18px;display:grid;gap:10px}
+.nl-card h3{margin:0;font-family:var(--display);font-weight:800;font-size:19px}
+.nl-card p{margin:0;font-size:14.5px}
+.nl-card a{display:block;text-align:center;text-decoration:none;background:#fff;color:#1D7432;border-radius:12px;padding:12px;font-family:var(--display);font-weight:800}
+.cert-actions .sh{background:#0A66C2;color:#fff;opacity:.92}
 .ask{margin-top:24px;display:flex;gap:12px;align-items:center;background:var(--surface);border:1px dashed var(--soil);border-radius:var(--r);padding:14px}
 .ask p{margin:0;flex:1;min-width:0;font-size:14.5px}
 .ask .secondary{flex:none}
@@ -315,6 +329,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
   </div>
 
   <section class="view" id="v-home">
+    <div class="iab" id="iab" hidden><b>Du bist im Browser von Instagram, LinkedIn oder Facebook.</b>Dort geht dein Fortschritt leicht verloren. Öffne die Lernwerkstatt über die drei Punkte mit „Im Browser öffnen“ oder sichere unten deinen Speicherlink.</div>
     <h2 class="section-title">Grab dich durch die Stufen</h2>
     <p class="section-sub">Aufgebaut wie beim Sprachenlernen: A1 und A2 legen das Fundament, B1 und B2 machen dich sicher in der Praxis. Ab C1 wählst du deine Vertiefung, C2 ist der Blick aufs ganze Unternehmen.</p>
     <div class="talk">
@@ -327,6 +342,23 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
     <h2 class="section-title">Deine Abzeichen</h2>
     <p class="section-sub">Für jede geschaffte Stufe gibt es ein Abzeichen und eine Abschlussurkunde, die du herunterladen und bei LinkedIn eintragen kannst.</p>
     <div class="badges" id="badges"></div>
+    <div class="save-card" id="saveCard">
+      <h3>Deinen Fortschritt mitnehmen</h3>
+      <p>Dein Stand bleibt in diesem Browser gespeichert, ganz ohne Anmeldung. Für ein anderes Gerät oder nach dem Löschen des Verlaufs: Speicherlink sichern und später einfach öffnen.</p>
+      <div class="save-row">
+        <button type="button" class="secondary" id="saveCopy">Speicherlink kopieren</button>
+        <a class="secondary" id="saveMail" href="#">Per E-Mail an mich schicken</a>
+      </div>
+      <div class="save-in">
+        <input type="text" id="saveCode" placeholder="Speicherlink oder Code einfügen" aria-label="Speicherlink oder Code einfügen" autocomplete="off">
+        <button type="button" class="secondary" id="saveLoad">Übernehmen</button>
+      </div>
+    </div>
+    <div class="nl-card">
+      <h3>Der Montags-Wurm</h3>
+      <p>Jeden Montag ein Ärgernis weniger: Neues aus dem Prozessmanagement, Zahlen, ein Fernsehtipp und ein Satz zum Mitnehmen. Kostenlos.</p>
+      <a href="https://www.prozesswurm.de/montags-wurm" target="_blank" rel="noopener" data-nl="app">Zum Montags-Wurm</a>
+    </div>
     <div class="ask"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Fehlt dir ein Thema?</b> Sag's mir, dann grab ich mich rein.</p><button type="button" class="secondary" data-feedback="">Feedback geben</button></div>
   </section>
 
@@ -993,7 +1025,8 @@ async function refreshCert(b){
   const dl=$('#certDl'), {url,li}=certLinks(b,name,date);
   dl.href=img.src; dl.download=`Prozesswurm-Urkunde-${b.key}.png`;
   $('#certLi').href=li; $('#certLink').href=url;
-  const ok=!!name; [$('#certLi'),$('#certLink')].forEach(a=>{ a.style.opacity=ok?1:.45; a.setAttribute('aria-disabled', String(!ok)); });
+  $('#certShare').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(url);
+  const ok=!!name; [$('#certLi'),$('#certLink'),$('#certShare')].forEach(a=>{ a.style.opacity=ok?1:.45; a.setAttribute('aria-disabled', String(!ok)); });
 }
 function openCert(key, celebrate){
   const b=allBadges().find(x=>x.key===key); updateBadges();
@@ -1010,7 +1043,8 @@ function openCert(key, celebrate){
       <div class="cert-actions">
         <a id="certDl" class="dl" href="#">Urkunde herunterladen</a>
         <a id="certLi" class="li" href="#" target="_blank" rel="noopener">Zu LinkedIn hinzufügen</a>
-        <a id="certLink" class="lk" href="#" target="_blank" rel="noopener">Urkunde als Link ansehen und teilen</a>
+        <a id="certShare" class="sh" href="#" target="_blank" rel="noopener">Als Beitrag auf LinkedIn teilen</a>
+        <a id="certLink" class="lk" href="#" target="_blank" rel="noopener">Urkunde als Link ansehen</a>
       </div>
       <p class="hint" style="margin:0">Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation. Dein Name bleibt in diesem Browser. Er steht nur dann im Link, wenn du die Urkunde teilst oder bei LinkedIn einträgst.</p>
     </div>
@@ -1020,6 +1054,7 @@ function openCert(key, celebrate){
   $('#certName').addEventListener('input', e=>{ S.name=e.target.value; save(); clearTimeout(certTimer); certTimer=setTimeout(()=>refreshCert(b),250); });
   $('#certDl').addEventListener('click', ()=>gc('urkunde-geladen/'+b.key,'Urkunde heruntergeladen',true));
   $('#certLi').addEventListener('click', e=>{ if(!(S.name||'').trim()){ e.preventDefault(); toast('Trag zuerst deinen Namen ein'); $('#certName').focus(); return; } gc('urkunde-linkedin/'+b.key,'Urkunde zu LinkedIn',true); });
+  $('#certShare').addEventListener('click', e=>{ if(!(S.name||'').trim()){ e.preventDefault(); toast('Trag zuerst deinen Namen ein'); $('#certName').focus(); return; } gc('urkunde-teilen/'+b.key,'Urkunde auf LinkedIn geteilt',true); });
   $('#certLink').addEventListener('click', e=>{ if(!(S.name||'').trim()){ e.preventDefault(); toast('Trag zuerst deinen Namen ein'); $('#certName').focus(); } });
   refreshCert(b);
 }
@@ -1122,6 +1157,44 @@ $('#fbForm').addEventListener('submit', async e=>{
 });
 
 updateBadges(); stats(); renderLadder(); renderBadges(); renderFilters(); buildQueue(); renderDeck();
+
+/* Fortschritt mitnehmen: Speicherlink ohne Anmeldung */
+const SAVE_URL = `https://prozesswurm.github.io/`;
+function bitsFor(prefix){ const nums=S.done.filter(id=>id[0]===prefix).map(id=>+id.slice(1)); if(!nums.length) return ''; const max=Math.max(...nums); let h=''; for(let i=1;i<=max;i+=4){ let v=0; for(let j=0;j<4;j++) if(nums.includes(i+j)) v|=8>>j; h+=v.toString(16);} return h; }
+function packState(){
+  const d={}; [...new Set(S.done.map(id=>id[0]))].forEach(p=>{ const b=bitsFor(p); if(b) d[p]=b; });
+  const k=S.known.slice().sort((a,b)=>a-b);
+  const b={}; Object.entries(S.badges||{}).forEach(([key,v])=>b[key]=String(v).replace(/-/g,'').slice(2));
+  const o={v:1,d,k,b}; if((S.name||'').trim()) o.n=S.name.trim();
+  const bytes=new TextEncoder().encode(JSON.stringify(o)); let bin=''; bytes.forEach(x=>bin+=String.fromCharCode(x));
+  return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+}
+function unpackState(code){
+  code=String(code||'').trim(); const m=code.match(/#p=([A-Za-z0-9_-]+)/); if(m) code=m[1];
+  const bin=atob(code.replace(/-/g,'+').replace(/_/g,'/')); const o=JSON.parse(new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0))));
+  if(!o||o.v!==1) throw new Error('alt');
+  const done=[]; Object.entries(o.d||{}).forEach(([p,h])=>{ [...h].forEach((c,ci)=>{ const v=parseInt(c,16); for(let j=0;j<4;j++) if(v&(8>>j)) done.push(p+String(ci*4+j+1).padStart(2,'0')); }); });
+  return {done:done.filter(id=>L[id]), known:(o.k||[]).filter(i=>i>=0&&i<CARDS.length), badges:Object.fromEntries(Object.entries(o.b||{}).map(([k,v])=>[k,'20'+v.slice(0,2)+'-'+v.slice(2,4)+'-'+v.slice(4,6)])), name:o.n||''};
+}
+function mergeState(x){
+  const before=S.done.length;
+  S.done=[...new Set([...S.done,...x.done])]; S.known=[...new Set([...S.known,...x.known])];
+  Object.entries(x.badges).forEach(([k,v])=>{ if(!S.badges[k]||v<S.badges[k]) S.badges[k]=v; });
+  if(!(S.name||'').trim()&&x.name) S.name=x.name;
+  save(); updateBadges(); stats(); renderLadder(); renderBadges();
+  return S.done.length-before;
+}
+function saveLink(){ return SAVE_URL+'#p='+packState(); }
+function refreshSave(){ const l=saveLink(); $('#saveMail').href='mailto:?subject='+encodeURIComponent('Mein Speicherlink für die Prozesswurm Lernwerkstatt')+'&body='+encodeURIComponent('Hier geht es mit meinem Lernstand weiter:\n'+l); }
+$('#saveCopy').addEventListener('click', async ()=>{ const l=saveLink(); gc('fortschritt-kopiert','Speicherlink kopiert',true);
+  try{ await navigator.clipboard.writeText(l); toast('Speicherlink kopiert. Leg ihn dir gut ab.'); }
+  catch(e){ const i=$('#saveCode'); i.value=l; i.focus(); i.select(); toast('Link steht im Feld darunter, bitte kopieren'); } });
+$('#saveMail').addEventListener('click', ()=>{ refreshSave(); gc('fortschritt-mail','Speicherlink per Mail',true); });
+$('#saveLoad').addEventListener('click', ()=>{ try{ const n=mergeState(unpackState($('#saveCode').value)); $('#saveCode').value=''; toast(n>0?`Fortschritt übernommen: ${n} Lektionen dazu`:'Fortschritt übernommen'); gc('fortschritt-geladen','Speicherlink geladen',true); }catch(e){ toast('Der Code passt nicht. Bitte den ganzen Link einfügen.'); } });
+if(/^#p=/.test(location.hash)){ try{ const n=mergeState(unpackState(location.hash)); setTimeout(()=>toast(n>0?`Willkommen zurück. ${n} Lektionen übernommen`:'Willkommen zurück. Dein Stand ist da'),300); gc('fortschritt-link','Speicherlink geöffnet',true); }catch(e){ setTimeout(()=>toast('Der Speicherlink ist leider beschädigt'),300); } history.replaceState(null,'',location.pathname); }
+if(/Instagram|FBAN|FBAV|FB_IAB|LinkedInApp|Line\//i.test(navigator.userAgent)) $('#iab').hidden=false;
+document.querySelectorAll('[data-nl]').forEach(a=>a.addEventListener('click',()=>gc('montags-wurm/'+a.dataset.nl,'Klick Montags-Wurm',true)));
+refreshSave();
 if(location.hash==='#mediathek'){ renderMedia(); show('media'); }
 </script>
 

@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
+<meta name="description" content="Abschlussurkunde der kostenlosen Prozesswurm Lernwerkstatt: Prozessmanagement lernen von A1 bis C2.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Prozesswurm Lernwerkstatt">
+<meta property="og:title" content="Abschlussurkunde der Prozesswurm Lernwerkstatt">
+<meta property="og:description" content="Prozessmanagement lernen wie eine Sprache: kostenlos, ohne Anmeldung, von A1 bis C2. Mit Abzeichen und Urkunde.">
+<meta property="og:image" content="https://prozesswurm.github.io/urkunde-og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -50,6 +59,7 @@ h1{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;f
     Diese Seite zeigt die Angaben, die im Link stehen. Sie ist keine Echtheitsprüfung.<br>
     Lust, selbst Prozessmanagement zu lernen? Kostenlos, ohne Anmeldung, von A1 bis C2.<br>
     <a class="cta" href="https://prozesswurm.github.io/">Zur Prozesswurm Lernwerkstatt</a>
+    <a class="cta" id="share" style="background:#0A66C2;margin-left:6px" href="#" target="_blank" rel="noopener">Auf LinkedIn teilen</a>
   </div>
 </div>
 <script>
@@ -61,6 +71,7 @@ if(k==='GESAMT'){ document.getElementById('cert').classList.add('gold'); documen
 else if(LV[k]) document.getElementById('what').textContent=`die Stufe ${LV[k]} erfolgreich abgeschlossen hat.`;
 const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
 document.getElementById('meta').textContent = [m?`Datum: ${m[3]}.${m[2]}.${m[1]}`:'', c?`Code: ${c}`:''].filter(Boolean).join('   ·   ');
+document.getElementById('share').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href);
 if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
 </script>
 </body>
