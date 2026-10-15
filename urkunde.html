@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="author" content="Prozesswurm">
+<meta name="copyright" content="© 2026 Prozesswurm">
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<title>Abschlussurkunde · Prozesswurm Lernwerkstatt</title>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
+<style>
+@font-face{font-family:"Bricolage Grotesque";font-weight:800;font-display:swap;src:url(fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
+*{box-sizing:border-box}
+body{margin:0;background:#F2F5F0;color:#1C241D;font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;line-height:1.5}
+.wrap{max-width:900px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
+.cert{background:#fff;border:14px solid #2E9A43;outline:2px solid #C9B48F;outline-offset:-26px;padding:48px 28px 36px;text-align:center;position:relative}
+.cert.gold{border-color:#B8901A}
+.eb{font-weight:700;letter-spacing:.12em;color:#2E9A43;font-size:14px}
+.gold .eb{color:#B8901A}
+h1{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,64px);margin:10px 0 18px;line-height:1.05;overflow-wrap:anywhere;hyphens:auto}
+@media (max-width:520px){.cert{border-width:8px;outline-offset:-18px;padding:36px 16px 26px}}
+.lead{color:#5A675C;font-size:clamp(16px,2.6vw,21px);margin:0}
+.name{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(28px,6vw,52px);margin:10px auto 4px;padding-bottom:6px;border-bottom:2px solid #D3DBCE;max-width:80%;overflow-wrap:anywhere}
+.figs{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:22px}
+.figs img{max-width:28%;height:auto}
+.meta{font-weight:700;margin:14px 0 4px}
+.small{font-size:13px;color:#5A675C;margin:2px 0}
+.note{margin-top:20px;background:#fff;border:1px solid #D3DBCE;border-radius:14px;padding:16px;font-size:15px}
+.note a{color:#1D7432;font-weight:700}
+.cta{display:inline-block;margin-top:10px;background:#2E9A43;color:#fff!important;text-decoration:none;padding:12px 18px;border-radius:12px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cert" id="cert">
+    <div class="eb">PROZESSWURM LERNWERKSTATT</div>
+    <h1 id="title">Abschlussurkunde</h1>
+    <p class="lead">Hiermit bestätigt der Prozesswurm, dass</p>
+    <div class="name" id="name">–</div>
+    <p class="lead" id="what">eine Stufe der Prozesswurm Lernwerkstatt erfolgreich abgeschlossen hat.</p>
+    <div class="figs"><img src="wurm-full.png" alt="Prozesswurm"><img src="kuddel-full.png" alt="Doktor Kuddelmuddel"></div>
+    <p class="meta" id="meta"></p>
+    <p class="small">Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation.</p>
+    <p class="small">© Prozesswurm · prozesswurm.github.io</p>
+  </div>
+  <div class="note">
+    Diese Seite zeigt die Angaben, die im Link stehen. Sie ist keine Echtheitsprüfung.<br>
+    Lust, selbst Prozessmanagement zu lernen? Kostenlos, ohne Anmeldung, von A1 bis C2.<br>
+    <a class="cta" href="https://prozesswurm.github.io/">Zur Prozesswurm Lernwerkstatt</a>
+  </div>
+</div>
+<script>
+const LV={A1:'A1 · Einstieg',A2:'A2 · Grundlagen',B1:'B1 · Anwenden',B2:'B2 · Werkzeugkoffer','C1-ki':'C1 · Vertiefung KI im Prozessmanagement','C1-lean':'C1 · Vertiefung Lean','C1-change':'C1 · Vertiefung Veränderung','C1-projekt':'C1 · Vertiefung Projekte',C2:'C2 · Strategie'};
+const q=new URLSearchParams(location.search), n=(q.get('n')||'').slice(0,60), k=q.get('k')||'', d=q.get('d')||'', c=(q.get('c')||'').slice(0,30);
+document.getElementById('name').textContent = n || '–';
+if(k==='GESAMT'){ document.getElementById('cert').classList.add('gold'); document.getElementById('title').textContent='Große Abschlussurkunde';
+  document.getElementById('what').textContent='alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2 erfolgreich durchgegraben hat.'; }
+else if(LV[k]) document.getElementById('what').textContent=`die Stufe ${LV[k]} erfolgreich abgeschlossen hat.`;
+const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
+document.getElementById('meta').textContent = [m?`Datum: ${m[3]}.${m[2]}.${m[1]}`:'', c?`Code: ${c}`:''].filter(Boolean).join('   ·   ');
+if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
+</script>
+</body>
+</html>
