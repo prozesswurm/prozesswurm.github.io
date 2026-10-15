@@ -1101,6 +1101,7 @@ $('#fbForm').addEventListener('submit', async e=>{
 });
 
 updateBadges(); stats(); renderLadder(); renderBadges(); renderFilters(); buildQueue(); renderDeck();
+if(location.hash==='#mediathek'){ renderMedia(); show('media'); }
 </script>
 
 </body>
