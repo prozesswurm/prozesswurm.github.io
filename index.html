@@ -1209,13 +1209,26 @@ function openTool(id){ renderTools(); show('cheat'); const d=$('#tool-'+id); if(
 /* ---------- Vorlesen ---------- */
 const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
 function stopSpeak(){ if(canSpeak){ try{ speechSynthesis.cancel(); }catch(e){} } const b=$('#speakBtn'); if(b){ b.setAttribute('aria-pressed','false'); b.querySelector('span').textContent='Vorlesen'; } }
+/* Die natürlichste deutsche Stimme wählen, die das Gerät anbietet (Edge: „Natural“, Chrome: „Google Deutsch“, Apple: „Premium“/„Erweitert“) */
+function bestVoice(){
+  const vs=(canSpeak?speechSynthesis.getVoices():[]).filter(v=>/^de(-|_|$)/i.test(v.lang));
+  const score=v=>{ const n=v.name; let s=0;
+    if(/natural|neural/i.test(n)) s+=100; if(/online/i.test(n)) s+=40; if(/premium|enhanced|erweitert|verbessert/i.test(n)) s+=80;
+    if(/google/i.test(n)) s+=60; if(/^(Anna|Petra|Markus|Yannick|Helena|Katja|Conrad|Amala|Florian|Seraphina)/i.test(n)) s+=10;
+    if(/de-DE/i.test(v.lang)) s+=5; if(/compact|espeak|hedda|stefan/i.test(n)) s-=50; return s; };
+  return vs.sort((a,b)=>score(b)-score(a))[0]||null;
+}
+if(canSpeak){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices(); }catch(e){} }
 function toggleSpeak(l){
   const b=$('#speakBtn'); if(!b) return;
   if(b.getAttribute('aria-pressed')==='true'){ stopSpeak(); return; }
-  const parts=[l.t, l.d, ...l.exp, ...(l.steps||[]), 'Beispiel aus dem Alltag.', l.ex, 'Mini-Übung.', l.task, 'Zum Merken.', l.aha].filter(Boolean);
-  const voice=speechSynthesis.getVoices().find(x=>/^de(-|_|$)/i.test(x.lang));
+  const voice=bestVoice();
+  /* Ganze Absätze am Stück lesen, keine Überschriften-Ansagen: klingt flüssiger */
+  const parts=[l.t+'. '+l.d, ...l.exp, (l.steps||[]).join(' '), l.ex, l.task, l.aha].filter(Boolean).map(s=>String(s).replace(/\s+/g,' ').trim());
+  /* Online-Stimmen brechen lange Stücke ab: dann satzweise vorlesen */
+  const chunks = (voice && !voice.localService) ? parts.flatMap(p=>p.match(/[^.!?]+[.!?]*["“”]?\s*/g)||[p]).map(s=>s.trim()).filter(Boolean) : parts;
   speechSynthesis.cancel();
-  parts.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p); u.lang='de-DE'; u.rate=.95; if(voice) u.voice=voice; if(i===parts.length-1) u.onend=stopSpeak; speechSynthesis.speak(u); });
+  chunks.forEach((p,i)=>{ const u=new SpeechSynthesisUtterance(p); u.lang=voice?voice.lang:'de-DE'; u.rate=1; u.pitch=1; if(voice) u.voice=voice; if(i===chunks.length-1) u.onend=stopSpeak; speechSynthesis.speak(u); });
   b.setAttribute('aria-pressed','true'); b.querySelector('span').textContent='Stopp'; gc('vorlesen/'+l.id,'Vorlesen',true);
 }
 
