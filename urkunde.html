@@ -74,7 +74,7 @@ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
 document.getElementById('meta').textContent = [m?`Datum: ${m[3]}.${m[2]}.${m[1]}`:'', c?`Code: ${c}`:''].filter(Boolean).join('   ·   ');
 document.getElementById('share').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href);
 if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
-window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'?k:'unbekannt'), title:'Urkunde angesehen'}); }catch(e){} });
+window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) { const full=location.href; history.replaceState(null,'',location.pathname); try{ window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'?k:'unbekannt'), title:'Urkunde angesehen'}); } finally { history.replaceState(null,'',full); } } }catch(e){} });
 </script>
 </body>
 </html>
