@@ -509,6 +509,50 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .prob-card i{font-style:normal;font-weight:800;color:var(--worm)}
 #v-problem .say{margin-top:14px}
 @media (max-width:360px){.pt{font-size:13px}}
+
+/* Lektion als Kartenfolge (Babbel-Prinzip: eine Sache pro Bildschirm) */
+body.in-lesson .nav{display:none}
+body.in-lesson .legal{display:none}
+body.in-lesson .app{padding-bottom:120px}
+.lc-top{display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 10px}
+.lc-x,.lc-prev{flex:none;width:40px;height:40px;border-radius:50%;border:0;background:var(--surface);box-shadow:var(--shadow);display:grid;place-items:center;color:var(--fg);cursor:pointer}
+.lc-bar{flex:1;display:flex;gap:4px}
+.lc-bar i{flex:1;height:6px;border-radius:3px;background:var(--sunk)}
+.lc-bar i.on{background:var(--worm)}
+.lc-bar i.now{background:var(--worm);opacity:.5}
+.lc{animation:lcIn .25s ease;min-height:52vh}
+@keyframes lcIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.lc{animation:none}}
+.lc-start{text-align:center;padding-top:8px}
+.lc-hero-img{width:150px;height:auto;margin:6px auto 8px;display:block}
+.lc-start h2{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.2;margin:6px 0}
+.lc-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 16px}
+.lc-chips span{display:inline-flex;gap:6px;align-items:center;background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px}
+.lc-chips .ico{width:18px;height:18px;color:var(--worm)}
+.lc-chips .ok{background:var(--worm-soft);color:var(--worm-ink)}
+.lc-start .speak{margin:0 auto}
+.lc-label{display:flex;gap:8px;align-items:center;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--soil);margin:14px 0 10px}
+.lc-label.center{justify-content:center}
+.lc-label .ico{width:20px;height:20px}
+.lc-text{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:18px;font-size:17.5px;line-height:1.6}
+.lc-text p{margin:0 0 12px}.lc-text p:last-child{margin-bottom:0}
+.lc-ex{background:var(--worm-soft);color:var(--fg);border-radius:var(--r);padding:18px;font-size:17px;line-height:1.6}
+.lc-aha{text-align:center;padding-top:10px}
+.lc-aha-img{width:130px;height:auto;display:block;margin:0 auto}
+.lc-aha p{font-family:var(--display);font-weight:800;font-size:24px;line-height:1.3;color:var(--worm-ink);margin:6px 0 0}
+.lc-q{border:0;box-shadow:var(--shadow);padding:18px}
+.lc-qt{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.3;margin:0 0 12px}
+.lc-q .opt{font-size:16px;padding:14px}
+.lc-done{text-align:center;padding:16px 0 4px}
+.lc-check{width:84px;height:84px;border-radius:50%;background:var(--worm);color:#fff;display:grid;place-items:center;margin:0 auto 10px;animation:pop .4s ease}
+.lc-check .ico{width:46px;height:46px;stroke-width:3}
+@keyframes pop{0%{transform:scale(.4)}70%{transform:scale(1.1)}100%{transform:none}}
+.lc-done h2{font-family:var(--display);font-weight:800;font-size:28px;margin:0}
+.lc-foot{position:fixed;left:0;right:0;bottom:0;z-index:11;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+.lc-foot .primary{max-width:620px;margin:0 auto;font-size:18px;padding:16px}
+.seg3{grid-template-columns:1fr 1fr 1fr}
+.seg3 button{padding:10px 4px;font-size:14px}
+@media (max-width:440px){.ph:not([aria-selected="true"]) small{display:none}.ph[aria-selected="true"]{flex:2 1 0}}
 </style>
 </head>
 <body>
@@ -643,8 +687,12 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
   </section>
 
   <section class="view" id="v-media" hidden>
-    <h2 class="section-title">Mediathek</h2>
-    <p class="section-sub">Alle Lieder und Videos vom Prozesswurm. Thema antippen, dann Titel antippen.</p>
+    <h2 class="section-title">Entdecken</h2>
+    <div class="seg seg3" role="tablist" aria-label="Ansicht wählen">
+      <button type="button" role="tab" data-mode="look" aria-selected="false">Begriffe</button>
+      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten üben</button>
+      <button type="button" role="tab" data-mode="media" aria-selected="true">Lieder &amp; Videos</button>
+    </div>
     <div id="mediaList"></div>
   </section>
 
@@ -693,10 +741,11 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
   <section class="view lesson" id="v-lesson" hidden></section>
 
   <section class="view" id="v-cards" hidden>
-    <h2 class="section-title">Begriffe</h2>
-    <div class="seg" role="tablist" aria-label="Ansicht wählen">
-      <button type="button" role="tab" data-mode="look" aria-selected="true">Nachschlagen</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Üben mit Karten</button>
+    <h2 class="section-title">Entdecken</h2>
+    <div class="seg seg3" role="tablist" aria-label="Ansicht wählen">
+      <button type="button" role="tab" data-mode="look" aria-selected="true">Begriffe</button>
+      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten üben</button>
+      <button type="button" role="tab" data-mode="media" aria-selected="false">Lieder &amp; Videos</button>
     </div>
     <div id="lookPane">
       <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -786,13 +835,10 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
       Lernen</button>
     <button type="button" data-tab="cards">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>
-      Begriffe</button>
+      Entdecken</button>
     <button type="button" data-tab="cheat">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
       Werkzeuge</button>
-    <button type="button" data-tab="media">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
-      Mediathek</button>
     <button type="button" data-tab="me">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
       Mein Stand</button>
@@ -1313,7 +1359,7 @@ function openTerm(t){
 function closeTerm(){ $('#sheet').hidden=true; $('#sheetBg').hidden=true; }
 
 let lookMode='look';
-function setMode(m){ lookMode=m;
+function setMode(m){ if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards');
   document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.mode===m)));
   $('#lookPane').hidden = m!=='look'; $('#trainPane').hidden = m!=='train';
   if(m==='train'){ renderFilters(); buildQueue(); renderDeck(); } else renderLook();
@@ -1476,71 +1522,98 @@ function mixOrder(seed,n){ let h=0; for(const c of String(seed)) h=(h*31+c.charC
   for(let i=n-1;i>0;i--){ h=(h*1103515245+12345)>>>0; const j=h%(i+1); [idx[i],idx[j]]=[idx[j],idx[i]]; } return idx; }
 function openLesson(id){
   const l=L[id], ctx=levelIdsFor(id), pos=ctx.ids.indexOf(id); gc('/lektion/'+id, l.t);
-  const v=$('#v-lesson'); const used=new Set(), expH=expHtml(l,used), exH=lx(l.ex,used), taskH=lx(l.task,used);
-  const checks = l.quiz ? l.quiz.map((q,qi)=>`<div class="q" data-q="${qi}"><p>${esc(q.q)}</p><div class="opts">
-        ${mixOrder(q.q,q.o.length).map(oi=>`<button type="button" class="opt" data-o="${oi}">${esc(q.o[oi])}</button>`).join('')}</div><div class="fb" hidden></div></div>`).join('')
-    : (l.check||[]).map((c,ci)=>`<div class="q" data-c="${ci}"><p>${esc(c[0])}</p>
-        <button type="button" class="reveal">Erst selbst überlegen, dann Antwort zeigen</button>
-        <div class="answer" hidden>${esc(c[1])}</div></div>`).join('');
-  v.innerHTML = `
-    <button type="button" class="back" data-back="1">← ${esc(ctx.label)}</button>
-    <div class="eyebrow">${esc(ctx.label)} · Lektion ${pos+1} von ${ctx.ids.length} · ${l.min} Min.</div>
-    <h2>${esc(l.t)}</h2>
-    <p class="lead">${esc(l.d)}</p>
-    <div class="lesson-tools">${canSpeak?`<button type="button" class="speak" id="speakBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Vorlesen</span></button>`:''}
-      ${used.size&&!S.termSeen?`<span class="hint">Gepunktete Wörter antippen</span>`:''}</div>
-    <div class="block"><h3>Erklärung</h3>${expH}</div>
-    <div class="block"><h3>Beispiel aus dem Alltag</h3><div class="example">${exH}</div></div>
-    <div class="aha"><img src="wurm.png?v=2" width="48" height="44" alt="" class="wimg"><span>${esc(l.aha)}</span></div>
-    <div class="block"><h3>Kurzer Check</h3><p class="hint" style="margin-top:0">Die Antworten stehen oben im Text.</p>${checks}</div>
-    <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':'Erst den Check beantworten'}</button>
-    <h3 class="more-h">Mehr zur Lektion</h3>
+  const v=$('#v-lesson'); const used=new Set();
+  const I=(p)=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+  const wasDone=isDone(id);
+  /* Erklärung in kleine Karten teilen: ein Absatz pro Karte, kurze Absätze zusammen, Schritte als Weg */
+  const ol = l.steps ? `<ol class="path">${l.steps.map(s=>`<li>${lx(s,used)}</li>`).join('')}</ol>` : '';
+  const expCards=[]; let buf='', len=0, placed=false;
+  l.exp.forEach((p,i)=>{
+    if(ol && !placed && /:$/.test(p)){ if(buf){ expCards.push(buf); buf=''; len=0; } expCards.push(`<p><b>${lx(p,used)}</b></p>${ol}`); placed=true; return; }
+    buf += `<p>${lx(p,used)}</p>`; len += p.length;
+    const nextLen = l.exp[i+1] ? l.exp[i+1].length : 0;
+    if(len + nextLen > 330 || i===l.exp.length-1){ expCards.push(buf); buf=''; len=0; }
+  });
+  if(buf) expCards.push(buf);
+  if(ol && !placed) expCards.push(ol);
+  const exH=lx(l.ex,used), taskH=lx(l.task,used);
+  const cards=[];
+  cards.push({k:'start', h:`<div class="lc-start">
+      <img src="wurm-full.png?v=1" alt="" class="lc-hero-img">
+      <div class="eyebrow">${esc(ctx.label)} · Lektion ${pos+1} von ${ctx.ids.length}</div>
+      <h2>${esc(l.t)}</h2><p class="lead">${esc(l.d)}</p>
+      <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}${l.min} Min.</span><span>${I('<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>')}${(l.quiz||[]).length} Fragen</span>${wasDone?`<span class="ok">geschafft</span>`:''}</div>
+      ${canSpeak?`<button type="button" class="speak" id="speakBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Vorlesen</span></button>`:''}
+    </div>`, btn:`Los geht's`});
+  expCards.forEach((h,i)=>cards.push({k:'exp', h:`<div class="lc-label">${I('<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/>')}Erklärung${expCards.length>1?` ${i+1}/${expCards.length}`:''}</div><div class="lc-text">${h}</div>${i===0&&used.size&&!S.termSeen?`<p class="hint">Gepunktete Wörter antippen, dann kommt die Erklärung.</p>`:''}`}));
+  cards.push({k:'ex', h:`<div class="lc-label">${I('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/>')}Beispiel aus dem Alltag</div><div class="lc-ex">${exH}</div>`});
+  cards.push({k:'aha', h:`<div class="lc-aha"><img src="wurm-full.png?v=1" alt="" class="lc-aha-img"><div class="lc-label center">Zum Merken</div><p>${esc(l.aha)}</p></div>`});
+  (l.quiz||[]).forEach((q,qi)=>cards.push({k:'q', qi, h:`<div class="lc-label">${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}Frage ${qi+1} von ${l.quiz.length}</div>
+      <div class="q lc-q" data-q="${qi}"><p class="lc-qt">${esc(q.q)}</p><div class="opts">${mixOrder(q.q,q.o.length).map(oi=>`<button type="button" class="opt" data-o="${oi}">${esc(q.o[oi])}</button>`).join('')}</div><div class="fb" hidden></div></div>`}));
+  const last = pos>=ctx.ids.length-1;
+  cards.push({k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Geschafft!</h2><p class="lead">${esc(l.t)}</p></div>
     <div class="mrows">
-      <details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg><span><b>Für deinen Alltag</b><small>Freiwillig, 2 Minuten</small></span><i class="chev" aria-hidden="true"></i></summary>
-        <div class="mrow-in"><p>${taskH}</p>
-        <textarea id="note-${id}" placeholder="Deine Notiz, nur für dich">${esc(S.notes[id]||'')}</textarea>
+      <details class="mrow"><summary>${I('<path d="M4 20h4L19 9l-4-4L4 16z"/>')}<span><b>Für deinen Alltag</b><small>Freiwillig, 2 Minuten</small></span><i class="chev" aria-hidden="true"></i></summary>
+        <div class="mrow-in"><p>${taskH}</p><textarea id="note-${id}" placeholder="Deine Notiz, nur für dich">${esc(S.notes[id]||'')}</textarea>
         <div class="hint">Kein Richtig oder Falsch. Bleibt nur in diesem Browser.</div></div></details>
       ${mediaBlock(l)}
-      ${l.tpl?`<details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span><b>Vorlage zum Mitnehmen</b><small>${esc(l.tpl[0])}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mrow-in"><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
+      ${l.tpl?`<details class="mrow"><summary>${I('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>')}<span><b>Vorlage zum Mitnehmen</b><small>${esc(l.tpl[0])}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mrow-in"><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
         <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div></details>`:''}
-      <details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span><b>Frage oder Feedback</b><small>Chatbot fragen oder Rückmeldung geben</small></span><i class="chev" aria-hidden="true"></i></summary>
+      <details class="mrow"><summary>${I('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>')}<span><b>Frage oder Feedback</b><small>Chatbot fragen oder Rückmeldung geben</small></span><i class="chev" aria-hidden="true"></i></summary>
         <div class="mrow-in"><a class="secondary" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="lektion">Prozesswurm-Chatbot fragen (öffnet Google)</a>
         <button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zu dieser Lektion</button></div></details>
-    </div>`;
+    </div>`, btn: last?'Abschnitt abschließen':'Nächste Lektion'});
+
+  v.innerHTML = `<div class="lc-top"><button type="button" class="lc-x" data-back="1" aria-label="Lektion schließen">${I('<path d="M6 6l12 12M18 6 6 18"/>')}</button>
+      <div class="lc-bar">${cards.map((c,i)=>`<i data-i="${i}"></i>`).join('')}</div>
+      <button type="button" class="lc-prev" aria-label="Zurück">${I('<path d="M15 6l-6 6 6 6"/>')}</button></div>
+    ${cards.map((c,i)=>`<section class="lc lc-${c.k}" data-i="${i}" ${i?'hidden':''}>${c.h}</section>`).join('')}
+    <div class="lc-foot"><button type="button" class="primary lc-next" id="lcNext">Weiter</button></div>`;
+  document.body.classList.add('in-lesson');
   show('lesson'); window.scrollTo(0,0);
   if($('#speakBtn')) $('#speakBtn').onclick=()=>toggleSpeak(l);
-
-  v.querySelector('[data-back]').onclick = ()=> openLevel(ctx.i, ctx.key);
+  v.querySelector('[data-back]').onclick = ()=>{ document.body.classList.remove('in-lesson'); openLevel(ctx.i, ctx.key); };
   $(`#note-${CSS.escape(id)}`).addEventListener('input', e=>{ S.notes[id]=e.target.value; save(); });
 
-  const need = l.quiz ? l.quiz.length : (l.check||[]).length; const got=new Set();
-  const unlock = ()=>{ if(got.size>=need){ const f=$('#finishBtn'); f.disabled=false; f.textContent = pos<ctx.ids.length-1 ? 'Lektion abschließen' : 'Abschnitt abschließen'; } };
-  if(l.quiz) v.querySelectorAll('.q').forEach(qEl=>{
-    const qi=+qEl.dataset.q, q=l.quiz[qi];
-    qEl.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
-      const oi=+b.dataset.o, fb=qEl.querySelector('.fb'); fb.hidden=false;
-      if(oi===q.a){ qEl.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add('right');
-        fb.className='fb w'; fb.innerHTML=`<img src="wurm.png?v=2" width="30" height="27" alt="" class="wimg"><span>${pick(WURM)}</span>`; got.add(qi); unlock();
-      } else { b.classList.add('wrong'); b.disabled=true;
-        fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>${pick(KUDDEL)}</span>`; }
-    });
-  });
-  else v.querySelectorAll('.q').forEach(qEl=>{
-    qEl.querySelector('.reveal').onclick = e => { e.currentTarget.hidden=true; qEl.querySelector('.answer').hidden=false; got.add(qEl.dataset.c); unlock(); };
-  });
-
-  $('#finishBtn').onclick = ()=>{
-    if(!isDone(id)){ S.done.push(id); save(); gc('lektion-geschafft/'+id, l.t, true); }
-    stats(); renderLadder(); renderHero();
+  const solved=new Set(); let cur=0;
+  const btn=$('#lcNext');
+  function go(i){
+    cur=Math.max(0,Math.min(cards.length-1,i));
+    v.querySelectorAll('section.lc').forEach(s=>s.hidden = +s.dataset.i!==cur);
+    v.querySelectorAll('.lc-bar i').forEach(b=>b.className = +b.dataset.i<cur?'on':(+b.dataset.i===cur?'now':''));
+    v.querySelector('.lc-prev').style.visibility = cur>0 && cards[cur].k!=='done' ? 'visible':'hidden';
+    const c=cards[cur];
+    btn.textContent = c.btn || 'Weiter';
+    btn.disabled = c.k==='q' && !solved.has(c.qi) && !wasDone;
+    if(c.k==='q' && btn.disabled) btn.textContent='Antwort antippen';
+    if(c.k==='done' && !isDone(id)){ S.done.push(id); save(); gc('lektion-geschafft/'+id, l.t, true); stats(); renderLadder(); renderHero(); }
+    window.scrollTo(0,0);
+  }
+  v.querySelector('.lc-prev').onclick=()=>go(cur-1);
+  btn.onclick=()=>{
+    if(cards[cur].k!=='done'){ go(cur+1); return; }
+    document.body.classList.remove('in-lesson');
     const fresh = updateBadges();
     if(fresh.length){ openCert(fresh[fresh.length-1].key, true); return; }
     const nextId = ctx.ids.find(x=>!isDone(x));
-    if(nextId){ toast(`Lektion geschafft`); openLesson(nextId); return; }
+    if(nextId){ openLesson(nextId); return; }
     const lv = LEVELS[ctx.i];
     if(countDone(lv.ids)===lv.ids.length) toast(`Stufe ${lv.code} geschafft. Der Prozesswurm gräbt tiefer.`);
     else toast(`Abschnitt geschafft`);
     openLevel(ctx.i, ctx.key);
   };
+  v.querySelectorAll('.lc-q').forEach(qEl=>{
+    const qi=+qEl.dataset.q, q=l.quiz[qi];
+    qEl.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const oi=+b.dataset.o, fb=qEl.querySelector('.fb'); fb.hidden=false;
+      if(oi===q.a){ qEl.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add('right');
+        fb.className='fb w'; fb.innerHTML=`<img src="wurm.png?v=2" width="30" height="27" alt="" class="wimg"><span>${pick(WURM)}</span>`; solved.add(qi);
+        if(cards[cur].qi===qi){ btn.disabled=false; btn.textContent='Weiter'; }
+      } else { b.classList.add('wrong'); b.disabled=true;
+        fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>${pick(KUDDEL)} Schau nochmal in die Erklärung.</span>`; }
+    });
+  });
+  go(0);
 }
 
 
@@ -1758,8 +1831,8 @@ document.addEventListener('click', async e=>{
 function show(name){
   stopSpeak(); closeTerm();
   ['home','level','lesson','cards','cheat','feedback','media','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
-  $('.top').hidden = name!=='home';
-  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : name;
+  $('.top').hidden = name!=='home'; document.body.classList.toggle('in-lesson', name==='lesson');
+  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : name==='media' ? 'cards' : name;
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
