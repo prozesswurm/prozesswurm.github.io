@@ -15,7 +15,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
-<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- Besucherzählung ohne Namen: nur Stufe zählen, nie die Adresse mit Name und Code -->
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" data-goatcounter-settings='{"no_onload": true}' async src="//gc.zgo.at/count.js"></script>
 <title>Abschlussurkunde · Prozesswurm Lernwerkstatt</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
 <style>
@@ -73,6 +74,7 @@ const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
 document.getElementById('meta').textContent = [m?`Datum: ${m[3]}.${m[2]}.${m[1]}`:'', c?`Code: ${c}`:''].filter(Boolean).join('   ·   ');
 document.getElementById('share').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href);
 if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
+window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'?k:'unbekannt'), title:'Urkunde angesehen'}); }catch(e){} });
 </script>
 </body>
 </html>
