@@ -525,6 +525,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
         <div><dt>Woher kommt das Wissen?</dt><dd>Aus der eigenen Arbeit in Prozessprojekten und aus Weiterbildungen, immer in eigenen Worten und mit eigenen Beispielen neu geschrieben. Künstliche Intelligenz hilft beim Schreiben und Gestalten. Verantwortlich für jeden Inhalt ist der Prozesswurm.</dd></div>
         <div><dt>Was ist die Urkunde wert?</dt><dd>Sie bestätigt, dass du die Lektionen einer Stufe durchgearbeitet hast. Sie ist keine Prüfung und keine anerkannte Qualifikation.</dd></div>
         <div><dt>Was passiert mit meinen Daten?</dt><dd>Dein Fortschritt bleibt nur in deinem Browser, ganz ohne Anmeldung. Besuche werden ohne Cookies gezählt (GoatCounter). Feedback landet in einem Google-Formular, der Montags-Wurm kommt über Brevo, der Chatbot öffnet Google NotebookLM. Lieder und Videos laden erst, wenn du auf Abspielen tippst.</dd></div>
+        <div><dt>Darf ich die Lektionen weitergeben?</dt><dd>Ja, gern und kostenlos. Ob im Team, in der Schulung oder im Unterricht: Nenn einfach „Prozesswurm“ als Quelle und verlinke prozesswurm.github.io. Nur verkaufen darfst du sie nicht. Die Figuren, Lieder und Videos bitte nicht verändern.</dd></div>
         <div><dt>Fehler entdeckt?</dt><dd>Bitte melden. Unter jeder Lektion gibt es dafür einen Feedback-Knopf.</dd></div>
       </dl>
       <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Ausführliche Datenschutzerklärung</a>
@@ -670,7 +671,7 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
       </div>
     </div>
   </section>
-  <footer class="legal">© 2026 Prozesswurm · Alle Texte, Lektionen und die Figuren Prozesswurm und Doktor Kuddelmuddel sind urheberrechtlich geschützt. Teilen gern mit Link, kopieren und weiterverwenden nur mit Erlaubnis.<br><a href="https://www.prozesswurm.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.prozesswurm.de" target="_blank" rel="noopener">prozesswurm.de</a></footer>
+  <footer class="legal">© 2026 Prozesswurm · Die Lektionen darfst du kostenlos weitergeben, zum Beispiel in Schulungen oder im Unterricht, mit „Prozesswurm“ als Quelle und Link. Verkaufen ist nicht erlaubt. Die Figuren Prozesswurm und Doktor Kuddelmuddel, Lieder und Videos bleiben geschützt und dürfen nicht verändert werden.<br><a href="https://www.prozesswurm.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.prozesswurm.de" target="_blank" rel="noopener">prozesswurm.de</a></footer>
 </div>
 
 <nav class="nav" aria-label="Bereiche">
@@ -1732,6 +1733,11 @@ if(/Instagram|FBAN|FBAV|FB_IAB|LinkedInApp|Line\//i.test(navigator.userAgent)) $
 document.querySelectorAll('[data-nl]').forEach(a=>a.addEventListener('click',()=>gc('montags-wurm/'+a.dataset.nl,'Klick Montags-Wurm',true)));
 refreshSave();
 if(location.hash==='#mediathek'){ renderMedia(); show('media'); }
+/* Direktlinks für Beiträge: #lektion=g03 und #einstufung */
+(function(){ const m=location.hash.match(/^#lektion=([a-z0-9]+)$/i);
+  if(m && L[m[1]]){ gc('direktlink/'+m[1],'Direktlink Lektion',true); openLesson(m[1]); }
+  else if(location.hash==='#einstufung'){ gc('direktlink/einstufung','Direktlink Einstufung',true); openPlace(); }
+})();
 </script>
 
 </body>
