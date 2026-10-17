@@ -16,7 +16,65 @@
 <meta property="og:title" content="Prozesswurm Lernwerkstatt">
 <meta property="og:description" content="93 Lektionen Prozessmanagement von A1 bis C2.">
 <meta property="og:image" content="https://prozesswurm.github.io/app-og.jpg">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Aufgeräumt: Kacheln, Zeilen zum Aufklappen, Weg-Darstellung */
+.ico{width:22px;height:22px;flex:none}
+.where{background:var(--surface);border-radius:var(--r);padding:16px;margin-bottom:6px;box-shadow:var(--shadow)}
+.where h2{margin:0 0 12px;font-family:var(--display);font-weight:800;font-size:19px;line-height:1.25}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tile{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;background:var(--worm-soft);color:var(--worm-ink);border-radius:12px;padding:10px 4px;font-size:12.5px;font-weight:700;line-height:1.2}
+.tile.job{background:var(--sunk);color:var(--soil)}
+.tile .ico{width:26px;height:26px}
+.where p{margin:12px 0;font-size:14.5px}
+.where .place-btn{display:flex;gap:10px;align-items:center;width:100%;text-align:left;margin:0}
+.quick{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}
+.qt{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;background:var(--surface);border:0;border-radius:var(--r);padding:14px 6px;box-shadow:var(--shadow);color:var(--fg);text-decoration:none;font:inherit;cursor:pointer}
+.qt .ico{color:var(--worm);width:26px;height:26px}
+.qt b{font-family:var(--display);font-size:14px}
+.qt small{font-size:11.5px;color:var(--muted);line-height:1.25}
+.mrows{display:grid;gap:8px;margin-top:18px}
+.mrow{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);border:0}
+.mrow>summary,.mbtn{display:flex;gap:12px;align-items:center;padding:14px 16px;cursor:pointer;list-style:none}
+.mrow>summary::-webkit-details-marker{display:none}
+.mrow>summary .ico,.mbtn .ico{color:var(--worm)}
+.mrow>summary>span,.mbtn>span{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px;text-align:left}
+.mrow b{font-family:var(--display);font-size:16px}
+.mrow small{font-size:13px;color:var(--muted)}
+.mbtn{width:100%;font:inherit;color:var(--fg)}
+.chev{flex:none;width:9px;height:9px;border-right:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);margin:-4px 4px 0;transition:transform .2s}
+.mrow[open]>summary .chev{transform:rotate(225deg);margin-top:4px}
+.mbtn .chev{transform:rotate(-45deg)}
+.mrow-in{padding:0 16px 16px;display:grid;gap:12px}
+.mrow-in p{margin:0}
+.mrow-in .secondary{text-align:center;text-decoration:none}
+.mrow .about{margin:0;border:0;box-shadow:none;background:none}
+.more-h{font-family:var(--display);font-size:17px;margin:30px 0 0}
+ol.path{list-style:none;counter-reset:st;padding:0;margin:12px 0;display:grid;gap:0}
+ol.path>li{counter-increment:st;position:relative;padding:4px 0 14px 44px;min-height:32px}
+ol.path>li::before{content:counter(st);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--worm);color:#fff;font-family:var(--display);font-weight:800;display:grid;place-items:center;font-size:15px}
+ol.path>li::after{content:"";position:absolute;left:14px;top:32px;bottom:2px;width:2px;background:var(--worm-soft)}
+ol.path>li:last-child::after{display:none}
+ol.path>li:last-child{padding-bottom:4px}
+.phases{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 8px;margin:0 -2px;scrollbar-width:none}
+.ph{flex:1 0 0;min-width:68px;display:flex;flex-direction:column;align-items:center;gap:5px;background:none;border:0;padding:6px 2px;border-radius:12px;font:inherit;color:var(--muted);cursor:pointer}
+.ph .tnum{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--sunk);color:var(--fg);font-family:var(--display);font-weight:800}
+.ph small{font-size:12px;line-height:1.2;text-align:center}
+.ph[aria-selected="true"]{background:var(--worm-soft);color:var(--worm-ink)}
+.ph[aria-selected="true"] .tnum{background:var(--worm);color:#fff}
+.ph-sub{margin:4px 0 12px;font-size:14.5px}
+.mgroup .mlist{padding:0 12px 12px;display:grid;gap:4px}
+.mi{border-top:1px solid var(--line)}
+.mi:first-child{border-top:0}
+.mi-row{display:flex;gap:10px;align-items:center;padding:8px 2px}
+.mi-row span{flex:1;min-width:0;font-size:14.5px;line-height:1.3}
+.mi-play{flex:none;width:36px;height:36px;border-radius:50%;border:0;background:var(--worm);color:#fff;font-size:15px;cursor:pointer}
+.mi-play:disabled{opacity:.4}
+.mi-row a{flex:none;color:var(--muted);text-decoration:none;font-size:18px;padding:4px 6px}
+.mi .embed:empty{display:none}
+.mi .embed{margin:0 0 10px}
+.legal .linkbtn{font-size:inherit}
+@media (max-width:360px){.tile{font-size:11.5px}.qt small{display:none}}
+</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
@@ -412,6 +470,24 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .about-link{all:unset;cursor:pointer;text-align:center;font-size:14px;font-weight:700;color:var(--worm-ink);padding:6px}
 .about-link:focus-visible{outline:3px solid var(--worm);border-radius:8px}
 @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+
+.az{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 4px}
+.az a{min-width:30px;height:30px;display:grid;place-items:center;border-radius:8px;background:var(--surface);color:var(--worm-ink);font-family:var(--display);font-weight:800;font-size:14px;text-decoration:none;box-shadow:var(--shadow)}
+.gl-group{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.gl-group .gl{background:none;border-radius:0;box-shadow:none;padding:0;border-top:1px solid var(--line)}
+.gl-group .gl:first-child{border-top:0}
+.gl>summary{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;list-style:none}
+.gl>summary::-webkit-details-marker{display:none}
+.gl>summary b{font-family:var(--display);font-size:16px}
+.gl p{margin:0;padding:0 14px 12px;font-size:14.5px;color:var(--muted)}
+.gl-letter{scroll-margin-top:12px}
+.badges{grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.badge{padding:8px 4px;font-size:11.5px}
+.badge .wimg{width:44px;height:auto}
+.badge b{font-size:17px}
+.ph{min-width:0;flex:1 1 0}
+.ph small{font-size:11px}
+.ph .tnum{width:30px;height:30px}
 </style>
 </head>
 <body>
@@ -454,43 +530,43 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
     <div id="hero"></div>
     <div id="intro">
       <div class="where">
-        <h2>Prozesse stecken überall. Du nennst sie nur anders.</h2>
-        <div class="where-cols">
-          <div><b>Zu Hause</b><ul><li>Wocheneinkauf ohne zweite Fahrt</li><li>Koffer packen für den Urlaub</li><li>Kindergeburtstag planen</li></ul></div>
-          <div><b>Im Job</b><ul><li>Die Neue einarbeiten, ohne dass sie zehnmal fragen muss</li><li>Urlaubsvertretung, bei der nichts liegen bleibt</li><li>Eine Reklamation, die nicht fünfmal hin und her geht</li></ul></div>
+        <h2>Prozesse stecken überall.<br>Du nennst sie nur anders.</h2>
+        <div class="tiles">
+          <div class="tile"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.5"/><circle cx="17" cy="20" r="1.5"/><path d="M3 4h2l2.4 11h11l2-8H6"/></svg><span>Wocheneinkauf</span></div>
+          <div class="tile"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3"/></svg><span>Koffer packen</span></div>
+          <div class="tile"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16v-8H4z"/><path d="M4 16c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 4 0"/><path d="M12 9v4M12 5v1"/></svg><span>Geburtstag planen</span></div>
+          <div class="tile job"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="8" r="4"/><path d="M3 21a7 7 0 0 1 14 0"/><path d="M19 8v6M16 11h6"/></svg><span>Neue einarbeiten</span></div>
+          <div class="tile job"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span>Urlaubsvertretung</span></div>
+          <div class="tile job"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13l-3-3M20 15H7l3 3"/></svg><span>Reklamation</span></div>
         </div>
-        <p><b>Für wen?</b> Für alle, die plötzlich Abläufe am Hals haben: neue Teamleitung, Sachbearbeitung, Azubis, Quereinsteiger, kleine Betriebe und Vereine. Vorwissen brauchst du keins.</p>
+        <p>Für alle, die plötzlich Abläufe am Hals haben. Ohne Vorwissen, fünf Minuten pro Lektion.</p>
+        <button type="button" class="place-btn" data-place><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><span><b>Schon Vorwissen?</b> 10 Fragen, dann weißt du, wo du einsteigst</span></button>
       </div>
-      <button type="button" class="place-btn" data-place><b>Schon Vorwissen?</b> Kurze Einstufung, 10 Fragen, 2 Minuten →</button>
-    <div class="talk" style="margin-top:18px">
-      <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> Prozesse lernen? Wer will denn sowas? Und wozu brauch ich den Schmarrn überhaupt?</p></div>
-      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Weil du jeden Tag in Prozessen steckst, ob du willst oder nicht. Fang bei A1 an, eine Lektion dauert fünf Minuten.</p></div>
-    </div>
     </div>
     <h2 class="section-title">Alle Stufen</h2>
-    <p class="section-sub">Wie beim Sprachenlernen: A1 ist der Einstieg, C2 der Blick aufs ganze Unternehmen. Tippe eine Stufe an, um hineinzuschauen.</p>
+    <p class="section-sub">Wie beim Sprachenlernen: von A1 bis C2.</p>
     <div class="ladder" id="ladder"></div>
-    <div class="extras">
-      <button type="button" class="about-link" data-about>Wie entsteht die Lernwerkstatt? Alles offen erklärt →</button>
-      <button type="button" class="app-strip" data-app hidden><span class="ic" aria-hidden="true">📲</span><span><b>Als App aufs Handy holen</b><small>Ohne Store, ohne Anmeldung, kostenlos. So geht's in zwei Fingertipps.</small></span><i aria-hidden="true">→</i></button>
-      <a class="bot" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="start"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><span><b>Frag den Prozesswurm</b><small>Der Chatbot kennt alle Lektionen. Öffnet sich bei Google.</small></span><i aria-hidden="true">→</i></a>
-      <a class="nl-strip" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-top"><img src="wurm.png?v=2" alt="" class="wimg"><span><b>Der Montags-Wurm in dein Postfach</b><small>Jeden Montag fünf Minuten Prozesswissen mit dem Prozesswurm und Doktor Kuddelmuddel. Jederzeit abbestellbar.</small></span><em>Kostenlos abonnieren</em></a>
+    <div class="quick">
+      <button type="button" class="qt" data-app hidden><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><b>Als App</b><small>aufs Handy</small></button>
+      <a class="qt" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="start"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><b>Chatbot</b><small>Frag den Prozesswurm</small></a>
+      <a class="qt" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-top"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><b>Montags-Wurm</b><small>jeden Montag per Mail</small></a>
     </div>
   </section>
 
   <section class="view" id="v-me" hidden>
     <h2 class="section-title">Mein Stand</h2>
-    <p class="section-sub">Was du schon geschafft hast, deine Abzeichen und wie du deinen Fortschritt auf ein anderes Gerät mitnimmst.</p>
+    
     <div class="stats">
     <div class="stat lvl"><b id="statLevel">A1</b><span>deine Stufe</span><div class="bar"><i id="barLevel" style="width:0%"></i></div></div>
     <div class="stat"><b id="statLessons">0 / 81</b><span>Lektionen</span><div class="bar"><i id="barLessons" style="width:0%"></i></div></div>
     <div class="stat"><b id="statCards">0</b><span>Begriffe sitzen</span><div class="bar"><i id="barCards" style="width:0%"></i></div></div>
   </div>
     <h3 class="sub-title">Deine Abzeichen</h3>
-    <p class="section-sub">Pro geschaffter Stufe ein Abzeichen und eine Urkunde zum Herunterladen, auch für LinkedIn. Tippe ein Abzeichen an.</p>
+    <p class="section-sub">Tippe ein Abzeichen an, dann gibt es die Urkunde.</p>
     <div class="badges" id="badges"></div>
-    <div class="save-card app-card" id="appCard">
-      <h3>Als App aufs Handy</h3>
+    <div class="mrows">
+<details class="mrow" id="rowApp"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span><b>Als App aufs Handy</b><small>Ohne Store, kostenlos</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="mrow-in app-card" id="appCard">
       <p>Leg dir die Lernwerkstatt wie eine App auf den Startbildschirm: eigenes Symbol, öffnet sich ohne Adressleiste. Kein Store, keine Anmeldung, kostet nichts. Neue Lektionen sind automatisch da.</p>
       <button type="button" class="hero-btn" id="appInstall" hidden>Jetzt als App installieren</button>
       <div class="app-steps">
@@ -513,9 +589,9 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
         </ol></details>
       </div>
       <p class="hint"><b>Wichtig fürs iPhone:</b> Die App vom Startbildschirm hat dort einen eigenen Speicher. Wenn du schon Lektionen geschafft hast, sichere vorher unten deinen Speicherlink und öffne ihn danach in der App.</p>
-    </div>
-    <div class="save-card" id="saveCard">
-      <h3>Deinen Fortschritt mitnehmen</h3>
+    </div></details>
+<details class="mrow" id="rowSave"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg><span><b>Fortschritt mitnehmen</b><small>Auf ein anderes Gerät, ohne Anmeldung</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="mrow-in" id="saveCard">
       <p>Dein Stand bleibt in diesem Browser gespeichert, ganz ohne Anmeldung. Für ein anderes Gerät oder nach dem Löschen des Verlaufs: Speicherlink sichern und später einfach öffnen.</p>
       <div class="save-row">
         <button type="button" class="secondary" id="saveCopy">Speicherlink kopieren</button>
@@ -526,15 +602,17 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
         <button type="button" class="secondary" id="saveLoad">Übernehmen</button>
       </div>
     </div>
-    <div class="nl-card">
-      <h3>Der Montags-Wurm</h3>
-      <p>Jeden Montag ein Ärgernis weniger: Neues aus dem Prozessmanagement, Zahlen, ein Fernsehtipp und ein Satz zum Mitnehmen. Kostenlos.</p>
-      <a href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-mail">Per E-Mail bekommen</a>
-      <a href="https://www.prozesswurm.de/montags-wurm" target="_blank" rel="noopener" data-nl="app" style="background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)">Alle Ausgaben lesen</a>
-    </div>
-    <div class="ask"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Fehlt dir ein Thema?</b> Sag's mir, dann grab ich mich rein.</p><button type="button" class="secondary" data-feedback="">Feedback geben</button></div>
-    <div class="about" id="about">
-      <h3>So entsteht die Lernwerkstatt</h3>
+    </details>
+<details class="mrow" id="rowNl"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><b>Der Montags-Wurm</b><small>Jeden Montag ein Ärgernis weniger</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="mrow-in">
+      <p>Neues aus dem Prozessmanagement, Zahlen, ein Fernsehtipp und ein Satz zum Mitnehmen. Kostenlos, jederzeit abbestellbar.</p>
+      <div class="save-row"><a class="secondary" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-mail">Per E-Mail bekommen</a>
+      <a class="secondary" href="https://www.prozesswurm.de/montags-wurm" target="_blank" rel="noopener" data-nl="app">Alle Ausgaben lesen</a></div>
+    </div></details>
+<details class="mrow" id="rowFb"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span><b>Feedback geben</b><small>Fehlt ein Thema? Stört etwas?</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="mrow-in"><p>Sag's dem Prozesswurm, dann grabe ich mich rein. Jede Rückmeldung wird gelesen.</p><button type="button" class="secondary" data-feedback="">Feedback schreiben</button></div></details>
+<details class="mrow" id="rowAbout"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg><span><b>So entsteht die Lernwerkstatt</b><small>Wer, woher, Daten, Weitergeben</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="about mrow-in" id="about">
       <dl>
         <div><dt>Wer steckt dahinter?</dt><dd>Ein Hobbyprojekt aus der Praxis des Prozessmanagements. Keine Firma, nichts zu kaufen, keine Werbung.</dd></div>
         <div><dt>Woher kommt das Wissen?</dt><dd>Aus der eigenen Arbeit in Prozessprojekten und aus Weiterbildungen, immer in eigenen Worten und mit eigenen Beispielen neu geschrieben. Künstliche Intelligenz hilft beim Schreiben und Gestalten. Verantwortlich für jeden Inhalt ist der Prozesswurm.</dd></div>
@@ -545,16 +623,14 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
       </dl>
       <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Ausführliche Datenschutzerklärung</a>
     </div>
-    <button type="button" class="secondary" data-place style="width:100%;margin-top:14px">Einstufung (neu) machen</button>
+    </details>
+    <button type="button" class="mrow mbtn" data-place><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg><span><b>Einstufung machen</b><small>10 Fragen, 2 Minuten</small></span><i class="chev" aria-hidden="true"></i></button>
+    </div>
   </section>
 
   <section class="view" id="v-media" hidden>
     <h2 class="section-title">Mediathek</h2>
-    <p class="section-sub">Prozesswissen zum Hören und Ansehen: alle Lieder und Videos vom Prozesswurm, sortiert nach Thema. Abgespielt wird erst, wenn du auf „Abspielen“ tippst.</p>
-    <div class="talk">
-      <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> Lieder über Prozesse? Jetzt wird's ja völlig absurd.</p></div>
-      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> Was im Ohr bleibt, bleibt auch im Kopf. Hör rein.</p></div>
-    </div>
+    <p class="section-sub">Alle Lieder und Videos vom Prozesswurm. Thema antippen, dann Titel antippen.</p>
     <div id="mediaList"></div>
   </section>
 
@@ -610,7 +686,6 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
     <div id="lookPane">
       <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input type="search" id="q" placeholder="Suchen, z. B. Kennzahl oder Workshop" aria-label="Begriffe, Lektionen und Werkzeuge durchsuchen" autocomplete="off"></div>
-      <p class="hint">Durchsucht alle Begriffe, Lektionen und Werkzeuge.</p>
       <div id="lookList"></div>
     </div>
     <div id="trainPane" hidden>
@@ -626,11 +701,10 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 
   <section class="view" id="v-cheat" hidden>
     <h2 class="section-title">Werkzeugkiste</h2>
-    <p class="section-sub">Fertige Werkzeuge für den Arbeitsalltag, geordnet nach dem, was du gerade vorhast. Jedes mit Anleitung, Vorlage zum Kopieren und der passenden Lektion. Antippen zum Aufklappen.</p>
+    <p class="section-sub">Was hast du gerade vor? Schritt wählen, Werkzeug antippen.</p>
     <div id="toolList"></div>
-    <h3 class="sub-title">Spickzettel fürs Gespräch</h3>
-    <p class="section-sub">Aus dem Praxiswissen der Prozessberatung. Fürs Handy im nächsten Termin.</p>
-    <div class="cheat">
+    <details class="mrow" style="margin-top:22px"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span><b>Spickzettel fürs Gespräch</b><small>Fragen und Zeitfresser fürs nächste Treffen</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="cheat mrow-in">
       <div class="cheat-card">
         <div class="eyebrow">Die Kernfrage</div>
         <p class="big-q">Wer hat wann was genau zu tun?</p>
@@ -685,8 +759,9 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
         <p class="hint">Keine Namen, Kundendaten oder Firmengeheimnisse eingeben. Das Ergebnis ist ein Gesprächsanlass, keine Wahrheit.</p>
       </div>
     </div>
+  </details>
   </section>
-  <footer class="legal">© 2026 Prozesswurm · Die Lektionen darfst du kostenlos weitergeben, zum Beispiel in Schulungen oder im Unterricht, mit „Prozesswurm“ als Quelle und Link. Verkaufen ist nicht erlaubt. Die Figuren Prozesswurm und Doktor Kuddelmuddel, Lieder und Videos bleiben geschützt und dürfen nicht verändert werden.<br><a href="https://www.prozesswurm.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.prozesswurm.de" target="_blank" rel="noopener">prozesswurm.de</a></footer>
+  <footer class="legal">© 2026 Prozesswurm · Lektionen weitergeben erlaubt, mit Quelle <button type="button" class="linkbtn" data-about>Mehr</button><br><a href="https://www.prozesswurm.de/impressum" target="_blank" rel="noopener">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz" target="_blank" rel="noopener">Datenschutz</a> · <a href="https://www.prozesswurm.de" target="_blank" rel="noopener">prozesswurm.de</a></footer>
 </div>
 
 <nav class="nav" aria-label="Bereiche">
@@ -1217,7 +1292,7 @@ function lx(text, used){
 function openTerm(t){
   const g=GLOSS_BY[String(t).toLowerCase()]; if(!g) return;
   $('#sheetLv').textContent=g.lv; $('#sheetT').textContent=g.t; $('#sheetD').textContent=g.d; $('#sheetMore').dataset.t=g.t;
-  $('#sheet').hidden=false; $('#sheetBg').hidden=false; $('#sheetClose').focus(); gc('begriff/'+g.t,'Begriff geöffnet',true);
+  if(!S.termSeen){ S.termSeen=1; save(); } $('#sheet').hidden=false; $('#sheetBg').hidden=false; $('#sheetClose').focus(); gc('begriff/'+g.t,'Begriff geöffnet',true);
 }
 function closeTerm(){ $('#sheet').hidden=true; $('#sheetBg').hidden=true; }
 
@@ -1239,25 +1314,31 @@ function renderLook(){
     if(ts.length) h+=`<h3 class="look-h">Werkzeuge</h3><div class="look-list">${ts.map(t=>`<button type="button" class="look-item" data-tool="${t.id}"><b>${esc(t.t)}</b><span>${esc(t.w)}</span></button>`).join('')}</div>`;
     if(gs.length) h+=`<h3 class="look-h">Begriffe</h3>`;
   }
-  let letter='';
-  h += `<div class="gloss">` + gs.map(g=>{ const L0=g.t[0].toUpperCase().replace(/[0-9]/,'#'); const head = (!q && L0!==letter) ? `<div class="gl-letter">${(letter=L0)}</div>` : '';
-    return head+`<div class="gl"><div class="gl-t"><b>${esc(g.t)}</b><span class="chip">${g.lv}</span></div><p>${esc(g.d)}</p></div>`; }).join('') + `</div>`;
+  const groups={}; gs.forEach(g=>{ const L0=g.t[0].toUpperCase().replace(/[0-9]/,'#').replace('Ä','A').replace('Ö','O').replace('Ü','U'); (groups[L0]=groups[L0]||[]).push(g); });
+  const keys=Object.keys(groups);
+  if(!q) h += `<div class="az">${keys.map(k=>`<a href="#gl-${k==='#'?'0':k}" data-az>${k}</a>`).join('')}</div>`;
+  h += `<div class="gloss">` + keys.map(k=>`${q?'':`<div class="gl-letter" id="gl-${k==='#'?'0':k}">${k}</div>`}<div class="gl-group">${groups[k].map(g=>`<details class="gl"${q?' open':''}><summary><b>${esc(g.t)}</b><span class="chip">${g.lv}</span></summary><p>${esc(g.d)}</p></details>`).join('')}</div>`).join('') + `</div>`;
   $('#lookList').innerHTML = h;
 }
 
 /* ---------- Werkzeugkiste ---------- */
+let toolPhase=TOOL_PHASES[0][0];
 function renderTools(){
-  $('#toolList').innerHTML = TOOL_PHASES.map(([k,n,s],i)=>`<div class="tgroup"><h3 class="tg-h"><span class="tnum">${i+1}</span><span>${n}<small>${s}</small></span></h3>
-    ${TOOLS.filter(t=>t.p===k).map(t=>`<details class="tool" id="tool-${t.id}"><summary><span><b>${esc(t.t)}</b><small>${esc(t.w)}</small></span><i aria-hidden="true">+</i></summary>
+  const ph=TOOL_PHASES.findIndex(x=>x[0]===toolPhase), cur=TOOL_PHASES[ph];
+  $('#toolList').innerHTML = `<div class="phases" role="tablist" aria-label="Schritt wählen">${TOOL_PHASES.map(([k,n],i)=>`<button type="button" role="tab" class="ph" data-ph="${k}" aria-selected="${k===toolPhase}"><span class="tnum">${i+1}</span><small>${esc(n)}</small></button>`).join('')}</div>
+    <p class="ph-sub"><b>${esc(cur[1])}:</b> ${esc(cur[2])}</p>
+    ${TOOLS.filter(t=>t.p===toolPhase).map(t=>`<details class="tool" id="tool-${t.id}"><summary><span><b>${esc(t.t)}</b><small>${esc(t.w)}</small></span><i aria-hidden="true">+</i></summary>
       <div class="tool-in">
         <div class="tool-meta"><div><b>Wann?</b> ${esc(t.when)}</div><div><b>Aufwand:</b> ${esc(t.dur)}</div></div>
-        <h4>So geht's</h4><ol>${t.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
+        <h4>So geht's</h4><ol class="path">${t.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
         <div class="tpl"><div class="copy-row"><b>Vorlage zum Ausfüllen</b><button type="button" class="secondary copy" data-copy="tt-${t.id}">Kopieren</button></div><pre id="tt-${t.id}">${esc(t.tpl)}</pre></div>
         <div class="say k"><img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><p><b>Kuddelmuddel-Falle:</b> ${esc(t.trap)}</p></div>
         ${L[t.l]?`<button type="button" class="secondary tool-l" data-lesson="${t.l}">Lektion dazu: ${esc(L[t.l].t)} →</button>`:''}
-      </div></details>`).join('')}</div>`).join('');
+      </div></details>`).join('')}`;
 }
-function openTool(id){ renderTools(); show('cheat'); const d=$('#tool-'+id); if(d){ d.open=true; setTimeout(()=>d.scrollIntoView({block:'start'}),50); } gc('/werkzeug/'+id,'Werkzeug'); }
+document.addEventListener('click', e=>{ const a=e.target.closest('[data-az]'); if(!a) return; e.preventDefault(); const t=document.querySelector(a.getAttribute('href')); if(t) t.scrollIntoView({block:'start',behavior:'smooth'}); });
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-ph]'); if(!b) return; toolPhase=b.dataset.ph; renderTools(); });
+function openTool(id){ const tt=TOOLS.find(x=>x.id===id); if(tt) toolPhase=tt.p; renderTools(); show('cheat'); const d=$('#tool-'+id); if(d){ d.open=true; setTimeout(()=>d.scrollIntoView({block:'start'}),50); } gc('/werkzeug/'+id,'Werkzeug'); }
 
 /* ---------- Vorlesen ---------- */
 const canSpeak = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
@@ -1345,7 +1426,7 @@ function levelIdsFor(id){
 }
 
 function expHtml(l,u){
-  const ol = l.steps ? `<ol>${l.steps.map(s=>`<li>${lx(s,u)}</li>`).join('')}</ol>` : '';
+  const ol = l.steps ? `<ol class="path">${l.steps.map(s=>`<li>${lx(s,u)}</li>`).join('')}</ol>` : '';
   let out='', placed=false;
   l.exp.forEach(p=>{ out += `<p>${lx(p,u)}</p>`; if(ol && !placed && /:$/.test(p)){ out += ol; placed=true; } });
   if(ol && !placed) out += ol;
@@ -1369,20 +1450,25 @@ function openLesson(id){
     <h2>${esc(l.t)}</h2>
     <p class="lead">${esc(l.d)}</p>
     <div class="lesson-tools">${canSpeak?`<button type="button" class="speak" id="speakBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Vorlesen</span></button>`:''}
-      ${used.size?`<span class="hint">Gepunktet unterstrichene Wörter antippen, dann kommt die Erklärung.</span>`:''}</div>
+      ${used.size&&!S.termSeen?`<span class="hint">Gepunktete Wörter antippen</span>`:''}</div>
     <div class="block"><h3>Erklärung</h3>${expH}</div>
     <div class="block"><h3>Beispiel aus dem Alltag</h3><div class="example">${exH}</div></div>
-    <div class="block"><h3>Kurzer Check: Hast du es verstanden?</h3><p class="hint" style="margin-top:0">Tippe die richtige Antwort an. Alle Antworten stehen oben im Text.</p>${checks}</div>
     <div class="aha"><img src="wurm.png?v=2" width="48" height="44" alt="" class="wimg"><span>${esc(l.aha)}</span></div>
-    <div class="block"><h3>Für deinen Alltag <small style="font-weight:400;opacity:.75">(freiwillig, 2 Minuten)</small></h3><p>${taskH}</p>
-      <textarea id="note-${id}" placeholder="Deine Notiz, nur für dich">${esc(S.notes[id]||'')}</textarea>
-      <div class="hint">Es gibt kein Richtig oder Falsch. Deine Notiz bleibt nur in diesem Browser.</div></div>
-    ${mediaBlock(l)}
-    ${l.tpl?`<div class="block"><h3>Zum Mitnehmen</h3><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
-      <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div>`:''}
-    <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':(l.quiz?'Erst den Check beantworten':'Erst alle Antworten aufdecken')}</button>
-    <a class="bot" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="lektion"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><span><b>Noch Fragen zu „${esc(l.t)}“?</b><small>Frag den Prozesswurm-Chatbot. Öffnet sich bei Google (Google-Konto nötig).</small></span><i aria-hidden="true">→</i></a>
-    <div class="ask"><p>Unklar, zu trocken oder fehlt was? Sag's dem Prozesswurm.</p><button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zur Lektion</button></div>`;
+    <div class="block"><h3>Kurzer Check</h3><p class="hint" style="margin-top:0">Die Antworten stehen oben im Text.</p>${checks}</div>
+    <button type="button" class="primary" id="finishBtn" ${isDone(id)?'':'disabled'}>${isDone(id)?'Weiter zur nächsten Lektion':'Erst den Check beantworten'}</button>
+    <h3 class="more-h">Mehr zur Lektion</h3>
+    <div class="mrows">
+      <details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg><span><b>Für deinen Alltag</b><small>Freiwillig, 2 Minuten</small></span><i class="chev" aria-hidden="true"></i></summary>
+        <div class="mrow-in"><p>${taskH}</p>
+        <textarea id="note-${id}" placeholder="Deine Notiz, nur für dich">${esc(S.notes[id]||'')}</textarea>
+        <div class="hint">Kein Richtig oder Falsch. Bleibt nur in diesem Browser.</div></div></details>
+      ${mediaBlock(l)}
+      ${l.tpl?`<details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg><span><b>Vorlage zum Mitnehmen</b><small>${esc(l.tpl[0])}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mrow-in"><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
+        <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div></details>`:''}
+      <details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg><span><b>Frage oder Feedback</b><small>Chatbot fragen oder Rückmeldung geben</small></span><i class="chev" aria-hidden="true"></i></summary>
+        <div class="mrow-in"><a class="secondary" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="lektion">Prozesswurm-Chatbot fragen (öffnet Google)</a>
+        <button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zu dieser Lektion</button></div></details>
+    </div>`;
   show('lesson'); window.scrollTo(0,0);
   if($('#speakBtn')) $('#speakBtn').onclick=()=>toggleSpeak(l);
 
@@ -1441,24 +1527,28 @@ function videoCard(v){
 function mediaBlock(l){
   const s=songOf(l), v=videoOf(l);
   if(!s && !v) return ``;
-  return `<div class="block"><h3>Hören und sehen</h3><div class="media-row">${s?songCard(s[0],s[1]):''}${v?videoCard(v):''}</div>
-    <p class="hint">Inhalte von Suno und YouTube laden erst nach deinem Klick. Mehr in der Mediathek unten.</p></div>`;
+  return `<details class="mrow"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg><span><b>Lied und Video</b><small>${[s?'1 Lied':'',v?'1 Video':''].filter(Boolean).join(' · ')}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mrow-in"><div class="media-row">${s?songCard(s[0],s[1]):''}${v?videoCard(v):''}</div>
+    <p class="hint">Lädt erst nach deinem Tippen.</p></div></details>`;
+}
+function mRow(kind,id,title,href){
+  return `<div class="mi"><div class="mi-row"><button type="button" class="mi-play" data-play aria-label="${esc(title)} abspielen">${kind==='song'?'♪':'▶'}</button>
+    <span>${esc(title)}</span><a href="${href}" target="_blank" rel="noopener" data-out="${kind==='song'?'suno':'youtube'}" aria-label="Bei ${kind==='song'?'Suno':'YouTube'} öffnen">↗</a></div>
+    <div class="embed" data-kind="${kind}" data-id="${id}" data-title="${esc(title)}"></div></div>`;
 }
 function renderMedia(){
-  $('#mediaList').innerHTML = MEDIA_GROUPS.map(([k,name])=>{
+  $('#mediaList').innerHTML = MEDIA_GROUPS.map(([k,name],gi)=>{
     const ss=SONGS.filter(x=>x[2]===k), vv=VIDEOS.filter(x=>x[2]===k);
     if(!ss.length && !vv.length) return '';
-    return `<div class="mgroup"><h3>${esc(name)}</h3><div class="mlist">
-      ${vv.map(v=>`<div class="mitem"><div class="row"><span>▶ ${esc(v[1])}</span><a href="https://www.youtube.com/${v[3]==='s'?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener" data-out="youtube">YouTube</a></div>
-        <div class="embed" data-kind="${v[3]==='s'?'short':'wide'}" data-id="${v[0]}" data-title="${esc(v[1])}"><button type="button" class="secondary play" data-play>${PLAY_ICON} Abspielen</button></div></div>`).join('')}
-      ${ss.map(x=>`<div class="mitem"><div class="row"><span>♪ ${esc(x[1])}</span><a href="https://suno.com/song/${x[0]}" target="_blank" rel="noopener" data-out="suno">Suno</a></div>
-        <div class="embed" data-kind="song" data-id="${x[0]}" data-title="${esc(x[1])}"><button type="button" class="secondary play" data-play>${PLAY_ICON} Abspielen</button></div></div>`).join('')}
-    </div></div>`;
-  }).join('') + `<p class="hint" style="margin-top:20px">Alle Lieder: <a href="https://suno.com/@prozesswurm" target="_blank" rel="noopener">suno.com/@prozesswurm</a> · Alle Videos: <a href="https://www.youtube.com/@Prozesswurm" target="_blank" rel="noopener">youtube.com/@Prozesswurm</a></p>`;
+    const n=[vv.length?`${vv.length} Video${vv.length>1?'s':''}`:'', ss.length?`${ss.length} Lied${ss.length>1?'er':''}`:''].filter(Boolean).join(' · ');
+    return `<details class="mrow mgroup"${gi===0?' open':''}><summary><span><b>${esc(name)}</b><small>${n}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mlist">
+      ${vv.map(v=>mRow(v[3]==='s'?'short':'wide',v[0],v[1],`https://www.youtube.com/${v[3]==='s'?'shorts/':'watch?v='}${v[0]}`)).join('')}
+      ${ss.map(x=>mRow('song',x[0],x[1],`https://suno.com/song/${x[0]}`)).join('')}
+    </div></details>`;
+  }).join('') + `<p class="hint" style="margin-top:16px">Inhalte von YouTube und Suno laden erst nach deinem Tippen. Alle Lieder: <a href="https://suno.com/@prozesswurm" target="_blank" rel="noopener">suno.com/@prozesswurm</a> · Alle Videos: <a href="https://www.youtube.com/@Prozesswurm" target="_blank" rel="noopener">youtube.com/@Prozesswurm</a></p>`;
 }
 document.addEventListener('click', e=>{
   const b=e.target.closest('[data-play]');
-  if(b){ const box=b.closest('.embed'), id=box.dataset.id, k=box.dataset.kind;
+  if(b){ const box=b.closest('.embed')||b.closest('.mi').querySelector('.embed'), id=box.dataset.id, k=box.dataset.kind; if(b.classList.contains('mi-play')) b.disabled=true;
     const src = k==='song' ? `https://suno.com/embed/${id}` : `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
     const cls = k==='song' ? 'song' : k;
     box.innerHTML = `<iframe class="${cls}" src="${src}" title="${box.dataset.title}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
@@ -1653,7 +1743,7 @@ document.addEventListener('click', e=>{
   if(e.target.closest('[data-place]')){ openPlace(); return; }
   const po=e.target.closest('[data-po]'); if(po){ const q=PLACE_Q[pq]; if(+po.dataset.po===q.a) pc[q.lv]++; pq++; renderPlace(); window.scrollTo(0,0); return; }
   const ps=e.target.closest('[data-placeset]'); if(ps){ S.place=+ps.dataset.placeset; save(); stats(); renderLadder(); renderHero(); show('home'); window.scrollTo(0,0); toast(`Los geht's bei ${LEVELS[S.place].code}`); return; }
-  if(e.target.closest('[data-about]')){ stats(); renderBadges(); show('me'); setTimeout(()=>$('#about').scrollIntoView({block:'start'}),50); return; }
+  if(e.target.closest('[data-about]')){ stats(); renderBadges(); show('me'); const r=$('#rowAbout'); r.open=true; setTimeout(()=>r.scrollIntoView({block:'start'}),50); return; }
 });
 document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !$('#sheet').hidden) closeTerm(); });
 $('#q').addEventListener('input', renderLook);
@@ -1703,13 +1793,13 @@ const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platfo
 const isAndroid = /android/i.test(navigator.userAgent);
 let installEvt=null;
 (function initApp(){
-  if(isStandalone){ $('#appCard').hidden=true; return; }
+  if(isStandalone){ $('#rowApp').hidden=true; return; }
   document.querySelectorAll('[data-app]').forEach(b=>b.hidden=false);
   const d = isIos ? $('#appIos') : isAndroid ? $('#appAndroid') : $('#appPc'); if(d) d.open=true;
   window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); installEvt=e; $('#appInstall').hidden=false; });
   window.addEventListener('appinstalled', ()=>{ installEvt=null; $('#appInstall').hidden=true; toast('Installiert. Viel Spaß mit dem Prozesswurm'); gc('app-installiert','App installiert',true); });
   $('#appInstall').addEventListener('click', async ()=>{ if(!installEvt) return; installEvt.prompt(); try{ await installEvt.userChoice; }catch(e){} installEvt=null; $('#appInstall').hidden=true; });
-  document.addEventListener('click', e=>{ if(!e.target.closest('[data-app]')) return; stats(); renderBadges(); show('me'); setTimeout(()=>$('#appCard').scrollIntoView({block:'start'}),50); gc('/app-anleitung','App-Anleitung'); });
+  document.addEventListener('click', e=>{ if(!e.target.closest('[data-app]')) return; stats(); renderBadges(); show('me'); const r=$('#rowApp'); r.open=true; setTimeout(()=>r.scrollIntoView({block:'start'}),50); gc('/app-anleitung','App-Anleitung'); });
 })();
 updateBadges(); stats(); renderLadder(); renderHero(); renderBadges(); renderFilters(); buildQueue(); renderDeck(); renderLook();
 
