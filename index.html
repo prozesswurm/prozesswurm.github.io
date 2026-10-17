@@ -525,6 +525,9 @@ body.in-lesson .app{padding-bottom:120px}
 @media (prefers-reduced-motion:reduce){.lc{animation:none}}
 .lc-start{text-align:center;padding-top:8px}
 .lc-hero-img{width:150px;height:auto;margin:6px auto 8px;display:block}
+.lc-pic{margin:0 auto 10px;max-width:560px}
+.lc-pic img{width:100%;height:auto;aspect-ratio:var(--ar,16/9);object-fit:cover;border-radius:16px;display:block;background:var(--line,#eee)}
+.lc-pic figcaption{font-size:11px;opacity:.6;margin-top:4px;text-align:right}
 .lc-start h2{font-family:var(--display);font-weight:800;font-size:26px;line-height:1.2;margin:6px 0}
 .lc-chips{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:10px 0 16px}
 .lc-chips span{display:inline-flex;gap:6px;align-items:center;background:var(--surface);box-shadow:var(--shadow);border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px}
@@ -1520,6 +1523,15 @@ function expHtml(l,u){
 /* Antworten in fester, aber gemischter Reihenfolge, damit die richtige nicht immer oben steht */
 function mixOrder(seed,n){ let h=0; for(const c of String(seed)) h=(h*31+c.charCodeAt(0))>>>0; const idx=[...Array(n).keys()];
   for(let i=n-1;i>0;i--){ h=(h*1103515245+12345)>>>0; const j=h%(i+1); [idx[i],idx[j]]=[idx[j],idx[i]]; } return idx; }
+/* Lektionsbilder (Ordner bilder/, Name = Lektions-Kennung): [Bildbeschreibung, Seitenverhältnis, Höhe bei 1200 Breite] */
+const PICS = {
+  b01:[`Der Prozesswurm kocht Kaffee Schritt für Schritt mit der Maschine, Doktor Kuddelmuddel kippt Pulver in kaltes Wasser.`,`16/9`,675],
+  b02:[`Der Prozesswurm hängt drei Hüte ordentlich an ihre Haken, Doktor Kuddelmuddel trägt alle drei Hüte übereinander.`,`3/2`,800],
+  b03:[`Der Prozesswurm zeigt auf ordentlich aufgereihte Backzutaten, Doktor Kuddelmuddel kippt alles auf einmal in die Schüssel.`,`16/9`,675],
+  b04:[`Der Prozesswurm zeigt auf einen übersichtlichen Prozesssteckbrief, Doktor Kuddelmuddel schleppt einen riesigen Aktenstapel.`,`16/9`,675],
+  b05:[`Der Prozesswurm erklärt an einer Tafel Prozess, Projekt und Aufgabe mit Wäscheleine, Baumhaus und Hammer, Doktor Kuddelmuddel ist verwirrt.`,`16/9`,676],
+  b06:[`Der Prozesswurm zeigt eine Prozesslandkarte mit Führungs-, Kern- und Unterstützungsprozessen, Doktor Kuddelmuddel grübelt.`,`16/9`,675]
+};
 function openLesson(id){
   const l=L[id], ctx=levelIdsFor(id), pos=ctx.ids.indexOf(id); gc('/lektion/'+id, l.t);
   const v=$('#v-lesson'); const used=new Set();
@@ -1539,7 +1551,7 @@ function openLesson(id){
   const exH=lx(l.ex,used), taskH=lx(l.task,used);
   const cards=[];
   cards.push({k:'start', h:`<div class="lc-start">
-      <img src="wurm-full.png?v=1" alt="" class="lc-hero-img">
+      ${PICS[id]?`<figure class="lc-pic" style="--ar:${PICS[id][1]}"><img src="bilder/${id}.webp?v=1" alt="${esc(PICS[id][0])}" width="1200" height="${PICS[id][2]}" decoding="async"><figcaption>Bild mit KI erstellt</figcaption></figure>`:`<img src="wurm-full.png?v=1" alt="" class="lc-hero-img">`}
       <div class="eyebrow">${esc(ctx.label)} · Lektion ${pos+1} von ${ctx.ids.length}</div>
       <h2>${esc(l.t)}</h2><p class="lead">${esc(l.d)}</p>
       <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}${l.min} Min.</span><span>${I('<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>')}${(l.quiz||[]).length} Fragen</span>${wasDone?`<span class="ok">geschafft</span>`:''}</div>
