@@ -534,8 +534,6 @@ body.in-lesson .app{padding-bottom:120px}
 .lc-chips .ico{width:18px;height:18px;color:var(--worm)}
 .lc-chips .ok{background:var(--worm-soft);color:var(--worm-ink)}
 .lc-start .speak{margin:0 auto}
-.voice-pick{display:block;margin:8px auto 0;font-size:13px;color:var(--muted)}
-.voice-pick select{font:inherit;color:var(--ink,inherit);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:4px 8px;margin-left:4px;max-width:200px}
 .voice-tip{max-width:330px;margin:8px auto 0;font-size:13px}
 .lc-label{display:flex;gap:8px;align-items:center;font-family:var(--display);font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--soil);margin:14px 0 10px}
 .lc-label.center{justify-content:center}
@@ -1438,13 +1436,13 @@ function deVoices(){ return (canSpeak?speechSynthesis.getVoices():[]).filter(v=>
 function voiceScore(v){ const n=v.name; let s=0;
   if(/natural|neural/i.test(n)) s+=100; if(/online/i.test(n)) s+=40; if(/premium|enhanced|erweitert|verbessert/i.test(n)) s+=80;
   if(/google/i.test(n)) s+=60; if(/^(Anna|Petra|Markus|Yannick|Helena|Katja|Conrad|Amala|Florian|Seraphina)/i.test(n)) s+=10;
-  if(/de-DE/i.test(v.lang)) s+=5; if(/compact|espeak|hedda|stefan|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley|oma|opa/i.test(n)) s-=50; return s; }
-/* Gewählte Stimme (falls noch vorhanden), sonst die natürlichste deutsche Stimme des Geräts */
+  if(/de-DE/i.test(v.lang)) s+=5; if(/^Microsoft /i.test(n) && !/natural|online|neural/i.test(n)) s-=60; if(/compact|espeak|hedda|stefan|grandma|grandpa|eddy|flo|reed|rocko|sandy|shelley|oma|opa/i.test(n)) s-=50; return s; }
+/* Immer genau eine Stimme: die natürlichste deutsche Stimme des Geräts */
 function bestVoice(){
-  const vs=deVoices(); if(S.voice){ const v=vs.find(x=>x.name===S.voice); if(v) return v; }
+  const vs=deVoices();
   return vs.sort((a,b)=>voiceScore(b)-voiceScore(a))[0]||null;
 }
-if(canSpeak){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>{ speechSynthesis.getVoices(); fillVoicePick(); }; }catch(e){} }
+if(canSpeak){ try{ speechSynthesis.getVoices(); speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices(); }catch(e){} }
 /* Aussprache: Abkürzungen und englische Wörter so schreiben, wie sie klingen sollen */
 const SAY = [
   [/\bAI Act\b/g,'Ei-Ei Äkt'],[/\bKI(?=-|\b)/g,'Ka-I'],[/\bIT(?=-|\b)/g,'I-Te'],[/\bEU(?=-|\b)/g,'E-U'],[/\bWG(?=-|\b)/g,'We-Ge'],
@@ -1461,12 +1459,16 @@ const SAY = [
 ];
 function sayText(t){ return SAY.reduce((x,[re,to])=>x.replace(re,to), String(t)).trim(); }
 /* Selbst gesteuerte Warteschlange: kurze Pause nach jedem Satz, längere nach jedem Absatz */
-let speakRun=0, speakStarted=false;
+let speakRun=0, speakStarted=false; const speakKeep=[];
+const IOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 function speakQueue(items, voice, run){
   if(run!==speakRun) return;
   if(!items.length){ stopSpeak(); return; }
   const [text,pause]=items.shift();
-  const u=new SpeechSynthesisUtterance(text); u.lang=voice?voice.lang:'de-DE'; if(voice) u.voice=voice;
+  const u=new SpeechSynthesisUtterance(text); u.lang=voice?voice.lang:'de-DE';
+  /* iPhone: keine Stimme setzen, dann nimmt iOS die in den Einstellungen gewählte deutsche Stimme (z. B. Anna Premium) */
+  if(voice && !IOS) u.voice=voice;
+  speakKeep.push(u); if(speakKeep.length>4) speakKeep.shift();
   u.rate=0.94; u.pitch=1;
   u.onstart=()=>{ speakStarted=true; };
   u.onend=()=>{ if(run===speakRun) setTimeout(()=>speakQueue(items,voice,run), pause); };
@@ -1476,13 +1478,14 @@ function speakQueue(items, voice, run){
 function toggleSpeak(l){
   const b=$('#speakBtn'); if(!b) return;
   if(b.getAttribute('aria-pressed')==='true'){ stopSpeak(); return; }
+  if('voice' in S){ delete S.voice; save(); }
   const voice=bestVoice();
-  const ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  const ios=IOS;
   const parts=[l.t+(/[.!?]$/.test(l.t)?' ':'. ')+l.d, ...l.exp, (l.steps||[]).join(' '), l.ex, l.task, l.aha].filter(Boolean).map(sayText);
   const items=[];
   parts.forEach(p=>{ const ss=(p.match(/[^.!?]+[.!?]*\s*/g)||[p]).map(x=>x.trim()).filter(Boolean); ss.forEach((x,i)=>items.push([x, i===ss.length-1?550:160])); });
   /* iPhone: cancel() direkt vor speak() verschluckt den Start, darum nur abbrechen, wenn wirklich etwas läuft */
-  try{ if(speechSynthesis.speaking||speechSynthesis.pending) speechSynthesis.cancel(); if(speechSynthesis.paused) speechSynthesis.resume(); }catch(e){}
+  try{ if(!IOS && (speechSynthesis.speaking||speechSynthesis.pending)) speechSynthesis.cancel(); if(speechSynthesis.paused) speechSynthesis.resume(); }catch(e){}
   speakRun++; const run=speakRun; speakStarted=false;
   speakQueue(items, voice, run);
   /* Kommt nach 2,5 Sekunden kein Ton: Hinweis auf Lautlos-Schalter bzw. fehlende Stimme */
@@ -1491,13 +1494,7 @@ function toggleSpeak(l){
   /* iPhone/iPad ohne gute Stimme: einmal zeigen, wo es die schönere Stimme gibt */
   if(ios && !S.voiceTip && !(voice && /premium|enhanced|erweitert|verbessert/i.test(voice.name))){ const h=$('#voiceTip'); if(h) h.hidden=false; S.voiceTip=1; save(); }
 }
-function fillVoicePick(){
-  const sel=$('#voicePick'); if(!sel) return; const vs=deVoices().filter(v=>voiceScore(v)>=0).sort((a,b)=>voiceScore(b)-voiceScore(a));
-  const wrap=sel.closest('.voice-pick'); if(vs.length<2){ if(wrap) wrap.hidden=true; return; }
-  const cur=bestVoice(); sel.innerHTML=vs.map(v=>`<option value="${esc(v.name)}"${cur&&cur.name===v.name?' selected':''}>${esc(v.name.replace(/^(Microsoft|Google) /,'').replace(/\s*\((Deutsch|German)[^)]*\)+/i,'').replace(/\s*-\s*(German|Deutsch).*$/i,'').replace(/\s*\((.+?)\)/,' · $1').trim())}</option>`).join('');
-  if(wrap) wrap.hidden=false;
-  sel.onchange=()=>{ S.voice=sel.value; save(); const b=$('#speakBtn'); if(b&&b.getAttribute('aria-pressed')==='true') stopSpeak(); toast('Stimme gewechselt. Tipp auf Vorlesen zum Anhören'); };
-}
+
 
 /* ---------- Einstufung ---------- */
 let pq=0, pc=[];
@@ -1602,8 +1599,7 @@ function openLesson(id){
       <h2>${esc(l.t)}</h2><p class="lead">${esc(l.d)}</p>
       <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}${l.min} Min.</span><span>${I('<path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/>')}${(l.quiz||[]).length} Fragen</span>${wasDone?`<span class="ok">geschafft</span>`:''}</div>
       ${canSpeak?`<button type="button" class="speak" id="speakBtn" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg><span>Vorlesen</span></button>
-      <label class="voice-pick" hidden>Stimme <select id="voicePick" aria-label="Stimme zum Vorlesen"></select></label>
-      <p class="hint voice-tip" id="voiceTip" hidden>Klingt blechern? Auf dem iPhone gibt es eine schönere Stimme gratis: Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen › Deutsch › „Anna (Premium)“ laden.</p>`:''}
+      <p class="hint voice-tip" id="voiceTip" hidden>Klingt blechern? Auf dem iPhone gibt es eine schönere Stimme gratis: Einstellungen › Bedienungshilfen › Gesprochene Inhalte › Stimmen › Deutsch › „Anna (Premium)“ laden und antippen.</p>`:''}
     </div>`, btn:`Los geht's`});
   expCards.forEach((h,i)=>cards.push({k:'exp', h:`<div class="lc-label">${I('<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/>')}Erklärung${expCards.length>1?` ${i+1}/${expCards.length}`:''}</div><div class="lc-text">${h}</div>${i===0&&used.size&&!S.termSeen?`<p class="hint">Gepunktete Wörter antippen, dann kommt die Erklärung.</p>`:''}`}));
   cards.push({k:'ex', h:`<div class="lc-label">${I('<path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/>')}Beispiel aus dem Alltag</div><div class="lc-ex">${exH}</div>`});
@@ -1632,7 +1628,6 @@ function openLesson(id){
   document.body.classList.add('in-lesson');
   show('lesson'); window.scrollTo(0,0);
   if($('#speakBtn')) $('#speakBtn').onclick=()=>toggleSpeak(l);
-  fillVoicePick();
   v.querySelector('[data-back]').onclick = ()=>{ document.body.classList.remove('in-lesson'); openLevel(ctx.i, ctx.key); };
   $(`#note-${CSS.escape(id)}`).addEventListener('input', e=>{ S.notes[id]=e.target.value; save(); });
 
