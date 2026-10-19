@@ -26,17 +26,21 @@
 *{box-sizing:border-box}
 body{margin:0;background:#F2F5F0;color:#1C241D;font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;line-height:1.5}
 .wrap{max-width:900px;margin:0 auto;padding:24px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
-.cert{background:#fff;border:14px solid #2E9A43;outline:2px solid #C9B48F;outline-offset:-26px;padding:48px 28px 36px;text-align:center;position:relative}
+.cert{background:#fff;border:6px solid #2E9A43;outline:1px solid #C9B48F;outline-offset:-18px;padding:48px 32px 36px;text-align:center;position:relative}
 .cert.gold{border-color:#B8901A}
 .eb{font-weight:700;letter-spacing:.12em;color:#2E9A43;font-size:14px}
 .gold .eb{color:#B8901A}
 h1{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(26px,7.4vw,64px);margin:10px 0 18px;line-height:1.05;overflow-wrap:anywhere;hyphens:auto}
-@media (max-width:520px){.cert{border-width:8px;outline-offset:-18px;padding:36px 16px 26px}}
+@media (max-width:520px){.cert{border-width:4px;outline-offset:-12px;padding:36px 18px 26px}}
 .lead{color:#5A675C;font-size:clamp(16px,2.6vw,21px);margin:0}
 .name{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;font-size:clamp(28px,6vw,52px);margin:10px auto 4px;padding-bottom:6px;border-bottom:2px solid #D3DBCE;max-width:80%;overflow-wrap:anywhere}
-.figs{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-top:22px}
-.figs img{max-width:28%;height:auto}
-.meta{font-weight:700;margin:14px 0 4px}
+.rule{width:120px;height:1px;background:#C9B48F;margin:0 auto 18px}
+.foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;margin:30px 0 22px}
+.foot .f b{display:block;font-weight:700;padding-bottom:6px;border-bottom:1px solid #1C241D;overflow-wrap:anywhere}
+.foot .f span{display:block;font-size:13px;color:#5A675C;margin-top:6px}
+.seal{width:clamp(70px,16vw,120px);aspect-ratio:1;border-radius:50%;border:3px solid #2E9A43;box-shadow:inset 0 0 0 6px #fff,inset 0 0 0 7px #C9B48F;display:grid;place-items:center}
+.gold .seal{border-color:#B8901A}
+.seal img{width:62%;height:auto}
 .small{font-size:13px;color:#5A675C;margin:2px 0}
 .note{margin-top:20px;background:#fff;border:1px solid #D3DBCE;border-radius:14px;padding:16px;font-size:15px}
 .note a{color:#1D7432;font-weight:700}
@@ -48,11 +52,11 @@ h1{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800;f
   <div class="cert" id="cert">
     <div class="eb">PROZESSWURM LERNWERKSTATT</div>
     <h1 id="title">Abschlussurkunde</h1>
+    <div class="rule"></div>
     <p class="lead">Hiermit bestätigt der Prozesswurm, dass</p>
     <div class="name" id="name">–</div>
     <p class="lead" id="what">eine Stufe der Prozesswurm Lernwerkstatt erfolgreich abgeschlossen hat.</p>
-    <div class="figs"><img src="wurm-full.png" alt="Prozesswurm"><img src="kuddel-full.png" alt="Doktor Kuddelmuddel"></div>
-    <p class="meta" id="meta"></p>
+    <div class="foot"><div class="f"><b id="date">–</b><span>Datum</span></div><div class="seal"><img src="wurm-full.png" alt="Prozesswurm"></div><div class="f"><b id="code">–</b><span>Urkunden-Code</span></div></div>
     <p class="small">Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation.</p>
     <p class="small">© Prozesswurm · prozesswurm.github.io</p>
   </div>
@@ -68,10 +72,11 @@ const LV={A1:'A1 · Einstieg',A2:'A2 · Grundlagen',B1:'B1 · Anwenden',B2:'B2 �
 const q=new URLSearchParams(location.search), n=(q.get('n')||'').slice(0,60), k=q.get('k')||'', d=q.get('d')||'', c=(q.get('c')||'').slice(0,30);
 document.getElementById('name').textContent = n || '–';
 if(k==='GESAMT'){ document.getElementById('cert').classList.add('gold'); document.getElementById('title').textContent='Große Abschlussurkunde';
-  document.getElementById('what').textContent='alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2 erfolgreich durchgegraben hat.'; }
+  document.getElementById('what').textContent='alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2 erfolgreich abgeschlossen hat.'; }
 else if(LV[k]) document.getElementById('what').textContent=`die Stufe ${LV[k]} erfolgreich abgeschlossen hat.`;
 const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
-document.getElementById('meta').textContent = [m?`Datum: ${m[3]}.${m[2]}.${m[1]}`:'', c?`Code: ${c}`:''].filter(Boolean).join('   ·   ');
+if(m) document.getElementById('date').textContent=`${m[3]}.${m[2]}.${m[1]}`;
+if(c) document.getElementById('code').textContent=c;
 document.getElementById('share').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href);
 if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
 window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) { const full=location.href; history.replaceState(null,'',location.pathname); try{ window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'?k:'unbekannt'), title:'Urkunde angesehen'}); } finally { history.replaceState(null,'',full); } } }catch(e){} });

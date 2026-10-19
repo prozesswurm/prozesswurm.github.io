@@ -1761,31 +1761,37 @@ function wrap(ctx,text,x,y,maxW,lh){ const words=text.split(' '); let line='', y
 async function drawCert(b,name,date){
   try{ await Promise.all([document.fonts.load('800 60px "Bricolage Grotesque"'),document.fonts.load('400 30px "Atkinson Hyperlegible"'),document.fonts.load('700 30px "Atkinson Hyperlegible"')]); }catch(e){}
   const W=2000,H=1414, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
-  const gold=b.key===`GESAMT`, accent=gold?'#B8901A':'#2E9A43', ink='#1C241D', muted='#5A675C';
+  const gold=b.key===`GESAMT`, accent=gold?'#B8901A':'#2E9A43', ink='#1C241D', muted='#5A675C', rule='#C9B48F';
   x.fillStyle='#FFFFFF'; x.fillRect(0,0,W,H);
-  x.strokeStyle=accent; x.lineWidth=26; x.strokeRect(40,40,W-80,H-80);
-  x.strokeStyle='#C9B48F'; x.lineWidth=3; x.strokeRect(84,84,W-168,H-168);
-  x.textAlign='center'; x.fillStyle=accent; x.font='700 34px "Atkinson Hyperlegible", sans-serif';
-  x.fillText('PROZESSWURM LERNWERKSTATT'.split('').join(String.fromCharCode(8202)), W/2, 190);
-  x.fillStyle=ink; x.font='800 128px "Bricolage Grotesque", sans-serif'; x.fillText(gold?'Große Abschlussurkunde':'Abschlussurkunde', W/2, 340);
-  x.fillStyle=muted; x.font='400 44px "Atkinson Hyperlegible", sans-serif'; x.fillText('Hiermit bestätigt der Prozesswurm, dass', W/2, 450);
-  x.fillStyle=name?ink:'#B5BDB4'; let fsz=100; do{ x.font=`800 ${fsz}px "Bricolage Grotesque", sans-serif`; fsz-=4; } while(x.measureText(name||'Dein Name').width>1560 && fsz>40); x.fillText(name||'Dein Name', W/2, 580);
-  x.strokeStyle='#D3DBCE'; x.lineWidth=3; x.beginPath(); x.moveTo(560,612); x.lineTo(W-560,612); x.stroke();
-  x.fillStyle=muted; x.font='400 44px "Atkinson Hyperlegible", sans-serif';
-  const what = gold ? 'alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2' : `die Stufe ${b.title}`;
-  x.fillText(gold ? what : what, W/2, 700);
-  x.fillText(gold ? 'erfolgreich durchgegraben hat.' : `mit ${b.ids.length} Lektionen erfolgreich abgeschlossen hat.`, W/2, 760);
-  const wurm=await loadImg('wurm-full.png'), kud=await loadImg('kuddel-full.png');
-  if(wurm){ const h=330, w=wurm.width*h/wurm.height; x.drawImage(wurm,150,H-150-h,w,h); }
-  if(kud){ const h=360, w=kud.width*h/kud.height; x.drawImage(kud,W-150-w,H-130-h,w,h);
-    x.fillStyle='#EEE6F8'; const bx=W-150-w-470, by=H-470; x.beginPath(); x.roundRect(bx,by,440,150,30); x.fill();
-    x.fillStyle='#5B3790'; x.font='700 32px "Atkinson Hyperlegible", sans-serif'; x.textAlign='left';
-    wrap(x, gold?'Gut, ich geb’s zu: Der Schmarrn war nützlich.':'Na gut. Vielleicht ist der Schmarrn doch nützlich.', bx+28, by+58, 390, 42); x.textAlign='center'; }
-  x.fillStyle=ink; x.font='700 36px "Atkinson Hyperlegible", sans-serif';
-  x.fillText(`Datum: ${fmtDate(date)}   ·   Code: ${certCode(b,name,date)}`, W/2, H-250);
+  x.strokeStyle=accent; x.lineWidth=10; x.strokeRect(60,60,W-120,H-120);
+  x.strokeStyle=rule; x.lineWidth=2; x.strokeRect(86,86,W-172,H-172);
+  x.textAlign='center'; x.fillStyle=accent; x.font='700 32px "Atkinson Hyperlegible", sans-serif';
+  x.fillText('PROZESSWURM LERNWERKSTATT'.split('').join(String.fromCharCode(8202)), W/2, 210);
+  x.fillStyle=ink; x.font='800 120px "Bricolage Grotesque", sans-serif'; x.fillText(gold?'Große Abschlussurkunde':'Abschlussurkunde', W/2, 350);
+  x.strokeStyle=rule; x.lineWidth=2; x.beginPath(); x.moveTo(W/2-120,400); x.lineTo(W/2+120,400); x.stroke();
+  x.fillStyle=muted; x.font='400 42px "Atkinson Hyperlegible", sans-serif'; x.fillText('Hiermit bestätigt der Prozesswurm, dass', W/2, 480);
+  x.fillStyle=name?ink:'#B5BDB4'; let fsz=96; do{ x.font=`800 ${fsz}px "Bricolage Grotesque", sans-serif`; fsz-=4; } while(x.measureText(name||'Dein Name').width>1500 && fsz>40); x.fillText(name||'Dein Name', W/2, 610);
+  x.strokeStyle='#D3DBCE'; x.lineWidth=3; x.beginPath(); x.moveTo(560,642); x.lineTo(W-560,642); x.stroke();
+  x.fillStyle=muted; x.font='400 42px "Atkinson Hyperlegible", sans-serif';
+  x.fillText(gold ? 'alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2' : `die Stufe ${b.title}`, W/2, 730);
+  x.fillText(gold ? 'erfolgreich abgeschlossen hat.' : `mit ${b.ids.length} Lektionen erfolgreich abgeschlossen hat.`, W/2, 788);
+  // Fusszeile: Datum links, Prozesswurm-Siegel mittig, Code rechts
+  const fy=1040, colL=500, colR=W-500;
+  x.strokeStyle=ink; x.lineWidth=2;
+  x.beginPath(); x.moveTo(colL-230,fy); x.lineTo(colL+230,fy); x.stroke();
+  x.beginPath(); x.moveTo(colR-230,fy); x.lineTo(colR+230,fy); x.stroke();
+  x.fillStyle=ink; x.font='700 40px "Atkinson Hyperlegible", sans-serif';
+  x.fillText(fmtDate(date), colL, fy-22); x.fillText(certCode(b,name,date), colR, fy-22);
+  x.fillStyle=muted; x.font='400 28px "Atkinson Hyperlegible", sans-serif';
+  x.fillText('Datum', colL, fy+44); x.fillText('Urkunden-Code', colR, fy+44);
+  const wurm=await loadImg('wurm-full.png');
+  const sx=W/2, sy=fy-40, r=120;
+  x.strokeStyle=accent; x.lineWidth=6; x.beginPath(); x.arc(sx,sy,r,0,Math.PI*2); x.stroke();
+  x.strokeStyle=rule; x.lineWidth=2; x.beginPath(); x.arc(sx,sy,r-16,0,Math.PI*2); x.stroke();
+  if(wurm){ const h=150, w=wurm.width*h/wurm.height; x.drawImage(wurm,sx-w/2,sy-h/2,w,h); }
   x.fillStyle=muted; x.font='400 26px "Atkinson Hyperlegible", sans-serif';
-  x.fillText('Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation.', W/2, H-195);
-  x.fillText('© Prozesswurm · prozesswurm.github.io', W/2, H-155);
+  x.fillText('Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation.', W/2, H-190);
+  x.fillText('© Prozesswurm · prozesswurm.github.io', W/2, H-150);
   return c.toDataURL('image/png');
 }
 let certTimer=null;
