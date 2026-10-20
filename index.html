@@ -394,6 +394,16 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .dig-row b{font-family:var(--display);font-weight:800;font-size:24px}
 .dig-streak{font-size:14px;font-weight:700}
 .dig-badge{display:inline-block;background:var(--worm);color:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px}
+.dig-chip{margin-left:auto;flex:none;align-self:flex-start;display:grid;justify-items:center;gap:0;border:0;background:var(--worm-soft);color:var(--worm-ink);border-radius:16px;padding:8px 12px;font:inherit;cursor:pointer;line-height:1.15}
+.dig-chip b{font-family:var(--display);font-weight:800;font-size:16px;white-space:nowrap}
+.dig-chip small{font-size:11.5px;font-weight:700;white-space:nowrap}
+.goal-card{display:flex;align-items:center;gap:12px;justify-content:space-between;background:var(--surface);box-shadow:var(--shadow);border-radius:var(--r);padding:14px 16px;margin:4px 0 12px}
+.goal-card small{display:block;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.goal-card b{display:block;font-family:var(--display);font-weight:800;font-size:18px;margin-top:2px}
+.goal-opts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.goal-opt{border:2px solid var(--line);background:var(--bg);border-radius:12px;padding:10px;font:inherit;font-weight:700;font-size:14px;color:var(--fg);cursor:pointer}
+.goal-opt.on{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
+.nudge{margin:16px 0 8px;min-height:76px}
 .dig-card{display:flex;gap:12px;align-items:center;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:14px 16px;margin:4px 0 14px}
 .dig-card .wimg{flex:none}
 .dig-body{display:grid;gap:4px;justify-items:start;min-width:0}
@@ -644,11 +654,13 @@ body.in-lesson .app{padding-bottom:120px}
       <h1>SALVE!</h1>
       <p>Prozessmanagement, so erklärt, dass es jeder versteht.</p>
     </div>
+    <button type="button" class="dig-chip" id="digChip" aria-label="Grabungstiefe und Serie, zu Mein Stand"></button>
   </header>
 
   <section class="view" id="v-home">
     <div class="iab" id="iab" hidden><b>Du bist im Browser von Instagram, LinkedIn oder Facebook.</b>Dort geht dein Fortschritt leicht verloren. Öffne die Lernwerkstatt über die drei Punkte mit „Im Browser öffnen“ oder sichere unten deinen Speicherlink.</div>
     <div id="hero"></div>
+    <div id="reviewNudge"></div>
     <div class="where">
       <h2>Was nervt dich gerade?</h2>
       <p class="where-sub">Tipp an, was passt. Du bekommst eine Erklärung in fünf Minuten und ein Werkzeug für morgen.</p>
@@ -669,6 +681,7 @@ body.in-lesson .app{padding-bottom:120px}
 
   <section class="view" id="v-me" hidden>
     <h2 class="section-title">Mein Stand</h2>
+    <div class="goal-card" id="goalCard"></div>
     <div class="dig-card" id="digCard"></div>
     <div class="stats">
     <div class="stat lvl"><b id="statLevel">A1</b><span>deine Stufe</span><div class="bar"><i id="barLevel" style="width:0%"></i></div></div>
@@ -1206,7 +1219,7 @@ function stats(){
   $('#barCards').style.width = (k/CARDS.length*100)+'%';
   $('#statLevel').textContent = lv.code;
   $('#barLevel').style.width = (countDone(lv.ids)/lv.ids.length*100)+'%';
-  renderDig();
+  renderDig(); try{ renderChip(); renderGoal(); renderNudge(); }catch(e){}
 }
 
 /* ---------- Grabungstiefe und Wochen-Serie (nichts geht verloren) ---------- */
@@ -1256,9 +1269,10 @@ function nextLesson(){
   return {li, id:lv.ids.find(id=>!isDone(id)), lv, label:`${lv.code} · ${lv.name}`, ids:lv.ids};
 }
 function renderHero(){
+  try{ renderChip(); renderNudge(); }catch(e){}
   const n=nextLesson(), d=S.done.length, fresh=d===0;
   const intro=$('#intro'); if(intro) intro.hidden=!fresh;
-  const w=document.querySelector('#v-home > .where'), h=$('#hero'); if(w&&h){ h.after(w); }
+  const w=document.querySelector('#v-home > .where'), h=$('#hero'); if(w&&h){ const rn=$('#reviewNudge'); (rn||h).after(w); }
   if(!n.id){
     $('#hero').innerHTML=`<div class="hero"><div class="hero-top"><span class="hero-badge">★</span><span class="eyebrow">Alles geschafft</span></div>
       <h2>Du hast alle ${ALL.length} Lektionen durchgegraben.</h2><p>Hol dir deine Urkunden unter „Mein Stand“ oder wiederhole die Begriffe.</p>
@@ -1272,7 +1286,7 @@ function renderHero(){
     <div class="hero-meta"><span>Lektion ${pos} von ${n.ids.length}</span><span>${l.min} Minuten</span></div>
     <div class="hero-bar" role="img" aria-label="Stufe ${n.lv.code} zu ${pct} Prozent geschafft"><i style="width:${pct}%"></i></div>
     <button type="button" class="hero-btn" data-hero="${n.id}">${fresh?'Erste Lektion starten':'Weiterlernen'} →</button>
-    <div class="hero-foot">${digLine()}</div>
+    ${fresh?`<div class="hero-foot">Jede Lektion bringt dich 10 Meter tiefer.</div>`:''}
   </div>`;
 }
 document.addEventListener('click', e=>{ const b=e.target.closest('[data-hero]'); if(!b) return;
@@ -1768,6 +1782,23 @@ function openLesson(id){
 }
 
 
+/* ---------- Immer im Blick, Ziel und Wiederholung ---------- */
+const GOALS=[[`job`,`für den Job`],[`alltag`,`für den Alltag`],[`beratung`,`für die Beratung`],[`neugier`,`einfach aus Neugier`]];
+const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); };
+function renderChip(){ const el=$('#digChip'); if(!el) return; const st=streak();
+  el.innerHTML=`<b>${fmtM(depth())}</b>${st.n?`<small>${st.n} ${st.n===1?'Woche':'Wochen'}</small>`:''}`; }
+function renderGoal(){ const el=$('#goalCard'); if(!el) return; const g=GOALS.find(x=>x[0]===S.goal);
+  if(g && !el.dataset.edit){ el.innerHTML=`<div><small>Dein Ziel</small><b>Ich lerne Prozesse ${esc(g[1])}</b></div><button type="button" class="linkbtn" data-goal-edit>Ändern</button>`; return; }
+  el.innerHTML=`<div style="width:100%"><small>Dein Ziel</small><b>Wofür lernst du Prozesse?</b><div class="goal-opts">${GOALS.map(x=>`<button type="button" class="goal-opt${S.goal===x[0]?' on':''}" data-goal="${x[0]}">${esc(x[1][0].toUpperCase()+x[1].slice(1))}</button>`).join('')}</div></div>`; }
+function renderNudge(){ const el=$('#reviewNudge'); if(!el) return;
+  const show = S.done.length>0 && S.known.length<CARDS.length && S.lastTrain!==todayStr();
+  el.innerHTML = show ? `<button type="button" class="hub-card nudge" data-hubgo="train"><span><small class="hub-k">Tägliches Training</small><b>Zeit für eine kurze Wiederholung</b></span><i class="hub-ico c1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></svg></i></button>` : ''; }
+document.addEventListener('click', e=>{
+  if(e.target.closest('#digChip')){ stats(); renderBadges(); show('me'); window.scrollTo(0,0); return; }
+  if(e.target.closest('[data-goal-edit]')){ $('#goalCard').dataset.edit='1'; renderGoal(); return; }
+  const g=e.target.closest('[data-goal]'); if(g){ S.goal=g.dataset.goal; save(); delete $('#goalCard').dataset.edit; renderGoal(); toast('Ziel gespeichert'); gc('ziel/'+S.goal,'Ziel gewählt',true); }
+});
+
 /* ---------- Entdecken als Übersicht (Babbel-Prinzip) ---------- */
 function termOfDay(){ const day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5); return GLOSS[day % GLOSS.length]; }
 function renderHub(){
@@ -2119,8 +2150,8 @@ function renderDeck(){
       <button type="button" class="know" id="knowBtn">Sitzt</button>
     </div>`;
   $('#cardBtn').onclick=()=>$('#card').classList.toggle('flip');
-  $('#knowBtn').onclick=()=>{ const i=queue[pos]; if(!S.known.includes(i)){ S.known.push(i); markActive(); } save(); stats(); pos++; renderDeck(); };
-  $('#againBtn').onclick=()=>{ pos++; renderDeck(); };
+  $('#knowBtn').onclick=()=>{ S.lastTrain=todayStr(); const i=queue[pos]; if(!S.known.includes(i)){ S.known.push(i); markActive(); } save(); stats(); pos++; renderDeck(); };
+  $('#againBtn').onclick=()=>{ S.lastTrain=todayStr(); save(); pos++; renderDeck(); };
 }
 $('#filters').addEventListener('click', e=>{ const b=e.target.closest('[data-f]'); if(!b) return; deckFilter=b.dataset.f; renderFilters(); buildQueue(); renderDeck(); });
 $('#deckReset').onclick=()=>{ const set=cardIdx(); S.known=S.known.filter(i=>!set.includes(i)); save(); stats(); buildQueue(); renderDeck(); toast(`Karten wieder im Stapel`); };
@@ -2228,7 +2259,7 @@ function packState(){
   const d={}; [...new Set(S.done.map(id=>id[0]))].forEach(p=>{ const b=bitsFor(p); if(b) d[p]=b; });
   const k=S.known.slice().sort((a,b)=>a-b);
   const b={}; Object.entries(S.badges||{}).forEach(([key,v])=>b[key]=String(v).replace(/-/g,'').slice(2));
-  const o={v:1,d,k,b}; if((S.name||'').trim()) o.n=S.name.trim(); if(S.place) o.p=+S.place; if(S.weeks.length) o.w=S.weeks.slice(-60);
+  const o={v:1,d,k,b}; if((S.name||'').trim()) o.n=S.name.trim(); if(S.place) o.p=+S.place; if(S.weeks.length) o.w=S.weeks.slice(-60); if(S.goal) o.g=S.goal;
   const bytes=new TextEncoder().encode(JSON.stringify(o)); let bin=''; bytes.forEach(x=>bin+=String.fromCharCode(x));
   return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
@@ -2237,13 +2268,13 @@ function unpackState(code){
   const bin=atob(code.replace(/-/g,'+').replace(/_/g,'/')); const o=JSON.parse(new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0))));
   if(!o||o.v!==1) throw new Error('alt');
   const done=[]; Object.entries(o.d||{}).forEach(([p,h])=>{ [...h].forEach((c,ci)=>{ const v=parseInt(c,16); for(let j=0;j<4;j++) if(v&(8>>j)) done.push(p+String(ci*4+j+1).padStart(2,'0')); }); });
-  return {done:done.filter(id=>L[id]), known:(o.k||[]).filter(i=>i>=0&&i<CARDS.length), badges:Object.fromEntries(Object.entries(o.b||{}).map(([k,v])=>[k,'20'+v.slice(0,2)+'-'+v.slice(2,4)+'-'+v.slice(4,6)])), name:o.n||'', place:+o.p||0, weeks:(o.w||[]).filter(x=>Number.isInteger(x))};
+  return {done:done.filter(id=>L[id]), known:(o.k||[]).filter(i=>i>=0&&i<CARDS.length), badges:Object.fromEntries(Object.entries(o.b||{}).map(([k,v])=>[k,'20'+v.slice(0,2)+'-'+v.slice(2,4)+'-'+v.slice(4,6)])), name:o.n||'', place:+o.p||0, weeks:(o.w||[]).filter(x=>Number.isInteger(x)), goal:o.g||''};
 }
 function mergeState(x){
   const before=S.done.length;
   S.done=[...new Set([...S.done,...x.done])]; S.known=[...new Set([...S.known,...x.known])];
   Object.entries(x.badges).forEach(([k,v])=>{ if(!S.badges[k]||v<S.badges[k]) S.badges[k]=v; });
-  S.weeks=[...new Set([...S.weeks,...(x.weeks||[])])]; if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
+  S.weeks=[...new Set([...S.weeks,...(x.weeks||[])])]; if(!S.goal&&x.goal) S.goal=x.goal; if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
   save(); updateBadges(); stats(); renderLadder(); renderHero(); renderBadges();
   return S.done.length-before;
 }
