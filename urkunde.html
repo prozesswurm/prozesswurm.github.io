@@ -73,13 +73,15 @@ const q=new URLSearchParams(location.search), n=(q.get('n')||'').slice(0,60), k=
 document.getElementById('name').textContent = n || '–';
 if(k==='GESAMT'){ document.getElementById('cert').classList.add('gold'); document.getElementById('title').textContent='Große Abschlussurkunde';
   document.getElementById('what').textContent='alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2 erfolgreich abgeschlossen hat.'; }
+else if(k==='PRUEFUNG'){ document.getElementById('cert').classList.add('gold'); document.getElementById('title').textContent='Meisterurkunde';
+  document.getElementById('what').textContent='die Meister-Prüfung der Prozesswurm Lernwerkstatt erfolgreich bestanden hat.'; }
 else if(LV[k]) document.getElementById('what').textContent=`die Stufe ${LV[k]} erfolgreich abgeschlossen hat.`;
 const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d);
 if(m) document.getElementById('date').textContent=`${m[3]}.${m[2]}.${m[1]}`;
 if(c) document.getElementById('code').textContent=c;
 document.getElementById('share').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(location.href);
 if(n) document.title = `Abschlussurkunde für ${n} · Prozesswurm Lernwerkstatt`;
-window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) { const full=location.href; history.replaceState(null,'',location.pathname); try{ window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'?k:'unbekannt'), title:'Urkunde angesehen'}); } finally { history.replaceState(null,'',full); } } }catch(e){} });
+window.addEventListener('load', function(){ try{ if(window.goatcounter && window.goatcounter.count) { const full=location.href; history.replaceState(null,'',location.pathname); try{ window.goatcounter.count({path:'/urkunde-ansicht/'+(LV[k]||k==='GESAMT'||k==='PRUEFUNG'?k:'unbekannt'), title:'Urkunde angesehen'}); } finally { history.replaceState(null,'',full); } } }catch(e){} });
 </script>
 </body>
 </html>

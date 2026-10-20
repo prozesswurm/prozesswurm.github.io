@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Prozessmanagement lernen wie eine Sprache: 94 Lektionen von A1 bis C2, so erklärt, dass es jeder versteht.">
+<meta name="description" content="Prozessmanagement lernen wie eine Sprache: von A1 bis C2, kostenlos und so erklärt, dass es jeder versteht.">
 <meta name="theme-color" content="#F2F5F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131915" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1"><link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png?v=1"><link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png?v=1">
 <link rel="apple-touch-icon" href="icon-180.png">
 <meta property="og:title" content="Prozesswurm Lernwerkstatt">
-<meta property="og:description" content="94 Lektionen Prozessmanagement von A1 bis C2.">
+<meta property="og:description" content="Prozessmanagement lernen von A1 bis C2: kurze Lektionen, Praxisfälle und Urkunden. Kostenlos und ohne Anmeldung.">
 <meta property="og:image" content="https://prozesswurm.github.io/app-og.jpg">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Aufgeräumt: Kacheln, Zeilen zum Aufklappen, Weg-Darstellung */
@@ -404,6 +404,12 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .goal-opt{border:2px solid var(--line);background:var(--bg);border-radius:12px;padding:10px;font:inherit;font-weight:700;font-size:14px;color:var(--fg);cursor:pointer}
 .goal-opt.on{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
 .nudge{margin:16px 0 8px;min-height:76px}
+.exam-layer .code{background:linear-gradient(135deg,#E9C46A,#B8901A)!important;color:#fff!important}
+.opt.chosen{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink);font-weight:700}
+.exam-review{text-align:left;margin-top:22px;display:grid;gap:10px}
+.exam-review h3{font-family:var(--display);font-weight:800;font-size:18px;margin:0}
+.exam-item{background:var(--surface);box-shadow:var(--shadow);border-radius:14px;padding:12px 14px;display:grid;gap:6px}
+.exam-item p{margin:0;font-size:15px}
 .dig-card{display:flex;gap:12px;align-items:center;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:14px 16px;margin:4px 0 14px}
 .dig-card .wimg{flex:none}
 .dig-body{display:grid;gap:4px;justify-items:start;min-width:0}
@@ -743,7 +749,7 @@ body.in-lesson .app{padding-bottom:120px}
       <dl>
         <div><dt>Wer steckt dahinter?</dt><dd>Ein Hobbyprojekt aus der Praxis des Prozessmanagements. Keine Firma, nichts zu kaufen, keine Werbung.</dd></div>
         <div><dt>Woher kommt das Wissen?</dt><dd>Aus der eigenen Arbeit in Prozessprojekten und aus Weiterbildungen, immer in eigenen Worten und mit eigenen Beispielen neu geschrieben. Künstliche Intelligenz hilft beim Schreiben und Gestalten. Verantwortlich für jeden Inhalt ist der Prozesswurm.</dd></div>
-        <div><dt>Was ist die Urkunde wert?</dt><dd>Sie bestätigt, dass du die Lektionen einer Stufe durchgearbeitet hast. Sie ist keine Prüfung und keine anerkannte Qualifikation.</dd></div>
+        <div><dt>Was ist die Urkunde wert?</dt><dd>Sie bestätigt, dass du die Lektionen einer Stufe durchgearbeitet oder die Meister-Prüfung bestanden hast. Die Meister-Prüfung ist ein Selbsttest. Keine Urkunde ist eine anerkannte Qualifikation.</dd></div>
         <div><dt>Was passiert mit meinen Daten?</dt><dd>Dein Fortschritt bleibt nur in deinem Browser, ganz ohne Anmeldung. Besuche werden ohne Cookies gezählt (GoatCounter). Feedback landet in einem Google-Formular, der Montags-Wurm kommt über Brevo, der Chatbot öffnet Google NotebookLM. Lieder und Videos laden erst, wenn du auf Abspielen tippst.</dd></div>
         <div><dt>Darf ich die Lektionen weitergeben?</dt><dd><strong style="font:inherit;font-weight:700">Für dich und dein Team:</strong> ja, gern und kostenlos. Nenn einfach „Prozesswurm“ als Quelle und verlinke prozesswurm.github.io.<br><strong style="font:inherit;font-weight:700">Für Schulungen, Unterricht oder Beratung</strong>, auch kostenlose: bitte vorher kurz fragen, per E-Mail an <a href="mailto:prozesswurm@gmail.com?subject=Nutzung%20der%20Lernwerkstatt">prozesswurm@gmail.com</a>.<br><strong style="font:inherit;font-weight:700">Nicht erlaubt:</strong> verkaufen, verändern oder als eigenes Material ausgeben. Die Figuren, Lieder und Videos bleiben unverändert.</dd></div>
         <div><dt>Fehler entdeckt?</dt><dd>Bitte melden. Unter jeder Lektion gibt es dafür einen Feedback-Knopf.</dd></div>
@@ -1226,7 +1232,7 @@ function stats(){
 if(!Array.isArray(S.weeks)) S.weeks=[];
 function weekKey(d){ const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())); const day=t.getUTCDay()||7; t.setUTCDate(t.getUTCDate()+4-day); const y=t.getUTCFullYear(); const w=Math.ceil(((t-Date.UTC(y,0,1))/864e5+1)/7); return y*100+w; }
 function markActive(){ const k=weekKey(new Date()); if(!S.weeks.includes(k)){ S.weeks.push(k); save(); } }
-function depth(){ let c=0; try{ c=casesSeen().length; }catch(e){} return S.done.length*10 + c*5 + S.known.length; }
+function depth(){ let c=0; try{ c=casesSeen().length; }catch(e){} return S.done.length*10 + c*5 + S.known.length + (S.exam&&S.exam.passed?50:0); }
 function streak(){
   const set=new Set(S.weeks); let d=new Date(); let n=0; const now=weekKey(d), thisWeek=set.has(now);
   if(!thisWeek) d.setDate(d.getDate()-7);
@@ -1246,7 +1252,7 @@ function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), s
     <div class="dig-body"><b>${fmtM(m)} tief gegraben</b>
     <span>${st.n?`${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei${st.thisWeek?'':'. Diese Woche ist noch offen.'}`:'Grab diese Woche eine Lektion, dann startet deine Serie.'}</span>
     ${S.done.length?`<span class="dig-badge">Erster Spatenstich</span>`:''}
-    <small>Jede Lektion bringt 10 m, jeder Praxisfall 5 m, jede gelernte Karte 1 m. Nichts geht verloren.</small></div>`; }
+    <small>Jede Lektion bringt 10 m, jeder Praxisfall 5 m, jede gelernte Karte 1 m, die Meister-Prüfung 50 m. Nichts geht verloren.</small></div>`; }
 
 function renderLadder(){
   const cur = currentLevelIndex();
@@ -1258,7 +1264,7 @@ function renderLadder(){
       <span class="code">${lv.code}${i===cur?`<img src="wurm.png?v=2" width="40" height="36" alt="" class="wimg">`:''}</span>
       <span class="body"><h3>${esc(lv.name)}</h3><p>${esc(lv.sub)}</p>${br}
       <span class="row"><span class="bar"><i style="width:${n/tot*100}%"></i></span><span>${n} / ${tot}</span>${state}</span></span></button>`;
-  }).join('');
+  }).join('') + examTile();
 }
 
 
@@ -1782,6 +1788,88 @@ function openLesson(id){
 }
 
 
+/* ---------- Meister-Prüfung: 15 Praxisfragen, bestanden ab 12 ---------- */
+const EXAM_PASS=12;
+const EXAM = [
+ {q:`Euer Team zieht in ein neues Büro. Was ist das?`, o:[`Ein Projekt: einmalig, mit Start, Ende und Ziel`,`Ein Prozess, weil viele Schritte nötig sind`,`Eine Aufgabe, weil es um Arbeit geht`], a:0, l:`b05`},
+ {q:`Einkauf und Lager streiten, wem der Bestellprozess gehört. Wer sollte die Hauptverantwortung tragen?`, o:[`Wer am Ende den größten Nutzen hat`,`Wer die meisten Schritte erledigt`,`Wer am längsten im Unternehmen ist`], a:0, l:`v07`},
+ {q:`Du schaust auf das Schwimmbahn-Bild eines Ablaufs. Wo suchst du zuerst nach Problemen?`, o:[`Bei den Pfeilen, die von einer Bahn in die nächste wechseln`,`Beim Kästchen mit dem längsten Text`,`Ganz am Anfang des Ablaufs`], a:0, l:`g03`},
+ {q:`Ihr gestaltet einen völlig neuen Ablauf. Womit fängst du an?`, o:[`Mit dem gewünschten Ergebnis und denkst rückwärts`,`Mit dem ersten Arbeitsschritt und denkst vorwärts`,`Mit den Menüs der neuen Software`], a:0, l:`k04`},
+ {q:`Rechnungen gehen immer wieder fehlerhaft raus. Wie findest du die eigentliche Ursache?`, o:[`Mehrmals nacheinander „Warum?“ fragen, bis die Wurzel sichtbar wird`,`Einen zusätzlichen Kontrollschritt einbauen`,`Die Person schulen, der zuletzt ein Fehler passiert ist`], a:0, l:`l04`},
+ {q:`Laut Beschreibung dauert ein Ablauf zwei Tage, die Kunden warten aber zwei Wochen. Was tust du zuerst?`, o:[`Den Ablauf vor Ort mit den Menschen durchgehen, die ihn machen`,`Die Beschreibung schöner neu schreiben`,`Sofort eine neue Kennzahl einführen`], a:0, l:`k07`},
+ {q:`Welches Prozessziel ist brauchbar?`, o:[`Bis Ende März beantworten wir 90 Prozent der Anfragen innerhalb von zwei Tagen.`,`Wir werden insgesamt deutlich schneller.`,`Wir steigern die Kundenzufriedenheit auf ein Maximum.`], a:0, l:`k02`},
+ {q:`Eure wichtigste Kennzahl rutscht plötzlich ins Rote. Was hätte vorher im Kennzahl-Steckbrief stehen sollen?`, o:[`Wer in diesem Fall was unternimmt`,`In welcher Farbe der Bericht erscheint`,`Nur der Zielwert, mehr braucht es nicht`], a:0, l:`g06`},
+ {q:`Eine Kollegin sagt bei jeder Änderung: „Brauchen wir nicht.“ Was steckt meistens dahinter?`, o:[`Eine Frage, die ihr noch niemand beantwortet hat`,`Reine Sturheit, da hilft nur Druck`,`Desinteresse an der Arbeit`], a:0, l:`c04`},
+ {q:`Eine neue Ablageregel wird von allen ignoriert. Was hilft am ehesten?`, o:[`Den Nutzen zeigen und das Befolgen leichter machen, zum Beispiel mit Vorlagen`,`Strengere Kontrollen einführen`,`Die Rundmail noch einmal verschicken`], a:0, l:`b07`},
+ {q:`Dein Prozess-Workshop ufert jedes Mal aus. Was hilft am meisten?`, o:[`Ein klares Ziel und eine feste Agenda`,`Mehr Teilnehmende einladen`,`Den Workshop einfach länger machen`], a:0, l:`k16`},
+ {q:`Die Geschäftsführung will eine neue Software kaufen, weil der Ablauf chaotisch ist. Was rätst du?`, o:[`Erst den Ablauf klären, dann die Software auswählen`,`Sofort kaufen, die Software bringt Ordnung hinein`,`Alles in eine Tabelle übertragen und abwarten`], a:0, l:`s08`},
+ {q:`Eine KI soll Anfragen vorsortieren und lernt dafür aus alten Entscheidungen. Worauf musst du achten?`, o:[`Die alten Daten prüfen, denn die KI übernimmt frühere Fehler`,`Auf nichts, die KI entscheidet neutral`,`Nur darauf, dass sie schnell genug ist`], a:0, l:`e03`},
+ {q:`Process Mining zeigt einen sauberen Ablauf, trotzdem beschweren sich alle. Woran kann das liegen?`, o:[`Ein Teil läuft auf Papier oder per Zuruf und ist für Process Mining unsichtbar`,`Process Mining irrt sich nie, die Beschwerden sind übertrieben`,`Die Beschwerden kommen von einer anderen Abteilung`], a:0, l:`i12`},
+ {q:`Eine neue Arbeitsanweisung ist fertig, der Prozess dazu noch nicht modelliert. Was tust du?`, o:[`Das Dokument ausrollen und den Prozess mit festem Termin nachliefern`,`Warten, bis der Prozess komplett modelliert ist`,`Jeden Satz der Anweisung als Prozessschritt modellieren`], a:0, l:`v15`}
+];
+function examTile(){ const ok=S.exam&&S.exam.passed;
+  return `<button type="button" class="layer exam-layer" data-exam aria-label="Meister-Prüfung"><span class="code">★★</span>
+    <span class="body"><h3>Meister-Prüfung</h3><p>${ok?'Bestanden. Du kannst sie jederzeit wiederholen.':'15 knifflige Praxisfragen quer durch alle Stufen. Am besten nach Stufe C2.'}</p>
+    <span class="row">${ok?'<span class="chip ok">bestanden</span>':'<span class="chip">ab 12 von 15</span>'}</span></span></button>`; }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function openExam(){
+  gc('/meister-pruefung','Meister-Prüfung');
+  const v=$('#v-lesson'); const order=shuffle(EXAM.map((_,i)=>i)); const opts=order.map(i=>shuffle(EXAM[i].o.map((_,k)=>k)));
+  const answers=[];
+  const I=(p)=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+  const best=S.exam&&S.exam.best;
+  const cards=[{k:'start', h:`<div class="lc-start"><div class="lc-case-pic"><img src="wurm-full.png?v=1" alt=""></div>
+      <div class="eyebrow">Die große Herausforderung</div><h2>Meister-Prüfung</h2>
+      <p class="lead">15 Praxisfragen quer durch alle Stufen. Wer mindestens 12 richtig hat, bekommt die Meisterurkunde und 50 Meter Grabungstiefe.</p>
+      <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}ca. 10 Min.</span><span>${I('<path d="M5 12l5 5L20 7"/>')}ab 12 von 15</span></div>
+      <p class="hint">Kein Zeitdruck, beliebig oft wiederholbar.${best?` Dein bestes Ergebnis: ${best} von 15.`:''}</p></div>`, btn:`Prüfung starten`}];
+  order.forEach((qi,n)=>{ const q=EXAM[qi];
+    cards.push({k:'q', n, h:`<div class="lc-label">${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}Frage ${n+1} von ${EXAM.length}</div>
+      <div class="q lc-q" data-n="${n}"><p class="lc-qt">${esc(q.q)}</p><div class="opts">${opts[n].map(k=>`<button type="button" class="opt" data-o="${k}">${esc(q.o[k])}</button>`).join('')}</div></div>`}); });
+  cards.push({k:'done', h:`<div id="examResult"></div>`, btn:'Zur Übersicht'});
+  v.innerHTML = `<div class="lc-top"><button type="button" class="lc-x" data-exam-close aria-label="Prüfung schließen">${I('<path d="M6 6l12 12M18 6 6 18"/>')}</button>
+      <div class="lc-bar">${cards.map((x,i)=>`<i data-i="${i}"></i>`).join('')}</div><span style="width:40px"></span></div>
+    ${cards.map((x,i)=>`<section class="lc lc-${x.k}" data-i="${i}" ${i?'hidden':''}>${x.h}</section>`).join('')}
+    <div class="lc-foot"><button type="button" class="primary lc-next" id="lcNext">Weiter</button></div>`;
+  show('lesson'); window.scrollTo(0,0);
+  let cur=0; const btn=$('#lcNext');
+  const close=()=>{ document.body.classList.remove('in-lesson'); renderLadder(); renderHero(); show('home'); window.scrollTo(0,0); };
+  v.querySelector('[data-exam-close]').onclick=close;
+  function result(){
+    const right=answers.filter(Boolean).length, passed=right>=EXAM_PASS, wasPassed=!!(S.exam&&S.exam.passed);
+    S.exam={passed:wasPassed||passed, best:Math.max(right, (S.exam&&S.exam.best)||0), date:(S.exam&&S.exam.date)||(passed?today():'')};
+    markActive(); save(); const fresh=updateBadges(); stats(); renderLadder(); renderHero(); renderBadges();
+    gc('meister-pruefung/'+(passed?'bestanden':'nicht-bestanden'), right+' von 15', true);
+    const wrong=order.map((qi,n)=>answers[n]?null:qi).filter(x=>x!==null);
+    $('#examResult').innerHTML=`<div class="lc-done"><div class="lc-check" ${passed?'':'style="background:var(--kuddel)"'}>${passed?I('<path d="M5 12l5 5L20 7"/>'):I('<path d="M12 8v5M12 16.5h.01"/><circle cx="12" cy="12" r="9"/>')}</div>
+      <h2>${passed?'Bestanden!':'Fast geschafft'}</h2><p class="lead">${right} von ${EXAM.length} richtig${passed?'':` · ab ${EXAM_PASS} ist bestanden`}</p>
+      ${passed&&!wasPassed?digDoneHtml(50):''}
+      <div class="case-btns">${passed?`<button type="button" class="primary" data-exam-cert>Meisterurkunde holen</button>`:`<button type="button" class="primary" data-exam-again>Nochmal versuchen</button>`}</div>
+      ${wrong.length?`<div class="exam-review"><h3>Das lohnt sich nochmal anzuschauen</h3>${wrong.map(qi=>{ const q=EXAM[qi], L1=L[q.l]; return `<div class="exam-item"><p>${esc(q.q)}</p><p><b>Richtig:</b> ${esc(q.o[q.a])}</p>${L1?`<button type="button" class="secondary" data-exam-lesson="${q.l}">Zur Lektion: ${esc(L1.t)}</button>`:''}</div>`; }).join('')}</div>`:''}</div>`;
+    const ce=v.querySelector('[data-exam-cert]'); if(ce) ce.onclick=()=>{ document.body.classList.remove('in-lesson'); openCert('PRUEFUNG', !wasPassed); };
+    const ag=v.querySelector('[data-exam-again]'); if(ag) ag.onclick=()=>openExam();
+    v.querySelectorAll('[data-exam-lesson]').forEach(b=>b.onclick=()=>openLesson(b.dataset.examLesson));
+  }
+  function go(i){
+    cur=Math.max(0,Math.min(cards.length-1,i));
+    v.querySelectorAll('section.lc').forEach(s=>s.hidden = +s.dataset.i!==cur);
+    v.querySelectorAll('.lc-bar i').forEach(b=>b.className = +b.dataset.i<cur?'on':(+b.dataset.i===cur?'now':''));
+    const c=cards[cur]; btn.textContent=c.btn||'Weiter';
+    btn.disabled = c.k==='q' && answers[c.n]===undefined;
+    if(c.k==='q' && btn.disabled) btn.textContent='Antwort antippen';
+    if(c.k==='done') result();
+    window.scrollTo(0,0);
+  }
+  v.querySelectorAll('.lc-q').forEach(qEl=>{ const n=+qEl.dataset.n, q=EXAM[order[n]];
+    qEl.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{ if(answers[n]!==undefined) return;
+      const ok=+b.dataset.o===q.a; answers[n]=ok; qEl.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add('chosen');
+      btn.disabled=false; btn.textContent= n===EXAM.length-1 ? 'Auswertung' : 'Weiter'; });
+  });
+  btn.onclick=()=>{ if(cards[cur].k!=='done'){ go(cur+1); return; } close(); };
+  go(0);
+}
+document.addEventListener('click', e=>{ if(e.target.closest('[data-exam]')) openExam(); });
+
 /* ---------- Immer im Blick, Ziel und Wiederholung ---------- */
 const GOALS=[[`job`,`für den Job`],[`alltag`,`für den Alltag`],[`beratung`,`für die Beratung`],[`neugier`,`einfach aus Neugier`]];
 const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); };
@@ -2006,11 +2094,12 @@ function badgeList(){
   return out;
 }
 const BADGES = badgeList();
-const isEarned = b => b.key===`GESAMT` ? grandEarned() : countDone(b.ids)===b.ids.length;
+const isEarned = b => b.key===`PRUEFUNG` ? !!(S.exam&&S.exam.passed) : b.key===`GESAMT` ? grandEarned() : countDone(b.ids)===b.ids.length;
 function grandEarned(){ const g=k=>{ const b=BADGES.find(x=>x.key===k); return b && countDone(b.ids)===b.ids.length; };
   return [`A1`,`A2`,`B1`,`B2`,`C2`].every(g) && BADGES.some(b=>b.code===`C1` && countDone(b.ids)===b.ids.length); }
 const GRAND = {key:`GESAMT`, code:`A1–C2`, title:`Prozesswurm-Meister: alle Stufen von A1 bis C2`, short:`Meister`, ids:[]};
-const allBadges = () => [...BADGES, GRAND];
+const EXAMB = {key:`PRUEFUNG`, code:`★`, title:`Meister-Prüfung`, short:`Meister-Prüfung`, ids:[]};
+const allBadges = () => [...BADGES, GRAND, EXAMB];
 const today = () => new Date().toISOString().slice(0,10);
 function updateBadges(){
   if(!S.badges) S.badges={}; const fresh=[];
@@ -2018,13 +2107,13 @@ function updateBadges(){
   if(fresh.length) save(); return fresh;
 }
 function renderBadges(){
-  $('#badges').innerHTML = allBadges().map(b=>{ const on=isEarned(b), gold=b.key===`GESAMT`;
-    const prog = gold ? (on?'geschafft':'alle Stufen') : `${countDone(b.ids)}/${b.ids.length}`;
+  $('#badges').innerHTML = allBadges().map(b=>{ const on=isEarned(b), gold=b.key===`GESAMT`||b.key===`PRUEFUNG`;
+    const prog = b.key===`PRUEFUNG` ? (on?'bestanden':'offen') : gold ? (on?'geschafft':'alle Stufen') : `${countDone(b.ids)}/${b.ids.length}`;
     return `<button type="button" class="badge ${on?'on':''} ${gold?'gold':''}" data-badge="${b.key}" ${on?'':'aria-disabled="true"'} aria-label="Abzeichen ${esc(b.title)}${on?', geschafft, Urkunde öffnen':', noch offen'}">
-      <img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><b>${b.key===`GESAMT`?'★':b.code}</b><span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
+      <img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><b>${b.key===`GESAMT`?'★':b.key===`PRUEFUNG`?'★★':b.code}</b><span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
 }
 $('#badges').addEventListener('click', e=>{ const b=e.target.closest('[data-badge]'); if(!b) return;
-  const bd=allBadges().find(x=>x.key===b.dataset.badge); if(isEarned(bd)) openCert(bd.key,false); else toast(`Noch nicht geschafft. Der Prozesswurm gräbt weiter.`); });
+  const bd=allBadges().find(x=>x.key===b.dataset.badge); if(isEarned(bd)) openCert(bd.key,false); else if(bd.key===`PRUEFUNG`) openExam(); else toast(`Noch nicht geschafft. Der Prozesswurm gräbt weiter.`); });
 
 function hash(str){ let h=2166136261; for(let i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=Math.imul(h,16777619); } return (h>>>0).toString(36).toUpperCase().padStart(6,'0').slice(0,6); }
 const certCode = (b,name,date) => `PW-${b.key.replace('GESAMT','MEISTER').replace(/[^A-Z0-9]/gi,'').toUpperCase()}-${hash(name+'|'+b.key+'|'+date)}`;
@@ -2035,20 +2124,20 @@ function wrap(ctx,text,x,y,maxW,lh){ const words=text.split(' '); let line='', y
 async function drawCert(b,name,date){
   try{ await Promise.all([document.fonts.load('800 60px "Bricolage Grotesque"'),document.fonts.load('400 30px "Atkinson Hyperlegible"'),document.fonts.load('700 30px "Atkinson Hyperlegible"')]); }catch(e){}
   const W=2000,H=1414, c=document.createElement('canvas'); c.width=W; c.height=H; const x=c.getContext('2d');
-  const gold=b.key===`GESAMT`, accent=gold?'#B8901A':'#2E9A43', ink='#1C241D', muted='#5A675C', rule='#C9B48F';
+  const exam=b.key===`PRUEFUNG`, gold=b.key===`GESAMT`||exam, accent=gold?'#B8901A':'#2E9A43', ink='#1C241D', muted='#5A675C', rule='#C9B48F';
   x.fillStyle='#FFFFFF'; x.fillRect(0,0,W,H);
   x.strokeStyle=accent; x.lineWidth=10; x.strokeRect(60,60,W-120,H-120);
   x.strokeStyle=rule; x.lineWidth=2; x.strokeRect(86,86,W-172,H-172);
   x.textAlign='center'; x.fillStyle=accent; x.font='700 32px "Atkinson Hyperlegible", sans-serif';
   x.fillText('PROZESSWURM LERNWERKSTATT'.split('').join(String.fromCharCode(8202)), W/2, 210);
-  x.fillStyle=ink; x.font='800 120px "Bricolage Grotesque", sans-serif'; x.fillText(gold?'Große Abschlussurkunde':'Abschlussurkunde', W/2, 350);
+  x.fillStyle=ink; x.font='800 120px "Bricolage Grotesque", sans-serif'; x.fillText(exam?'Meisterurkunde':gold?'Große Abschlussurkunde':'Abschlussurkunde', W/2, 350);
   x.strokeStyle=rule; x.lineWidth=2; x.beginPath(); x.moveTo(W/2-120,400); x.lineTo(W/2+120,400); x.stroke();
   x.fillStyle=muted; x.font='400 42px "Atkinson Hyperlegible", sans-serif'; x.fillText('Hiermit bestätigt der Prozesswurm, dass', W/2, 480);
   x.fillStyle=name?ink:'#B5BDB4'; let fsz=96; do{ x.font=`800 ${fsz}px "Bricolage Grotesque", sans-serif`; fsz-=4; } while(x.measureText(name||'Dein Name').width>1500 && fsz>40); x.fillText(name||'Dein Name', W/2, 610);
   x.strokeStyle='#D3DBCE'; x.lineWidth=3; x.beginPath(); x.moveTo(560,642); x.lineTo(W-560,642); x.stroke();
   x.fillStyle=muted; x.font='400 42px "Atkinson Hyperlegible", sans-serif';
-  x.fillText(gold ? 'alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2' : `die Stufe ${b.title}`, W/2, 730);
-  x.fillText(gold ? 'erfolgreich abgeschlossen hat.' : `mit ${b.ids.length} Lektionen erfolgreich abgeschlossen hat.`, W/2, 788);
+  x.fillText(exam ? 'die Meister-Prüfung der Prozesswurm Lernwerkstatt' : gold ? 'alle Stufen der Prozesswurm Lernwerkstatt von A1 bis C2' : `die Stufe ${b.title}`, W/2, 730);
+  x.fillText(exam ? 'erfolgreich bestanden hat.' : gold ? 'erfolgreich abgeschlossen hat.' : `mit ${b.ids.length} Lektionen erfolgreich abgeschlossen hat.`, W/2, 788);
   // Fusszeile: Datum links, Prozesswurm-Siegel mittig, Code rechts
   const fy=1040, colL=500, colR=W-500;
   x.strokeStyle=ink; x.lineWidth=2;
@@ -2072,7 +2161,7 @@ let certTimer=null;
 function certLinks(b,name,date){
   const code=certCode(b,name,date), d=new Date(date);
   const url=`https://prozesswurm.github.io/urkunde.html?n=${encodeURIComponent(name)}&k=${encodeURIComponent(b.key)}&d=${date}&c=${code}`;
-  const li=`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent('Prozesswurm Lernwerkstatt: '+(b.key==='GESAMT'?'Alle Stufen A1 bis C2':'Stufe '+b.title))}&organizationId=106070676&issueYear=${d.getFullYear()}&issueMonth=${d.getMonth()+1}&certId=${encodeURIComponent(code)}&certUrl=${encodeURIComponent(url)}`;
+  const li=`https://www.linkedin.com/profile/add?startTask=CERTIFICATION_NAME&name=${encodeURIComponent('Prozesswurm Lernwerkstatt: '+(b.key==='GESAMT'?'Alle Stufen A1 bis C2':b.key==='PRUEFUNG'?'Meister-Prüfung':'Stufe '+b.title))}&organizationId=106070676&issueYear=${d.getFullYear()}&issueMonth=${d.getMonth()+1}&certId=${encodeURIComponent(code)}&certUrl=${encodeURIComponent(url)}`;
   return {url, li};
 }
 async function refreshCert(b){
@@ -2089,10 +2178,10 @@ function openCert(key, celebrate){
   const b=allBadges().find(x=>x.key===key); updateBadges();
   const v=$('#v-cert'); gc('/urkunde/'+key, 'Urkunde '+b.title);
   v.innerHTML = `<button type="button" class="back" data-go="home">← Zur Übersicht</button>
-    ${celebrate?`<h2 class="section-title">${b.key==='GESAMT'?'Alle Stufen geschafft!':'Stufe geschafft!'}</h2>`:`<h2 class="section-title">Deine Abschlussurkunde</h2>`}
+    ${celebrate?`<h2 class="section-title">${b.key==='GESAMT'?'Alle Stufen geschafft!':b.key==='PRUEFUNG'?'Meister-Prüfung bestanden!':'Stufe geschafft!'}</h2>`:`<h2 class="section-title">Deine Abschlussurkunde</h2>`}
     <div class="cheer">
-      <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> ${b.key==='GESAMT'?'Alle Stufen? Ich gebe auf. Der Schmarrn war tatsächlich nützlich.':'Na gut. Vielleicht ist der Schmarrn doch nützlich.'}</p></div>
-      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> ${esc(b.title)} geschafft. Hier ist deine Urkunde.</p></div>
+      <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> ${b.key==='GESAMT'?'Alle Stufen? Ich gebe auf. Der Schmarrn war tatsächlich nützlich.':b.key==='PRUEFUNG'?'Bestanden? Dann muss ich mir wohl neue Tricks ausdenken.':'Na gut. Vielleicht ist der Schmarrn doch nützlich.'}</p></div>
+      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> ${esc(b.title)} ${b.key==='PRUEFUNG'?'bestanden':'geschafft'}. Hier ist deine Urkunde.</p></div>
     </div>
     <div class="fb-card"><div><label for="certName">Dein Name für die Urkunde</label>
       <input type="text" id="certName" maxlength="60" placeholder="Vorname Nachname" value="${esc(S.name||'')}" autocomplete="name"></div>
@@ -2197,7 +2286,7 @@ document.addEventListener('keydown', e=>{ if(e.key==='Escape' && !$('#sheet').hi
 $('#q').addEventListener('input', renderLook);
 $('#v-problem').addEventListener('click', e=>{ if(e.target.closest('[data-go="home"]')){ renderHero(); show('home'); window.scrollTo(0,0); } });
 $('#v-place').addEventListener('click', e=>{ if(e.target.closest('[data-go="home"]')){ renderHero(); show('home'); window.scrollTo(0,0); } });
-$('#ladder').addEventListener('click', e=>{ const s=e.target.closest('.layer'); if(s) openLevel(+s.dataset.l); });
+$('#ladder').addEventListener('click', e=>{ const s=e.target.closest('.layer[data-l]'); if(s) openLevel(+s.dataset.l); });
 $('#v-level').addEventListener('click', e=>{
   const s=e.target.closest('.stop'); if(s){ openLesson(s.dataset.id); return; }
   const t=e.target.closest('[data-branch]'); if(t){ openLevel(curLevel, t.dataset.branch); return; }
@@ -2274,7 +2363,7 @@ function mergeState(x){
   const before=S.done.length;
   S.done=[...new Set([...S.done,...x.done])]; S.known=[...new Set([...S.known,...x.known])];
   Object.entries(x.badges).forEach(([k,v])=>{ if(!S.badges[k]||v<S.badges[k]) S.badges[k]=v; });
-  S.weeks=[...new Set([...S.weeks,...(x.weeks||[])])]; if(!S.goal&&x.goal) S.goal=x.goal; if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
+  S.weeks=[...new Set([...S.weeks,...(x.weeks||[])])]; if(x.badges&&x.badges.PRUEFUNG&&!(S.exam&&S.exam.passed)) S.exam={passed:true,best:12,date:x.badges.PRUEFUNG}; if(!S.goal&&x.goal) S.goal=x.goal; if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
   save(); updateBadges(); stats(); renderLadder(); renderHero(); renderBadges();
   return S.done.length-before;
 }
