@@ -93,7 +93,7 @@ ol.path>li:last-child{padding-bottom:4px}
   --fg:#1C241D; --muted:#5A675C; --soil:#6B5341;
   --worm:#2E9A43; --worm-ink:#1D7432; --worm-soft:#DDF1DF;
   --kuddel:#7A4BB4; --kuddel-soft:#EEE6F8;
-  --l1:#CFE3C6; --l2:#B9D2A3; --l3:#C9B48F; --l4:#A98A68; --l5:#8A6B4F; --l6:#5E4636;
+  --l1:#CFE3C6; --l2:#B9D2A3; --l3:#C9B48F; --l4:#A98A68; --l5:#8A6B4F; --l6:#5E4636; --goldtx:#8A6608;
   --display:"Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
   --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
   --r:14px;
@@ -103,13 +103,13 @@ ol.path>li:last-child{padding-bottom:4px}
   --fg:#E7EDE5; --muted:#9CAA9E; --soil:#C9AE95;
   --worm:#5BC86C; --worm-ink:#86E294; --worm-soft:#1F3A24;
   --kuddel:#B391E6; --kuddel-soft:#2D2340;
-  --l1:#3C5A3A; --l2:#4F6B3C; --l3:#6E5E43; --l4:#7C6248; --l5:#8E6E52; --l6:#A7836A; color-scheme:dark}}
+  --l1:#3C5A3A; --l2:#4F6B3C; --l3:#7C6248; --l4:#6A523C; --l5:#574231; --l6:#443326; --goldtx:#F2C94C; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#131915; --surface:#1C231E; --sunk:#252E27; --line:#334036;
   --fg:#E7EDE5; --muted:#9CAA9E; --soil:#C9AE95;
   --worm:#5BC86C; --worm-ink:#86E294; --worm-soft:#1F3A24;
   --kuddel:#B391E6; --kuddel-soft:#2D2340;
-  --l1:#3C5A3A; --l2:#4F6B3C; --l3:#6E5E43; --l4:#7C6248; --l5:#8E6E52; --l6:#A7836A; color-scheme:dark}
+  --l1:#3C5A3A; --l2:#4F6B3C; --l3:#7C6248; --l4:#6A523C; --l5:#574231; --l6:#443326; --goldtx:#F2C94C; color-scheme:dark}
 
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -412,6 +412,22 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .exam-item p{margin:0;font-size:15px}
 .dig-card{display:flex;gap:12px;align-items:center;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:14px 16px;margin:4px 0 14px}
 .dig-card .wimg{flex:none}
+.dig-card{align-items:stretch}
+.shaft{position:relative;flex:none;width:96px;border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.sl{flex:1;min-height:34px;display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-family:var(--display);font-weight:800;font-size:13px;color:var(--fg);border-bottom:1px dashed rgba(0,0,0,.18)}
+.sl1{background:var(--l1)}.sl2{background:var(--l2)}.sl3{background:var(--l3)}.sl4{background:var(--l4);color:#fff}.sl5{background:var(--l5);color:#fff}.sl6{background:var(--l6);color:#fff}
+.sl-gold{flex:1.1;min-height:40px;display:grid;place-items:center;background:var(--soil);background:color-mix(in srgb,var(--l6) 70%,#000)}
+.shaft-tunnel{position:absolute;left:26px;top:0;width:8px;border-radius:0 0 5px 5px;background:rgba(0,0,0,.35)}
+.shaft-worm{position:absolute;left:4px;transform:translateY(-55%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.35))}
+.dig-goal{background:color-mix(in srgb,var(--worm-ink) 9%,transparent);border-radius:12px;padding:8px 10px;display:grid;gap:6px}
+.dig-goal .gold{color:var(--goldtx);font-size:1.05em}
+.dig-bar{display:block;height:7px;border-radius:9px;background:color-mix(in srgb,var(--worm-ink) 14%,transparent);overflow:hidden}.dig-bar i{display:block;height:100%;background:#E2B23A;border-radius:9px}
+.dig-go{justify-self:start;border:0;background:#C9A227;color:#fff;font:inherit;font-weight:800;border-radius:999px;padding:6px 14px;cursor:pointer}
+.layer.locked{opacity:.75}
+.badge .lv{border-radius:8px;padding:0 8px;line-height:1.4}
+.badge:not(.on) .lv{opacity:.55}
+.badge .lv1{background:var(--l1)}.badge .lv2{background:var(--l2)}.badge .lv3{background:var(--l3)}.badge .lv4{background:var(--l4);color:#fff!important}.badge .lv5{background:var(--l5);color:#fff!important}.badge .lv6{background:var(--l6);color:#fff!important}
+.badge b.small{font-size:15px}
 .dig-body{display:grid;gap:4px;justify-items:start;min-width:0}
 .dig-body b{font-family:var(--display);font-weight:800;font-size:20px}
 .dig-body span{font-size:14.5px}
@@ -749,7 +765,7 @@ body.in-lesson .app{padding-bottom:120px}
       <dl>
         <div><dt>Wer steckt dahinter?</dt><dd>Ein Hobbyprojekt aus der Praxis des Prozessmanagements. Keine Firma, nichts zu kaufen, keine Werbung.</dd></div>
         <div><dt>Woher kommt das Wissen?</dt><dd>Aus der eigenen Arbeit in Prozessprojekten und aus Weiterbildungen, immer in eigenen Worten und mit eigenen Beispielen neu geschrieben. Künstliche Intelligenz hilft beim Schreiben und Gestalten. Verantwortlich für jeden Inhalt ist der Prozesswurm.</dd></div>
-        <div><dt>Was ist die Urkunde wert?</dt><dd>Sie bestätigt, dass du die Lektionen einer Stufe durchgearbeitet oder die Meister-Prüfung bestanden hast. Die Meister-Prüfung ist ein Selbsttest. Keine Urkunde ist eine anerkannte Qualifikation.</dd></div>
+        <div><dt>Was ist die Urkunde wert?</dt><dd>Sie bestätigt, dass du die Lektionen einer Stufe durchgearbeitet oder die Meister-Prüfung bestanden hast. Die Meister-Prüfung wird frei, wenn du alle Stufen geschafft hast, und ist ein Selbsttest. Keine Urkunde ist eine anerkannte Qualifikation.</dd></div>
         <div><dt>Was passiert mit meinen Daten?</dt><dd>Dein Fortschritt bleibt nur in deinem Browser, ganz ohne Anmeldung. Besuche werden ohne Cookies gezählt (GoatCounter). Feedback landet in einem Google-Formular, der Montags-Wurm kommt über Brevo, der Chatbot öffnet Google NotebookLM. Lieder und Videos laden erst, wenn du auf Abspielen tippst.</dd></div>
         <div><dt>Darf ich die Lektionen weitergeben?</dt><dd><strong style="font:inherit;font-weight:700">Für dich und dein Team:</strong> ja, gern und kostenlos. Nenn einfach „Prozesswurm“ als Quelle und verlinke prozesswurm.github.io.<br><strong style="font:inherit;font-weight:700">Für Schulungen, Unterricht oder Beratung</strong>, auch kostenlose: bitte vorher kurz fragen, per E-Mail an <a href="mailto:prozesswurm@gmail.com?subject=Nutzung%20der%20Lernwerkstatt">prozesswurm@gmail.com</a>.<br><strong style="font:inherit;font-weight:700">Nicht erlaubt:</strong> verkaufen, verändern oder als eigenes Material ausgeben. Die Figuren, Lieder und Videos bleiben unverändert.</dd></div>
         <div><dt>Fehler entdeckt?</dt><dd>Bitte melden. Unter jeder Lektion gibt es dafür einen Feedback-Knopf.</dd></div>
@@ -1212,10 +1228,13 @@ function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('sh
 
 function currentLevelIndex(){
   const st=Math.min(+S.place||0, LEVELS.length-1);
-  for(let i=st;i<LEVELS.length;i++){ if(countDone(LEVELS[i].ids) < LEVELS[i].ids.length) return i; }
-  for(let i=0;i<LEVELS.length;i++){ if(countDone(LEVELS[i].ids) < LEVELS[i].ids.length) return i; }
+  for(let i=st;i<LEVELS.length;i++){ if(!lvDone(LEVELS[i])) return i; }
+  for(let i=0;i<LEVELS.length;i++){ if(!lvDone(LEVELS[i])) return i; }
   return LEVELS.length-1;
 }
+/* C1 zählt als geschafft, sobald eine Vertiefung fertig ist (gleiche Regel wie Urkunde und Goldschatz) */
+function lvProg(lv){ const ids=lv.branches?goldBranch().ids:lv.ids; return {n:countDone(ids), tot:ids.length}; }
+function lvDone(lv){ const p=lvProg(lv); return p.n===p.tot; }
 
 function stats(){
   const d=S.done.length, k=S.known.length, li=currentLevelIndex(), lv=LEVELS[li];
@@ -1224,7 +1243,7 @@ function stats(){
   $('#statCards').textContent = `${k} / ${CARDS.length}`;
   $('#barCards').style.width = (k/CARDS.length*100)+'%';
   $('#statLevel').textContent = lv.code;
-  $('#barLevel').style.width = (countDone(lv.ids)/lv.ids.length*100)+'%';
+  { const pr=lvProg(lv); $('#barLevel').style.width = (pr.n/pr.tot*100)+'%'; }
   renderDig(); try{ renderChip(); renderGoal(); renderNudge(); }catch(e){}
 }
 
@@ -1247,23 +1266,44 @@ function digDoneHtml(plus){ const m=depth(), st=streak(), first=S.done.length===
   return `<div class="dig-done">${first?`<span class="dig-badge">Erster Spatenstich!</span>`:''}
     <div class="dig-row"><b>+${plus} m</b><span>Jetzt ${fmtM(m)} tief gegraben</span></div>
     ${st.n?`<div class="dig-streak">${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei</div>`:''}</div>`; }
-function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), st=streak();
-  el.innerHTML=`<img src="wurm.png?v=2" width="56" height="50" alt="" class="wimg">
+/* Weg zum Goldschatz: A1, A2, B1, B2, eine C1-Vertiefung, C2. Gleiche Regel wie die Urkunde "Alle Stufen". */
+function goldBranch(){ const br=LEVELS[4].branches; const full=br.find(b=>countDone(b.ids)===b.ids.length); if(full) return full;
+  return br.reduce((a,b)=>countDone(b.ids)>countDone(a.ids)?b:a, br[0]); }
+function goldPath(){ return LEVELS.map((lv,i)=>{ const ids=lv.branches?goldBranch().ids:lv.ids; return {code:lv.code, i, ids, n:countDone(ids), tot:ids.length}; }); }
+function goldLeft(){ return goldPath().reduce((a,x)=>a+x.tot-x.n,0); }
+const examOpen = () => grandEarned() || !!(S.exam&&S.exam.passed);
+const lessonsWord = n => n===1?'Lektion':'Lektionen';
+function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), st=streak(), path=goldPath(), left=goldLeft();
+  const done=path.reduce((a,x)=>a+x.n,0), all=path.reduce((a,x)=>a+x.tot,0), passed=!!(S.exam&&S.exam.passed), grand=grandEarned();
+  const k=path.findIndex(x=>x.n<x.tot), pos=k<0 ? 6.45 : Math.max(.45, k + Math.min(.85,Math.max(.15,path[k].n/path[k].tot)));
+  const chest=`<svg viewBox="0 0 58 44" width="52" height="40" aria-hidden="true">${passed&&grand
+    ?'<path d="M6 16 L29 2 L52 16Z" fill="#C07E2A" transform="rotate(-18 6 16)"/><circle cx="20" cy="17" r="5" fill="#F2C94C"/><circle cx="30" cy="15" r="5" fill="#F7D774"/><circle cx="39" cy="18" r="5" fill="#F2C94C"/>'
+    :'<path d="M4 18 Q29 0 54 18Z" fill="#C07E2A"/><rect x="25" y="14" width="8" height="12" rx="2" fill="#F2C94C"/>'}<rect x="4" y="18" width="50" height="24" rx="3" fill="#A0661F"/><rect x="4" y="16" width="50" height="5" fill="#F2C94C"/><rect x="12" y="18" width="4" height="24" fill="#F2C94C" opacity=".8"/><rect x="42" y="18" width="4" height="24" fill="#F2C94C" opacity=".8"/></svg>`;
+  const goal = passed&&grand ? `<span><b class="gold">Goldschatz gehoben.</b> Du hast die Meister-Prüfung bestanden.</span>`
+    : grand ? `<b class="gold">Der Goldschatz ist frei.</b><button type="button" class="dig-go" data-exam>Zur Meister-Prüfung</button>`
+    : `<span>Noch <b class="gold">${left} ${lessonsWord(left)}</b> bis zum Goldschatz, der Meister-Prüfung</span><span class="dig-bar"><i style="width:${Math.round(done/all*100)}%"></i></span>`;
+  el.innerHTML=`<div class="shaft" role="img" aria-label="Grabungsschacht: ${done} von ${all} Lektionen bis zum Goldschatz">
+      <span class="shaft-tunnel" style="height:${pos/6.9*100}%"></span>
+      ${path.map(x=>`<span class="sl sl${x.i+1}">${x.code}${x.n===x.tot?' ✓':''}</span>`).join('')}
+      <span class="sl-gold">${chest}</span>
+      <img src="wurm.png?v=2" width="52" height="47" alt="" class="shaft-worm" style="top:${pos/6.9*100}%">
+    </div>
     <div class="dig-body"><b>${fmtM(m)} tief gegraben</b>
+    <span class="dig-goal">${goal}</span>
     <span>${st.n?`${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei${st.thisWeek?'':'. Diese Woche ist noch offen.'}`:'Grab diese Woche eine Lektion, dann startet deine Serie.'}</span>
     ${S.done.length?`<span class="dig-badge">Erster Spatenstich</span>`:''}
-    <small>Jede Lektion bringt 10 m, jeder Praxisfall 5 m, jede gelernte Karte 1 m, die Meister-Prüfung 50 m. Nichts geht verloren.</small></div>`; }
+    <small>Jede Lektion gräbt dich tiefer. Für den Schatz reicht in C1 eine Vertiefung. Praxisfälle und Karten geben Bonusmeter.</small></div>`; }
 
 function renderLadder(){
   const cur = currentLevelIndex();
   $('#ladder').innerHTML = LEVELS.map((lv,i)=>{
-    const n=countDone(lv.ids), tot=lv.ids.length;
+    const {n,tot}=lvProg(lv);
     const state = n===tot ? `<span class="chip ok">geschafft</span>` : (i===cur ? `<span class="chip ok">du bist hier</span>` : ``);
     const br = lv.branches ? `<span class="branches">${lv.branches.map(b=>`<span class="chip">${esc(b.name)} ${countDone(b.ids)}/${b.ids.length}</span>`).join('')}</span>` : ``;
     return `<button type="button" class="layer" data-l="${i}" aria-label="Stufe ${lv.code}: ${esc(lv.name)}">
       <span class="code">${lv.code}${i===cur?`<img src="wurm.png?v=2" width="40" height="36" alt="" class="wimg">`:''}</span>
       <span class="body"><h3>${esc(lv.name)}</h3><p>${esc(lv.sub)}</p>${br}
-      <span class="row"><span class="bar"><i style="width:${n/tot*100}%"></i></span><span>${n} / ${tot}</span>${state}</span></span></button>`;
+      <span class="row"><span class="bar"><i style="width:${n/tot*100}%"></i></span><span>${n} / ${tot}${lv.branches?` · ${esc(goldBranch().name)}`:''}</span>${state}</span></span></button>`;
   }).join('') + examTile();
 }
 
@@ -1271,12 +1311,22 @@ function renderLadder(){
 /* Startkarte: immer genau ein nächster Schritt */
 function nextLesson(){
   const li=currentLevelIndex(), lv=LEVELS[li];
-  if(lv.branches){ const b=lv.branches.find(x=>countDone(x.ids)<x.ids.length)||lv.branches[0]; return {li, id:b.ids.find(id=>!isDone(id)), lv, label:`${lv.code} · ${b.name}`, ids:b.ids}; }
-  return {li, id:lv.ids.find(id=>!isDone(id)), lv, label:`${lv.code} · ${lv.name}`, ids:lv.ids};
+  if(lv.branches && !lvDone(lv)){ const b=goldBranch(); return {li, id:b.ids.find(id=>!isDone(id)), lv, label:`${lv.code} · ${b.name}`, ids:b.ids}; }
+  const id=lv.branches?undefined:lv.ids.find(id=>!isDone(id));
+  if(!lv.branches && id) return {li, id, lv, label:`${lv.code} · ${lv.name}`, ids:lv.ids};
+  // Pflichtweg fertig: weitere offene Lektionen, z. B. andere Vertiefungen in C1
+  for(let i=0;i<LEVELS.length;i++){ const L2=LEVELS[i]; const grp=L2.branches?L2.branches:[{name:L2.name, ids:L2.ids}];
+    for(const g of grp){ const nid=g.ids.find(x=>!isDone(x)); if(nid) return {li:i, id:nid, lv:L2, label:`${L2.code} · ${g.name}`, ids:g.ids}; } }
+  return {li, id:undefined, lv, label:`${lv.code} · ${lv.name}`, ids:lv.ids};
 }
 function renderHero(){
   try{ renderChip(); renderNudge(); }catch(e){}
   const n=nextLesson(), d=S.done.length, fresh=d===0;
+  if(grandEarned() && !(S.exam&&S.exam.passed)){ const w0=document.querySelector('#v-home > .where'), h0=$('#hero'); if(w0&&h0){ const rn=$('#reviewNudge'); (rn||h0).after(w0); }
+    const intro0=$('#intro'); if(intro0) intro0.hidden=true;
+    $('#hero').innerHTML=`<div class="hero"><div class="hero-top"><span class="hero-badge">★</span><span class="eyebrow">Alle Stufen geschafft</span></div>
+      <h2>Der Goldschatz ist frei: die Meister-Prüfung</h2><p>15 knifflige Praxisfragen quer durch alle Stufen. Ab 12 richtigen gibt es die Meisterurkunde.</p>
+      <button type="button" class="hero-btn" data-exam>Zur Meister-Prüfung →</button></div>`; return; }
   const intro=$('#intro'); if(intro) intro.hidden=!fresh;
   const w=document.querySelector('#v-home > .where'), h=$('#hero'); if(w&&h){ const rn=$('#reviewNudge'); (rn||h).after(w); }
   if(!n.id){
@@ -1284,13 +1334,13 @@ function renderHero(){
       <h2>Du hast alle ${ALL.length} Lektionen durchgegraben.</h2><p>Hol dir deine Urkunden unter „Mein Stand“ oder wiederhole die Begriffe.</p>
       <button type="button" class="hero-btn" data-hero="me">Zu meinen Urkunden</button></div>`; return;
   }
-  const l=L[n.id], pos=n.ids.indexOf(n.id)+1, pct=Math.round(countDone(n.lv.ids)/n.lv.ids.length*100);
+  const l=L[n.id], pos=n.ids.indexOf(n.id)+1, pct=Math.round(countDone(n.ids)/n.ids.length*100);
   $('#hero').innerHTML=`<div class="hero">
     <div class="hero-top"><span class="hero-badge">${n.lv.code}</span><span class="eyebrow">${fresh?'Hier startest du':'Weiter geht’s'} · ${esc(n.label)}</span></div>
     <h2>${esc(l.t)}</h2>
     <p>${esc(l.d)}</p>
     <div class="hero-meta"><span>Lektion ${pos} von ${n.ids.length}</span><span>${l.min} Minuten</span></div>
-    <div class="hero-bar" role="img" aria-label="Stufe ${n.lv.code} zu ${pct} Prozent geschafft"><i style="width:${pct}%"></i></div>
+    <div class="hero-bar" role="img" aria-label="${esc(n.label)} zu ${pct} Prozent geschafft"><i style="width:${pct}%"></i></div>
     <button type="button" class="hero-btn" data-hero="${n.id}">${fresh?'Erste Lektion starten':'Weiterlernen'} →</button>
     ${fresh?`<div class="hero-foot">Jede Lektion bringt dich 10 Meter tiefer.</div>`:''}
   </div>`;
@@ -1769,7 +1819,7 @@ function openLesson(id){
     const nextId = ctx.ids.find(x=>!isDone(x));
     if(nextId){ openLesson(nextId); return; }
     const lv = LEVELS[ctx.i];
-    if(countDone(lv.ids)===lv.ids.length) toast(`Stufe ${lv.code} geschafft. Der Prozesswurm gräbt tiefer.`);
+    if(lvDone(lv) && ctx.ids.every(isDone)) toast(`Stufe ${lv.code} geschafft. Der Prozesswurm gräbt tiefer.`);
     else toast(`Abschnitt geschafft`);
     openLevel(ctx.i, ctx.key);
   };
@@ -1807,12 +1857,13 @@ const EXAM = [
  {q:`Process Mining zeigt einen sauberen Ablauf, trotzdem beschweren sich alle. Woran kann das liegen?`, o:[`Ein Teil läuft auf Papier oder per Zuruf und ist für Process Mining unsichtbar`,`Process Mining irrt sich nie, die Beschwerden sind übertrieben`,`Die Beschwerden kommen von einer anderen Abteilung`], a:0, l:`i12`},
  {q:`Eine neue Arbeitsanweisung ist fertig, der Prozess dazu noch nicht modelliert. Was tust du?`, o:[`Das Dokument ausrollen und den Prozess mit festem Termin nachliefern`,`Warten, bis der Prozess komplett modelliert ist`,`Jeden Satz der Anweisung als Prozessschritt modellieren`], a:0, l:`v15`}
 ];
-function examTile(){ const ok=S.exam&&S.exam.passed;
-  return `<button type="button" class="layer exam-layer" data-exam aria-label="Meister-Prüfung"><span class="code">★★</span>
-    <span class="body"><h3>Meister-Prüfung</h3><p>${ok?'Bestanden. Du kannst sie jederzeit wiederholen.':'15 knifflige Praxisfragen quer durch alle Stufen. Am besten nach Stufe C2.'}</p>
-    <span class="row">${ok?'<span class="chip ok">bestanden</span>':'<span class="chip">ab 12 von 15</span>'}</span></span></button>`; }
+function examTile(){ const ok=S.exam&&S.exam.passed, open=examOpen(), left=goldLeft();
+  return `<button type="button" class="layer exam-layer${open?'':' locked'}" data-exam aria-label="Meister-Prüfung${open?'':', noch gesperrt'}"><span class="code">★</span>
+    <span class="body"><h3>Meister-Prüfung</h3><p>${ok?'Bestanden. Du kannst sie jederzeit wiederholen.':open?'Der Goldschatz ist frei: 15 knifflige Praxisfragen quer durch alle Stufen.':'Der Goldschatz ganz unten. Wird frei, wenn du alle Stufen geschafft hast. In C1 reicht eine Vertiefung.'}</p>
+    <span class="row">${ok?'<span class="chip ok">bestanden</span>':open?'<span class="chip ok">frei</span><span class="chip">ab 12 von 15</span>':`<span class="chip">noch ${left} ${lessonsWord(left)}</span>`}</span></span></button>`; }
 function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
 function openExam(){
+  if(!examOpen()){ const n=goldLeft(); toast(`Noch ${n} ${lessonsWord(n)} bis zur Meister-Prüfung. Der Prozesswurm gräbt weiter.`); return; }
   gc('/meister-pruefung','Meister-Prüfung');
   const v=$('#v-lesson'); const order=shuffle(EXAM.map((_,i)=>i)); const opts=order.map(i=>shuffle(EXAM[i].o.map((_,k)=>k)));
   const answers=[];
@@ -2097,7 +2148,9 @@ const BADGES = badgeList();
 const isEarned = b => b.key===`PRUEFUNG` ? !!(S.exam&&S.exam.passed) : b.key===`GESAMT` ? grandEarned() : countDone(b.ids)===b.ids.length;
 function grandEarned(){ const g=k=>{ const b=BADGES.find(x=>x.key===k); return b && countDone(b.ids)===b.ids.length; };
   return [`A1`,`A2`,`B1`,`B2`,`C2`].every(g) && BADGES.some(b=>b.code===`C1` && countDone(b.ids)===b.ids.length); }
-const GRAND = {key:`GESAMT`, code:`A1–C2`, title:`Prozesswurm-Meister: alle Stufen von A1 bis C2`, short:`Meister`, ids:[]};
+const GRAND = {key:`GESAMT`, code:`A1–C2`, title:`Alle Stufen von A1 bis C2`, short:`Alle Stufen`, ids:[]};
+function levelsDone(){ return [`A1`,`A2`,`B1`,`B2`,`C2`].filter(k=>{ const b=BADGES.find(x=>x.key===k); return b&&countDone(b.ids)===b.ids.length; }).length + (BADGES.some(b=>b.code===`C1`&&countDone(b.ids)===b.ids.length)?1:0); }
+const LVI = {A1:1,A2:2,B1:3,B2:4,C1:5,C2:6};
 const EXAMB = {key:`PRUEFUNG`, code:`★`, title:`Meister-Prüfung`, short:`Meister-Prüfung`, ids:[]};
 const allBadges = () => [...BADGES, GRAND, EXAMB];
 const today = () => new Date().toISOString().slice(0,10);
@@ -2108,9 +2161,10 @@ function updateBadges(){
 }
 function renderBadges(){
   $('#badges').innerHTML = allBadges().map(b=>{ const on=isEarned(b), gold=b.key===`GESAMT`||b.key===`PRUEFUNG`;
-    const prog = b.key===`PRUEFUNG` ? (on?'bestanden':'offen') : gold ? (on?'geschafft':'alle Stufen') : `${countDone(b.ids)}/${b.ids.length}`;
+    const prog = b.key===`PRUEFUNG` ? (on?'bestanden':examOpen()?'frei':'noch zu') : gold ? `${levelsDone()}/6 Stufen` : `${countDone(b.ids)}/${b.ids.length}`;
+    const code = b.key===`GESAMT` ? `<b class="small">A1–C2</b>` : b.key===`PRUEFUNG` ? `<b>★</b>` : `<b class="lv lv${LVI[b.code]}">${b.code}</b>`;
     return `<button type="button" class="badge ${on?'on':''} ${gold?'gold':''}" data-badge="${b.key}" ${on?'':'aria-disabled="true"'} aria-label="Abzeichen ${esc(b.title)}${on?', geschafft, Urkunde öffnen':', noch offen'}">
-      <img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><b>${b.key===`GESAMT`?'★':b.key===`PRUEFUNG`?'★★':b.code}</b><span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
+      <img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg">${code}<span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
 }
 $('#badges').addEventListener('click', e=>{ const b=e.target.closest('[data-badge]'); if(!b) return;
   const bd=allBadges().find(x=>x.key===b.dataset.badge); if(isEarned(bd)) openCert(bd.key,false); else if(bd.key===`PRUEFUNG`) openExam(); else toast(`Noch nicht geschafft. Der Prozesswurm gräbt weiter.`); });
@@ -2181,7 +2235,7 @@ function openCert(key, celebrate){
     ${celebrate?`<h2 class="section-title">${b.key==='GESAMT'?'Alle Stufen geschafft!':b.key==='PRUEFUNG'?'Meister-Prüfung bestanden!':'Stufe geschafft!'}</h2>`:`<h2 class="section-title">Deine Abschlussurkunde</h2>`}
     <div class="cheer">
       <div class="say k"><img src="kuddel.png?v=1" width="49" height="60" alt="" class="wimg"><p><b>Doktor Kuddelmuddel:</b> ${b.key==='GESAMT'?'Alle Stufen? Ich gebe auf. Der Schmarrn war tatsächlich nützlich.':b.key==='PRUEFUNG'?'Bestanden? Dann muss ich mir wohl neue Tricks ausdenken.':'Na gut. Vielleicht ist der Schmarrn doch nützlich.'}</p></div>
-      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> ${esc(b.title)} ${b.key==='PRUEFUNG'?'bestanden':'geschafft'}. Hier ist deine Urkunde.</p></div>
+      <div class="say w"><img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg"><p><b>Prozesswurm:</b> ${esc(b.title)} ${b.key==='PRUEFUNG'?'bestanden':'geschafft'}. Hier ist deine Urkunde.${b.key==='GESAMT'?' Und ganz unten wartet jetzt der Goldschatz: die Meister-Prüfung.':''}</p></div>
     </div>
     <div class="fb-card"><div><label for="certName">Dein Name für die Urkunde</label>
       <input type="text" id="certName" maxlength="60" placeholder="Vorname Nachname" value="${esc(S.name||'')}" autocomplete="name"></div>
@@ -2195,7 +2249,7 @@ function openCert(key, celebrate){
       <p class="hint" style="margin:0">Teilnahmebestätigung der kostenlosen Prozesswurm Lernwerkstatt, keine geprüfte Qualifikation. Dein Name bleibt in diesem Browser. Er steht nur dann im Link, wenn du die Urkunde teilst oder bei LinkedIn einträgst.</p>
     </div>
     <a class="nl-strip" href="https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVdWem9VyMNff-VNoTRBYAzOueDJjIsg2ujVdaPZ4yDhSMb-tlaIgg_-oOeSC1Ts4J1QHxs3_TwME7mZ5xJWayF2IRWz7kiKvsuT0zZwwbqN3QppFo8W1lraSVY3LeAKGHJrg5ju-T9oqiI7KnEBK0NfMHS_uS35AX1_lW6NGoTZMD-Yu9g==" target="_blank" rel="noopener" data-nl="app-urkunde"><img src="wurm.png?v=2" alt="" class="wimg"><span><b>Bleib dran: der Montags-Wurm</b><small>Bis zur nächsten Stufe jeden Montag ein Stück Prozesswissen per E-Mail. Kostenlos.</small></span><em>Kostenlos abonnieren</em></a>
-    ${celebrate?`<button type="button" class="primary" data-go="home">Weiter graben</button>`:''}`;
+    ${celebrate&&b.key==='GESAMT'?`<button type="button" class="primary" data-exam>Jetzt zur Meister-Prüfung</button>`:celebrate?`<button type="button" class="primary" data-go="home">Weiter graben</button>`:''}`;
   v.querySelectorAll('[data-nl]').forEach(a=>a.addEventListener('click',()=>gc('montags-wurm/'+a.dataset.nl,'Klick Montags-Wurm',true)));
   show('cert'); window.scrollTo(0,0);
   v.querySelectorAll('[data-go="home"]').forEach(x=>x.onclick=()=>{ renderLadder(); renderBadges(); show('home'); window.scrollTo(0,0); });
