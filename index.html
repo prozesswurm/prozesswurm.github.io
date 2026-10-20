@@ -555,6 +555,22 @@ body.in-lesson .app{padding-bottom:120px}
 .lc-foot{position:fixed;left:0;right:0;bottom:0;z-index:11;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding:12px max(16px,env(safe-area-inset-right,0px)) calc(12px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
 .lc-foot .primary{max-width:620px;margin:0 auto;font-size:18px;padding:16px}
 .seg3{grid-template-columns:1fr 1fr 1fr}
+.seg4{grid-template-columns:repeat(4,1fr)}
+.seg4 button{padding:10px 2px;font-size:14px;min-width:0}
+/* Praxisfälle: Kacheln mit Bild, Babbel-Prinzip */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.case{display:flex;flex-direction:column;text-align:left;border:0;padding:0;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;font:inherit;color:var(--fg);cursor:pointer;min-width:0}
+.case:active{transform:scale(.98)}
+.case-pic{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:var(--worm-soft)}
+.case-pic.k{background:var(--kuddel-soft)}
+.case-pic img{width:72%;height:auto;max-height:84%;object-fit:contain}
+.case-pic .seen{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:var(--worm);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
+.case b{display:block;font-family:var(--display);font-weight:800;font-size:15px;line-height:1.25;padding:10px 12px 4px}
+.case small{display:block;color:var(--muted);font-size:12.5px;padding:0 12px 12px}
+.lc-case-pic{width:62%;max-width:230px;margin:0 auto 6px;aspect-ratio:1/1;border-radius:24px;display:grid;place-items:center;background:var(--worm-soft)}
+.lc-case-pic.k{background:var(--kuddel-soft)}
+.lc-case-pic img{width:74%;height:auto;max-height:86%;object-fit:contain}
+.lc-done .case-btns{display:grid;gap:10px;margin-top:18px;text-align:left}
 .seg3 button{padding:10px 4px;font-size:14px}
 @media (max-width:440px){.ph:not([aria-selected="true"]) small{display:none}.ph[aria-selected="true"]{flex:2 1 0}}
 </style>
@@ -692,12 +708,25 @@ body.in-lesson .app{padding-bottom:120px}
 
   <section class="view" id="v-media" hidden>
     <h2 class="section-title">Entdecken</h2>
-    <div class="seg seg3" role="tablist" aria-label="Ansicht wählen">
+    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
       <button type="button" role="tab" data-mode="look" aria-selected="false">Begriffe</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten üben</button>
-      <button type="button" role="tab" data-mode="media" aria-selected="true">Lieder &amp; Videos</button>
+      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
+      <button type="button" role="tab" data-mode="media" aria-selected="true">Medien</button>
+      <button type="button" role="tab" data-mode="praxis" aria-selected="false">Praxis</button>
     </div>
     <div id="mediaList"></div>
+  </section>
+
+  <section class="view" id="v-praxis" hidden>
+    <h2 class="section-title">Entdecken</h2>
+    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
+      <button type="button" role="tab" data-mode="look" aria-selected="false">Begriffe</button>
+      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
+      <button type="button" role="tab" data-mode="media" aria-selected="false">Medien</button>
+      <button type="button" role="tab" data-mode="praxis" aria-selected="true">Praxis</button>
+    </div>
+    <p class="section-sub">Echte Fälle aus der Beratung. Eine Minute pro Fall: Was würdest du tun?</p>
+    <div class="cases" id="caseTiles"></div>
   </section>
 
   <section class="view" id="v-cert" hidden></section>
@@ -746,10 +775,11 @@ body.in-lesson .app{padding-bottom:120px}
 
   <section class="view" id="v-cards" hidden>
     <h2 class="section-title">Entdecken</h2>
-    <div class="seg seg3" role="tablist" aria-label="Ansicht wählen">
+    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
       <button type="button" role="tab" data-mode="look" aria-selected="true">Begriffe</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten üben</button>
-      <button type="button" role="tab" data-mode="media" aria-selected="false">Lieder &amp; Videos</button>
+      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
+      <button type="button" role="tab" data-mode="media" aria-selected="false">Medien</button>
+      <button type="button" role="tab" data-mode="praxis" aria-selected="false">Praxis</button>
     </div>
     <div id="lookPane">
       <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -1364,7 +1394,8 @@ function openTerm(t){
 function closeTerm(){ $('#sheet').hidden=true; $('#sheetBg').hidden=true; }
 
 let lookMode='look';
-function setMode(m){ if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards');
+function setMode(m){ if(m==='praxis'){ renderPraxis(); show('praxis'); document.querySelectorAll('#v-praxis [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='praxis'))); window.scrollTo(0,0); gc('/praxis','Praxisfälle'); return; }
+  if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards');
   document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.mode===m)));
   $('#lookPane').hidden = m!=='look'; $('#trainPane').hidden = m!=='train';
   if(m==='train'){ renderFilters(); buildQueue(); renderDeck(); } else renderLook();
@@ -1674,6 +1705,103 @@ function openLesson(id){
 }
 
 
+/* ---------- Praxisfälle (echte Erfahrungen aus der Beratung) ---------- */
+const CASES = [
+ {id:`f1`, fig:`k`, t:`Doppelt modelliert hält besser? Nein.`,
+  lage:`Eine neue Arbeitsanweisung ist fertig. Der erste Kunde will jeden Satz daraus noch einmal als Prozessschritt modellieren. Der zweite will so wenige Schritte wie möglich und das Dokument nur anhängen.`,
+  frage:`Was würdest du empfehlen?`,
+  o:[`Dokument sofort ausrollen, Prozess mit festem Termin nachliefern`,`Erst alles doppelt modellieren, dann ausrollen`,`Ein einziger Schritt im Modell, Dokument dran, fertig`], a:0,
+  tat:`Wir haben empfohlen, das Dokument sofort auszurollen, denn die meisten lesen ohnehin nur das Dokument. Der Prozess kommt danach und zeigt nur, was im Dokument fehlt: wer wann dran ist, was übergeben und was entschieden wird.`,
+  tipp:`Das Dokument erklärt, wie es geht. Der Prozess zeigt, wer wann dran ist.`, lesson:`v15`},
+ {id:`f2`, fig:`w`, t:`„Den Ablauf kenn ich doch schon.“`,
+  lage:`Im Termin will dir die Fachexpertin einen Ablauf erklären, den du schon aus mehreren Projekten zu kennen glaubst.`,
+  frage:`Was machst du?`,
+  o:[`Erklären lassen, zuhören und nachfragen`,`Abkürzen: Kenn ich, wir zeichnen gleich los`,`Die Lösung aus dem letzten Projekt zeigen`], a:0,
+  tat:`Auch einen bekannten Ablauf lässt sich der Prozesswurm vom Experten erklären. Fast immer steckt ein Detail drin, das anders ist als gedacht. Und wer zuhört und nicht Partei ergreift, bekommt ehrliche Antworten.`,
+  tipp:`Wer zuhört, erfährt, wie es wirklich läuft.`, lesson:`v06`},
+ {id:`f3`, fig:`w`, t:`Die richtige Frage statt der langen Runde`,
+  lage:`Die Runde diskutiert seit einer Stunde über den Ablauf. Jeder erzählt seine Sicht, aufgeschrieben ist noch nichts.`,
+  frage:`Was bringt euch weiter?`,
+  o:[`Fragen: Wer macht wann was genau?`,`Weiterreden, bis sich alle einig sind`,`Den Ablauf allein aufschreiben und verteilen`], a:0,
+  tat:`Eine einfache Frage ordnet das Gespräch: Wer macht wann was genau? Schritt für Schritt, mit der Rolle dazu. Plötzlich wird sichtbar, wo Lücken sind und wo zwei dasselbe machen.`,
+  tipp:`Gute Abläufe beginnen mit der Frage: Wer macht wann was?`, lesson:`k13`},
+ {id:`f4`, fig:`k`, t:`Komplette Gegenwehr? Zeig einen Entwurf.`,
+  lage:`Das Team blockt: „Brauchen wir nicht“, „haben wir schon“, „keine Zeit“. Über den Ablauf zu reden, scheint unmöglich.`,
+  frage:`Was hilft jetzt?`,
+  o:[`Einen mit KI erstellten Entwurf zeigen und darüber reden`,`Den Prozess von oben anordnen lassen`,`Das Thema ein halbes Jahr liegen lassen`], a:0,
+  tat:`Wenn gar nichts geht, legt der Prozesswurm einen fertigen Entwurf auf den Tisch, schnell mit KI erstellt. Über etwas Sichtbares redet es sich leichter. Bald heißt es „So stimmt das aber nicht“, und schon erzählen alle, wie es wirklich läuft.`,
+  tipp:`Über einen Entwurf redet man lieber als über ein leeres Blatt.`, lesson:`c04`},
+ {id:`f5`, fig:`w`, t:`Alles in einem Workshop? Lieber Schritt für Schritt.`,
+  lage:`Die Führung wünscht sich den kompletten Ablauf bis Freitag. Ein großer Workshop mit allen Beteiligten, einmal durch, fertig.`,
+  frage:`Wie gehst du vor?`,
+  o:[`In kurzen Terminen Schritt für Schritt mit den Experten`,`Ein Tag Workshop mit allen, dann ist es fertig`,`Den Ablauf allein entwerfen und abnicken lassen`], a:0,
+  tat:`Prozessmanagement braucht Zeit. Statt eines Riesen-Workshops arbeitet der Prozesswurm in kurzen Terminen mit den Menschen, die den Ablauf wirklich machen. So bleibt Zeit zum Nachdenken, und das Ergebnis wird getragen statt nur abgenickt.`,
+  tipp:`Lieber kleine Schritte mit den Richtigen als ein großer mit allen.`, lesson:`k16`}
+];
+const CASE_KEY='pw-praxis-gesehen';
+function casesSeen(){ try{ return JSON.parse(localStorage.getItem(CASE_KEY)||'[]'); }catch(e){ return []; } }
+function markCase(id){ try{ const s=casesSeen(); if(!s.includes(id)){ s.push(id); localStorage.setItem(CASE_KEY, JSON.stringify(s)); } }catch(e){} }
+const casePic = c => c.fig==='k' ? `kuddel-full.png?v=1` : `wurm-full.png?v=1`;
+function renderPraxis(){
+  const seen=casesSeen();
+  $('#caseTiles').innerHTML = CASES.map(c=>`<button type="button" class="case" data-case="${c.id}">
+    <span class="case-pic ${c.fig==='k'?'k':''}"><img src="${casePic(c)}" alt="" loading="lazy">${seen.includes(c.id)?`<i class="seen" aria-label="angeschaut">✓</i>`:''}</span>
+    <b>${esc(c.t)}</b><small>1 Min. · Was würdest du tun?</small></button>`).join('');
+}
+function openCase(id){
+  const c=CASES.find(x=>x.id===id), pos=CASES.indexOf(c); gc('/praxis/'+id, c.t);
+  const v=$('#v-lesson');
+  const I=(p)=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
+  const next=CASES[pos+1], L1=L[c.lesson];
+  const cards=[
+    {k:'start', h:`<div class="lc-start"><div class="lc-case-pic ${c.fig==='k'?'k':''}"><img src="${casePic(c)}" alt=""></div>
+      <div class="eyebrow">Praxisfall ${pos+1} von ${CASES.length}</div><h2>${esc(c.t)}</h2>
+      <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}1 Min.</span><span>${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}1 Frage</span></div></div>`, btn:`Los geht's`},
+    {k:'exp', h:`<div class="lc-label">${I('<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/>')}Die Lage</div><div class="lc-text"><p>${esc(c.lage)}</p></div>`},
+    {k:'q', h:`<div class="lc-label">${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}Was würdest du tun?</div>
+      <div class="q lc-q"><p class="lc-qt">${esc(c.frage)}</p><div class="opts">${mixOrder(c.id+c.frage,c.o.length).map(oi=>`<button type="button" class="opt" data-o="${oi}">${esc(c.o[oi])}</button>`).join('')}</div><div class="fb" hidden></div></div>`},
+    {k:'ex', h:`<div class="lc-label">${I('<path d="M5 12l5 5L20 7"/>')}So haben wir es gemacht</div><div class="lc-ex">${esc(c.tat)}</div>`},
+    {k:'aha', h:`<div class="lc-aha"><img src="wurm-full.png?v=1" alt="" class="lc-aha-img"><div class="lc-label center">Tipp vom Prozesswurm</div><p>${esc(c.tipp)}</p></div>`},
+    {k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Fall gelöst!</h2><p class="lead">${esc(c.t)}</p>
+      <div class="case-btns">${L1?`<button type="button" class="secondary" data-case-lesson="${c.lesson}">Mehr dazu in der Lektion: ${esc(L1.t)}</button>`:''}
+      <button type="button" class="secondary" data-case-all>Alle Praxisfälle</button></div></div>`, btn: next?'Nächster Fall':'Zu den Praxisfällen'}
+  ];
+  v.innerHTML = `<div class="lc-top"><button type="button" class="lc-x" data-case-all aria-label="Praxisfall schließen">${I('<path d="M6 6l12 12M18 6 6 18"/>')}</button>
+      <div class="lc-bar">${cards.map((x,i)=>`<i data-i="${i}"></i>`).join('')}</div>
+      <button type="button" class="lc-prev" aria-label="Zurück">${I('<path d="M15 6l-6 6 6 6"/>')}</button></div>
+    ${cards.map((x,i)=>`<section class="lc lc-${x.k}" data-i="${i}" ${i?'hidden':''}>${x.h}</section>`).join('')}
+    <div class="lc-foot"><button type="button" class="primary lc-next" id="lcNext">Weiter</button></div>`;
+  show('lesson'); window.scrollTo(0,0);
+  let cur=0, answered=false; const btn=$('#lcNext');
+  function go(i){
+    cur=Math.max(0,Math.min(cards.length-1,i));
+    v.querySelectorAll('section.lc').forEach(s=>s.hidden = +s.dataset.i!==cur);
+    v.querySelectorAll('.lc-bar i').forEach(b=>b.className = +b.dataset.i<cur?'on':(+b.dataset.i===cur?'now':''));
+    v.querySelector('.lc-prev').style.visibility = cur>0 && cards[cur].k!=='done' ? 'visible':'hidden';
+    btn.textContent = cards[cur].btn || 'Weiter';
+    btn.disabled = cards[cur].k==='q' && !answered;
+    if(cards[cur].k==='q' && !answered) btn.textContent='Antwort antippen';
+    if(cards[cur].k==='done'){ markCase(id); gc('praxis-geschafft/'+id, c.t, true); }
+    window.scrollTo(0,0);
+  }
+  v.querySelector('.lc-prev').onclick=()=>go(cur-1);
+  const back=()=>{ setMode('praxis'); };
+  v.querySelectorAll('[data-case-all]').forEach(b=>b.onclick=back);
+  const ll=v.querySelector('[data-case-lesson]'); if(ll) ll.onclick=()=>openLesson(c.lesson);
+  const qEl=v.querySelector('.lc-q');
+  qEl.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    if(answered) return; answered=true;
+    const oi=+b.dataset.o, fb=qEl.querySelector('.fb'); fb.hidden=false;
+    qEl.querySelectorAll('.opt').forEach(x=>{ x.disabled=true; if(+x.dataset.o===c.a) x.classList.add('right'); });
+    if(oi===c.a){ fb.className='fb w'; fb.innerHTML=`<img src="wurm.png?v=2" width="30" height="27" alt="" class="wimg"><span>Genau so haben wir es gemacht.</span>`; }
+    else { b.classList.add('wrong'); fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>Kann man machen. Doktor Kuddelmuddel hätte es auch so versucht. Der Prozesswurm hat es anders gelöst.</span>`; }
+    btn.disabled=false; btn.textContent='Weiter';
+  });
+  btn.onclick=()=>{ if(cards[cur].k!=='done'){ go(cur+1); return; } if(next) openCase(next.id); else back(); };
+  go(0);
+}
+document.addEventListener('click', e=>{ const cs=e.target.closest('[data-case]'); if(cs) openCase(cs.dataset.case); });
+
 /* ---------- Hören und sehen ---------- */
 const PLAY_ICON = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>`;
 function songOf(l){
@@ -1893,9 +2021,9 @@ document.addEventListener('click', async e=>{
 /* Navigation */
 function show(name){
   stopSpeak(); closeTerm();
-  ['home','level','lesson','cards','cheat','feedback','media','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
+  ['home','level','lesson','cards','cheat','feedback','media','praxis','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
   $('.top').hidden = name!=='home'; document.body.classList.toggle('in-lesson', name==='lesson');
-  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : name==='media' ? 'cards' : name;
+  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : (name==='media'||name==='praxis') ? 'cards' : name;
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
