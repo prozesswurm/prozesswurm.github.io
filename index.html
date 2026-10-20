@@ -567,6 +567,28 @@ body.in-lesson .app{padding-bottom:120px}
 .lc-foot .primary{max-width:620px;margin:0 auto;font-size:18px;padding:16px}
 .seg3{grid-template-columns:1fr 1fr 1fr}
 .seg4{grid-template-columns:repeat(4,1fr)}
+.hub-hero{background:#F8E3C9;color:#3B2A1C;border-radius:20px;padding:20px 18px 16px;margin:4px 0 22px}
+.hub-hero h3{font-family:var(--display);font-weight:800;font-size:28px;line-height:1.1;margin:0 0 8px}
+.hub-hero p{margin:0 0 14px;font-size:16px;line-height:1.45}
+.hub-hero-row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hub-hero-row span{font-size:13.5px;font-weight:700;opacity:.8}
+.hub-go{border:0;background:var(--worm);color:#fff;font:inherit;font-family:var(--display);font-weight:800;font-size:17px;border-radius:999px;padding:12px 22px;cursor:pointer}
+.hub-sec{display:flex;gap:8px;align-items:center;font-size:16px;color:var(--muted);margin:18px 0 10px}
+.hub-sec .ico{width:22px;height:22px}
+.hub-card{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--surface);border:0;border-radius:18px;box-shadow:var(--shadow);padding:12px 12px 12px 18px;margin:0 0 10px;font:inherit;color:var(--fg);cursor:pointer;min-height:92px}
+.hub-card:active{transform:scale(.99)}
+.hub-card span{flex:1;display:grid;gap:3px;min-width:0}
+.hub-card b{font-family:var(--display);font-weight:800;font-size:18px;line-height:1.2}
+.hub-card small{font-size:14px;color:var(--muted)}
+.hub-card .hub-k{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--worm-ink)}
+.hub-term{margin-bottom:14px}
+.hub-ico{flex:none;width:68px;height:68px;border-radius:14px;display:grid;place-items:center;font-style:normal;overflow:hidden}
+.hub-ico .ico{width:34px;height:34px}
+.hub-ico.c1{background:#F2B48C;color:#6B3A1E}
+.hub-ico.c2{background:var(--worm-soft)}
+.hub-ico.c3{background:#F6D97A;color:#6B5320}
+.hub-ico.pic img{width:100%;height:100%;object-fit:cover}
+@media (prefers-color-scheme:dark){.hub-hero{background:#3A2E22;color:#F3E6D6}}
 .seg4 button{padding:10px 2px;font-size:14px;min-width:0}
 /* Praxisfälle: Kacheln mit Bild, Babbel-Prinzip */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -721,24 +743,30 @@ body.in-lesson .app{padding-bottom:120px}
   </section>
 
   <section class="view" id="v-media" hidden>
-    <h2 class="section-title">Entdecken</h2>
-    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
-      <button type="button" role="tab" data-mode="look" aria-selected="false">Begriffe</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
-      <button type="button" role="tab" data-mode="media" aria-selected="true">Medien</button>
-      <button type="button" role="tab" data-mode="praxis" aria-selected="false">Praxis</button>
-    </div>
+    <button type="button" class="back" data-hub>← Entdecken</button>
+    <h2 class="section-title">Lieder und Videos</h2>
     <div id="mediaList"></div>
   </section>
 
-  <section class="view" id="v-praxis" hidden>
+  <section class="view" id="v-hub" hidden>
     <h2 class="section-title">Entdecken</h2>
-    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
-      <button type="button" role="tab" data-mode="look" aria-selected="false">Begriffe</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
-      <button type="button" role="tab" data-mode="media" aria-selected="false">Medien</button>
-      <button type="button" role="tab" data-mode="praxis" aria-selected="true">Praxis</button>
+    <div id="hubTerm"></div>
+    <div class="hub-hero">
+      <h3>Tägliches Training</h3>
+      <p>Übe ein paar Begriffe, damit sie sitzen. Jede gelernte Karte bringt dich einen Meter tiefer.</p>
+      <div class="hub-hero-row"><span id="hubKnown"></span><button type="button" class="hub-go" data-hubgo="train">Los geht’s</button></div>
     </div>
+    <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/></svg>Wissen</div>
+    <button type="button" class="hub-card" data-hubgo="look"><span><b>Nachschlagewerk von A bis Z</b><small id="hubGloss"></small></span><i class="hub-ico c1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></i></button>
+    <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Praxis</div>
+    <button type="button" class="hub-card" data-hubgo="praxis"><span><b>Praxisfälle</b><small id="hubCases"></small></span><i class="hub-ico pic"><img src="praxis/f6.jpg?v=1" alt="" loading="lazy"></i></button>
+    <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg>Hören und sehen</div>
+    <button type="button" class="hub-card" data-hubgo="media"><span><b>Lieder und Kurzvideos</b><small id="hubMedia"></small></span><i class="hub-ico c3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></i></button>
+  </section>
+
+  <section class="view" id="v-praxis" hidden>
+    <button type="button" class="back" data-hub>← Entdecken</button>
+    <h2 class="section-title">Praxisfälle</h2>
     <p class="section-sub">Echte Fälle aus der Beratung. Eine Minute pro Fall: Was würdest du tun?</p>
     <div class="cases" id="caseTiles"></div>
   </section>
@@ -788,13 +816,8 @@ body.in-lesson .app{padding-bottom:120px}
   <section class="view lesson" id="v-lesson" hidden></section>
 
   <section class="view" id="v-cards" hidden>
-    <h2 class="section-title">Entdecken</h2>
-    <div class="seg seg4" role="tablist" aria-label="Ansicht wählen">
-      <button type="button" role="tab" data-mode="look" aria-selected="true">Begriffe</button>
-      <button type="button" role="tab" data-mode="train" aria-selected="false">Karten</button>
-      <button type="button" role="tab" data-mode="media" aria-selected="false">Medien</button>
-      <button type="button" role="tab" data-mode="praxis" aria-selected="false">Praxis</button>
-    </div>
+    <button type="button" class="back" data-hub>← Entdecken</button>
+    <h2 class="section-title" id="cardsTitle">Nachschlagewerk</h2>
     <div id="lookPane">
       <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input type="search" id="q" placeholder="Suchen, z. B. Kennzahl oder Workshop" aria-label="Begriffe, Lektionen und Werkzeuge durchsuchen" autocomplete="off"></div>
@@ -802,10 +825,9 @@ body.in-lesson .app{padding-bottom:120px}
     </div>
     <div id="trainPane" hidden>
     <div class="deck-head">
-      <h3 class="sub-title" style="margin:6px 0 0">Begriffe üben</h3>
+      <p class="section-sub" style="margin:0;flex:1;min-width:0">Karte antippen, Erklärung lesen, ehrlich sein. Was noch nicht sitzt, kommt wieder.</p>
       <button class="secondary" id="deckReset" type="button">Von vorn</button>
     </div>
-    <p class="section-sub">Karte antippen, Erklärung lesen, ehrlich sein. Was noch nicht sitzt, kommt in der nächsten Runde wieder.</p>
     <div class="filters" id="filters" role="tablist" aria-label="Stufe wählen"></div>
     <div id="deck"></div>
     </div>
@@ -1436,7 +1458,7 @@ function closeTerm(){ $('#sheet').hidden=true; $('#sheetBg').hidden=true; }
 
 let lookMode='look';
 function setMode(m){ if(m==='praxis'){ renderPraxis(); show('praxis'); document.querySelectorAll('#v-praxis [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='praxis'))); window.scrollTo(0,0); gc('/praxis','Praxisfälle'); return; }
-  if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards');
+  if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards'); const ct=$('#cardsTitle'); if(ct) ct.textContent = m==='train' ? 'Tägliches Training' : 'Nachschlagewerk';
   document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.mode===m)));
   $('#lookPane').hidden = m!=='look'; $('#trainPane').hidden = m!=='train';
   if(m==='train'){ renderFilters(); buildQueue(); renderDeck(); } else renderLook();
@@ -1745,6 +1767,22 @@ function openLesson(id){
   go(0);
 }
 
+
+/* ---------- Entdecken als Übersicht (Babbel-Prinzip) ---------- */
+function termOfDay(){ const day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5); return GLOSS[day % GLOSS.length]; }
+function renderHub(){
+  const t=termOfDay();
+  $('#hubTerm').innerHTML = t ? `<button type="button" class="hub-card hub-term" data-term="${esc(t.t)}"><span><small class="hub-k">Begriff des Tages · ${esc(t.lv)}</small><b>${esc(t.t)}</b><small>Antippen für die Erklärung</small></span><i class="hub-ico c2"><img src="wurm.png?v=2" alt="" width="40" height="36"></i></button>` : '';
+  $('#hubKnown').textContent = `${S.known.length} von ${CARDS.length} Karten sitzen`;
+  $('#hubGloss').textContent = `${GLOSS.length} Begriffe, einfach erklärt`;
+  $('#hubCases').textContent = `${CASES.length} echte Fälle aus der Beratung · je 1 Minute`;
+  $('#hubMedia').textContent = `${SONGS.length} Lieder und ${VIDEOS.length} Videos rund um Prozesse`;
+}
+function openHub(){ renderHub(); show('hub'); window.scrollTo(0,0); gc('/entdecken','Entdecken'); }
+document.addEventListener('click', e=>{
+  if(e.target.closest('[data-hub]')){ openHub(); return; }
+  const g=e.target.closest('[data-hubgo]'); if(g){ setMode(g.dataset.hubgo); window.scrollTo(0,0); }
+});
 
 /* ---------- Praxisfälle (echte Erfahrungen aus der Beratung) ---------- */
 const CASES = [
@@ -2098,13 +2136,13 @@ document.addEventListener('click', async e=>{
 /* Navigation */
 function show(name){
   stopSpeak(); closeTerm();
-  ['home','level','lesson','cards','cheat','feedback','media','praxis','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
+  ['home','level','lesson','cards','cheat','feedback','media','praxis','hub','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
   $('.top').hidden = name!=='home'; document.body.classList.toggle('in-lesson', name==='lesson');
-  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : (name==='media'||name==='praxis') ? 'cards' : name;
+  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : (name==='media'||name==='praxis'||name==='hub') ? 'cards' : name;
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
-  const t=b.dataset.tab; if(t!=='home') gc('/'+t); if(t==='cards') setMode(lookMode);
+  const t=b.dataset.tab; if(t==='cards'){ openHub(); return; } if(t!=='home') gc('/'+t);
   if(t==='cheat') renderTools();
   if(t==='home'){ renderLadder(); renderHero(); }
   if(t==='me'){ stats(); renderBadges(); }
