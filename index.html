@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Prozessmanagement lernen wie eine Sprache: 94 Lektionen von A1 bis C2, erklärt wie in der Sendung mit der Maus.">
+<meta name="description" content="Prozessmanagement lernen wie eine Sprache: 94 Lektionen von A1 bis C2, so erklärt, dass es jeder versteht.">
 <meta name="theme-color" content="#F2F5F0" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#131915" media="(prefers-color-scheme: dark)">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -389,6 +389,17 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .hero-btn:hover{transform:translateY(-1px)}
 .hero-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .hero-foot{margin-top:10px;text-align:center;font-size:13px;color:rgba(255,255,255,.8)}
+.dig-done{margin:14px auto 0;max-width:340px;background:var(--worm-soft);color:var(--worm-ink);border-radius:16px;padding:12px 14px;display:grid;gap:6px;justify-items:center;animation:pop .4s ease}
+.dig-row{display:flex;gap:10px;align-items:baseline;justify-content:center;flex-wrap:wrap}
+.dig-row b{font-family:var(--display);font-weight:800;font-size:24px}
+.dig-streak{font-size:14px;font-weight:700}
+.dig-badge{display:inline-block;background:var(--worm);color:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px}
+.dig-card{display:flex;gap:12px;align-items:center;background:var(--worm-soft);color:var(--worm-ink);border-radius:var(--r);padding:14px 16px;margin:4px 0 14px}
+.dig-card .wimg{flex:none}
+.dig-body{display:grid;gap:4px;justify-items:start;min-width:0}
+.dig-body b{font-family:var(--display);font-weight:800;font-size:20px}
+.dig-body span{font-size:14.5px}
+.dig-body small{font-size:12.5px;opacity:.8}
 .ladder{border:0;box-shadow:var(--shadow);border-radius:22px}
 .layer .body{padding:14px 16px}
 .extras{display:grid;gap:10px;margin-top:22px}
@@ -609,7 +620,7 @@ body.in-lesson .app{padding-bottom:120px}
     <div>
       <div class="eyebrow">Prozesswurm Lernwerkstatt</div>
       <h1>SALVE!</h1>
-      <p>Prozessmanagement, erklärt wie in der Sendung mit der Maus.</p>
+      <p>Prozessmanagement, so erklärt, dass es jeder versteht.</p>
     </div>
   </header>
 
@@ -636,7 +647,7 @@ body.in-lesson .app{padding-bottom:120px}
 
   <section class="view" id="v-me" hidden>
     <h2 class="section-title">Mein Stand</h2>
-    
+    <div class="dig-card" id="digCard"></div>
     <div class="stats">
     <div class="stat lvl"><b id="statLevel">A1</b><span>deine Stufe</span><div class="bar"><i id="barLevel" style="width:0%"></i></div></div>
     <div class="stat"><b id="statLessons">0 / 81</b><span>Lektionen</span><div class="bar"><i id="barLessons" style="width:0%"></i></div></div>
@@ -1173,7 +1184,34 @@ function stats(){
   $('#barCards').style.width = (k/CARDS.length*100)+'%';
   $('#statLevel').textContent = lv.code;
   $('#barLevel').style.width = (countDone(lv.ids)/lv.ids.length*100)+'%';
+  renderDig();
 }
+
+/* ---------- Grabungstiefe und Wochen-Serie (nichts geht verloren) ---------- */
+if(!Array.isArray(S.weeks)) S.weeks=[];
+function weekKey(d){ const t=new Date(Date.UTC(d.getFullYear(),d.getMonth(),d.getDate())); const day=t.getUTCDay()||7; t.setUTCDate(t.getUTCDate()+4-day); const y=t.getUTCFullYear(); const w=Math.ceil(((t-Date.UTC(y,0,1))/864e5+1)/7); return y*100+w; }
+function markActive(){ const k=weekKey(new Date()); if(!S.weeks.includes(k)){ S.weeks.push(k); save(); } }
+function depth(){ let c=0; try{ c=casesSeen().length; }catch(e){} return S.done.length*10 + c*5 + S.known.length; }
+function streak(){
+  const set=new Set(S.weeks); let d=new Date(); let n=0; const now=weekKey(d), thisWeek=set.has(now);
+  if(!thisWeek) d.setDate(d.getDate()-7);
+  while(set.has(weekKey(d))){ n++; d.setDate(d.getDate()-7); }
+  return {n, thisWeek};
+}
+const fmtM = m => `${m.toLocaleString('de-DE')} m`;
+function digLine(){ const m=depth(), st=streak();
+  if(!m) return `Jede Lektion bringt dich 10 Meter tiefer.`;
+  return `${fmtM(m)} tief gegraben${st.n?` · ${st.n} ${st.n===1?'Woche':'Wochen'} in Folge`:''}`; }
+function digDoneHtml(plus){ const m=depth(), st=streak(), first=S.done.length===1&&plus===10;
+  return `<div class="dig-done">${first?`<span class="dig-badge">Erster Spatenstich!</span>`:''}
+    <div class="dig-row"><b>+${plus} m</b><span>Jetzt ${fmtM(m)} tief gegraben</span></div>
+    ${st.n?`<div class="dig-streak">${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei</div>`:''}</div>`; }
+function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), st=streak();
+  el.innerHTML=`<img src="wurm.png?v=2" width="56" height="50" alt="" class="wimg">
+    <div class="dig-body"><b>${fmtM(m)} tief gegraben</b>
+    <span>${st.n?`${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei${st.thisWeek?'':'. Diese Woche ist noch offen.'}`:'Grab diese Woche eine Lektion, dann startet deine Serie.'}</span>
+    ${S.done.length?`<span class="dig-badge">Erster Spatenstich</span>`:''}
+    <small>Jede Lektion bringt 10 m, jeder Praxisfall 5 m, jede gelernte Karte 1 m. Nichts geht verloren.</small></div>`; }
 
 function renderLadder(){
   const cur = currentLevelIndex();
@@ -1198,7 +1236,7 @@ function nextLesson(){
 function renderHero(){
   const n=nextLesson(), d=S.done.length, fresh=d===0;
   const intro=$('#intro'); if(intro) intro.hidden=!fresh;
-  const w=document.querySelector('#v-home > .where'), h=$('#hero'); if(w&&h){ if(fresh) h.before(w); else h.after(w); }
+  const w=document.querySelector('#v-home > .where'), h=$('#hero'); if(w&&h){ h.after(w); }
   if(!n.id){
     $('#hero').innerHTML=`<div class="hero"><div class="hero-top"><span class="hero-badge">★</span><span class="eyebrow">Alles geschafft</span></div>
       <h2>Du hast alle ${ALL.length} Lektionen durchgegraben.</h2><p>Hol dir deine Urkunden unter „Mein Stand“ oder wiederhole die Begriffe.</p>
@@ -1212,7 +1250,7 @@ function renderHero(){
     <div class="hero-meta"><span>Lektion ${pos} von ${n.ids.length}</span><span>${l.min} Minuten</span></div>
     <div class="hero-bar" role="img" aria-label="Stufe ${n.lv.code} zu ${pct} Prozent geschafft"><i style="width:${pct}%"></i></div>
     <button type="button" class="hero-btn" data-hero="${n.id}">${fresh?'Erste Lektion starten':'Weiterlernen'} →</button>
-    <div class="hero-foot">${d} von ${ALL.length} Lektionen geschafft</div>
+    <div class="hero-foot">${digLine()}</div>
   </div>`;
 }
 document.addEventListener('click', e=>{ const b=e.target.closest('[data-hero]'); if(!b) return;
@@ -1642,7 +1680,7 @@ function openLesson(id){
   (l.quiz||[]).forEach((q,qi)=>cards.push({k:'q', qi, h:`<div class="lc-label">${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}Frage ${qi+1} von ${l.quiz.length}</div>
       <div class="q lc-q" data-q="${qi}"><p class="lc-qt">${esc(q.q)}</p><div class="opts">${mixOrder(q.q,q.o.length).map(oi=>`<button type="button" class="opt" data-o="${oi}">${esc(q.o[oi])}</button>`).join('')}</div><div class="fb" hidden></div></div>`}));
   const last = pos>=ctx.ids.length-1;
-  cards.push({k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Geschafft!</h2><p class="lead">${esc(l.t)}</p></div>
+  cards.push({k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Geschafft!</h2><p class="lead">${esc(l.t)}</p><div id="digDone"></div></div>
     <div class="mrows">
       <details class="mrow"><summary>${I('<path d="M4 20h4L19 9l-4-4L4 16z"/>')}<span><b>Für deinen Alltag</b><small>Freiwillig, 2 Minuten</small></span><i class="chev" aria-hidden="true"></i></summary>
         <div class="mrow-in"><p>${taskH}</p><textarea id="note-${id}" placeholder="Deine Notiz, nur für dich">${esc(S.notes[id]||'')}</textarea>
@@ -1677,7 +1715,7 @@ function openLesson(id){
     btn.textContent = c.btn || 'Weiter';
     btn.disabled = c.k==='q' && !solved.has(c.qi) && !wasDone;
     if(c.k==='q' && btn.disabled) btn.textContent='Antwort antippen';
-    if(c.k==='done' && !isDone(id)){ S.done.push(id); save(); gc('lektion-geschafft/'+id, l.t, true); stats(); renderLadder(); renderHero(); }
+    if(c.k==='done' && !isDone(id)){ S.done.push(id); markActive(); save(); gc('lektion-geschafft/'+id, l.t, true); stats(); renderLadder(); renderHero(); const dd=v.querySelector('#digDone'); if(dd) dd.innerHTML=digDoneHtml(10); }
     window.scrollTo(0,0);
   }
   v.querySelector('.lc-prev').onclick=()=>go(cur-1);
@@ -1801,7 +1839,7 @@ function openCase(id){
       <div class="q lc-q"><p class="lc-qt">${esc(c.frage)}</p><div class="opts">${mixOrder(c.id+c.frage,c.o.length).map(oi=>`<button type="button" class="opt" data-o="${oi}">${esc(c.o[oi])}</button>`).join('')}</div><div class="fb" hidden></div></div>`},
     {k:'ex', h:`<div class="lc-label">${I('<path d="M5 12l5 5L20 7"/>')}So haben wir es gemacht</div><div class="lc-ex">${esc(c.tat)}</div>`},
     {k:'aha', h:`<div class="lc-aha"><img src="wurm-full.png?v=1" alt="" class="lc-aha-img"><div class="lc-label center">Tipp vom Prozesswurm</div><p>${esc(c.tipp)}</p></div>`},
-    {k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Fall gelöst!</h2><p class="lead">${esc(c.t)}</p>
+    {k:'done', h:`<div class="lc-done"><div class="lc-check">${I('<path d="M5 12l5 5L20 7"/>')}</div><h2>Fall gelöst!</h2><p class="lead">${esc(c.t)}</p><div id="digDone"></div>
       <div class="case-btns">${L1?`<button type="button" class="secondary" data-case-lesson="${c.lesson}">Mehr dazu in der Lektion: ${esc(L1.t)}</button>`:''}
       <button type="button" class="secondary" data-case-all>Alle Praxisfälle</button></div></div>`, btn: next?'Nächster Fall':'Zu den Praxisfällen'}
   ];
@@ -1820,7 +1858,7 @@ function openCase(id){
     btn.textContent = cards[cur].btn || 'Weiter';
     btn.disabled = cards[cur].k==='q' && !answered;
     if(cards[cur].k==='q' && !answered) btn.textContent='Antwort antippen';
-    if(cards[cur].k==='done'){ markCase(id); gc('praxis-geschafft/'+id, c.t, true); }
+    if(cards[cur].k==='done'){ const isNew=!casesSeen().includes(id); markCase(id); if(isNew){ markActive(); const dd=v.querySelector('#digDone'); if(dd) dd.innerHTML=digDoneHtml(5); } renderHero(); gc('praxis-geschafft/'+id, c.t, true); }
     window.scrollTo(0,0);
   }
   v.querySelector('.lc-prev').onclick=()=>go(cur-1);
@@ -2043,7 +2081,7 @@ function renderDeck(){
       <button type="button" class="know" id="knowBtn">Sitzt</button>
     </div>`;
   $('#cardBtn').onclick=()=>$('#card').classList.toggle('flip');
-  $('#knowBtn').onclick=()=>{ const i=queue[pos]; if(!S.known.includes(i)) S.known.push(i); save(); stats(); pos++; renderDeck(); };
+  $('#knowBtn').onclick=()=>{ const i=queue[pos]; if(!S.known.includes(i)){ S.known.push(i); markActive(); } save(); stats(); pos++; renderDeck(); };
   $('#againBtn').onclick=()=>{ pos++; renderDeck(); };
 }
 $('#filters').addEventListener('click', e=>{ const b=e.target.closest('[data-f]'); if(!b) return; deckFilter=b.dataset.f; renderFilters(); buildQueue(); renderDeck(); });
@@ -2152,7 +2190,7 @@ function packState(){
   const d={}; [...new Set(S.done.map(id=>id[0]))].forEach(p=>{ const b=bitsFor(p); if(b) d[p]=b; });
   const k=S.known.slice().sort((a,b)=>a-b);
   const b={}; Object.entries(S.badges||{}).forEach(([key,v])=>b[key]=String(v).replace(/-/g,'').slice(2));
-  const o={v:1,d,k,b}; if((S.name||'').trim()) o.n=S.name.trim(); if(S.place) o.p=+S.place;
+  const o={v:1,d,k,b}; if((S.name||'').trim()) o.n=S.name.trim(); if(S.place) o.p=+S.place; if(S.weeks.length) o.w=S.weeks.slice(-60);
   const bytes=new TextEncoder().encode(JSON.stringify(o)); let bin=''; bytes.forEach(x=>bin+=String.fromCharCode(x));
   return btoa(bin).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
 }
@@ -2161,13 +2199,13 @@ function unpackState(code){
   const bin=atob(code.replace(/-/g,'+').replace(/_/g,'/')); const o=JSON.parse(new TextDecoder().decode(Uint8Array.from(bin,c=>c.charCodeAt(0))));
   if(!o||o.v!==1) throw new Error('alt');
   const done=[]; Object.entries(o.d||{}).forEach(([p,h])=>{ [...h].forEach((c,ci)=>{ const v=parseInt(c,16); for(let j=0;j<4;j++) if(v&(8>>j)) done.push(p+String(ci*4+j+1).padStart(2,'0')); }); });
-  return {done:done.filter(id=>L[id]), known:(o.k||[]).filter(i=>i>=0&&i<CARDS.length), badges:Object.fromEntries(Object.entries(o.b||{}).map(([k,v])=>[k,'20'+v.slice(0,2)+'-'+v.slice(2,4)+'-'+v.slice(4,6)])), name:o.n||'', place:+o.p||0};
+  return {done:done.filter(id=>L[id]), known:(o.k||[]).filter(i=>i>=0&&i<CARDS.length), badges:Object.fromEntries(Object.entries(o.b||{}).map(([k,v])=>[k,'20'+v.slice(0,2)+'-'+v.slice(2,4)+'-'+v.slice(4,6)])), name:o.n||'', place:+o.p||0, weeks:(o.w||[]).filter(x=>Number.isInteger(x))};
 }
 function mergeState(x){
   const before=S.done.length;
   S.done=[...new Set([...S.done,...x.done])]; S.known=[...new Set([...S.known,...x.known])];
   Object.entries(x.badges).forEach(([k,v])=>{ if(!S.badges[k]||v<S.badges[k]) S.badges[k]=v; });
-  if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
+  S.weeks=[...new Set([...S.weeks,...(x.weeks||[])])]; if(!(S.name||'').trim()&&x.name) S.name=x.name; if(x.place&&!S.place) S.place=x.place;
   save(); updateBadges(); stats(); renderLadder(); renderHero(); renderBadges();
   return S.done.length-before;
 }
