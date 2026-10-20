@@ -564,12 +564,15 @@ body.in-lesson .app{padding-bottom:120px}
 .case-pic{position:relative;aspect-ratio:1/1;display:grid;place-items:center;background:var(--worm-soft)}
 .case-pic.k{background:var(--kuddel-soft)}
 .case-pic img{width:72%;height:auto;max-height:84%;object-fit:contain}
+.case-pic.photo img{width:100%;height:100%;max-height:none;object-fit:cover}
 .case-pic .seen{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:var(--worm);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
 .case b{display:block;font-family:var(--display);font-weight:800;font-size:15px;line-height:1.25;padding:10px 12px 4px}
 .case small{display:block;color:var(--muted);font-size:12.5px;padding:0 12px 12px}
 .lc-case-pic{width:62%;max-width:230px;margin:0 auto 6px;aspect-ratio:1/1;border-radius:24px;display:grid;place-items:center;background:var(--worm-soft)}
 .lc-case-pic.k{background:var(--kuddel-soft)}
 .lc-case-pic img{width:74%;height:auto;max-height:86%;object-fit:contain}
+.lc-case-pic.photo{overflow:hidden;width:72%;max-width:300px}
+.lc-case-pic.photo img{width:100%;height:100%;max-height:none;object-fit:cover}
 .lc-done .case-btns{display:grid;gap:10px;margin-top:18px;text-align:left}
 .seg3 button{padding:10px 4px;font-size:14px}
 @media (max-width:440px){.ph:not([aria-selected="true"]) small{display:none}.ph[aria-selected="true"]{flex:2 1 0}}
@@ -1736,17 +1739,53 @@ const CASES = [
   frage:`Wie gehst du vor?`,
   o:[`In kurzen Terminen Schritt für Schritt mit den Experten`,`Ein Tag Workshop mit allen, dann ist es fertig`,`Den Ablauf allein entwerfen und abnicken lassen`], a:0,
   tat:`Prozessmanagement braucht Zeit. Statt eines Riesen-Workshops arbeitet der Prozesswurm in kurzen Terminen mit den Menschen, die den Ablauf wirklich machen. So bleibt Zeit zum Nachdenken, und das Ergebnis wird getragen statt nur abgenickt.`,
-  tipp:`Lieber kleine Schritte mit den Richtigen als ein großer mit allen.`, lesson:`k16`}
+  tipp:`Lieber kleine Schritte mit den Richtigen als ein großer mit allen.`, lesson:`k16`},
+ {id:`f6`, fig:`w`, t:`Seit Jahren Streit: Wem gehört der Prozess?`,
+  lage:`Zwei Bereiche liegen sich seit Jahren in den Haaren. Beide arbeiten am selben Ablauf, keiner will die Verantwortung übernehmen, und jede Runde endet im alten Streit.`,
+  frage:`Wie gehst du vor?`,
+  o:[`Neutral bleiben, einzeln reden und den Prozess notfalls aufteilen`,`Alle an einen Tisch und so lange diskutieren, bis einer nachgibt`,`Selbst festlegen, wer den Prozess bekommt`], a:0,
+  tat:`Der Prozesswurm ist die neutrale Zone. Erst redet er mit jedem Bereich einzeln, ohne Publikum. Können sie sich danach immer noch nicht einigen, wer die 51 Prozent am Prozess hat, teilt er den Ablauf auf: Jeder Teil enthält nur die eigenen Tätigkeiten, dazwischen stehen klare Schnittstellen. Das geht so lange, bis ein Fachbereich sagt: „Okay, den übernehme ich gern.“`,
+  tipp:`Wer neutral bleibt, wird gehört. Wer Partei ergreift, verliert beide Seiten.`, lesson:`b02`},
+ {id:`f7`, fig:`w`, t:`Oldschool, aber wirksam: ausdrucken und ab ans Whiteboard`,
+  lage:`Seit Wochen klickt sich das Team durch Modelle am Bildschirm. Jeder sieht nur seinen Ausschnitt, und den großen Zusammenhang hat keiner mehr vor Augen.`,
+  frage:`Was hilft jetzt?`,
+  o:[`Prozess und Dokumente ausdrucken und gemeinsam von A bis Z durchgehen`,`Noch ein Werkzeug einführen, das alles automatisch zeigt`,`Jeder prüft seinen Teil allein am Rechner`], a:0,
+  tat:`Manchmal ist die alte Methode die beste. Der Prozesswurm druckt den Prozess und die dazugehörigen Dokumente aus und hängt alles an die Wand. Dann geht das Team gemeinsam von A bis Z durch, mit Stift in der Hand. Lücken, doppelte Schritte und Brüche zwischen Prozess und Dokument fallen auf Papier viel schneller auf. Ob das passt, hängt von der Gruppe ab, aber probieren lohnt sich.`,
+  tipp:`Was an der Wand hängt, schauen sich alle gemeinsam an.`, lesson:`g03`},
+ {id:`f8`, fig:`w`, t:`Die Fragerunde: umdrehen und zuhören`,
+  lage:`Eine Kollegin steckt mit einem Problem fest. Sie hat schon alles probiert, und im Gespräch dreht sie sich nur noch im Kreis.`,
+  frage:`Wie hilfst du ihr am besten?`,
+  o:[`Fragerunde: Sie schildert, dreht sich um, die Gruppe sucht Lösungen`,`Sofort deine eigene Lösung vorschlagen`,`Das Problem an die Führung weitergeben`], a:0,
+  tat:`So läuft die Fragerunde: Eine Person schildert der Gruppe ausführlich ihr Problem. Dann dreht sie sich um. Sie hört zu, sagt aber nichts. Die Gruppe diskutiert das Problem und sammelt mehrere Lösungen. Zum Schluss dreht sich die Person wieder um und sagt, was ihr weiterhilft. Weil sie nicht verteidigen muss, hört sie Ideen, auf die sie allein nie gekommen wäre.`,
+  tipp:`Wer nicht antworten muss, hört besser zu.`, lesson:`k16`},
+ {id:`f9`, fig:`k`, t:`Neuer Prozess? Erst die Menschen, dann der Knopf.`,
+  lage:`Der neue Ablauf ist fertig, die Technik steht. Morgen soll er live gehen. Die Kolleginnen und Kollegen, die damit arbeiten müssen, erfahren es aus einer Rundmail.`,
+  frage:`Was fehlt hier?`,
+  o:[`Rechtzeitig einweisen, schulen und abholen`,`Nichts, eine gute Mail reicht`,`Mehr Technik, damit keiner etwas falsch machen kann`], a:0,
+  tat:`Eine Prozessänderung wird nicht einfach ausgerollt. Die Menschen, die den Ablauf leben müssen, werden rechtzeitig eingebunden: Sie erfahren, warum sich etwas ändert, werden geschult und wissen, wen sie nach dem Start fragen können. Nicht alles lässt sich technisch lösen. Ein Prozess funktioniert erst, wenn die Kolleginnen und Kollegen ihn verstanden haben.`,
+  tipp:`Prozesse werden von Menschen gelebt, nicht von Knöpfen.`, lesson:`k06`},
+ {id:`f10`, fig:`w`, t:`Frag die, die es wirklich machen`,
+  lage:`Für die Prozessaufnahme schickt dir der Bereich die Führungskraft, die den Ablauf „im Groben kennt“. Die Leute, die ihn täglich machen, haben angeblich keine Zeit.`,
+  frage:`Mit wem sprichst du?`,
+  o:[`Mit denen, die den Ablauf selbst erlebt haben oder täglich machen`,`Mit der Führungskraft, das spart Zeit`,`Mit niemandem, das Handbuch reicht`], a:0,
+  tat:`Der Prozesswurm spricht mit den Experten, nicht mit den Verwaltern. Also mit denen, die den Ablauf schon einmal durchlebt haben oder ihn täglich durchleben müssen. Nur dort bekommst du die volle Wahrheit: die Umwege, die Abkürzungen und das Wissen, das in keinem Handbuch steht.`,
+  tipp:`Die Wahrheit über einen Prozess kennt, wer ihn macht.`, lesson:`k07`},
+ {id:`f11`, fig:`w`, t:`Redesign? Erst die großen Fragen.`,
+  lage:`Ein alter Prozess soll überarbeitet werden. Das Team will sofort loszeichnen und die Kästchen neu sortieren.`,
+  frage:`Womit startest du?`,
+  o:[`Mit Grundfragen: Verstanden? Gelebt? Zeitgemäß? Richtig angesiedelt?`,`Das alte Modell kopieren und schöner machen`,`Gleich in der Software umbauen`], a:0,
+  tat:`Vor jedem Redesign stellt der Prozesswurm die großen Fragen: Wurde das bisherige Modell überhaupt verstanden? Wurde der Prozess in der Vergangenheit wirklich gelebt? Ist er noch zeitgemäß? Welche Schnittstellen hängen daran, und welche Auswirkungen haben die Änderungen? Ist der Prozess am richtigen Ort angesiedelt? Und wer ist eigentlich die Zielgruppe? Erst danach wird gezeichnet.`,
+  tipp:`Erst fragen, dann zeichnen. Sonst wird das Alte nur hübscher.`, lesson:`v11`}
 ];
 const CASE_KEY='pw-praxis-gesehen';
 function casesSeen(){ try{ return JSON.parse(localStorage.getItem(CASE_KEY)||'[]'); }catch(e){ return []; } }
 function markCase(id){ try{ const s=casesSeen(); if(!s.includes(id)){ s.push(id); localStorage.setItem(CASE_KEY, JSON.stringify(s)); } }catch(e){} }
-const casePic = c => c.fig==='k' ? `kuddel-full.png?v=1` : `wurm-full.png?v=1`;
+const casePic = c => `praxis/${c.id}.jpg?v=1`;
 function renderPraxis(){
   const seen=casesSeen();
   $('#caseTiles').innerHTML = CASES.map(c=>`<button type="button" class="case" data-case="${c.id}">
-    <span class="case-pic ${c.fig==='k'?'k':''}"><img src="${casePic(c)}" alt="" loading="lazy">${seen.includes(c.id)?`<i class="seen" aria-label="angeschaut">✓</i>`:''}</span>
-    <b>${esc(c.t)}</b><small>1 Min. · Was würdest du tun?</small></button>`).join('');
+    <span class="case-pic photo"><img src="${casePic(c)}" alt="" loading="lazy">${seen.includes(c.id)?`<i class="seen" aria-label="angeschaut">✓</i>`:''}</span>
+    <b>${esc(c.t)}</b><small>1 Min.</small></button>`).join('');
 }
 function openCase(id){
   const c=CASES.find(x=>x.id===id), pos=CASES.indexOf(c); gc('/praxis/'+id, c.t);
@@ -1754,7 +1793,7 @@ function openCase(id){
   const I=(p)=>`<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
   const next=CASES[pos+1], L1=L[c.lesson];
   const cards=[
-    {k:'start', h:`<div class="lc-start"><div class="lc-case-pic ${c.fig==='k'?'k':''}"><img src="${casePic(c)}" alt=""></div>
+    {k:'start', h:`<div class="lc-start"><div class="lc-case-pic photo"><img src="${casePic(c)}" alt=""></div>
       <div class="eyebrow">Praxisfall ${pos+1} von ${CASES.length}</div><h2>${esc(c.t)}</h2>
       <div class="lc-chips"><span>${I('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>')}1 Min.</span><span>${I('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.3 2.4c-.5.2-.8.6-.8 1.1M12 16.5h.01"/>')}1 Frage</span></div></div>`, btn:`Los geht's`},
     {k:'exp', h:`<div class="lc-label">${I('<path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/>')}Die Lage</div><div class="lc-text"><p>${esc(c.lage)}</p></div>`},
