@@ -57,7 +57,7 @@ const head = (title, desc, url, img) => `<!doctype html>
 <a class="top" href="/"><img src="/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
 
 const foot = `</main><footer>Kostenlos von Prozesswurm, ohne Anmeldung und ohne Werbung. Für dich und dein Team frei nutzbar, bitte „Prozesswurm“ als Quelle nennen.<br>
-<a href="/lektionen.html">Alle Lektionen</a> · <a href="/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></footer></body></html>\n`;
+<a href="/lektionen.html">Alle Lektionen</a> · <a href="/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/impressum">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></footer></body></html>\n`;
 
 fs.mkdirSync(path.join(ROOT, 'lektion'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'lektion'))) if (f.endsWith('.html') && !L[f.slice(0, -5)]) fs.unlinkSync(path.join(ROOT, 'lektion', f));
