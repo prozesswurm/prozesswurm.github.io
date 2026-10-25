@@ -57,7 +57,7 @@ const head = (title, desc, url, img) => `<!doctype html>
 <a class="top" href="/"><img src="/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
 
 const foot = `</main><footer>Kostenlos von Prozesswurm, ohne Anmeldung und ohne Werbung. Für dich und dein Team frei nutzbar, bitte „Prozesswurm“ als Quelle nennen.<br>
-<a href="/lektionen.html">Alle Lektionen</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></footer></body></html>\n`;
+<a href="/lektionen.html">Alle Lektionen</a> · <a href="/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></footer></body></html>\n`;
 
 fs.mkdirSync(path.join(ROOT, 'lektion'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'lektion'))) if (f.endsWith('.html') && !L[f.slice(0, -5)]) fs.unlinkSync(path.join(ROOT, 'lektion', f));
@@ -96,12 +96,28 @@ ${levels.map(lv => `<h2>${lv.code} · ${esc(lv.name)}</h2><p>${esc(lv.sub)}</p>`
 ` + foot;
 fs.writeFileSync(path.join(ROOT, 'lektionen.html'), overview);
 
+// Hilfe als eigene Seite (gleiche Inhalte wie in der App, Quelle: const HELP in index.html)
+const help = JSON.parse(html.match(/const HELP = (\[.*?\]);\n/s)[1]);
+const helpGroups = [...new Set(help.map(h => h.g))];
+const slug = g => g.toLowerCase().replace(/[^a-zäöüß]+/g, '-').replace(/^-|-$/g, '');
+const helpBody = h => [...(h.a || []).map(p => `<p>${esc(p)}</p>`), h.s ? `<ol>${h.s.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : '', ...(h.a2 || []).map(p => `<p>${esc(p)}</p>`)].join('\n');
+const helpPage = head('Hilfe: So funktioniert die Prozesswurm Lernwerkstatt',
+  'Anleitung zur kostenlosen Prozesswurm Lernwerkstatt: erste Schritte, Lektionen, Werkzeuge, Team-Lernpfad, Urkunden, Fortschritt sichern und Datenschutz.',
+  `${BASE}hilfe.html`) + `
+<h1>Hilfe: So funktioniert die Lernwerkstatt</h1>
+<p class="lead">Alle Fragen und Antworten zur Prozesswurm Lernwerkstatt. Zum Nachlesen, Ausdrucken und Weiterschicken, zum Beispiel an dein Team oder deine Kursgruppe.</p>
+<div class="box">${helpGroups.map(g => `<a href="#${slug(g)}">${esc(g)}</a>`).join(' · ')}</div>
+${helpGroups.map(g => `<h2 id="${slug(g)}">${esc(g)}</h2>\n` + help.filter(h => h.g === g).map(h => `<h3 id="${h.id}" style="font-size:18px;margin:22px 0 6px">${esc(h.q)}</h3>\n${helpBody(h)}`).join('\n')).join('\n')}
+<a class="cta" href="/">Zur Lernwerkstatt →</a>
+` + foot;
+fs.writeFileSync(path.join(ROOT, 'hilfe.html'), helpPage);
+
 // Sitemap und robots.txt
-const urls = [BASE, `${BASE}lektionen.html`, `${BASE}mediathek.html`, ...order.map(id => `${BASE}lektion/${id}.html`)];
+const urls = [BASE, `${BASE}lektionen.html`, `${BASE}hilfe.html`, `${BASE}mediathek.html`, ...order.map(id => `${BASE}lektion/${id}.html`)];
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${BASE}sitemap.xml\n`);
-console.log(`Fertig: ${order.length} Lektionsseiten, Übersicht, Sitemap mit ${urls.length} Adressen.`);
+console.log(`Fertig: ${order.length} Lektionsseiten, Übersicht, Hilfe (${help.length} Fragen), Sitemap mit ${urls.length} Adressen.`);
