@@ -394,6 +394,27 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .dig-row b{font-family:var(--display);font-weight:800;font-size:24px}
 .dig-streak{font-size:14px;font-weight:700}
 .dig-badge{display:inline-block;background:var(--worm);color:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px}
+/* Grubenlampe: brennt bei laufender Wochenserie */
+:root{--lamp-frame:#8A5A1E}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--lamp-frame:#D9A066}}
+:root[data-theme="dark"]{--lamp-frame:#D9A066}
+.lamp{display:inline-block;flex:none;vertical-align:middle;overflow:visible}
+.lamp .flame{transform-box:fill-box;transform-origin:50% 100%;animation:flick 1.8s ease-in-out infinite alternate}
+.lamp .glow{animation:glow 1.8s ease-in-out infinite alternate}
+.lamp.dim .flame{opacity:.55;animation:none}.lamp.dim .glow{opacity:.25;animation:none}
+.lamp.off .flame,.lamp.off .glow{display:none}
+@keyframes flick{0%{transform:scale(1,1)}40%{transform:scale(.93,1.07)}70%{transform:scale(1.04,.96)}100%{transform:scale(.97,1.04)}}
+@keyframes glow{from{opacity:.55}to{opacity:.9}}
+.chip-row{display:flex;align-items:center;gap:6px}
+.chip-txt{display:grid;justify-items:start;line-height:1.1}
+.streak{display:flex;align-items:center;gap:10px}
+.streak-txt{display:grid;gap:2px}
+.streak-txt b{font-size:17px!important}
+.weeks{display:flex;gap:5px;margin-top:2px}
+.weeks i{width:12px;height:12px;border-radius:50%;background:color-mix(in srgb,var(--worm-ink) 14%,transparent)}
+.weeks i.on{background:#F2994A;box-shadow:0 0 0 2px color-mix(in srgb,#F2994A 30%,transparent)}
+.weeks i.now{outline:2px solid #F2994A;outline-offset:1px}
+.dig-streak{display:flex;align-items:center;gap:8px}
 .dig-chip{margin-left:auto;flex:none;align-self:flex-start;display:grid;justify-items:center;gap:0;border:0;background:var(--worm-soft);color:var(--worm-ink);border-radius:16px;padding:8px 12px;font:inherit;cursor:pointer;line-height:1.15}
 .dig-chip b{font-family:var(--display);font-weight:800;font-size:16px;white-space:nowrap}
 .dig-chip small{font-size:11.5px;font-weight:700;white-space:nowrap}
@@ -798,6 +819,7 @@ body.in-lesson .app{padding-bottom:120px}
     <button type="button" class="hub-card" data-hubgo="look"><span><b>Nachschlagewerk von A&nbsp;bis&nbsp;Z</b><small id="hubGloss"></small></span><i class="hub-ico c1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></i></button>
     <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Praxis</div>
     <button type="button" class="hub-card" data-hubgo="praxis"><span><b>Praxisfälle</b><small id="hubCases"></small></span><i class="hub-ico c4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></i></button>
+    <button type="button" class="hub-card" data-hubgo="tools"><span><b>Werkzeugkiste</b><small id="hubTools"></small></span><i class="hub-ico c2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0 5 5L21 13l-8 8-2-2 8-8"/><path d="M14.7 6.3 13 4.6a4 4 0 0 0-5 5L3 14.6 5.4 17l5-5a4 4 0 0 0 5-5z"/></svg></i></button>
     <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1v-6h3zM3 19a2 2 0 0 0 2 2h1v-6H3z"/></svg>Hören und sehen</div>
     <button type="button" class="hub-card" data-hubgo="media"><span><b>Lieder und Kurzvideos</b><small id="hubMedia"></small></span><i class="hub-ico c3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></i></button>
   </section>
@@ -872,6 +894,7 @@ body.in-lesson .app{padding-bottom:120px}
   </section>
 
   <section class="view" id="v-cheat" hidden>
+    <button type="button" class="back" data-hub>← Entdecken</button>
     <h2 class="section-title">Werkzeugkiste</h2>
     <p class="section-sub">Was hast du gerade vor? Schritt wählen, Werkzeug antippen.</p>
     <div id="toolList"></div>
@@ -944,9 +967,6 @@ Schreib einfach und ohne Fachbegriffe, so dass es ein Geschäftsführer ohne Vor
     <button type="button" data-tab="cards">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v12"/></svg>
       Entdecken</button>
-    <button type="button" data-tab="cheat">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
-      Werkzeuge</button>
     <button type="button" data-tab="me">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
       Mein Stand</button>
@@ -1281,13 +1301,33 @@ function streak(){
   return {n, thisWeek};
 }
 const fmtM = m => `${m.toLocaleString('de-DE')} m`;
+const wk = n => `${n} ${n===1?'Woche':'Wochen'}`;
+/* Zustand der Grubenlampe: brennt (Serie, diese Woche gegraben), glimmt (Serie, diese Woche offen), aus (keine Serie) */
+const lampState = st => !st.n ? 'off' : st.thisWeek ? 'lit' : 'dim';
+function lamp(state, h){ const w=Math.round(h*0.75);
+  return `<svg class="lamp ${state}" width="${w}" height="${h}" viewBox="0 0 24 32" aria-hidden="true">
+    <defs><radialGradient id="lampGlow"><stop offset="0" stop-color="#F7C948" stop-opacity=".9"/><stop offset=".55" stop-color="#F2C94C" stop-opacity=".45"/><stop offset="1" stop-color="#F2C94C" stop-opacity="0"/></radialGradient></defs>
+    <circle class="glow" cx="12" cy="17" r="14" fill="url(#lampGlow)"/>
+    <path d="M8 6.5a4 4 0 0 1 8 0" fill="none" style="stroke:var(--lamp-frame)" stroke-width="1.8" stroke-linecap="round"/>
+    <rect x="6" y="6.5" width="12" height="3" rx="1.2" style="fill:var(--lamp-frame)"/>
+    <rect x="6.6" y="9.5" width="10.8" height="14.5" rx="3" fill="${state==='off'?'#C9CEC6':'#FFF1CC'}" fill-opacity="${state==='off'?'.45':'.9'}" style="stroke:var(--lamp-frame)" stroke-width="1.4"/>
+    <path class="flame" d="M12 11.6c1.9 2.3 3.6 4.4 3.6 6.6a3.6 3.6 0 0 1-7.2 0c0-2.2 1.7-4.3 3.6-6.6z" fill="#F2994A"/>
+    <path class="flame" d="M12 16c1 1.2 1.7 2.2 1.7 3.2a1.7 1.7 0 0 1-3.4 0c0-1 .7-2 1.7-3.2z" fill="#FFE07A"/>
+    <rect x="5" y="24" width="14" height="3.6" rx="1.3" style="fill:var(--lamp-frame)"/>
+  </svg>`; }
+function lastWeeks(n){ const set=new Set(S.weeks), out=[], d=new Date();
+  for(let i=n-1;i>=0;i--){ const x=new Date(d); x.setDate(d.getDate()-7*i); out.push({on:set.has(weekKey(x)), now:i===0}); }
+  return out; }
+function streakText(st){ return st.n ? `${wk(st.n)} in Folge dabei` : `Noch keine Serie`; }
+function streakHint(st){ return !st.n ? 'Grab diese Woche eine Lektion, dann zündet deine Grubenlampe.'
+  : st.thisWeek ? 'Deine Grubenlampe brennt. Bis nächste Woche!' : 'Diese Woche ist noch offen. Eine Lektion, und die Lampe brennt weiter.'; }
 function digLine(){ const m=depth(), st=streak();
   if(!m) return `Jede Lektion bringt dich 10 Meter tiefer.`;
   return `${fmtM(m)} tief gegraben${st.n?` · ${st.n} ${st.n===1?'Woche':'Wochen'} in Folge`:''}`; }
 function digDoneHtml(plus){ const m=depth(), st=streak(), first=S.done.length===1&&plus===10;
   return `<div class="dig-done">${first?`<span class="dig-badge">Erster Spatenstich!</span>`:''}
     <div class="dig-row"><b>+${plus} m</b><span>Jetzt ${fmtM(m)} tief gegraben</span></div>
-    ${st.n?`<div class="dig-streak">${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei</div>`:''}</div>`; }
+    ${st.n?`<div class="dig-streak">${lamp(lampState(st),30)}<span>${streakText(st)}</span></div>`:''}</div>`; }
 /* Weg zum Goldschatz: A1, A2, B1, B2, eine C1-Vertiefung, C2. Gleiche Regel wie die Urkunde "Alle Stufen". */
 function goldBranch(){ const br=LEVELS[4].branches; const full=br.find(b=>countDone(b.ids)===b.ids.length); if(full) return full;
   return br.reduce((a,b)=>countDone(b.ids)>countDone(a.ids)?b:a, br[0]); }
@@ -1312,7 +1352,8 @@ function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), s
     </div>
     <div class="dig-body"><b>${fmtM(m)} tief gegraben</b>
     <span class="dig-goal">${goal}</span>
-    <span>${st.n?`${st.n} ${st.n===1?'Woche':'Wochen'} in Folge dabei${st.thisWeek?'':'. Diese Woche ist noch offen.'}`:'Grab diese Woche eine Lektion, dann startet deine Serie.'}</span>
+    <div class="streak">${lamp(lampState(st),44)}<span class="streak-txt"><b>${streakText(st)}</b><span>${streakHint(st)}</span>
+      <span class="weeks" role="img" aria-label="Letzte sechs Wochen: ${lastWeeks(6).filter(x=>x.on).length} davon mit Lektion">${lastWeeks(6).map(x=>`<i class="${x.on?'on':''}${x.now?' now':''}"></i>`).join('')}</span></span></div>
     ${S.done.length?`<span class="dig-badge">Erster Spatenstich</span>`:''}
     <small>Jede Lektion gräbt dich tiefer. Für den Schatz reicht in C1 eine Vertiefung. Praxisfälle und Karten geben Bonusmeter.</small></div>`; }
 
@@ -1554,7 +1595,8 @@ function openTerm(t){
 function closeTerm(){ $('#sheet').hidden=true; $('#sheetBg').hidden=true; }
 
 let lookMode='look';
-function setMode(m){ if(m==='praxis'){ renderPraxis(); show('praxis'); document.querySelectorAll('#v-praxis [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='praxis'))); window.scrollTo(0,0); gc('/praxis','Praxisfälle'); return; }
+function setMode(m){ if(m==='tools'){ renderTools(); show('cheat'); window.scrollTo(0,0); gc('/werkzeuge','Werkzeugkiste'); return; }
+  if(m==='praxis'){ renderPraxis(); show('praxis'); document.querySelectorAll('#v-praxis [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='praxis'))); window.scrollTo(0,0); gc('/praxis','Praxisfälle'); return; }
   if(m==='media'){ renderMedia(); show('media'); document.querySelectorAll('#v-media [data-mode]').forEach(x=>x.setAttribute('aria-selected', String(x.dataset.mode==='media'))); window.scrollTo(0,0); return; } lookMode=m; show('cards'); const ct=$('#cardsTitle'); if(ct) ct.textContent = m==='train' ? 'Tägliches Training' : 'Nachschlagewerk';
   document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-selected', String(b.dataset.mode===m)));
   $('#lookPane').hidden = m!=='look'; $('#trainPane').hidden = m!=='train';
@@ -1956,7 +1998,8 @@ document.addEventListener('click', e=>{ if(e.target.closest('[data-exam]')) open
 const GOALS=[[`job`,`für den Job`],[`alltag`,`für den Alltag`],[`beratung`,`für die Beratung`],[`neugier`,`einfach aus Neugier`]];
 const todayStr = () => { const d=new Date(); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); };
 function renderChip(){ const el=$('#digChip'); if(!el) return; const st=streak();
-  el.innerHTML=`<b>${fmtM(depth())}</b>${st.n?`<small>${st.n} ${st.n===1?'Woche':'Wochen'}</small>`:''}`; }
+  el.innerHTML=`<span class="chip-row">${lamp(lampState(st),28)}<span class="chip-txt">${st.n?`<b>${wk(st.n)}</b><small>${fmtM(depth())}</small>`:`<b>${fmtM(depth())}</b><small>Serie starten</small>`}</span></span>`;
+  el.setAttribute('aria-label', `${streakText(st)}, ${fmtM(depth())} tief gegraben. Zu Mein Stand`); }
 function renderGoal(){ const el=$('#goalCard'); if(!el) return; const g=GOALS.find(x=>x[0]===S.goal);
   if(g && !el.dataset.edit){ el.innerHTML=`<div><small>Dein Ziel</small><b>Ich lerne Prozesse ${esc(g[1])}</b></div><button type="button" class="linkbtn" data-goal-edit>Ändern</button>`; return; }
   el.innerHTML=`<div style="width:100%"><small>Dein Ziel</small><b>Wofür lernst du Prozesse?</b><div class="goal-opts">${GOALS.map(x=>`<button type="button" class="goal-opt${S.goal===x[0]?' on':''}" data-goal="${x[0]}">${esc(x[1][0].toUpperCase()+x[1].slice(1))}</button>`).join('')}</div></div>`; }
@@ -1977,6 +2020,7 @@ function renderHub(){
   $('#hubKnown').textContent = `${S.known.length} von ${CARDS.length} Karten sitzen`;
   $('#hubGloss').textContent = `${GLOSS.length} Begriffe, einfach erklärt`;
   $('#hubCases').textContent = `${CASES.length} echte Fälle aus der Beratung · je 1 Minute`;
+  $('#hubTools').textContent = `${TOOLS.length} Werkzeuge mit Vorlage zum Ausfüllen`;
   $('#hubMedia').textContent = `${SONGS.length} Lieder und ${VIDEOS.length} Videos rund um Prozesse`;
 }
 function openHub(){ renderHub(); show('hub'); window.scrollTo(0,0); gc('/entdecken','Entdecken'); }
@@ -2346,7 +2390,7 @@ function show(name){
   stopSpeak(); closeTerm();
   ['home','level','lesson','cards','cheat','feedback','media','praxis','hub','cert','me','place','problem'].forEach(n=>$('#v-'+n).hidden = n!==name);
   $('.top').hidden = name!=='home'; document.body.classList.toggle('in-lesson', name==='lesson');
-  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : (name==='media'||name==='praxis'||name==='hub') ? 'cards' : name;
+  const tab = (name==='level'||name==='lesson'||name==='place'||name==='problem') ? 'home' : (name==='cert'||name==='feedback') ? 'me' : (name==='media'||name==='praxis'||name==='hub'||name==='cheat') ? 'cards' : name;
   document.querySelectorAll('.nav button').forEach(b=>{ if(b.dataset.tab===tab) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
 }
 document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
