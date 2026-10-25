@@ -394,6 +394,40 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .dig-row b{font-family:var(--display);font-weight:800;font-size:24px}
 .dig-streak{font-size:14px;font-weight:700}
 .dig-badge{display:inline-block;background:var(--worm);color:#fff;border-radius:999px;padding:4px 12px;font-weight:800;font-size:13px}
+/* Team-Lernpfad und Lektion der Woche */
+.team-card,.week-card{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);padding:16px;margin:18px 0 0;display:grid;gap:8px}
+.team-card{border:2px solid var(--worm)}
+.team-card h3,.week-card h3{font-family:var(--display);font-size:19px;line-height:1.2;margin:0}
+.team-bar{height:8px;border-radius:9px;background:var(--sunk);overflow:hidden}.team-bar i{display:block;height:100%;background:var(--worm);border-radius:9px}
+.team-list{margin:4px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.team-list button{all:unset;cursor:pointer;display:flex;gap:8px;align-items:baseline;font-size:14.5px;line-height:1.35}
+.team-list .ok{color:var(--worm-ink);font-weight:800}.team-list .todo{color:var(--muted)}
+.team-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.week-card{grid-template-columns:auto 1fr;align-items:center;gap:6px 12px}
+.week-card .wk-ico{grid-row:span 2;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:#F6D97A;color:#6B5320}
+.week-card .wk-go{grid-column:1/-1}
+.tb-name{width:100%;box-sizing:border-box;border:2px solid var(--line);border-radius:12px;padding:10px 12px;font:inherit;background:var(--surface);color:var(--fg)}
+.tb-lv{border:1px solid var(--line);border-radius:12px;padding:6px 10px;margin:6px 0}
+.tb-lv summary{cursor:pointer;font-weight:700}
+.tb-lv label{display:flex;gap:8px;align-items:flex-start;padding:5px 0;font-size:14.5px;line-height:1.35;cursor:pointer}
+.tb-lv input{margin-top:3px;accent-color:var(--worm)}
+.tb-count{font-weight:700;color:var(--worm-ink)}
+#printSheet{display:none}
+@media print{
+  body.printing>*:not(#printSheet){display:none!important}
+  body.printing #printSheet{display:block;color:#000;background:#fff;font-family:"Atkinson Hyperlegible",Arial,sans-serif;font-size:11.5pt;line-height:1.45}
+  #printSheet .ps-head{display:flex;align-items:center;gap:12px;border-bottom:3px solid #2E9A43;padding-bottom:8px;margin-bottom:12px}
+  #printSheet .ps-head img{width:54px;height:auto}
+  #printSheet .ps-k{font-size:9pt;letter-spacing:.08em;text-transform:uppercase;color:#1D7432;font-weight:700}
+  #printSheet h1{font-size:20pt;margin:0}
+  #printSheet h2{font-size:12.5pt;margin:14px 0 4px;color:#1D7432}
+  #printSheet .ps-meta{display:flex;gap:24px;margin:6px 0}
+  #printSheet ol{margin:0;padding-left:20px}#printSheet li{margin-bottom:3px}
+  #printSheet .ps-tpl div{min-height:26px;border-bottom:1px solid #999;padding-top:8px}
+  #printSheet .ps-trap{display:flex;gap:10px;align-items:center;border:1px solid #ccc;border-radius:8px;padding:8px 10px;margin-top:14px}
+  #printSheet .ps-trap img{width:30px;height:auto}
+  #printSheet .ps-foot{margin-top:18px;border-top:1px solid #ccc;padding-top:6px;font-size:9pt;color:#444}
+}
 /* Grubenlampe: brennt bei laufender Wochenserie */
 :root{--lamp-frame:#8A5A1E}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--lamp-frame:#D9A066}}
@@ -704,8 +738,10 @@ body.in-lesson .app{padding-bottom:120px}
 
   <section class="view" id="v-home">
     <div class="iab" id="iab" hidden><b>Du bist im Browser von Instagram, LinkedIn oder Facebook.</b>Dort geht dein Fortschritt leicht verloren. Öffne die Lernwerkstatt über die drei Punkte mit „Im Browser öffnen“ oder sichere unten deinen Speicherlink.</div>
+    <div id="teamCard"></div>
     <div id="hero"></div>
     <div id="reviewNudge"></div>
+    <div id="weekCard"></div>
     <div class="where">
       <h2>Was nervt dich gerade?</h2>
       <p class="where-sub">Tipp an, was passt. Du bekommst eine Erklärung in fünf Minuten und einen Handgriff für morgen.</p>
@@ -738,6 +774,8 @@ body.in-lesson .app{padding-bottom:120px}
     <p class="section-sub">Tippe ein Abzeichen an, dann gibt es die Urkunde.</p>
     <div class="badges" id="badges"></div>
     <div class="mrows">
+<details class="mrow" id="rowTeam"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20a6 6 0 0 1 12 0M15 20a4 4 0 0 1 7-2.6"/></svg><span><b>Fürs Team: Lernpfad verschicken</b><small>Lektionen auswählen, Link ans Team schicken</small></span><i class="chev" aria-hidden="true"></i></summary>
+    <div class="mrow-in" id="teamBuilder"></div></details>
 <details class="mrow" id="rowApp"><summary><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><span><b>Als App aufs Handy</b><small>Ohne Store, kostenlos</small></span><i class="chev" aria-hidden="true"></i></summary>
     <div class="mrow-in app-card" id="appCard">
       <p>Leg dir die Lernwerkstatt wie eine App auf den Startbildschirm: eigenes Symbol, öffnet sich ohne Adressleiste. Kein Store, keine Anmeldung, kostet nichts. Neue Lektionen sind automatisch da.</p>
@@ -816,6 +854,7 @@ body.in-lesson .app{padding-bottom:120px}
       <div class="hub-hero-row"><span id="hubKnown"></span><button type="button" class="hub-go" data-hubgo="train">Los geht’s</button></div>
     </div>
     <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V6a2 2 0 0 1 2-2h12v15H6a2 2 0 0 0-2 2z"/></svg>Wissen</div>
+    <a class="hub-card" href="lektionen.html" data-readall style="text-decoration:none"><span><b>Alle Lektionen zum Nachlesen</b><small>Jede Lektion als eigene Seite, gut zum Verlinken</small></span><i class="hub-ico c3"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 5h7a3 3 0 0 1 3 3v12a2 2 0 0 0-2-2H2z"/><path d="M22 5h-7a3 3 0 0 0-3 3v12a2 2 0 0 1 2-2h8z"/></svg></i></a>
     <button type="button" class="hub-card" data-hubgo="look"><span><b>Nachschlagewerk von A&nbsp;bis&nbsp;Z</b><small id="hubGloss"></small></span><i class="hub-ico c1"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></i></button>
     <div class="hub-sec"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Praxis</div>
     <button type="button" class="hub-card" data-hubgo="praxis"><span><b>Praxisfälle</b><small id="hubCases"></small></span><i class="hub-ico c4"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></i></button>
@@ -1384,6 +1423,7 @@ function nextLesson(){
 }
 function renderHero(){
   try{ renderChip(); renderNudge(); }catch(e){}
+  try{ renderTeamCard(); renderWeekCard(); }catch(e){}
   const n=nextLesson(), d=S.done.length, fresh=d===0;
   if(grandEarned() && !(S.exam&&S.exam.passed)){ const w0=document.querySelector('#v-home > .where'), h0=$('#hero'); if(w0&&h0){ const rn=$('#reviewNudge'); (rn||h0).after(w0); }
     const intro0=$('#intro'); if(intro0) intro0.hidden=true;
@@ -1657,7 +1697,7 @@ function renderTools(){
       <div class="tool-in">
         <div class="tool-meta"><div><b>Wann?</b> ${esc(t.when)}</div><div><b>Aufwand:</b> ${esc(t.dur)}</div></div>
         <h4>So geht's</h4><ol class="path">${t.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
-        <div class="tpl"><div class="copy-row"><b>Vorlage zum Ausfüllen</b><button type="button" class="secondary copy" data-copy="tt-${t.id}">Kopieren</button></div><pre id="tt-${t.id}">${esc(t.tpl)}</pre></div>
+        <div class="tpl"><div class="copy-row"><b>Vorlage zum Ausfüllen</b><span class="team-row"><button type="button" class="secondary" data-print="${t.id}">Drucken</button><button type="button" class="secondary copy" data-copy="tt-${t.id}">Kopieren</button></span></div><pre id="tt-${t.id}">${esc(t.tpl)}</pre></div>
         <div class="say k"><img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><p><b>Kuddelmuddel-Falle:</b> ${esc(t.trap)}</p></div>
         ${L[t.l]?`<button type="button" class="secondary tool-l" data-lesson="${t.l}">Lektion dazu: ${esc(L[t.l].t)} →</button>`:''}
       </div></details>`).join('')}`;
@@ -1853,6 +1893,7 @@ function openLesson(id){
       ${mediaBlock(l)}
       ${l.tpl?`<details class="mrow"><summary>${I('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/>')}<span><b>Vorlage zum Mitnehmen</b><small>${esc(l.tpl[0])}</small></span><i class="chev" aria-hidden="true"></i></summary><div class="mrow-in"><div class="tpl"><div class="copy-row"><b>${esc(l.tpl[0])}</b>
         <button type="button" class="secondary copy" data-copy="tpl-${id}">Kopieren</button></div><pre id="tpl-${id}">${esc(l.tpl[1])}</pre></div></div></details>`:''}
+      <button type="button" class="mrow mbtn" data-share-lesson="${id}">${I('<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/>')}<span><b>Lektion teilen</b><small>Link an Kollegen oder ins Team schicken</small></span></button>
       <details class="mrow"><summary>${I('<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/>')}<span><b>Frage oder Feedback</b><small>Chatbot fragen oder Rückmeldung geben</small></span><i class="chev" aria-hidden="true"></i></summary>
         <div class="mrow-in"><a class="secondary" href="https://notebook.google.com/notebook/18d2d9f8-21e0-4055-bb43-3dbe8bc8739d" target="_blank" rel="noopener" data-bot="lektion">Prozesswurm-Chatbot fragen (öffnet Google)</a>
         <button type="button" class="secondary" data-feedback="${esc(ctx.label+' · '+l.t)}">Feedback zu dieser Lektion</button></div></details>
@@ -2511,9 +2552,93 @@ if(/Instagram|FBAN|FBAV|FB_IAB|LinkedInApp|Line\//i.test(navigator.userAgent)) $
 document.querySelectorAll('[data-nl]').forEach(a=>a.addEventListener('click',()=>gc('montags-wurm/'+a.dataset.nl,'Klick Montags-Wurm',true)));
 refreshSave();
 if(location.hash==='#mediathek'){ renderMedia(); show('media'); }
-/* Direktlinks für Beiträge: #lektion=g03 und #einstufung */
+
+/* ---------- Teilen ---------- */
+const APP_URL = `https://prozesswurm.github.io/`;
+async function shareLink(title, text, url){
+  try{ if(navigator.share){ await navigator.share({title, text, url}); return; } }catch(e){ if(e && e.name==='AbortError') return; }
+  try{ await navigator.clipboard.writeText(url); toast('Link kopiert'); }catch(e){ window.prompt('Link kopieren:', url); }
+}
+document.addEventListener('click', e=>{ const b=e.target.closest('[data-share-lesson]'); if(!b) return; const id=b.dataset.shareLesson; if(!L[id]) return;
+  gc('lektion-geteilt/'+id,'Lektion geteilt',true);
+  shareLink(L[id].t, `${L[id].t} – kurz erklärt in der Prozesswurm Lernwerkstatt`, `${APP_URL}lektion/${id}.html`); });
+
+/* ---------- Lektion der Woche: wechselt jeden Montag, gleiche Reihenfolge wie die Stufen ---------- */
+const WEEK_ORDER = LEVELS.flatMap(lv=>lv.ids);
+const WEEK_START = new Date(2026,9,26); /* Montag, 26.10.2026: Start mit der ersten Lektion */
+function weekIndex(d){ const x=new Date(d.getFullYear(),d.getMonth(),d.getDate()); const mon=new Date(x); mon.setDate(x.getDate()-((x.getDay()+6)%7));
+  return Math.floor(Math.round((mon-WEEK_START)/864e5)/7); }
+function lessonOfWeek(d=new Date()){ const n=WEEK_ORDER.length, i=Math.max(0,weekIndex(d))%n; return WEEK_ORDER.at(i); }
+function renderWeekCard(){ const el=$('#weekCard'); if(!el) return; const id=lessonOfWeek(), l=L[id]; if(!l){ el.innerHTML=''; return; }
+  const done=isDone(id);
+  el.innerHTML=`<div class="week-card"><span class="wk-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/></svg></span>
+    <span class="eyebrow">Lektion der Woche${done?' · geschafft ✓':''}</span><h3>${esc(l.t)}</h3>
+    <span class="team-row wk-go"><button type="button" class="secondary" data-lesson="${id}">${done?'Nochmal ansehen':`Jetzt lernen · ${l.min} Min.`}</button><button type="button" class="linkbtn" data-share-lesson="${id}">Teilen</button></span></div>`; }
+
+/* ---------- Team-Lernpfad: Link mit Lektionen, alles bleibt im Browser ---------- */
+const TEAM_MAX = 30;
+const cleanIds = a => [...new Set((a||[]).filter(x=>/^[a-z][0-9]{2}$/.test(x) && L[x]))].slice(0,TEAM_MAX);
+const cleanName = t => String(t||'').replace(/[\u0000-\u001f<>]/g,'').trim().slice(0,40);
+function teamUrl(name, ids){ const p=new URLSearchParams(); p.set('team', ids.join('.')); if(name) p.set('name', name); return `${APP_URL}#${p.toString()}`; }
+function readTeamHash(){ if(!/^#team=/.test(location.hash)) return false;
+  const p=new URLSearchParams(location.hash.slice(1)); const ids=cleanIds((p.get('team')||'').split('.')); if(!ids.length) return false;
+  S.team={n:cleanName(p.get('name')), ids, at:today()}; save(); history.replaceState(null,'',location.pathname); gc('team/geoeffnet','Teampfad geöffnet',true); return true; }
+function renderTeamCard(){ const el=$('#teamCard'); if(!el) return; const t=S.team; if(!t || !cleanIds(t.ids).length){ el.innerHTML=''; return; }
+  const ids=cleanIds(t.ids), n=countDone(ids), next=ids.find(x=>!isDone(x)), all=n===ids.length;
+  el.innerHTML=`<div class="team-card"><span class="eyebrow">Lernpfad von deinem Team</span><h3>${esc(t.n||'Dein Team-Lernpfad')}</h3>
+    <span>${all?'Alles geschafft. Stark!':`${n} von ${ids.length} ${lessonsWord(ids.length)} geschafft`}</span>
+    <div class="team-bar" role="img" aria-label="${n} von ${ids.length} geschafft"><i style="width:${Math.round(n/ids.length*100)}%"></i></div>
+    ${next?`<button type="button" class="hero-btn" style="margin-top:6px;background:var(--worm);color:#fff" data-lesson="${next}">${n?'Weiter':'Los geht’s'}: ${esc(L[next].t)}</button>`:''}
+    <details><summary class="linkbtn">Alle Lektionen im Pfad</summary><ol class="team-list">${ids.map(x=>`<li><button type="button" data-lesson="${x}"><span class="${isDone(x)?'ok':'todo'}">${isDone(x)?'✓':'○'}</span><span>${esc(L[x].t)}</span></button></li>`).join('')}</ol></details>
+    <button type="button" class="linkbtn" data-team-off style="justify-self:start;font-size:13px">Lernpfad entfernen</button></div>`; }
+let teamSel = new Set();
+function renderTeamBuilder(){ const el=$('#teamBuilder'); if(!el) return; const nm=($('#tbName')||{}).value||'';
+  el.innerHTML=`<p>Stell deinem Team ein paar Lektionen zusammen und schick den Link herum. Jeder lernt für sich, ohne Anmeldung. Es wird nichts übertragen, du siehst den Fortschritt der anderen also nicht.</p>
+    <label for="tbName"><b>Name des Lernpfads</b> (freiwillig)</label><input id="tbName" class="tb-name" maxlength="40" placeholder="z. B. Einarbeitung Vertrieb" value="${esc(nm)}">
+    <p style="margin:12px 0 0"><b>Lektionen auswählen</b> · <span class="tb-count" id="tbCount">${teamSel.size} ausgewählt</span> (höchstens ${TEAM_MAX})</p>
+    ${LEVELS.map(lv=>`<details class="tb-lv"><summary>${lv.code} · ${esc(lv.name)} <small>(${lv.ids.filter(x=>teamSel.has(x)).length}/${lv.ids.length})</small></summary>
+      ${lv.ids.map(x=>`<label><input type="checkbox" data-tbid="${x}" ${teamSel.has(x)?'checked':''}><span>${esc(L[x].t)}</span></label>`).join('')}</details>`).join('')}
+    <div class="save-row" style="margin-top:12px"><button type="button" class="secondary" data-tb="share">Link teilen</button><button type="button" class="secondary" data-tb="copy">Link kopieren</button><button type="button" class="secondary" data-tb="mail">Per E-Mail</button></div>
+    <p class="hint">Tipp: Für den Einstieg reichen drei bis fünf Lektionen. Für dein eigenes Team ist das kostenlos. Für Schulungen bitte vorher kurz fragen.</p>`; }
+document.addEventListener('change', e=>{ const c=e.target.closest('[data-tbid]'); if(!c) return; const id=c.dataset.tbid;
+  if(c.checked){ if(teamSel.size>=TEAM_MAX){ c.checked=false; toast(`Höchstens ${TEAM_MAX} Lektionen`); return; } teamSel.add(id); } else teamSel.delete(id);
+  const ct=$('#tbCount'); if(ct) ct.textContent=`${teamSel.size} ausgewählt`;
+  const det=c.closest('details'); const sm=det&&det.querySelector('summary small'); if(sm){ const lv=LEVELS.find(v=>v.ids.includes(id)); sm.textContent=`(${lv.ids.filter(x=>teamSel.has(x)).length}/${lv.ids.length})`; } });
+document.addEventListener('click', async e=>{
+  const b=e.target.closest('[data-tb]');
+  if(b){ const ids=WEEK_ORDER.filter(x=>teamSel.has(x)); if(!ids.length){ toast('Wähl zuerst mindestens eine Lektion aus'); return; }
+    const name=cleanName($('#tbName').value), url=teamUrl(name, ids), txt=`${name?name+': ':''}${ids.length} kurze Lektionen zum Prozessmanagement in der Prozesswurm Lernwerkstatt. Kostenlos, ohne Anmeldung.`;
+    gc('team/erstellt/'+b.dataset.tb,'Teampfad erstellt',true);
+    if(b.dataset.tb==='share') shareLink('Team-Lernpfad', txt, url);
+    else if(b.dataset.tb==='copy'){ try{ await navigator.clipboard.writeText(url); toast('Link kopiert'); }catch(err){ window.prompt('Link kopieren:', url); } }
+    else location.href=`mailto:?subject=${encodeURIComponent('Lernpfad: '+(name||'Prozessmanagement kurz erklärt'))}&body=${encodeURIComponent(txt+'\n\n'+url)}`;
+    return; }
+  if(e.target.closest('[data-team-off]')){ delete S.team; save(); renderTeamCard(); toast('Lernpfad entfernt'); return; }
+  if(e.target.closest('#rowTeam > summary')){ renderTeamBuilder(); }
+  const r=e.target.closest('[data-readall]'); if(r){ gc('lektionsseiten/uebersicht','Alle Lektionen zum Nachlesen',true); }
+});
+
+/* ---------- Werkzeug als Blatt drucken ---------- */
+function printTool(id){ const t=TOOLS.find(x=>x.id===id); if(!t) return;
+  let ps=$('#printSheet'); if(!ps){ ps=document.createElement('div'); ps.id='printSheet'; document.body.appendChild(ps); }
+  const lines=t.tpl.split('\n').map(x=>`<div>${esc(x.replace(/…/g,'                                        '))}</div>`).join('');
+  ps.innerHTML=`<div class="ps-head"><img src="wurm.png?v=2" alt="Prozesswurm"><div><div class="ps-k">Prozesswurm Werkzeugkiste</div><h1>${esc(t.t)}</h1></div></div>
+    <div><b>Wozu?</b> ${esc(t.w)}</div><div class="ps-meta"><span><b>Wann?</b> ${esc(t.when)}</span><span><b>Aufwand:</b> ${esc(t.dur)}</span></div>
+    <h2>So geht's</h2><ol>${t.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol>
+    <h2>Zum Ausfüllen</h2><div class="ps-tpl">${lines}</div>
+    <div class="ps-trap"><img src="kuddel.png?v=1" alt="Doktor Kuddelmuddel"><div><b>Kuddelmuddel-Falle:</b> ${esc(t.trap)}</div></div>
+    <div class="ps-foot">Kostenlos von Prozesswurm · prozesswurm.github.io · Für dich und dein Team frei nutzbar, bitte „Prozesswurm“ als Quelle nennen.</div>`;
+  document.body.classList.add('printing'); gc('werkzeug-gedruckt/'+id,'Werkzeug gedruckt',true);
+  const done=()=>{ document.body.classList.remove('printing'); window.removeEventListener('afterprint',done); };
+  window.addEventListener('afterprint',done); setTimeout(()=>{ window.print(); setTimeout(done,1500); },150); }
+document.addEventListener('click', e=>{ const p=e.target.closest('[data-print]'); if(p) printTool(p.dataset.print); });
+
+try{ renderTeamCard(); renderWeekCard(); }catch(e){}
+/* Direktlinks für Beiträge: #lektion=g03, #lektion-der-woche, #team=…, #problem=…, #einstufung */
 (function(){ const m=location.hash.match(/^#lektion=([a-z0-9]+)$/i);
   if(m && L[m[1]]){ gc('direktlink/'+m[1],'Direktlink Lektion',true); openLesson(m[1]); }
+  else if(location.hash==='#lektion-der-woche'){ const id=lessonOfWeek(); gc('direktlink/lektion-der-woche','Direktlink Lektion der Woche',true); history.replaceState(null,'',location.pathname); openLesson(id); }
+  else if(readTeamHash()){ renderHero(); setTimeout(()=>toast('Lernpfad deines Teams ist da'),300); }
   else if(/^#problem=/.test(location.hash)){ const pid=location.hash.slice(9); gc('direktlink/problem/'+pid,'Direktlink Problem',true); openProblem(pid); }
   else if(location.hash==='#einstufung'){ gc('direktlink/einstufung','Direktlink Einstufung',true); openPlace(); }
 })();
