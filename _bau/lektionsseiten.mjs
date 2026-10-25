@@ -43,12 +43,14 @@ ol{padding-left:22px}li{margin-bottom:6px}
 .list a{display:block;padding:6px 0;text-decoration:none}.list small{color:var(--muted)}
 footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:var(--muted)}`;
 
-const head = (title, desc, url) => `<!doctype html>
+// Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
+const picOf = id => fs.existsSync(path.join(ROOT, 'bilder', `${id}.webp`)) ? `bilder/${id}.webp` : null;
+const head = (title, desc, url, img) => `<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}"><link rel="icon" href="/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
-<meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}app-og.jpg"><meta property="og:locale" content="de_DE">
+<meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
 <style>${css}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head><body><main>
@@ -65,7 +67,9 @@ for (const id of order) {
   const ids = br ? br.ids : lv.ids, pos = ids.indexOf(id), prev = ids[pos - 1], next = ids[pos + 1];
   const where = `${lv.code} · ${br ? 'Vertiefung ' + br.name : lv.name}`;
   const url = `${BASE}lektion/${id}.html`;
-  const page = head(`${l.t} – einfach erklärt | Prozesswurm`, l.d, url) + `
+  const pic = picOf(id);
+  const page = head(`${l.t} – einfach erklärt | Prozesswurm`, l.d, url, pic) + `
+${pic ? `<img src="/${pic}?v=1" alt="" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
