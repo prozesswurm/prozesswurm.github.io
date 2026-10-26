@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="de">
 <head>
-<meta charset="utf-8">
+<meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://prozesswurm.github.io https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
-<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 <title>Mediathek · Prozesswurm</title>
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=1">
 <style>
@@ -253,9 +253,9 @@ document.getElementById('list').innerHTML = MEDIA_GROUPS.map(([k,name])=>{
    vv.map(v=>`<div class="item"><div class="row"><span>▶ ${esc(v[1])}</span><a href="https://www.youtube.com/${v[3]==='s'?'shorts/':'watch?v='}${v[0]}" target="_blank" rel="noopener">YouTube</a></div><div class="embed" data-k="${v[3]==='s'?'short':'wide'}" data-id="${v[0]}" data-t="${esc(v[1])}"><button class="play" type="button">Abspielen</button></div></div>`).join('')+
    ss.map(x=>`<div class="item"><div class="row"><span>♪ ${esc(x[1])}</span><a href="https://suno.com/song/${x[0]}" target="_blank" rel="noopener">Suno</a></div><div class="embed" data-k="song" data-id="${x[0]}" data-t="${esc(x[1])}"><button class="play" type="button">Abspielen</button></div></div>`).join('')+`</div>`;
 }).join('');
-document.addEventListener('click',e=>{ const b=e.target.closest('.play'); if(!b) return; const box=b.parentElement, id=box.dataset.id, k=box.dataset.k;
+document.addEventListener('click',e=>{ const b=e.target.closest('.play'); if(!b) return; const box=b.parentElement, id=box.dataset.id, k=box.dataset.k; if(!/^[A-Za-z0-9_-]{6,40}$/.test(id||'')) return;
   const src=k==='song'?`https://suno.com/embed/${id}`:`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0`;
-  box.innerHTML=`<iframe class="${k}" src="${src}" title="${box.dataset.t}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+  box.innerHTML=`<iframe class="${k}" src="${src}" title="${esc(box.dataset.t)}" loading="lazy" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
   gc(`mediathek/abspielen/${id}`, box.dataset.t, true); });
 </script>
 </body>
