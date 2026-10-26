@@ -29,8 +29,9 @@ def src(lst):
     return f'<p style="margin:-4px 0 18px;font-family:{F};font-size:13px;color:{GRAU};">Quellen: {s}</p>'
 
 def btn(t, u):
-    return f'''<table role="presentation" cellpadding="0" cellspacing="0" style="margin:4px 0 22px;"><tr><td style="background:{GRUEN};border-radius:8px;">
-<a href="{u}" target="_blank" style="display:inline-block;padding:12px 22px;font-family:{F};font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;">{t} &rarr;</a></td></tr></table>'''
+    # Knopf-Stil B (seit 26.10.2026): gruener Rahmen, rund, ohne Flaeche
+    return f'''<table role="presentation" cellpadding="0" cellspacing="0" style="margin:4px 0 22px;"><tr><td style="border:2px solid {GRUEN};border-radius:999px;">
+<a href="{u}" target="_blank" style="display:inline-block;padding:9px 20px;font-family:{F};font-size:15px;font-weight:bold;color:{GRUEN};text-decoration:none;">{t} &rarr;</a></td></tr></table>'''
 
 def box(k, t):
     return f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 12px;background:{GRUEN_HELL};border-radius:10px;"><tr><td style="padding:12px 16px;font-family:{F};">

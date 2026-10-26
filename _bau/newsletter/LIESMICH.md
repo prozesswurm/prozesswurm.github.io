@@ -2,7 +2,7 @@
 
 Layout angelehnt an einen Wirtschafts-Newsletter: Kopfbanner, Begrüßung mit Lesezeit und Kalenderwoche,
 „Heute drin“-Kasten, je Abschnitt eine kleine Kennzeile (1. … bis 7.) plus eigene Schlagzeile, Bilder mit Bildunterschrift,
-Kuddelmuddel-Kästen mit Originalbild, Quellenzeile, grüne Knöpfe, Zitatblock, Fußzeile mit Kanälen.
+Kuddelmuddel-Kästen mit Originalbild, Quellenzeile, runde Knöpfe mit grünem Rahmen (Stil B), Zitatblock, Fußzeile mit Kanälen.
 
 1. Neuen Ordner `_bau/newsletter/ausgabe-JJJJ-MM-TT/` anlegen, `inhalt.py` aus dem jüngsten Muster kopieren und Wort für Wort neu füllen
    (DATUM, KW, UNTERTITEL, SLUG, BILD_ORDNER, HEUTE_DRIN, EINSTIEG, ABSCHNITTE 1–6, ZITAT, LinkedIn-Felder, Betreff, Vorschautext).
