@@ -1,0 +1,8 @@
+@font-face{font-family:B;src:url(../../../fonts/bricolage-grotesque-latin-800-normal.woff2);font-weight:800}
+@font-face{font-family:B;src:url(../../../fonts/bricolage-grotesque-latin-600-normal.woff2);font-weight:600}
+@font-face{font-family:A;src:url(../../../fonts/atkinson-hyperlegible-latin-400-normal.woff2);font-weight:400}
+@font-face{font-family:A;src:url(../../../fonts/atkinson-hyperlegible-latin-700-normal.woff2);font-weight:700}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:A;color:#1C241D;background:#F2F5F0}
+.d{font-family:B}
+.c{position:absolute;right:28px;bottom:18px;font:400 18px A;color:#5A675C}
