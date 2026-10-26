@@ -46,13 +46,13 @@ footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:va
 // Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
 const picOf = id => fs.existsSync(path.join(ROOT, 'bilder', `${id}.webp`)) ? `bilder/${id}.webp` : null;
 const head = (title, desc, url, img) => `<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://prozesswurm.github.io https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}"><link rel="icon" href="/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
 <style>${css}</style>
-<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 </head><body><main>
 <a class="top" href="/"><img src="/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
 
