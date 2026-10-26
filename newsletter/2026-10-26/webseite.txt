@@ -1,0 +1,57 @@
+<h1>Der Montags-Wurm – 26. Oktober 2026</h1>
+<h2>Viele Hüte, keiner zuständig</h2>
+<p><b>SALVE!</b> In manchen Betrieben gibt es mehr Beauftragte als Kaffeetassen. Die Bundesregierung will jetzt ausmisten. Diese Woche geht es darum, warum ein Titel noch keine Zuständigkeit ist und wie du herausfindest, wer bei euch wirklich den Hut aufhat.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Ich bin Beauftragter für Beauftragte. Was ich genau mache? Klären wir in der nächsten Besprechung.“</i></p>
+<h3>1. Aktuelles aus dem Prozessmanagement</h3>
+<p><b>Über 70 Arten von Beauftragten, und wer kümmert sich?</b></p>
+<p>Datenschutz, Brandschutz, Abfall, Leitern, Druckluft: Für fast alles gibt es in Deutschland eine Beauftragte oder einen Beauftragten. Der Nationale Normenkontrollrat zählt über 70 Arten. Ein mittelständischer Betrieb kann bis zu 50 davon stellen müssen.</p>
+<p>Jetzt wird ausgedünnt. Für Sicherheitsbeauftragte hat der Bundestag schon im Frühjahr entschieden: Pflicht erst ab 50 Beschäftigten statt ab 21. Kleinere Betriebe brauchen nur noch einen, wenn die Gefährdungsbeurteilung eine besondere Gefahr zeigt. Die Bonner Wirtschafts-Akademie sprach am 26. Oktober vom „Ende der Beauftragten-Orgie“.</p>
+<p><b>Was das mit deinen Abläufen zu tun hat</b></p>
+<p>Ein Beauftragter ist ein Hut. Und ein Hut allein macht noch keinen Ablauf. Oft läuft es so: Frau Meier wird Brandschutzhelferin, weil sie am nächsten am Feuerlöscher sitzt. Was sie tun soll, wann und mit wem, steht nirgends. Der Hut liegt im Schrank, bis es brennt.</p>
+<p>Umgekehrt gilt auch: Fällt eine Pflicht weg, bleibt die Aufgabe. Unfälle sollen trotzdem nicht passieren, Daten trotzdem nicht verloren gehen. Wer Hüte abschafft, muss also klären, wer sich danach kümmert. Sonst hat am Ende keiner mehr einen Hut auf.</p>
+<p><b>Handgriff der Woche: die Hutliste</b></p>
+<ol><li><b>Alle Hüte sammeln.</b> Beauftragte, Ansprechpartner und alles, was „immer die Meier macht“.</li><li><b>Pro Hut drei Fragen stellen.</b> Welches Ergebnis soll herauskommen? Wer hat am Ende den größten Nutzen davon? Darf diese Person auch entscheiden?</li><li><b>Aufräumen.</b> Ein Hut ohne Ergebnis fliegt raus. Ein Hut ohne Kopf wird besetzt.</li></ol>
+<p><b>Auch KI-Agenten brauchen einen Hut</b></p>
+<p>Das zweite Thema der Woche passt genau dazu. Der Software-Anbieter Redwood hat 300 Fachleute befragt, veröffentlicht am 22. Oktober. 77 Prozent hatten schon Ärger mit einem KI-Agenten, um den sich niemand richtig gekümmert hat. Ein KI-Agent ist ein Programm, das Aufgaben selbstständig erledigt. Am häufigsten gab es unerwartete Kosten für gemietete Rechenleistung, danach Störungen im Betrieb und Verstöße gegen Regeln. Nur 42 Prozent führen eine zentrale Liste ihrer Agenten. Wichtig: Die Umfrage kommt von einem Anbieter, der solche Lösungen verkauft.</p>
+<p><b>Der Handgriff:</b> Schreib jeden KI-Helfer mit auf die Hutliste. Eine Zeile pro Agent: Was soll er erledigen, wer hat die 51 Prozent, und wer darf ihn abschalten?</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Fünfzig Beauftragte sind doch prima. Wenn etwas schiefgeht, war es garantiert einer von den anderen 49.“</i></p>
+<p>Quellen: <a href="https://oiger.de/2026/10/26/wirtschaftsakademie-begruesst-ende-der-beauftragten-orgie/198961">Oiger, 26.10.2026</a> | <a href="https://www.hwkhalle.de/bundestag-beschliesst-neuregelung-bei-sicherheitsbeauftragten/">Handwerkskammer Halle</a> | <a href="https://www.prnewswire.com/news-releases/77--der-unternehmen-haben-einen-preis-fur-unkontrollierte-ki-agenten-gezahlt-302916712.html">Redwood Software, 22.10.2026</a></p>
+<h3>2. Märkte und Nachrichten</h3>
+<p><b>Mittelstand verdient besser, investiert aber zögerlich</b></p>
+<p><b>KfW-Mittelstandspanel: Polster ja, Mut nein.</b> Die Förderbank KfW hat am 22. Oktober ihre große Mittelstandsumfrage vorgestellt. Die Betriebe verdienen wieder besser: Im Schnitt blieben 7,5 Prozent vom Umsatz als Gewinn, die Eigenkapitalquote liegt bei 30,7 Prozent. Investiert hat 2025 aber nur 40 Prozent der 3,9 Millionen Mittelständler. Die Neuinvestitionen sanken auf 218 Milliarden Euro, nach Abzug der Preissteigerung ein Minus von 3,7 Prozent. Als Bremse nennen die Betriebe unter anderem die Bürokratie.</p>
+<p>Quellen: <a href="https://www.presseportal.de/pm/41193/6375952">KfW, 22.10.2026</a></p>
+<p><b>Datenschutzbeauftragter: Die 20-Personen-Regel wackelt, gilt aber noch.</b> Bisher braucht jeder Betrieb einen Datenschutzbeauftragten, wenn mindestens 20 Leute ständig mit Personendaten am Rechner arbeiten. Diese deutsche Sonderregel soll fallen. Der Bund will die Änderung bis Ende 2026 auf den Weg bringen. Beschlossen ist sie noch nicht, die Pflicht gilt weiter. Und die europäische Datenschutz-Grundverordnung bleibt sowieso.</p>
+<p>Quellen: <a href="https://www.dr-datenschutz.de/faellt-die-pflicht-zum-datenschutzbeauftragten-bis-ende-2026/">Dr. Datenschutz</a> | <a href="https://oiger.de/2026/10/26/wirtschaftsakademie-begruesst-ende-der-beauftragten-orgie/198961">Oiger, 26.10.2026</a></p>
+<p><b>Was das für dich heißt:</b> Weniger Pflichten sind eine Chance, kein Freifahrtschein. Wer jetzt eine Pflicht streicht, sollte vorher in die Hutliste schauen: Welche Aufgabe hängt daran, und wer übernimmt sie?</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Keine Pflicht mehr? Prima, dann schaffe ich den Datenschutz gleich mit ab. Spart Papier.“</i></p>
+<h3>3. Zahlen und Erkenntnisse</h3>
+<p><b>Hüte, Pflichten und KI-Agenten in Zahlen</b></p>
+<ul><li><b>Bis zu 50 Beauftragte</b> kann ein mittelständischer Betrieb stellen müssen, sagt der Nationale Normenkontrollrat (zitiert am 26.10.2026). <i>Heißt:</i> Bei so vielen Hüten verliert jeder den Überblick, auch der Chef.</li><li><b>Rund 123.000 Sicherheitsbeauftragte</b> sollen wegfallen, die Wirtschaft soll dadurch rund 135 Millionen Euro im Jahr sparen. So steht es im Konzept des Bundesarbeitsministeriums vom Oktober 2025. <i>Heißt:</i> Die Aufgabe Arbeitsschutz bleibt, sie braucht nur einen klaren Besitzer statt vieler Titel.</li><li><b>42 Prozent</b> der befragten Unternehmen führen eine zentrale Liste ihrer KI-Agenten (Redwood Software, Oktober 2026, 300 Befragte). <i>Heißt:</i> Mehr als die Hälfte weiß nicht genau, welche Agenten bei ihr gerade arbeiten.</li></ul>
+<p>Quellen: <a href="https://oiger.de/2026/10/26/wirtschaftsakademie-begruesst-ende-der-beauftragten-orgie/198961">Oiger, 26.10.2026</a> | <a href="https://www.deutsche-handwerks-zeitung.de/123-000-sicherheitsbeauftragte-sollen-wegfallen-369622/">Deutsche Handwerks Zeitung</a> | <a href="https://www.prnewswire.com/news-releases/77--der-unternehmen-haben-einen-preis-fur-unkontrollierte-ki-agenten-gezahlt-302916712.html">Redwood Software, 22.10.2026</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Eine Liste aller Agenten? Ich führe lieber eine Liste meiner Ausreden. Die ist wenigstens vollständig.“</i></p>
+<h3>4. Sehenswert</h3>
+<p><b>Re: Wenn Arbeiter Chefs werden (ARTE, 31 Min.)</b></p>
+<p>Eine Wollspinnerei in Lothringen soll schließen. Ein Teil der Belegschaft macht nicht mit, gründet eine Genossenschaft und übernimmt den Betrieb selbst. Die Produktionsleiterin wird dabei ohne Vorbereitung Vorstandsvorsitzende. Plötzlich Prozesse am Hals, und zwar richtig.</p>
+<p>Warum sich die 31 Minuten lohnen: Die Reportage zeigt sehr ehrlich, was passiert, wenn die Hüte neu verteilt werden. Mehr Mitsprache, mehr Schwung, aber auch mehr Druck auf weniger Schultern.</p>
+<p><a href="https://www.arte.tv/de/videos/121276-006-A/re-wenn-arbeiter-chefs-werden/">Zur ARTE-Mediathek →</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Alle sind Chef? Endlich kann ich jeden fragen und muss bei keinem nachhaken.“</i></p>
+<h3>5. Aus der Lernwerkstatt</h3>
+<p><b>Wer hat den Hut auf? Die 51-Prozent-Regel</b></p>
+<p>Passend zum Thema gibt es in der Prozesswurm Lernwerkstatt die Lektion <b>„Wer hat den Hut auf? Die 51-Prozent-Regel“</b> aus Stufe A2. Dauer: sieben Minuten. Ein kleiner Auszug:</p>
+<p><b>Zum Merken:</b> Wer am Ende den größten Nutzen hat, trägt die Hauptverantwortung. Bildlich: Wer trinkt am Ende die Limonade im Baumhaus?</p>
+<p><b>Mini-Übung:</b> Denk an eine Aufgabe mit mehreren Beteiligten. Schreib auf, wer am Ende den größten Nutzen vom Ergebnis hat. Diese Person hat die 51 Prozent.</p>
+<p><b>Teste dich:</b> Bei der Einarbeitung baut die IT den Laptop auf, die Personalabteilung macht den Vertrag. Wer hat die 51 Prozent? Die Auflösung steht in der Lektion.</p>
+<p><a href="https://prozesswurm.github.io/#lektion=v07">Lektion öffnen →</a></p>
+<p><b>Neu: die Lektion der Woche</b></p>
+<p>Ab heute zeigt die Lernwerkstatt jeden Montag auf der Startseite eine Lektion der Woche. Den Anfang macht A1: <b>„Was ist überhaupt ein Prozess?“</b> In sechs Minuten erklärt der Prozesswurm am Beispiel Kaffeekochen, was einen Ablauf zum Prozess macht. Wer nur eine Lektion pro Woche schafft, bleibt so trotzdem dran.</p>
+<p>Und wer alle Stufen geschafft hat, bekommt eine Abschlussurkunde zum Herunterladen, auf Wunsch direkt fürs LinkedIn-Profil. Alles kostenlos und ohne Anmeldung.</p>
+<p><a href="https://prozesswurm.github.io/#lektion-der-woche">Zur Lektion der Woche →</a></p>
+<h3>6. Song oder Short der Woche</h3>
+<p><b>Lied: Wer hat den Hut auf?</b></p>
+<p>Das Lied zur Lektion: Der Prozesswurm erklärt die 51-Prozent-Regel zu Pop mit Clubbeat, mit dem Baumhaus und dem Beispiel aus der Einarbeitung. Passt zur Hutliste, weil es genau die Frage stellt, die diese Woche zählt: Wer trägt das Gewicht?</p>
+<p><a href="https://suno.com/song/295bbf1f-bd81-44c1-929f-5fe933843062">Lied anhören →</a></p>
+<p>Alle Lieder und Videos findest du auf <a href="https://www.prozesswurm.de/h%C3%B6ren-und-sehen">prozesswurm.de unter „Hören und sehen“</a>.</p>
+<h3>7. Zum Schluss: Ein Satz zum Mitnehmen</h3>
+<p><i>„Ein schlechtes System schlägt jedes Mal einen guten Menschen.“</i></p><p>W. Edwards Deming (zugeschrieben, Seminar 1993), Vordenker des Qualitätsmanagements</p><p>Der Prozesswurm nickt: Erst die Hüte ordnen, dann über Menschen reden. Doktor Kuddelmuddel atmet auf: „Dann war ich es ja gar nicht. Das System war's. Wie immer.“</p>
+<p>Dieser Newsletter erscheint weiterhin jeden Montag. Vielen Dank für deine Zeit. Feedback, Anmerkungen oder Themenvorschläge? Schreib mir gern an prozesswurm@gmail.com.</p><p><b>Dein Prozesswurm</b></p>
+<p><a href="https://www.prozesswurm.de/montags-wurm">← Zur Übersicht aller Ausgaben</a></p>
