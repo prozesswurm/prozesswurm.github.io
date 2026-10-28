@@ -1,0 +1,915 @@
+{
+ "kategorien": {
+  "start": "Zum Einstieg",
+  "figuren": "Prozesswurm und Doktor Kuddelmuddel",
+  "grund": "Grundlagen",
+  "praxis": "Werkzeugkoffer",
+  "lean": "Lean",
+  "wandel": "Veränderung",
+  "ki": "KI im Prozessmanagement",
+  "projekt": "Projekte",
+  "strategie": "Strategie",
+  "spass": "Zum Mitwippen"
+ },
+ "lieder": [
+  {
+   "id": "ee5f89bb-5bb2-4892-ad3f-9cac8d284b8d",
+   "titel": "Plötzlich Prozesse am Hals",
+   "kat": "start"
+  },
+  {
+   "id": "ca276dac-35bc-49a2-9ad6-6b98fd0b4683",
+   "titel": "Der Prozesswurm",
+   "kat": "figuren"
+  },
+  {
+   "id": "2b27ac60-a9b3-46cb-a460-1e85c4c1c06d",
+   "titel": "Der Herr des Wirrwarrs",
+   "kat": "figuren"
+  },
+  {
+   "id": "63e015d8-c894-46fd-8348-1aacf9034a75",
+   "titel": "Prozesswurm und Doktor Kuddelmuddel",
+   "kat": "figuren"
+  },
+  {
+   "id": "db29e9ba-dc4b-4523-ad11-c47d6d456f5e",
+   "titel": "Doktor Kuddelmuddels Chaos-Kabinett",
+   "kat": "figuren"
+  },
+  {
+   "id": "8284f530-e1c6-4263-919c-ecdee6147fd6",
+   "titel": "Kuddelmuddels Endstation",
+   "kat": "figuren"
+  },
+  {
+   "id": "3c55c3a0-2179-4ae8-8fde-6365481570f5",
+   "titel": "Der Flow-Effekt (Wurmkur fürs Business)",
+   "kat": "figuren"
+  },
+  {
+   "id": "4875502c-b03e-45c7-afe8-0a58158e4a70",
+   "titel": "Die 5 Reiter der Ineffizienz",
+   "kat": "lean"
+  },
+  {
+   "id": "f6e4811e-01a6-48f4-b0f9-e9975a18d2f7",
+   "titel": "Prozesswurm Alarm",
+   "kat": "figuren"
+  },
+  {
+   "id": "5e4cae05-6d48-4a28-8e43-fd0326fa1cc1",
+   "titel": "Wurm Wurm Wurm",
+   "kat": "figuren"
+  },
+  {
+   "id": "968aa09a-db0b-44eb-966e-801e87c59257",
+   "titel": "Wir graben uns durch Komplexität, bis Klarheit entsteht.",
+   "kat": "figuren"
+  },
+  {
+   "id": "bc254faa-bf1e-458e-b98a-8fda4975861f",
+   "titel": "Chaos konform",
+   "kat": "figuren"
+  },
+  {
+   "id": "8c01d2db-502c-443a-97a3-905e502f09d5",
+   "titel": "Input, Output, BAM!",
+   "kat": "grund"
+  },
+  {
+   "id": "5a56c1d4-e660-4504-8fae-73f99b9cd30e",
+   "titel": "Das WAS und WARUM, das WIE und WOMIT",
+   "kat": "grund"
+  },
+  {
+   "id": "295bbf1f-bd81-44c1-929f-5fe933843062",
+   "titel": "Wer hat den Hut auf?",
+   "kat": "grund"
+  },
+  {
+   "id": "d4fa74bd-b4af-4988-ab7c-d89b9d9c9f12",
+   "titel": "Der Blick von oben",
+   "kat": "grund"
+  },
+  {
+   "id": "7bb33b7b-ae59-49b7-a2c4-5188095f69fc",
+   "titel": "Prozesswurm-Turm",
+   "kat": "grund"
+  },
+  {
+   "id": "30e24b1d-58cf-44d7-bee5-af26ae125ad8",
+   "titel": "Vom Papier zum Menschen",
+   "kat": "grund"
+  },
+  {
+   "id": "98c3a5fb-ed1c-4dde-8d95-fcd45d9eba50",
+   "titel": "Kopplungs-Organismus",
+   "kat": "grund"
+  },
+  {
+   "id": "7d96af51-cde6-4c8b-8ef1-1b6de8c90d99",
+   "titel": "Thermomixwurm-Prinzip",
+   "kat": "grund"
+  },
+  {
+   "id": "6e66a08a-e9a7-408f-af81-0563bba98379",
+   "titel": "Grüner Prozesswurm",
+   "kat": "grund"
+  },
+  {
+   "id": "09ea53f7-b624-4d53-9943-45ea1fdf61a3",
+   "titel": "Die Lernwerkstatt",
+   "kat": "grund"
+  },
+  {
+   "id": "87af5045-208b-4bab-8ec0-97e9aec492f7",
+   "titel": "Synapsen-Bohrer",
+   "kat": "grund"
+  },
+  {
+   "id": "616fdf01-a738-458c-b6d0-fe611d28a5cc",
+   "titel": "West Coast Process",
+   "kat": "grund"
+  },
+  {
+   "id": "13bd80ce-9a14-4202-926a-e224f409a601",
+   "titel": "System-Flow",
+   "kat": "praxis"
+  },
+  {
+   "id": "6d3988d3-df49-4900-9a9c-c3d843d56a9d",
+   "titel": "Die Visite",
+   "kat": "praxis"
+  },
+  {
+   "id": "e73d9ce6-b379-4ff2-8503-21171b19161a",
+   "titel": "Modellierungswahn",
+   "kat": "praxis"
+  },
+  {
+   "id": "884e4697-91f8-4096-ad18-718e0c01b9a3",
+   "titel": "Prozess Party",
+   "kat": "praxis"
+  },
+  {
+   "id": "3982d444-2053-483e-8de6-c463cbefddd4",
+   "titel": "Ordnerdunst",
+   "kat": "lean"
+  },
+  {
+   "id": "fac74df3-e1f7-4a4a-b8f6-0a71673c0081",
+   "titel": "Vom Chaos-König zum Lean Master",
+   "kat": "lean"
+  },
+  {
+   "id": "fa5a63ba-5f3a-4249-8d91-3fe581f77919",
+   "titel": "Ein Ding nach dem andern",
+   "kat": "wandel"
+  },
+  {
+   "id": "f0e9fb83-e4e7-40c2-9b15-3f584e2c1a05",
+   "titel": "ReVibe – Schritt für Schritt",
+   "kat": "wandel"
+  },
+  {
+   "id": "1f9850c6-4936-4cdb-8c04-c70e88f84c79",
+   "titel": "Der große Reset",
+   "kat": "wandel"
+  },
+  {
+   "id": "df4ecb7e-365b-4e39-8731-d1f9b8575e5d",
+   "titel": "Gegen den Strom",
+   "kat": "wandel"
+  },
+  {
+   "id": "090d60f5-7952-404e-bdc6-995842e68c77",
+   "titel": "Agenten am Werk",
+   "kat": "ki"
+  },
+  {
+   "id": "c7d90693-18ea-4ac0-93b2-b06fdd65a6c5",
+   "titel": "Vom Suchen zum Finden",
+   "kat": "ki"
+  },
+  {
+   "id": "544118a4-43ae-4c7e-8b91-e1f5e606421c",
+   "titel": "Frag den Prozesswurm !",
+   "kat": "ki"
+  },
+  {
+   "id": "88476ecc-301c-4133-916e-df585d4bb108",
+   "titel": "Zwei Welten, ein Weg",
+   "kat": "ki"
+  },
+  {
+   "id": "97d06403-7d59-4254-a7e6-0de79433c8be",
+   "titel": "Das Echo des Master-Prompts",
+   "kat": "ki"
+  },
+  {
+   "id": "8c0d9331-8fb6-45f4-9642-f64219d9c727",
+   "titel": "Das Wurm-Team (Prozess & Recht)",
+   "kat": "ki"
+  },
+  {
+   "id": "6de3b162-2477-4066-ba24-0cc99e96b0f4",
+   "titel": "Bits und Bytes",
+   "kat": "ki"
+  },
+  {
+   "id": "730d7a70-b1b2-4a64-a0f3-0b5173e4023e",
+   "titel": "Hör dem Prozesswurm mal zu",
+   "kat": "ki"
+  },
+  {
+   "id": "690bee93-cf9b-456f-a5e2-90a8cee1b61d",
+   "titel": "Im Takt der Maschine",
+   "kat": "ki"
+  },
+  {
+   "id": "1dbda2df-c670-4f38-8f50-281f085425dc",
+   "titel": "Code des Prozesswurms",
+   "kat": "ki"
+  },
+  {
+   "id": "105e4037-aede-4837-9cd6-b6442507362f",
+   "titel": "Der 1% Wurm",
+   "kat": "ki"
+  },
+  {
+   "id": "1c940282-0a09-4e31-83c7-4461461d77b3",
+   "titel": "Blaupause",
+   "kat": "ki"
+  },
+  {
+   "id": "1a792d73-96dd-4f44-b91f-3c7eb705aa0b",
+   "titel": "Sommer-Agents-Vibes",
+   "kat": "ki"
+  },
+  {
+   "id": "95b6cc9f-79d1-465c-b9fc-dbb3d60d1421",
+   "titel": "Der Maschinenraum Berlin",
+   "kat": "ki"
+  },
+  {
+   "id": "21f25fbd-d306-4724-823b-0027c14bce5e",
+   "titel": "Wir bauen Leitplanken, keine Wände!",
+   "kat": "strategie"
+  },
+  {
+   "id": "ea61220c-302f-4f38-be1d-df41ba351937",
+   "titel": "WM Prozesswurm Hymne 2026: „Takt des Triumphs“",
+   "kat": "spass"
+  },
+  {
+   "id": "614a2b74-be6f-4b94-9c02-bd58b380db16",
+   "titel": "Gründlich !",
+   "kat": "spass"
+  },
+  {
+   "id": "46dfac7a-d266-4c77-9937-4fe683f41a26",
+   "titel": "Boombastic Process",
+   "kat": "spass"
+  },
+  {
+   "id": "d3428347-046b-437b-9c69-0257d464b869",
+   "titel": "Sexy Process",
+   "kat": "spass"
+  },
+  {
+   "id": "f7ddca46-b2fa-4ecb-af64-149e15b4e3ef",
+   "titel": "Der Rucksack",
+   "kat": "spass"
+  },
+  {
+   "id": "74086f07-5f8b-4f3c-bef5-417b98233441",
+   "titel": "Carter In The Code",
+   "kat": "spass"
+  },
+  {
+   "id": "392dbc23-95c7-4312-b54d-9f1232b6f8c4",
+   "titel": "Neon Brass Process",
+   "kat": "spass"
+  },
+  {
+   "id": "0d0a5a65-fa15-4408-8496-6975c0af1922",
+   "titel": "Prozesswurm On The Loose",
+   "kat": "spass"
+  },
+  {
+   "id": "c7a32a22-be84-47f0-8951-b799ea4f6978",
+   "titel": "Keep it Low, keep it Slow",
+   "kat": "spass"
+  },
+  {
+   "id": "44e7c520-b7df-448f-9bad-011e2fcc315d",
+   "titel": "Wir stolpern durchs Leben",
+   "kat": "spass"
+  },
+  {
+   "id": "4deeea71-5b7d-4c3e-87cf-ec0fa117918d",
+   "titel": "Treibhäuser der Zukunft",
+   "kat": "spass"
+  },
+  {
+   "id": "16084da3-378d-4ccd-8837-0d7098c44a99",
+   "titel": "Flow im Abendrot",
+   "kat": "spass"
+  },
+  {
+   "id": "b33a0faf-5c4b-4f3a-8a26-b3e7419b06a5",
+   "titel": "Raus aus dem Wurmloch",
+   "kat": "spass"
+  },
+  {
+   "id": "96c6de9b-58df-4cd0-b4ee-27368174cba7",
+   "titel": "Haus am See",
+   "kat": "spass"
+  },
+  {
+   "id": "82a8a062-31be-4e10-a336-0b3c14bee59c",
+   "titel": "Prozesswurm Ostereier",
+   "kat": "spass"
+  },
+  {
+   "id": "6977f9fe-a1b8-4fdc-b58e-a576de08bbe5",
+   "titel": "Der Prozesswurm-Groove (Heidelberg Flow)",
+   "kat": "spass"
+  },
+  {
+   "id": "053b1a0f-eb74-42ca-b51c-796a290a1780",
+   "titel": "Burn the Flowchart",
+   "kat": "spass"
+  },
+  {
+   "id": "619612fc-bcb3-4fcf-a38d-699492209e0e",
+   "titel": "Rhythm of the Flow",
+   "kat": "spass"
+  },
+  {
+   "id": "81e4eca1-7701-4d20-859f-1b11333fd51f",
+   "titel": "Im Rhythmus der Logik",
+   "kat": "spass"
+  },
+  {
+   "id": "7864bbb6-3ab8-46ba-8543-16d07cf68cc9",
+   "titel": "Raus aus der Röhre (Der Fokus-Wurm)",
+   "kat": "spass"
+  }
+ ],
+ "videos": [
+  {
+   "id": "0UNaG3zA_As",
+   "titel": "Der Prozesswurm – das Lied",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "0-RRy3N6CXg",
+   "titel": "Der Herr des Wirrwarrs – Doktor Kuddelmuddels Lied",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "SwoOFrFFCYA",
+   "titel": "Kuddelmuddels Endstation – das Lied",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "Q4r9ImKG9w8",
+   "titel": "Prozesswurm gegen Doktor Kuddelmuddel: Ordnung schaffen",
+   "kat": "figuren",
+   "art": "v"
+  },
+  {
+   "id": "RMzv-pqOeMk",
+   "titel": "Die Lernwerkstatt: Graben bis Klarheit",
+   "kat": "start",
+   "art": "s"
+  },
+  {
+   "id": "_jvtBGPpGwU",
+   "titel": "Input, Output, BAM! – das Lied",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "IYgcpB7Wtis",
+   "titel": "Das WAS und WARUM, das WIE und WOMIT",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "HRNgmpYZKGA",
+   "titel": "Vom Papier zum Menschen",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "mBTG5idKwFc",
+   "titel": "Frag nach dem Warum: Wer? Wie? Wann? Wo?",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "zPcU3tjFMl4",
+   "titel": "Puzzleteile ordnen: der Prozesswurm schafft Struktur",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "gGVFc6xepH4",
+   "titel": "Die Visite: Es geht um den Weg, nicht ums Tempo",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "Pae-g0UwgPM",
+   "titel": "Der große Reset – Lied über Veränderung",
+   "kat": "wandel",
+   "art": "s"
+  },
+  {
+   "id": "D6-wRTJLUgI",
+   "titel": "Der Prozesswurm räumt auf: Ordnung im Postfach",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "kOvCe1FfPv4",
+   "titel": "Agenten am Werk – das Lied",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "ARBjk2SXL94",
+   "titel": "Hör dem Prozesswurm mal zu – das Lied",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "yRWD2WNlqRg",
+   "titel": "Code des Prozesswurms – das Lied",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "YFnHvu3LuCE",
+   "titel": "Im Takt der Maschine – das Lied",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "ryF5-WwOKWI",
+   "titel": "Der 1% Wurm – das Lied",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "HvlnpTOAg2Y",
+   "titel": "Sommer-Agents-Vibes – das Lied",
+   "kat": "spass",
+   "art": "s"
+  },
+  {
+   "id": "9ssRe_cPVvw",
+   "titel": "Im Rhythmus der Logik – das Lied",
+   "kat": "spass",
+   "art": "s"
+  },
+  {
+   "id": "OX4OyJbD4EI",
+   "titel": "Raus aus der Röhre (Der Fokus-Wurm) – das Lied",
+   "kat": "spass",
+   "art": "s"
+  },
+  {
+   "id": "IFk8vCwcbG0",
+   "titel": "Die Geschichte: Doktor Kuddelmuddel gegen den Prozesswurm",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "dLrGkRTfdXA",
+   "titel": "Kuddelmuddel im Montagswahnsinn",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "iZ6jQw8y2Us",
+   "titel": "Der Prozesswurm sagt Danke",
+   "kat": "figuren",
+   "art": "v"
+  },
+  {
+   "id": "a6qM85dRWb4",
+   "titel": "Chaos gegen Ordnung: die Kraft des Prozesswurms",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "NxLyrj9ebDI",
+   "titel": "Grundlagen Prozessmanagement",
+   "kat": "grund",
+   "art": "v"
+  },
+  {
+   "id": "JbdzEwqIGsA",
+   "titel": "Elemente eines Prozessablaufs",
+   "kat": "grund",
+   "art": "v"
+  },
+  {
+   "id": "swGyB2-Os6k",
+   "titel": "Vom Brot zum Sandwich: so funktioniert jeder Prozess",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "95NqNN54dUY",
+   "titel": "Wer tut was? Klare Rollenverteilung",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "r6FqI4Dkgq4",
+   "titel": "Brennball, Ping Pong und die 51-Prozent-Verantwortung",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "ksPdfW3PF5Y",
+   "titel": "Sofort? Planen? Löschen? Der Prozesswurm sortiert",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "yz38a2zIz6s",
+   "titel": "Wichtig oder dringend?",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "HhfrNgmtcv0",
+   "titel": "Verlaufen im Prozess-Dschungel?",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "--idIDaWg4I",
+   "titel": "Standardisierung einführen: immer gleich gut",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "DXnNqJ9cJqs",
+   "titel": "Gute Prozesse fühlen sich an wie eine Umarmung",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "FS-rbXMFmDs",
+   "titel": "Chaos-Alarm im Büro",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "rQ3TMO3MPvs",
+   "titel": "Wir retten deine toten Prozesse",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "tFS4_XnUwDQ",
+   "titel": "Wirklich produktiv oder nur beschäftigt?",
+   "kat": "grund",
+   "art": "v"
+  },
+  {
+   "id": "mX8mpkHQfus",
+   "titel": "Silodenken war gestern: der Prozesswurm baut Brücken",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "ScTO3AsDx9w",
+   "titel": "Wir finden jede Lücke und schließen sie",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "FBNZ89N0lp4",
+   "titel": "WM-Hymne 2026: Takt des Triumphs",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "uyYe8I2TtGY",
+   "titel": "Doppelarbeit ade",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "K0zXyO55e4I",
+   "titel": "Prozesswurm-Impuls: dein täglicher Tipp",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "KFOdLVwNxao",
+   "titel": "Küchenhelfer Prozesswurm",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "1z7OwwqXCKk",
+   "titel": "Planen, Machen, Besser machen",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "QVzqe4kDT38",
+   "titel": "Kenne deine Kunden: der Kollege ist auch Kunde",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "sKuovB9YEv0",
+   "titel": "Prozessziele setzen",
+   "kat": "praxis",
+   "art": "v"
+  },
+  {
+   "id": "DYrvpd00VcY",
+   "titel": "Misst du das Richtige? Kennzahlen",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "2SCErIM-dm0",
+   "titel": "Prozesse modellieren und dokumentieren",
+   "kat": "praxis",
+   "art": "v"
+  },
+  {
+   "id": "6zETbqAcbGw",
+   "titel": "Prozess-Detektiv im Einsatz",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "S8IG2LQI_Ck",
+   "titel": "Prozess-Schädlinge im Anmarsch",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "LYbq0sX52wU",
+   "titel": "Wartezeit kostet Geld",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "GpHSuQC3UYU",
+   "titel": "Stopp die Domino-Kette: Wartezeiten finden",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "2ycckLWtFpw",
+   "titel": "Wissen weitergeben mit dem Prozesswurm",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "okiwTe3xBo4",
+   "titel": "Vom Moped zum Hubschrauber",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "DqceuNtkm9E",
+   "titel": "Wir sortieren deine Puzzleteile",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "9MQxRclUpgs",
+   "titel": "Risiko im Griff",
+   "kat": "praxis",
+   "art": "s"
+  },
+  {
+   "id": "9f7CQFYjE94",
+   "titel": "Müll-Alarm: die 7 Arten der Verschwendung",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "D6EpeMNi9yY",
+   "titel": "Hilfe, wir versinken im Papier",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "300tdk871QQ",
+   "titel": "Nie wieder Ladekabel vergessen",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "dROCMTjw0FI",
+   "titel": "Die Idee für deine Schlüssel",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "4kjlnjDbu5Q",
+   "titel": "Schluss mit laaangsam",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "nkpuYnA08vs",
+   "titel": "Wertstrom im Blick",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "Akp8DEreL5s",
+   "titel": "Wir verändern mit dir die Welt",
+   "kat": "wandel",
+   "art": "s"
+  },
+  {
+   "id": "k_L5edebJtA",
+   "titel": "Das magische Dreieck: Zeit, Kosten, Qualität",
+   "kat": "projekt",
+   "art": "s"
+  },
+  {
+   "id": "aTXvOmZ3N_U",
+   "titel": "Bergsteigen leicht gemacht",
+   "kat": "projekt",
+   "art": "s"
+  },
+  {
+   "id": "9OvXj_rs25Y",
+   "titel": "Vom Kriechgang zum Turbo",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "zZ37R23fjpU",
+   "titel": "Daten lügen nicht",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "rlZ6pLMYzjg",
+   "titel": "So speichert der Prozesswurm Wissen",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "GUYKNQxZaD4",
+   "titel": "Neue Trends im Prozessmanagement",
+   "kat": "ki",
+   "art": "v"
+  },
+  {
+   "id": "c7jYgso-gEI",
+   "titel": "Gewicht ablegen: weg von 100 Prozent",
+   "kat": "ki",
+   "art": "s"
+  },
+  {
+   "id": "OAD4R2uz4YU",
+   "titel": "Schluss mit Papier: digital",
+   "kat": "strategie",
+   "art": "s"
+  },
+  {
+   "id": "8ndcBlXaLc4",
+   "titel": "Vom Einsteiger zum Prozessberater",
+   "kat": "strategie",
+   "art": "v"
+  },
+  {
+   "id": "7zb4NTYdfJ4",
+   "titel": "Die Dinge richtig machen",
+   "kat": "grund",
+   "art": "v"
+  },
+  {
+   "id": "Lx4KO2d23t4",
+   "titel": "Feinjustieren: so wird das Licht perfekt",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "PJXvipPxXY0",
+   "titel": "Vom Lean-Profi zum Erfinder des Prozesswurms",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "efy9Npf9cEU",
+   "titel": "Wir haben den Schlüssel zu deiner Komplexität",
+   "kat": "figuren",
+   "art": "s"
+  },
+  {
+   "id": "9W-uVxrjRgA",
+   "titel": "Akten-Labyrinth: verirrt in Ordnerstrukturen?",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "KruzkPjv-Sc",
+   "titel": "Schlüsselchaos oder Schlüssel-Standard?",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "zIQCVX9ShZ0",
+   "titel": "Schluss mit Suchen: Zeit sparen im Büro",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "-Fk4jSelEnM",
+   "titel": "Fünf Wecker am Morgen: doppelte Abläufe",
+   "kat": "lean",
+   "art": "s"
+  },
+  {
+   "id": "Vzua_m_qw74",
+   "titel": "Gefangen im Tunnelblick?",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "OfwN8fvvNi4",
+   "titel": "Der Kampf mit dem Drucker",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "hG-3DNHT7T4",
+   "titel": "Weg mit der ehemaligen Prüfstelle",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "TS2M8HaFwkU",
+   "titel": "Teilprozesse feinjustieren",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "R9nHphM3GnU",
+   "titel": "Raus aus dem Datensumpf",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "udFQoJBx-ys",
+   "titel": "Vom Datensumpf zum Datenschatz",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "UyYrHrowTzY",
+   "titel": "Welcher Weg ist der richtige?",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "QNCN-iXqFBc",
+   "titel": "Ziele erreichen, ohne auszubrennen",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "koOQwl3O-wQ",
+   "titel": "Chaos auf der Straße: ein Standard schafft Fluss",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "RC5TD07jBE8",
+   "titel": "Gewohntes und Neues verbinden",
+   "kat": "grund",
+   "art": "s"
+  },
+  {
+   "id": "87OvkooLfMA",
+   "titel": "Tipps für gutes Prozessmanagement",
+   "kat": "grund",
+   "art": "s"
+  }
+ ]
+}

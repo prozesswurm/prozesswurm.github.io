@@ -34,9 +34,9 @@ def ausgabe(linkedin=False):
         o.append(f"<p><b>Frage an dich:</b> {LI_FRAGE}</p>")
     o.append(f"<p>{SCHLUSS}</p><p><b>Dein Prozesswurm</b></p>")
     if linkedin:
-        o.append(f'<p>Den Montags-Wurm gibt es auch per E-Mail: <a href="https://www.prozesswurm.de/montags-wurm">prozesswurm.de/montags-wurm</a></p>')
+        o.append(f'<p>Den Montags-Wurm gibt es auch per E-Mail: <a href="https://www.prozesswurm.de/montags-wurm/">prozesswurm.de/montags-wurm</a></p>')
     else:
-        o.append('<p><a href="https://www.prozesswurm.de/montags-wurm">← Zur Übersicht aller Ausgaben</a></p>')
+        o.append('<p><a href="https://www.prozesswurm.de/montags-wurm/">← Zur Übersicht aller Ausgaben</a></p>')
     return "\n".join(o)
 
 open("out/webseite.html", "w").write(ausgabe(False))

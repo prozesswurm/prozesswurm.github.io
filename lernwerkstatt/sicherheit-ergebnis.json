@@ -1,0 +1,162 @@
+[
+ {
+  "Test": "Seite lädt ohne Fehler: index.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: mediathek.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: urkunde.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: hilfe.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: lektionen.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: lektion/b01.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Seite lädt ohne Fehler: lektion/i11.html",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "App: alle Ansichten öffnen",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "CSP blockt fremdes Skript (Gegenprobe)",
+  "Ergebnis": "blockiert: script-src-elem",
+  "Details": "blockiert: script-src-elem"
+ },
+ {
+  "Test": "Mediathek: Lied und Video lassen sich einbetten",
+  "Ergebnis": "eingebettet: www.youtube-nocookie.com, suno.com",
+  "Details": "eingebettet: www.youtube-nocookie.com, suno.com"
+ },
+ {
+  "Test": "App: Lied und Video lassen sich einbetten",
+  "Ergebnis": "eingebettet: www.youtube-nocookie.com, suno.com",
+  "Details": "eingebettet: www.youtube-nocookie.com, suno.com"
+ },
+ {
+  "Test": "Urkunde: Schadcode im Namen/Code",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Link #lektion= mit Schadcode",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Link #problem= mit Schadcode",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Link #hilfe= mit Schadcode",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Team-Link mit Schadcode im Namen",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Speicherlink mit Schadcode (Name, Ziel)",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Speicherlink mit __proto__",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Speicherlink kaputt",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Browserspeicher mit Schadcode",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Browserspeicher kaputt (falsche Typen)",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Browserspeicher kein JSON",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Fälschung: Speicherlink mit allem erledigt + Prüfung + GESAMT",
+  "Ergebnis": "99 Lektionen übernommen, Meister-Prüfung nicht übernommen",
+  "Details": "99 Lektionen übernommen, Meister-Prüfung nicht übernommen"
+ },
+ {
+  "Test": "Feedback: Fangfeld blockt Spam-Programm",
+  "Ergebnis": "Spam nicht gesendet",
+  "Details": "Spam nicht gesendet"
+ },
+ {
+  "Test": "Feedback: echte Nachricht kommt durch",
+  "Ergebnis": "gesendet",
+  "Details": "gesendet"
+ },
+ {
+  "Test": "Urkunde erzeugen (Bild, LinkedIn-Knopf)",
+  "Ergebnis": "Urkundenbild erzeugt",
+  "Details": "Urkundenbild erzeugt"
+ },
+ {
+  "Test": "Meister-Prüfung: keine Lösungen, neuer Versuch erst morgen",
+  "Ergebnis": "keine Lösungen gezeigt, zweiter Versuch heute gesperrt",
+  "Details": "keine Lösungen gezeigt, zweiter Versuch heute gesperrt"
+ },
+ {
+  "Test": "Urkunde: erst nach Ehrenwort herunterladen",
+  "Ergebnis": "ohne Bestätigung gesperrt, mit Bestätigung geladen",
+  "Details": "ohne Bestätigung gesperrt, mit Bestätigung geladen"
+ },
+ {
+  "Test": "Zähl-Skript überall mit Prüfsumme",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Sicherheitsregeln (CSP) auf allen App-Seiten",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Links nach außen mit noopener",
+  "Ergebnis": "ok",
+  "Details": ""
+ },
+ {
+  "Test": "Keine Zugangsschlüssel in Seiten",
+  "Ergebnis": "ok",
+  "Details": ""
+ }
+]

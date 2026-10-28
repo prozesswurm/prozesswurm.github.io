@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://prozesswurm.github.io/sitemap.xml
+Sitemap: https://www.prozesswurm.de/sitemap.xml
+Sitemap: https://www.prozesswurm.de/lernwerkstatt/sitemap.xml

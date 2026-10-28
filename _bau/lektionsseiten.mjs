@@ -6,8 +6,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 
-const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
-const BASE = 'https://prozesswurm.github.io/';
+const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..', 'lernwerkstatt');
+const BASE = 'https://www.prozesswurm.de/lernwerkstatt/';
 const html = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
 const all = JSON.parse(html.match(/const ALL = (\[.*?\]);\n/s)[1]);
@@ -46,18 +46,18 @@ footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:va
 // Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
 const picOf = id => fs.existsSync(path.join(ROOT, 'bilder', `${id}.webp`)) ? `bilder/${id}.webp` : null;
 const head = (title, desc, url, img) => `<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://prozesswurm.github.io https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${url}"><link rel="icon" href="/favicon-64.png">
+<link rel="canonical" href="${url}"><link rel="icon" href="/lernwerkstatt/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
 <style>${css}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 </head><body><main>
-<a class="top" href="/"><img src="/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
+<a class="top" href="/lernwerkstatt/"><img src="/lernwerkstatt/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
 
 const foot = `</main><footer>Kostenlos von Prozesswurm, ohne Anmeldung und ohne Werbung. Für dich und dein Team frei nutzbar, bitte „Prozesswurm“ als Quelle nennen.<br>
-<a href="/lektionen.html">Alle Lektionen</a> · <a href="/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/impressum">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></footer></body></html>\n`;
+<a href="/lernwerkstatt/lektionen.html">Alle Lektionen</a> · <a href="/lernwerkstatt/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/impressum/">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz/">Datenschutz</a></footer></body></html>\n`;
 
 fs.mkdirSync(path.join(ROOT, 'lektion'), { recursive: true });
 for (const f of fs.readdirSync(path.join(ROOT, 'lektion'))) if (f.endsWith('.html') && !L[f.slice(0, -5)]) fs.unlinkSync(path.join(ROOT, 'lektion', f));
@@ -69,7 +69,7 @@ for (const id of order) {
   const url = `${BASE}lektion/${id}.html`;
   const pic = picOf(id);
   const page = head(`${l.t} – einfach erklärt | Prozesswurm`, l.d, url, pic) + `
-${pic ? `<img src="/${pic}?v=1" alt="" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
+${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
@@ -78,7 +78,7 @@ ${l.steps ? `<ol>${l.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
 <div class="box aha">Zum Merken: ${esc(l.aha)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
-<a class="cta" href="/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} Fragen beantworten →</a>
+<a class="cta" href="/lernwerkstatt/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} Fragen beantworten →</a>
 <div class="nav">${prev ? `<a href="${prev}.html">← ${esc(L[prev].t)}</a>` : '<span></span>'}${next ? `<a href="${next}.html">${esc(L[next].t)} →</a>` : ''}</div>
 ` + foot;
   fs.writeFileSync(path.join(ROOT, 'lektion', `${id}.html`), page);
@@ -89,7 +89,7 @@ const overview = head('Prozessmanagement einfach erklärt: alle Lektionen | Proz
   'Alle Lektionen der kostenlosen Prozesswurm Lernwerkstatt von A1 bis C2: Prozesse, Rollen, Prozesslandkarte, Werkzeuge, Lean, Veränderung und KI, einfach erklärt.',
   `${BASE}lektionen.html`) + `
 <h1>Prozessmanagement einfach erklärt</h1>
-<p class="lead">Alle Lektionen der Prozesswurm Lernwerkstatt zum Nachlesen. Kostenlos und ohne Anmeldung. Mit Quiz, Abzeichen und Fortschritt geht es in der <a href="/">Lernwerkstatt</a>.</p>
+<p class="lead">Alle Lektionen der Prozesswurm Lernwerkstatt zum Nachlesen. Kostenlos und ohne Anmeldung. Mit Quiz, Abzeichen und Fortschritt geht es in der <a href="/lernwerkstatt/">Lernwerkstatt</a>.</p>
 ${levels.map(lv => `<h2>${lv.code} · ${esc(lv.name)}</h2><p>${esc(lv.sub)}</p>` + (lv.branches
   ? lv.branches.map(b => `<p class="k">Vertiefung ${esc(b.name)}</p><div class="list">${b.ids.map(id => `<a href="lektion/${id}.html">${esc(L[id].t)}<br><small>${esc(L[id].d)}</small></a>`).join('')}</div>`).join('')
   : `<div class="list">${lv.ids.map(id => `<a href="lektion/${id}.html">${esc(L[id].t)}<br><small>${esc(L[id].d)}</small></a>`).join('')}</div>`)).join('\n')}
@@ -108,7 +108,7 @@ const helpPage = head('Hilfe: So funktioniert die Prozesswurm Lernwerkstatt',
 <p class="lead">Alle Fragen und Antworten zur Prozesswurm Lernwerkstatt. Zum Nachlesen, Ausdrucken und Weiterschicken, zum Beispiel an dein Team oder deine Kursgruppe.</p>
 <div class="box">${helpGroups.map(g => `<a href="#${slug(g)}">${esc(g)}</a>`).join(' · ')}</div>
 ${helpGroups.map(g => `<h2 id="${slug(g)}">${esc(g)}</h2>\n` + help.filter(h => h.g === g).map(h => `<h3 id="${h.id}" style="font-size:18px;margin:22px 0 6px">${esc(h.q)}</h3>\n${helpBody(h)}`).join('\n')).join('\n')}
-<a class="cta" href="/">Zur Lernwerkstatt →</a>
+<a class="cta" href="/lernwerkstatt/">Zur Lernwerkstatt →</a>
 ` + foot;
 fs.writeFileSync(path.join(ROOT, 'hilfe.html'), helpPage);
 
@@ -119,5 +119,5 @@ fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="
 ${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
 </urlset>
 `);
-fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${BASE}sitemap.xml\n`);
+fs.writeFileSync(path.join(ROOT, 'robots.txt'), `User-agent: *\nAllow: /\n`);
 console.log(`Fertig: ${order.length} Lektionsseiten, Übersicht, Hilfe (${help.length} Fragen), Sitemap mit ${urls.length} Adressen.`);

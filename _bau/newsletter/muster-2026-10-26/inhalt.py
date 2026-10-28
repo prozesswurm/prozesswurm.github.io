@@ -4,10 +4,10 @@ KW = "KW 44"
 TITEL = "Der Montags-Wurm – 26. Oktober 2026"
 UNTERTITEL = "Viele Hüte, keiner zuständig"
 SLUG = "26-oktober-2026"
-BILD_ORDNER = "2026-10-26"  # Bilder liegen unter https://prozesswurm.github.io/newsletter/<BILD_ORDNER>/
+BILD_ORDNER = "2026-10-26"  # Bilder liegen unter https://www.prozesswurm.de/newsletter/<BILD_ORDNER>/
 HEUTE_DRIN = "1. Die Hutliste · 2. Mittelstand und Beauftragte · 3. Drei Zahlen · 4. ARTE-Tipp · 5. Lernwerkstatt · 6. Lied der Woche · 7. Ein Satz zum Mitnehmen"
 AUSGABE_URL = "https://www.prozesswurm.de/montags-wurm/26-oktober-2026"
-APP = "https://prozesswurm.github.io"
+APP = "https://www.prozesswurm.de/lernwerkstatt"
 
 L_OIGER = ("Oiger, 26.10.2026", "https://oiger.de/2026/10/26/wirtschaftsakademie-begruesst-ende-der-beauftragten-orgie/198961")
 L_HWK = ("Handwerkskammer Halle", "https://www.hwkhalle.de/bundestag-beschliesst-neuregelung-bei-sicherheitsbeauftragten/")

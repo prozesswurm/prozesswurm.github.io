@@ -3,7 +3,7 @@
    python3 _bau/sicherheit/haerten.py
 Mehrfach ausführbar: ändert nur, was noch nicht gehärtet ist."""
 import pathlib, re, sys
-ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else '.')
+ROOT = pathlib.Path(sys.argv[1] if len(sys.argv) > 1 else 'lernwerkstatt')
 
 # 1) Zähl-Skript mit fester Version und Prüfsumme (https://goatcounter.com/help/countjs-versions)
 GC_OLD = re.compile(r'async src="//gc\.zgo\.at/count\.js"></script>')
@@ -12,7 +12,7 @@ GC_NEW = ('async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" '
 
 # 2) Sicherheitsregeln für den Browser
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; "
-       "img-src 'self' data: blob: https://prozesswurm.github.io https://prozesswurm.goatcounter.com; font-src 'self'; "
+       "img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; "
        "connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; "
        "frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; "
        "object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests")

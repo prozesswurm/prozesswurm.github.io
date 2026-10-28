@@ -19,7 +19,7 @@ def blocks(bl, base):
         elif k=='btn': o.append(f'[{b[1]} →]({b[2]})')
         elif k=='src': o.append('Quellen: '+' | '.join(f'[{t}]({u})' for t,u in b[1]))
     return o
-base=f'https://prozesswurm.github.io/newsletter/{BILD_ORDNER}/'
+base=f'https://www.prozesswurm.de/newsletter/{BILD_ORDNER}/'
 o=[f'# Montags-Wurm {DATUM}','Vereinbarte Fassung (neues Layout, angelehnt an den Beispiel-Newsletter). Bilder liegen unter '+base,
 '## Fassung A – Webseite und E-Mail (gleicher Text)', f'# {TITEL}', f'### {UNTERTITEL}', md(EINSTIEG[0][1]), f'> **Doktor Kuddelmuddel:** *„{EINSTIEG[1][1]}“*']
 for s in ABSCHNITTE:

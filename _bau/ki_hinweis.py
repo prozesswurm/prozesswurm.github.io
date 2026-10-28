@@ -38,6 +38,6 @@ if __name__ == "__main__":
     if not a or len(a) % 2:
         sys.exit(__doc__)
     for src, pid in zip(a[::2], a[1::2]):
-        out = os.path.join(ROOT, "bilder", f"{pid}.webp")
+        out = os.path.join(ROOT, "lernwerkstatt", "bilder", f"{pid}.webp")
         hinweis(src, out)
         print(pid, "->", out)

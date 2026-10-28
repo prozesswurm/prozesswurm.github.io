@@ -2,7 +2,7 @@ import re, sys, html, json
 sys.path.insert(0, sys.argv[3] if len(sys.argv) > 3 else '.')
 from inhalt import *
 
-IMG_BASE = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] != "auto" else f"https://prozesswurm.github.io/newsletter/{BILD_ORDNER}/"
+IMG_BASE = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] != "auto" else f"https://www.prozesswurm.de/newsletter/{BILD_ORDNER}/"
 OUT = sys.argv[2] if len(sys.argv) > 2 else "out/newsletter-brevo.html"
 
 F = "Helvetica,Arial,sans-serif"
@@ -69,7 +69,7 @@ WORDS = len(alltext.split()); WORDS_R = round(WORDS / 50) * 50; MIN = max(1, rou
 intro = f'''<p style="{P}">{EINSTIEG[0][1]}</p>
 {kud(EINSTIEG[1][1])}
 <p style="{P}">Diese Ausgabe hat rund <b>{WORDS_R} Wörter</b>, etwa <b>{MIN} Minuten</b> Lesezeit. Heute ist <b>Montag, der {DATUM}</b>, willkommen in der <b>{KW}</b>.</p>
-<p style="margin:0;font-family:{F};font-size:15px;line-height:1.6;color:{GRAU};">Du kennst jemanden, der plötzlich Prozesse am Hals hat? Leite ihm diese Mail weiter. Anmelden geht kostenlos über <a style="{LINK}" target="_blank" href="https://www.prozesswurm.de/montags-wurm">prozesswurm.de</a>.</p>'''
+<p style="margin:0;font-family:{F};font-size:15px;line-height:1.6;color:{GRAU};">Du kennst jemanden, der plötzlich Prozesse am Hals hat? Leite ihm diese Mail weiter. Anmelden geht kostenlos über <a style="{LINK}" target="_blank" href="https://www.prozesswurm.de/montags-wurm/">prozesswurm.de</a>.</p>'''
 
 inhalt = f'''<div style="font-family:{F};font-size:13px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:{GRAU};margin:0 0 4px;">Der Montags-Wurm · {DATUM}</div>
 <h1 style="margin:0 0 18px;font-family:{F};font-size:30px;line-height:1.2;color:{DUNKEL};">{UNTERTITEL}</h1>
@@ -96,9 +96,9 @@ fuss = f'''<p style="margin:0 0 8px;">Folge dem Prozesswurm:
 <a style="color:{DUNKEL};text-decoration:none;" href="https://www.youtube.com/@Prozesswurm">YouTube</a> |
 <a style="color:{DUNKEL};text-decoration:none;" href="https://suno.com/@prozesswurm">Suno</a></p>
 <p style="margin:0 0 8px;"><a style="color:{DUNKEL};text-decoration:none;" href="{APP}">Lernwerkstatt</a> |
-<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/montags-wurm">Alle Ausgaben</a> |
-<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/impressum">Impressum</a> |
-<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/datenschutz">Datenschutz</a></p>
+<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/montags-wurm/">Alle Ausgaben</a> |
+<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/impressum/">Impressum</a> |
+<a style="color:{DUNKEL};text-decoration:none;" href="https://www.prozesswurm.de/datenschutz/">Datenschutz</a></p>
 <p style="margin:0;">© Prozesswurm</p>'''
 
 doc = f'''<!DOCTYPE html>
@@ -108,7 +108,7 @@ doc = f'''<!DOCTYPE html>
 <div style="display:none;max-height:0;overflow:hidden;">{VORSCHAU}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F2F5F0;"><tr><td align="center" style="padding:16px 8px;">
 <table role="presentation" width="640" cellpadding="0" cellspacing="0" style="width:100%;max-width:640px;background:#ffffff;border:1px solid #D3DBCE;border-radius:12px;overflow:hidden;">
-<tr><td><a href="https://www.prozesswurm.de/montags-wurm" target="_blank"><img src="{IMG_BASE}kopf.jpg" width="640" alt="Der Montags-Wurm – Prozessmanagement in einfachen Worten, mit dem Prozesswurm und Doktor Kuddelmuddel" style="display:block;width:100%;max-width:640px;height:auto;border:0;"></a></td></tr>
+<tr><td><a href="https://www.prozesswurm.de/montags-wurm/" target="_blank"><img src="{IMG_BASE}kopf.jpg" width="640" alt="Der Montags-Wurm – Prozessmanagement in einfachen Worten, mit dem Prozesswurm und Doktor Kuddelmuddel" style="display:block;width:100%;max-width:640px;height:auto;border:0;"></a></td></tr>
 <tr><td class="inhalt" style="padding:28px 30px;">
 {chr(10).join(body)}
 </td></tr></table>
