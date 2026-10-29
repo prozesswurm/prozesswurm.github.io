@@ -1,0 +1,695 @@
+[
+ {
+  "id": "b01",
+  "t": "Was ist überhaupt ein Prozess?",
+  "d": "Die Basis-Definition, mit der alles beginnt.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "b05",
+  "t": "Prozess, Projekt oder Aufgabe?",
+  "d": "Drei Begriffe, die ständig verwechselt werden.",
+  "min": 7,
+  "stufe": "A1"
+ },
+ {
+  "id": "b03",
+  "t": "Die Bausteine eines Prozesses",
+  "d": "Name, Verantwortung, Zweck, Input und Output.",
+  "min": 7,
+  "stufe": "A1"
+ },
+ {
+  "id": "g01",
+  "t": "Vom Kunden zum Kunden: der ganze Weg",
+  "d": "Warum ein Prozess nicht an der Bürotür aufhört.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "v14",
+  "t": "Warum die Zutaten stimmen müssen",
+  "d": "Bei einem falschen Ergebnis zuerst den Input prüfen.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "v01",
+  "t": "Woran erkennst du, dass du Prozesse brauchst?",
+  "d": "Vier Anzeichen, die zeigen, dass ein Ablauf klarer geregelt sein sollte.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "b08",
+  "t": "Der Prozesswurm: deine Methode für einfache Lösungen",
+  "d": "Schritt für Schritt statt großer Ruck.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "i09",
+  "t": "KI für Routinearbeit",
+  "d": "Wie KI wiederkehrende Aufgaben übernehmen kann.",
+  "min": 7,
+  "stufe": "A1"
+ },
+ {
+  "id": "v10",
+  "t": "Wissen häppchenweise lernen: der Babbel-Effekt",
+  "d": "Kleine, wiederkehrende Häppchen statt dickes Handbuch.",
+  "min": 6,
+  "stufe": "A1"
+ },
+ {
+  "id": "b02",
+  "t": "Prozessmanagement-Rollen: wer macht eigentlich was?",
+  "d": "Verantwortung, Steuerung, Ausführung: die drei Rollen einfach erklärt.",
+  "min": 5,
+  "stufe": "A2"
+ },
+ {
+  "id": "b04",
+  "t": "Der Prozesssteckbrief: dein Prozess auf einen Blick",
+  "d": "Alles Wichtige zu einem Prozess auf einer Seite.",
+  "min": 5,
+  "stufe": "A2"
+ },
+ {
+  "id": "g04",
+  "t": "Wer liefert, wer bekommt? Der Prozess auf einem Bierdeckel",
+  "d": "Fünf Fragen, mit denen du jeden Ablauf in zwei Minuten umreißt.",
+  "min": 6,
+  "stufe": "A2"
+ },
+ {
+  "id": "b06",
+  "t": "Die Prozesslandkarte",
+  "d": "Alle Abläufe sichtbar machen, statt sie im Kopf zu behalten.",
+  "min": 8,
+  "stufe": "A2"
+ },
+ {
+  "id": "g02",
+  "t": "Vom Großen ins Kleine: Prozesse in Ebenen",
+  "d": "Wie ein Inhaltsverzeichnis Ordnung in deine Abläufe bringt.",
+  "min": 6,
+  "stufe": "A2"
+ },
+ {
+  "id": "g03",
+  "t": "Prozesse zeichnen: Schwimmbahnen statt Wimmelbild",
+  "d": "Eine einfache Art, Abläufe so aufzumalen, dass jeder sie versteht.",
+  "min": 8,
+  "stufe": "A2"
+ },
+ {
+  "id": "v11",
+  "t": "Die Prozesslandkarte bauen: das Google-Maps-Prinzip",
+  "d": "Schritt für Schritt hineinzoomen statt alles auf einmal zeichnen.",
+  "min": 7,
+  "stufe": "A2"
+ },
+ {
+  "id": "v07",
+  "t": "Wer hat den Hut auf? Die 51-Prozent-Regel",
+  "d": "Bei mehreren Beteiligten die Hauptverantwortung klären.",
+  "min": 7,
+  "stufe": "A2"
+ },
+ {
+  "id": "v03",
+  "t": "Der Mensch ist der Motor jedes Prozesses",
+  "d": "Warum ein Prozess nur so gut ist wie die Menschen, die ihn tragen.",
+  "min": 7,
+  "stufe": "A2"
+ },
+ {
+  "id": "v05",
+  "t": "Prozessmanagement ist Teamsache",
+  "d": "Warum Prozessverbesserung eine gemeinsame Aufgabe ist.",
+  "min": 6,
+  "stufe": "A2"
+ },
+ {
+  "id": "b09",
+  "t": "Prozessmanagement und Kreativität",
+  "d": "Warum klare Abläufe Kreativität ermöglichen.",
+  "min": 6,
+  "stufe": "A2"
+ },
+ {
+  "id": "v02",
+  "t": "Wie oft solltest du deine Prozesse prüfen?",
+  "d": "Der richtige Zeitpunkt, um Abläufe noch einmal durchzugehen.",
+  "min": 5,
+  "stufe": "A2"
+ },
+ {
+  "id": "v04",
+  "t": "Erfolg messen, ohne Kennzahlen-Wahn",
+  "d": "Erfolg erkennen, ohne dich in Zahlen zu verlieren.",
+  "min": 6,
+  "stufe": "A2"
+ },
+ {
+  "id": "v06",
+  "t": "Abläufe neu gestalten: erst reden, dann zeichnen",
+  "d": "Warum ein neuer Ablauf im Gespräch mit den Ausführenden entsteht.",
+  "min": 8,
+  "stufe": "B1"
+ },
+ {
+  "id": "k07",
+  "t": "Prozesse analysieren: die Prozessbegehung",
+  "d": "Einen Prozess live anschauen, nicht nur auf dem Papier.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "k13",
+  "t": "Mit der richtigen Frage zum Kern vordringen",
+  "d": "Warum eine geschickte Frage mehr ans Licht bringt als eine direkte.",
+  "min": 6,
+  "stufe": "B1"
+ },
+ {
+  "id": "v08",
+  "t": "Was der Fußball über gute Prozesse lehrt",
+  "d": "Klare Schnittstellen und gelebte Kultur.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "l01",
+  "t": "Die 7 Verschwendungsarten",
+  "d": "Wo deine Zeit wirklich hinfließt, am Beispiel Kuchenbacken.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "l04",
+  "t": "Genchi Genbutsu und 5-Why: der Wurzel auf der Spur",
+  "d": "Mit fünfmal „Warum?“ die Ursache statt das Symptom finden.",
+  "min": 6,
+  "stufe": "B1"
+ },
+ {
+  "id": "v12",
+  "t": "Was ein Küchengerät über gute Abläufe lehrt",
+  "d": "Drei Prinzipien guter Kücheninstruktion für deine Abläufe.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "v15",
+  "t": "Dokument zuerst, Prozess danach: wie viel Modell braucht es?",
+  "d": "Doppelt modellieren, ganz spartanisch oder erst einmal ausrollen? Ein Fall aus der Praxis.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "b07",
+  "t": "Eine Konvention einführen, ohne dass sie ignoriert wird",
+  "d": "Warum Regeln scheitern und wie du es besser machst.",
+  "min": 8,
+  "stufe": "B1"
+ },
+ {
+  "id": "k16",
+  "t": "Einen Prozess-Workshop leiten, ohne dass er ausufert",
+  "d": "Klares Ziel und feste Agenda statt endloser Runde.",
+  "min": 6,
+  "stufe": "B1"
+ },
+ {
+  "id": "k17",
+  "t": "Was im Workshop passiert, muss danach noch da sein",
+  "d": "Damit Ergebnisse umgesetzt statt vergessen werden.",
+  "min": 5,
+  "stufe": "B1"
+ },
+ {
+  "id": "g05",
+  "t": "Planen, machen, prüfen, nachsteuern: der Regelkreis",
+  "d": "Warum ein Prozess nie fertig ist und das gut so ist.",
+  "min": 7,
+  "stufe": "B1"
+ },
+ {
+  "id": "v13",
+  "t": "Der grüne Blick auf deine Prozesse",
+  "d": "Bestehende Prozesse mit einer grünen Brille betrachten.",
+  "min": 6,
+  "stufe": "B1"
+ },
+ {
+  "id": "k01",
+  "t": "Der Prozesskreislauf: deine Landkarte",
+  "d": "Welche Stationen ein Prozess vom Ziel bis zur laufenden Ausführung durchläuft.",
+  "min": 6,
+  "stufe": "B2"
+ },
+ {
+  "id": "k02",
+  "t": "Kundenanforderungen und SMARTe Prozessziele",
+  "d": "Erst verstehen, was gebraucht wird, dann ein messbares Ziel formulieren.",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "k03",
+  "t": "Prozesse messen: die richtigen Kennzahlen finden",
+  "d": "Wenige, aber aussagekräftige Kennzahlen statt Zahlenflut.",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "g06",
+  "t": "Eine Kennzahl, die jeder versteht: der Kennzahl-Steckbrief",
+  "d": "Sieben Fragen, damit eine Zahl nicht nur gemessen, sondern auch genutzt wird.",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "k04",
+  "t": "SOLL-Prozesse gestalten: PUSH und PULL",
+  "d": "Vom Input nach vorn oder vom Ergebnis rückwärts denken.",
+  "min": 6,
+  "stufe": "B2"
+ },
+ {
+  "id": "k05",
+  "t": "Wer gibt den Auftrag? Top-down oder Bottom-up",
+  "d": "Führung gibt die Richtung vor, oder ein Team startet unten.",
+  "min": 5,
+  "stufe": "B2"
+ },
+ {
+  "id": "k08",
+  "t": "Ursachen aufspüren: das Fischgräten-Diagramm",
+  "d": "Systematisch nach Ursachen suchen, statt zu raten.",
+  "min": 8,
+  "stufe": "B2"
+ },
+ {
+  "id": "k12",
+  "t": "Die Kraftfeldanalyse: was bremst, was treibt an?",
+  "d": "Welche Kräfte für und gegen ein Ziel wirken.",
+  "min": 6,
+  "stufe": "B2"
+ },
+ {
+  "id": "k11",
+  "t": "Zeit- und Informationsanalyse: wo genau hakt es?",
+  "d": "Wo geht die Zeit hin, und wo hakt der Informationsfluss?",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "k09",
+  "t": "Gut moderieren: Auftragsklärung und kollegiale Fallberatung",
+  "d": "Workshops auf sichere Füße stellen und festgefahrene Fragen lösen.",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "k06",
+  "t": "Prozesse einführen: Beteiligte und Kommunikation",
+  "d": "Wer ist betroffen, was braucht diese Person, wie erreichst du sie?",
+  "min": 8,
+  "stufe": "B2"
+ },
+ {
+  "id": "k18",
+  "t": "Erst fragen, dann schulen: andere fit machen für einen neuen Ablauf",
+  "d": "Ein kurzes Häppchen für alle, Tiefe nur für die, die es brauchen.",
+  "min": 7,
+  "stufe": "B2"
+ },
+ {
+  "id": "k10",
+  "t": "Einführungsmaßnahmen priorisieren: die Nutzen-Aufwand-Matrix",
+  "d": "Maßnahmen nach Nutzen und Aufwand sortieren.",
+  "min": 6,
+  "stufe": "B2"
+ },
+ {
+  "id": "k14",
+  "t": "Die Einführungsfreigabe: bevor der Prozess live geht",
+  "d": "Ein formaler Check vor dem Startschuss.",
+  "min": 5,
+  "stufe": "B2"
+ },
+ {
+  "id": "k15",
+  "t": "Der Prozess geht live: von der Planung in den Alltag",
+  "d": "Wie ein freigegebener Prozess Alltag wird und sich der Kreis schließt.",
+  "min": 5,
+  "stufe": "B2"
+ },
+ {
+  "id": "e01",
+  "t": "Was KI wirklich ist und was nicht",
+  "d": "Ohne Science-Fiction: was heutige KI kann und wo sie aufhört.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "e02",
+  "t": "Wie eine Maschine lernt: drei Wege",
+  "d": "Mit Lösung lernen, Muster selbst finden, durch Lob und Tadel.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "e03",
+  "t": "Schlechte Daten rein, schlechte KI raus",
+  "d": "Warum KI ungerecht werden kann und wie man das merkt.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "e04",
+  "t": "Ein KI-Vorhaben Schritt für Schritt",
+  "d": "Vom Problem bis zum Einsatz im Alltag, ohne sich zu verlaufen.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "e05",
+  "t": "Wo lohnt sich KI zuerst?",
+  "d": "Ideen finden, bewerten und die richtige zuerst anpacken.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "e06",
+  "t": "KI kaufen oder selbst bauen?",
+  "d": "Fertige KI als Dienst oder eigene Lösung: was jeweils dafür spricht.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "i01",
+  "t": "Chatbot oder KI-Agent: was ist der Unterschied?",
+  "d": "Ein Chatbot antwortet, ein Agent erledigt Aufgaben.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i02",
+  "t": "Fragen statt suchen: KI im eigenen Wissensordner",
+  "d": "Warum die Suche oft nichts findet und wie KI nach Bedeutung sucht.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i06",
+  "t": "Dein Wissen als Chatbot",
+  "d": "Eigenes Fachwissen über einen Chatbot abrufbar machen, ohne zu programmieren.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i05",
+  "t": "Ein guter Prompt in fünf Bausteinen",
+  "d": "Eine Bauanleitung für Arbeitsaufträge an die KI, die du gezielt nachbessern kannst.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i03",
+  "t": "Fester Plan oder Leitplanke?",
+  "d": "Wann ein Schritt-für-Schritt-Plan reicht und wann du mehr Spielraum brauchst.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i17",
+  "t": "Erst aufschreiben, dann abgeben: die Arbeitsanweisung als Bauplan für den KI-Agenten",
+  "d": "Ein Agent kann nur so gut arbeiten, wie der Ablauf beschrieben ist.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i18",
+  "t": "Prüfen statt hoffen: KI-Ergebnisse im Griff behalten",
+  "d": "Kleine Bausteine, feste Prüfregeln und klare Grenzen, was nie in einen Chatbot gehört.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i04",
+  "t": "Fachbereich oder IT: wer entscheidet was?",
+  "d": "Das WAS und WARUM gegen das WIE und WOMIT.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i10",
+  "t": "Prozesse hören, sehen, erleben: Formate statt Textwüsten",
+  "d": "Warum das 50-seitige Handbuch selten gelesen wird.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "i13",
+  "t": "KI als Vorprüfer für Prozessmodelle",
+  "d": "Prozessmodelle von der KI auf Logik, Regeln und Übergaben vorprüfen lassen.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i12",
+  "t": "Process Mining: der digitale Detektiv",
+  "d": "Warum Process Mining erst funktioniert, wenn der Prozess digital läuft.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i07",
+  "t": "Drei KI-Entwicklungen, die man kennen sollte",
+  "d": "Roboter, Agenten und die Frage, wie man die Menschen mitnimmt.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i14",
+  "t": "Wenn „läuft doch“ zur Falle wird",
+  "d": "Warum es sich lohnt, auch gut laufende Abläufe grundsätzlich zu hinterfragen.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i15",
+  "t": "Der Clean Core: Standard-Software plus KI-Wächter",
+  "d": "Eine KI-Schicht statt endloser Sonderanpassungen.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i16",
+  "t": "Die BPM-Blaupause: einmal bauen, überall einsetzen",
+  "d": "Mit KI als Architekt ein übertragbares Prozess-Fundament bauen.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "i08",
+  "t": "Der Jurawurm: KI als Frühwarnsystem fürs Recht",
+  "d": "Rechtliche Risiken früh sichtbar machen, ohne die Entscheidung abzugeben.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "i11",
+  "t": "Der Aktwurm: was der AI Act von deinen Prozessen verlangt",
+  "d": "Kennzeichnungspflicht jetzt, Hochrisiko-Pflichten später.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "l02",
+  "t": "5S: für jedes Ding einen festen Platz",
+  "d": "Die einfachste Lean-Methode gegen tägliches Suchen.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "l03",
+  "t": "Jidoka und Andon: stoppen statt fehlerhaft weitermachen",
+  "d": "Warum ein System sich selbst stoppen sollte.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "l05",
+  "t": "Poka Yoke: Fehler unmöglich machen",
+  "d": "Fehler technisch verhindern, statt sie nur zu verbieten.",
+  "min": 5,
+  "stufe": "C1"
+ },
+ {
+  "id": "l06",
+  "t": "SMED: der Blitz-Start",
+  "d": "Umrüstzeiten verkürzen, indem du vorbereitest statt improvisierst.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "c01",
+  "t": "Was ist Lean Change?",
+  "d": "Der Grundgedanke hinter Lean Change in einfachen Worten.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "c05",
+  "t": "Ausprobieren, beobachten, anpassen: die Schleife",
+  "d": "Warum eine kleine Schleife wichtiger ist als ein großer Plan.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "c03",
+  "t": "Eine Hypothese testen, statt zu diskutieren",
+  "d": "Eine Annahme in der Praxis prüfen.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "c04",
+  "t": "Mit Widerstand umgehen, ohne Druck zu machen",
+  "d": "Warum Menschen sich wehren und wie du damit umgehst.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "c02",
+  "t": "Kotter und ADKAR: zwei bekannte Change-Modelle",
+  "d": "Die zwei bekanntesten Modelle in Kürze, und warum Lean Change anders tickt.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "p01",
+  "t": "Was ist ein Projekt?",
+  "d": "Was ein Projekt von einem Prozess unterscheidet.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "p02",
+  "t": "Ziele und Meilensteine setzen",
+  "d": "Warum Zwischenstationen wichtiger sind als das Endziel allein.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "p05",
+  "t": "Der erste Schritt: ein Projekt starten",
+  "d": "Drei Fragen, die reichen, um loszulegen.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "p03",
+  "t": "Klassisch oder anpassend: welcher Ansatz passt?",
+  "d": "Zwei Vorgehensweisen, und wann welche passt.",
+  "min": 8,
+  "stufe": "C1"
+ },
+ {
+  "id": "p04",
+  "t": "Scrum, Kanban und Co.: agile Grundbegriffe",
+  "d": "Sprints, Rollen, Board und Begrenzung gleichzeitiger Aufgaben.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
+  "id": "s01",
+  "t": "Strategisch oder operativ? Zwei Blickwinkel",
+  "d": "Feilst du an einem Prozess oder entscheidest du, welcher drankommt?",
+  "min": 5,
+  "stufe": "C2"
+ },
+ {
+  "id": "s02",
+  "t": "Die Prozesslandkarte fürs ganze Unternehmen",
+  "d": "Kern, Führung, Unterstützung: übersichtlich sortiert.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s03",
+  "t": "Vom Unternehmensziel zum Prozessziel: die Strategie-Brücke",
+  "d": "Große Ziele in konkrete Prozessziele übersetzen.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s04",
+  "t": "Welchen Prozess zuerst? Das Prozessportfolio",
+  "d": "Wichtig und dringend sind zwei Paar Schuhe.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s05",
+  "t": "Wie reif sind eure Prozesse? Reifegradmodelle",
+  "d": "Wo ihr heute steht und was der nächste sinnvolle Schritt ist.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s06",
+  "t": "Wer entscheidet über Prozesse? Gremien und Spielregeln",
+  "d": "Eine gemeinsame Entscheidungsinstanz, damit sich niemand ins Gehege kommt.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s10",
+  "t": "Quer durchs Organigramm: wer verbessert, wer entscheidet?",
+  "d": "Abteilungen stehen senkrecht, Prozesse laufen quer. Beides darf bleiben.",
+  "min": 7,
+  "stufe": "C2"
+ },
+ {
+  "id": "b10",
+  "t": "Vom Wilden Westen zur Wohlfühl-Zone",
+  "d": "Klare Spielregeln als Möglichmacher statt Verbotsliste.",
+  "min": 8,
+  "stufe": "C2"
+ },
+ {
+  "id": "s07",
+  "t": "Prozessorientierung zur Gewohnheit machen",
+  "d": "Kultur statt Projekt mit Enddatum.",
+  "min": 5,
+  "stufe": "C2"
+ },
+ {
+  "id": "s09",
+  "t": "Ein Beet statt des ganzen Gartens: Prozessmanagement im Betrieb starten",
+  "d": "Rückendeckung von oben, ein kleiner Versuch unten, und Geduld dazwischen.",
+  "min": 6,
+  "stufe": "C2"
+ },
+ {
+  "id": "s08",
+  "t": "Strategie und IT: wo Prozesse auf Digitalisierung treffen",
+  "d": "Warum Software einen unklaren Prozess nicht rettet.",
+  "min": 5,
+  "stufe": "C2"
+ },
+ {
+  "id": "v09",
+  "t": "Warum blindes Sparen teurer ist als sauber aufräumen",
+  "d": "Pauschale Kürzungen gegen gezieltes Aufräumen.",
+  "min": 7,
+  "stufe": "C2"
+ }
+]

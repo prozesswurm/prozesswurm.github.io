@@ -1,6 +1,6 @@
 [
-  {"pfad": "26-oktober-2026", "datum": "26. Oktober 2026", "titel": "Viele Hüte, keiner zuständig", "teaser": "Über 70 Arten von Beauftragten, und wer kümmert sich wirklich? Dazu die Hutliste in drei Schritten."},
-  {"pfad": "19-oktober-2026", "datum": "19. Oktober 2026", "titel": "Das Kauderwelsch-Monster", "teaser": "Was kein Mensch versteht, versteht auch keine KI. Wie du Abläufe so aufschreibst, dass Neue sie verstehen."},
-  {"pfad": "12-oktober-2026", "datum": "12. Oktober 2026", "titel": "Das Schatten-IT-Monster", "teaser": "Wenn KI heimlich durch die Hintertür in die Abläufe kriecht, und wie du sie sicher hereinholst."},
-  {"pfad": "05-oktober-2026", "datum": "5. Oktober 2026", "titel": "Wenn die Maschine den Chef ersetzt", "teaser": "Weniger Chefs, mehr Maschinen: Wer schreibt dann die Abläufe auf?"}
+  {"pfad": "26-oktober-2026", "datum": "26. Oktober 2026", "titel": "Viele Hüte, keiner zuständig", "teaser": "Über 70 Arten von Beauftragten, und wer kümmert sich wirklich? Dazu die Hutliste in drei Schritten.", "stichwort": "Zuständigkeit", "bild": "assets/img/mw-2026-10-26-titel.webp"},
+  {"pfad": "19-oktober-2026", "datum": "19. Oktober 2026", "titel": "Das Kauderwelsch-Monster", "teaser": "Was kein Mensch versteht, versteht auch keine KI. Wie du Abläufe so aufschreibst, dass Neue sie verstehen.", "stichwort": "Abläufe aufschreiben", "bild": "assets/img/mw-2026-10-19-titel.webp"},
+  {"pfad": "12-oktober-2026", "datum": "12. Oktober 2026", "titel": "Das Schatten-IT-Monster", "teaser": "Wenn KI heimlich durch die Hintertür in die Abläufe kriecht, und wie du sie sicher hereinholst.", "stichwort": "KI im Alltag", "bild": "assets/img/mw-2026-10-12-titel.webp"},
+  {"pfad": "05-oktober-2026", "datum": "5. Oktober 2026", "titel": "Wenn die Maschine den Chef ersetzt", "teaser": "Weniger Chefs, mehr Maschinen: Wer schreibt dann die Abläufe auf?", "stichwort": "KI und Führung", "bild": "assets/img/mw-2026-10-05-titel.webp"}
 ]

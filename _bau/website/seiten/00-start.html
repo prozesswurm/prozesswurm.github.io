@@ -1,4 +1,4 @@
-<!--{"pfad": "", "titel": "Start", "beschreibung": "Schluss mit dem Kuddelmuddel. Im Job und zu Hause. Der Prozesswurm zeigt dir in kurzen Lektionen, Liedern und Comics, wie Abläufe leichter laufen. Kostenlos und ohne Anmeldung.", "menue": "start", "weiche": true}-->
+<!--{"pfad": "", "titel": "Start", "beschreibung": "Prozessmanagement, endlich verständlich: Der Prozesswurm erklärt in kurzen Lektionen, Liedern und Comics, wie Abläufe leichter laufen. Für Teams, Führungskräfte und alle, die plötzlich Prozesse am Hals haben. Kostenlos und ohne Anmeldung.", "menue": "start", "weiche": true}-->
 <section class="hero" aria-labelledby="titel">
   <div class="wrap">
     <div class="hero-text">
@@ -7,11 +7,12 @@
         <li>Ohne Anmeldung</li>
         <li>Ohne Cookies</li>
       </ul>
-      <h1 id="titel">Schluss mit dem Kuddelmuddel. <em>Im Job und zu Hause.</em></h1>
-      <p class="hero-lead">Ob Teamablage, Familienkalender oder Urlaubsplanung: Der Prozesswurm zeigt dir in kurzen Lektionen, Liedern und Comics, wie Abläufe leichter laufen.</p>
+      <h1 id="titel">Prozess&shy;management, <em>endlich verständlich.</em></h1>
+      <p class="hero-claim">Für alle, die plötzlich Prozesse am Hals haben. Im Job, im Team und ja, auch zu Hause.</p>
+      <p class="hero-lead">Der Prozesswurm erklärt in kurzen Lektionen, Liedern und Comics, wie Abläufe leichter laufen. Ohne Fachchinesisch, mit einem Handgriff für morgen.</p>
       <div class="button-row">
         <a class="button button-primary" href="{{lernwerkstatt}}">Lernwerkstatt starten <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        <a class="button button-secondary" href="#nervt">Was nervt dich gerade?</a>
+        <a class="button button-secondary" href="{{p}}fuer-teams/">Für mein Team</a>
       </div>
     </div>
     <div class="hero-stage">
@@ -19,8 +20,19 @@
         <img src="{{p}}assets/img/titel-zukunftsstadt.webp" width="944" height="1088" alt="Der Prozesswurm gleitet gut gelaunt über eine Brücke durch eine aufgeräumte, sonnige Stadt der Zukunft." fetchpriority="high">
         <span class="ai-note">Mit KI erstellt</span>
       </figure>
-      <p class="speech">„Wozu brauch ich den Schmarrn?“<small>Doktor Kuddelmuddel</small></p>
+      <p class="kuddel-note"><img src="{{p}}assets/img/kuddelmuddel.webp" width="196" height="240" alt=""><span><b>Doktor Kuddelmuddel:</b> „Wozu brauch ich den Schmarrn?“</span></p>
     </div>
+  </div>
+</section>
+
+<section class="proof" aria-label="Warum der Prozesswurm">
+  <div class="wrap">
+    <ul class="proof-list">
+      <li><b>Über 10 Jahre</b><span>Praxis im Prozessmanagement stecken hinter jeder Lektion</span></li>
+      <li><b>Von A1 bis C2</b><span>vom ersten Ablauf bis zur Strategie fürs ganze Unternehmen</span></li>
+      <li><b>Jeden Montag neu</b><span>Nachrichten, Zahlen und Quellen aus dem Prozessmanagement</span></li>
+      <li><b>KI inklusive</b><span>Agenten, Prompts und Process Mining, verständlich erklärt</span></li>
+    </ul>
   </div>
 </section>
 
@@ -34,42 +46,7 @@
   </div>
 </section>
 
-<section class="section section-alt" aria-labelledby="wege-titel">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="wege-titel">Drei Wege raus aus dem Kuddelmuddel</h2>
-    </div>
-    <div class="ways">
-      <article class="way way-featured">
-        <span class="way-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></svg></span>
-        <p class="eyebrow">Lernen</p>
-        <h3>Lernwerkstatt</h3>
-        <p>Kurze Lektionen in Stufen wie beim Sprachenlernen, mit Abzeichen und Urkunde.</p>
-        <ul class="levels" aria-label="Stufen">
-          <li>A1</li><li>A2</li><li>B1</li><li>B2</li><li>C1</li><li>C2</li>
-        </ul>
-        <a class="more" href="{{lernwerkstatt}}">Jetzt starten →</a>
-      </article>
-      <article class="way">
-        <span class="way-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
-        <p class="eyebrow">Jeden Montag</p>
-        <h3>Montags-Wurm</h3>
-        <p>Ein Ärgernis weniger pro Woche: ein Thema, ein Handgriff, ein Satz zum Mitnehmen.</p>
-        {{neueste}}
-        <a class="more" href="{{p}}montags-wurm/">Alle Ausgaben →</a>
-      </article>
-      <article class="way">
-        <span class="way-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>
-        <p class="eyebrow">Fürs Ohr und Auge</p>
-        <h3>Hören und sehen</h3>
-        <p>Lieder, Podcast und Kurzvideos rund um Prozesse. Was im Ohr bleibt, bleibt auch im Kopf.</p>
-        <a class="more" href="{{p}}hoeren-und-sehen/">Reinhören →</a>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="section duo" aria-labelledby="duo-titel">
+<section class="section section-alt duo" aria-labelledby="duo-titel">
   <div class="wrap">
     <div class="compare" data-compare>
       <img src="{{p}}assets/img/vorher-kuddelmuddel.webp" width="960" height="1088" alt="Vorher: Doktor Kuddelmuddel thront auf einem Berg aus Chaos in einem verwüsteten Zimmer." loading="lazy">
@@ -92,18 +69,100 @@
   </div>
 </section>
 
-<section class="section section-alt" aria-labelledby="kanaele-titel">
+<section class="section" aria-labelledby="weg-titel">
   <div class="wrap">
     <div class="section-head">
-      <h2 id="kanaele-titel">Den Prozesswurm überall finden</h2>
-      <p>Such dir aus, wie du ihn am liebsten triffst.</p>
+      <p class="eyebrow">Die Lernwerkstatt</p>
+      <h2 id="weg-titel">Vom Prozesswurm zum Schmetterling</h2>
+      <p>Kurze Lektionen in Stufen, wie beim Sprachenlernen. Mit Abzeichen, Urkunde fürs LinkedIn-Profil und einer Einstufung, damit du nicht bei null anfangen musst.</p>
     </div>
+    <ol class="journey">
+      <li>
+        <span class="journey-step">1</span>
+        <p class="eyebrow">A1 und A2 · Kriechen</p>
+        <h3>Verstehen, wie Abläufe ticken</h3>
+        <p>Was ein Prozess ist, wer welchen Hut aufhat und wie du den Überblick über alle Abläufe bekommst.</p>
+      </li>
+      <li>
+        <span class="journey-step">2</span>
+        <p class="eyebrow">B1 und B2 · Verpuppen</p>
+        <h3>Abläufe aufnehmen und verbessern</h3>
+        <p>Vor Ort hinschauen, Engpässe finden, Ziele setzen und den Weg vom Ist bis zum Live-Gang gehen.</p>
+      </li>
+      <li>
+        <span class="journey-step">3</span>
+        <p class="eyebrow">C1, C2 und Meister-Prüfung · Fliegen</p>
+        <h3>Vertiefen und das ganze Unternehmen sehen</h3>
+        <p>KI im Prozessmanagement, Lean, Veränderung oder Projekte. Dann die Strategie und zum Schluss die Meister-Prüfung.</p>
+      </li>
+    </ol>
+    <div class="button-row">
+      <a class="button button-primary" href="{{lernwerkstatt}}">Erste Lektion starten <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      <a class="button button-secondary" href="{{lernwerkstatt}}#einstufung">Erst einstufen lassen</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="neu-titel">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Jeden Montag</p>
+      <h2 id="neu-titel">Neu im Montags-Wurm</h2>
+      <p>Ein Thema, ein Handgriff, ein Satz zum Mitnehmen. Mit echten Zahlen und Quellen.</p>
+    </div>
+    {{neueste_gross}}
+  </div>
+</section>
+
+<section class="section" aria-labelledby="wen-titel">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="wen-titel">Für wen ist das?</h2>
+      <p>Prozesse stecken überall, wo mehr als ein Mensch etwas erledigt. Such dir deinen Einstieg aus.</p>
+    </div>
+    <ul class="audiences">
+      <li><a class="audience audience-main" href="{{p}}fuer-teams/"><b>Teams und Führungskräfte</b><span>Lernpfade fürs Team, Montags-Wurm für die Teamrunde, Werkzeuge zum Ausdrucken.</span><i aria-hidden="true">→</i></a></li>
+      <li><a class="audience" href="{{p}}fuer-dich/#azubis"><b>Azubis und Studierende</b><span>Die Grundlagen in kleinen Happen, mit Urkunde für den Lebenslauf.</span><i aria-hidden="true">→</i></a></li>
+      <li><a class="audience" href="{{p}}fuer-dich/#vereine"><b>Vereine und Ehrenamt</b><span>Wer macht was beim Sommerfest? Klare Zuständigkeit ohne Chef.</span><i aria-hidden="true">→</i></a></li>
+      <li><a class="audience" href="{{p}}fuer-dich/#familien"><b>Familien</b><span>Spülmaschine, Wochenplan, Kinderzimmer: Abläufe, die zu Hause wirken.</span><i aria-hidden="true">→</i></a></li>
+    </ul>
+  </div>
+</section>
+
+<section class="section section-alt" aria-labelledby="mehr-titel">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 id="mehr-titel">Nachschlagen, hören, mitreden</h2>
+    </div>
+    <div class="ways ways-2">
+      <a class="way way-link" href="{{p}}begriffe/">
+        <span class="way-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5M8 7h7"/></svg></span>
+        <h3>Begriffe von A bis Z</h3>
+        <p>Von 5S bis Workshop: jedes Fachwort in zwei Sätzen erklärt, mit der passenden Lektion.</p>
+        <span class="more">Nachschlagen →</span>
+      </a>
+      <a class="way way-link" href="{{p}}hoeren-und-sehen/">
+        <span class="way-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg></span>
+        <h3>Hören und sehen</h3>
+        <p>Lieder, Podcast und Kurzvideos rund um Prozesse. Was im Ohr bleibt, bleibt auch im Kopf.</p>
+        <span class="more">Reinhören →</span>
+      </a>
+    </div>
+    <h3 class="channels-title" id="kanaele-titel">Den Prozesswurm überall finden</h3>
     {{kanaele}}
   </div>
 </section>
 
-<section class="section" aria-labelledby="newsletter-titel">
+<section class="section" aria-labelledby="feedback-titel">
   <div class="wrap">
+    <div class="feedback-box">
+      <img src="{{p}}assets/img/prozesswurm.webp" width="240" height="218" alt="">
+      <div>
+        <h2 id="feedback-titel">Neue Website. Was fehlt dir?</h2>
+        <p>Der Prozesswurm ist gerade umgezogen und noch kein Schmetterling. Sag ehrlich, was dir gefällt, was fehlt und wo es hakt.</p>
+      </div>
+      <a class="button button-secondary" href="{{feedback}}">Rückmeldung geben</a>
+    </div>
     {{newsletter}}
   </div>
 </section>

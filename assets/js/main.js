@@ -158,6 +158,45 @@
     apply();
   }
 
+  /* Begriffe von A bis Z: filtern */
+  var termInput = doc.getElementById("begriffsfilter");
+  if (termInput) {
+    var termCards = Array.prototype.slice.call(doc.querySelectorAll(".term-card"));
+    var groups = Array.prototype.slice.call(doc.querySelectorAll(".term-group"));
+    var termCount = doc.getElementById("begriffsanzahl");
+    var termEmpty = doc.getElementById("begriffsleer");
+    var nt = function (s) { return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ß/g, "ss"); };
+    termCards.forEach(function (c) { c._t = nt(c.querySelector("h3").textContent); c._d = nt(c.textContent); });
+    termInput.addEventListener("input", function () {
+      var q = nt(termInput.value.trim()), n = 0;
+      termCards.forEach(function (c) {
+        var ok = !q || c._t.indexOf(q) > -1 || (q.length >= 4 && c._d.indexOf(q) > -1);
+        c.hidden = !ok; if (ok) n++;
+      });
+      groups.forEach(function (g) { g.hidden = !g.querySelector(".term-card:not([hidden])"); });
+      termCount.textContent = n === 1 ? "1 Begriff" : n + " Begriffe";
+      termEmpty.hidden = n > 0;
+    });
+  }
+
+  /* Sanftes Einblenden beim Scrollen */
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    var revealEls = doc.querySelectorAll(".journey li, .audience, .latest, .path-card, .pick, .value-grid li, .proof-list li");
+    if (revealEls.length) {
+      root.classList.add("js-reveal");
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      revealEls.forEach(function (el, i) {
+        el.classList.add("reveal");
+        el.style.transitionDelay = (i % 4) * 60 + "ms";
+        io.observe(el);
+      });
+      /* Sicherheitsnetz: nach dem Drucken oder bei Problemen alles zeigen */
+      window.addEventListener("beforeprint", function () { revealEls.forEach(function (el) { el.classList.add("is-in"); }); });
+    }
+  }
+
   /* E-Mail-Adresse kopieren */
   doc.querySelectorAll("[data-copy]").forEach(function (btn) {
     btn.addEventListener("click", function () {

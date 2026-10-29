@@ -1,0 +1,92 @@
+[
+ {
+  "datei": "start",
+  "titel": "Prozessmanagement, endlich verständlich.",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "fuer-teams",
+  "titel": "Bessere Abläufe im Team, ohne Schulungsbudget",
+  "oben": "Für Teams und Führungskräfte",
+  "bild": "assets/img/teams-ideenbox.webp"
+ },
+ {
+  "datei": "fuer-dich",
+  "titel": "Für Azubis, Vereine und Familien",
+  "oben": "Prozesse gibt es überall",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "hoeren-und-sehen",
+  "titel": "Hören und sehen",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "begriffe",
+  "titel": "Begriffe von A bis Z, ohne Fachchinesisch",
+  "oben": "Prozessmanagement nachschlagen",
+  "bild": "assets/img/begriffe-landkarte.webp"
+ },
+ {
+  "datei": "montags-wurm",
+  "titel": "Montags-Wurm",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "montags-wurm-26-oktober-2026",
+  "titel": "Viele Hüte, keiner zuständig",
+  "oben": "Montags-Wurm · 26. Oktober 2026",
+  "bild": "assets/img/mw-2026-10-26-titel.webp"
+ },
+ {
+  "datei": "montags-wurm-19-oktober-2026",
+  "titel": "Das Kauderwelsch-Monster",
+  "oben": "Montags-Wurm · 19. Oktober 2026",
+  "bild": "assets/img/mw-2026-10-19-titel.webp"
+ },
+ {
+  "datei": "montags-wurm-12-oktober-2026",
+  "titel": "Das Schatten-IT-Monster",
+  "oben": "Montags-Wurm · 12. Oktober 2026",
+  "bild": "assets/img/mw-2026-10-12-titel.webp"
+ },
+ {
+  "datei": "montags-wurm-05-oktober-2026",
+  "titel": "Wenn die Maschine den Chef ersetzt",
+  "oben": "Montags-Wurm · 5. Oktober 2026",
+  "bild": "assets/img/mw-2026-10-05-titel.webp"
+ },
+ {
+  "datei": "ueber-uns",
+  "titel": "Über uns",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "impressum",
+  "titel": "Impressum",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "datenschutz",
+  "titel": "Datenschutz",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "barrierefreiheit",
+  "titel": "Barrierefreiheit",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ },
+ {
+  "datei": "404",
+  "titel": "Seite nicht gefunden",
+  "oben": "Prozessmanagement einfach erklärt",
+  "bild": "assets/img/titel-zukunftsstadt.webp"
+ }
+]

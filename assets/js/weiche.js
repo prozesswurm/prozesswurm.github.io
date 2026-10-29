@@ -4,7 +4,7 @@
    auf dieser Startseite und werden hier sofort in die Lernwerkstatt weitergereicht. */
 (function () {
   var h = location.hash;
-  if (h && h.length > 1 && !/^#(inhalt|nervt|titel|nervt-titel|wege-titel|duo-titel|kanaele-titel|newsletter-titel)$/.test(h)) {
+  if (h && h.length > 1 && !/^#(inhalt|nervt|titel|nervt-titel|wege-titel|duo-titel|weg-titel|neu-titel|wen-titel|mehr-titel|kanaele-titel|feedback-titel|newsletter-titel)$/.test(h)) {
     location.replace("lernwerkstatt/" + location.search + h);
   }
 })();

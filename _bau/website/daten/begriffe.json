@@ -1,0 +1,488 @@
+[
+ {
+  "t": "5-Why",
+  "d": "Fünfmal „Warum?“ fragen, bis du bei der Ursache statt beim Symptom bist.",
+  "stufe": "B1",
+  "lektion": "l04"
+ },
+ {
+  "t": "51-Prozent-Regel",
+  "d": "Wer am Ende den größten Nutzen vom Ergebnis hat, trägt die Hauptverantwortung.",
+  "stufe": "A2",
+  "lektion": "v07"
+ },
+ {
+  "t": "5S",
+  "d": "Sortieren, Systematisieren, Sauberkeit, Standardisieren, Selbstdisziplin.",
+  "stufe": "C1",
+  "lektion": "l01"
+ },
+ {
+  "t": "ADKAR",
+  "d": "Awareness, Desire, Knowledge, Ability, Reinforcement: Veränderung aus Sicht des Einzelnen.",
+  "stufe": "C1",
+  "lektion": "c02"
+ },
+ {
+  "t": "Agil",
+  "d": "In kleinen Schritten arbeiten und oft nachsteuern, statt alles vorab festzulegen.",
+  "stufe": "C1",
+  "lektion": "p04"
+ },
+ {
+  "t": "AI Act",
+  "d": "EU-Gesetz für Künstliche Intelligenz. Je höher das Risiko einer KI-Anwendung, desto strenger die Regeln.",
+  "stufe": "C1",
+  "lektion": "i11"
+ },
+ {
+  "t": "Andon",
+  "d": "Ein Signal (Lampe, Knopf, Zuruf), mit dem jeder sofort auf ein Problem aufmerksam machen darf.",
+  "stufe": "C1",
+  "lektion": "l03"
+ },
+ {
+  "t": "Aufgabe",
+  "d": "Ein einzelner Schritt innerhalb eines Prozesses oder Projekts.",
+  "stufe": "A1",
+  "lektion": "b05"
+ },
+ {
+  "t": "Auftragsklärung",
+  "d": "Vor dem Start klären: Was genau soll herauskommen, wer will es, bis wann, was ist ausdrücklich nicht gemeint?",
+  "stufe": "B1",
+  "lektion": "k09"
+ },
+ {
+  "t": "Ausführende",
+  "d": "Die Menschen, die den Prozess jeden Tag tatsächlich durchführen.",
+  "stufe": "A2",
+  "lektion": "b02"
+ },
+ {
+  "t": "Bierdeckel-Skizze",
+  "d": "Fünf Fragen: Wer liefert, was kommt rein, welche Schritte, was kommt raus, wer bekommt es?",
+  "stufe": "A2",
+  "lektion": null
+ },
+ {
+  "t": "BPMN",
+  "d": "Genormte Zeichensprache für Ablaufbilder mit festen Symbolen. Nützlich, wenn Programme den Ablauf lesen sollen. Für den Anfang reichen Kästchen und Pfeile.",
+  "stufe": "A2",
+  "lektion": "g03"
+ },
+ {
+  "t": "Clean Core",
+  "d": "„Sauberer Kern“: Standard-Software möglichst unverändert lassen und Sonderwünsche außen herum lösen. Das macht spätere Updates leichter.",
+  "stufe": "C2",
+  "lektion": "i15"
+ },
+ {
+  "t": "Der ganze Weg",
+  "d": "Ein Prozess vom Wunsch des Kunden bis zu dem Moment, in dem er bekommt, was er wollte. Quer durch alle Abteilungen.",
+  "stufe": "A1",
+  "lektion": "g01"
+ },
+ {
+  "t": "Digitaler Zwilling",
+  "d": "Ein digitales Abbild von etwas Echtem, zum Beispiel von einem Ablauf oder vom Wissen einer Person.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Durchlaufzeit",
+  "d": "Zeit vom Start bis zum fertigen Ergebnis. Enthält Bearbeitung und Wartezeit, meist ist die Wartezeit der größere Teil.",
+  "stufe": "B1",
+  "lektion": "b04"
+ },
+ {
+  "t": "Einführungsfreigabe",
+  "d": "Das offizielle grüne Licht, bevor ein neuer Prozess live geht.",
+  "stufe": "B2",
+  "lektion": "k14"
+ },
+ {
+  "t": "Eskalation",
+  "d": "Ein Problem bewusst an die nächsthöhere Stelle geben, weil es auf der eigenen Ebene nicht zu lösen ist. Kein Petzen, sondern ein vereinbarter Weg.",
+  "stufe": "C2",
+  "lektion": null
+ },
+ {
+  "t": "Fischgräten-Diagramm",
+  "d": "Sucht Ursachen entlang der 7M: Mensch, Maschine, Methode, Material, Management, Mitwelt, Messung.",
+  "stufe": "B2",
+  "lektion": "k08"
+ },
+ {
+  "t": "Führungsprozess",
+  "d": "Gibt die Richtung vor: Strategie, Planung, Steuerung.",
+  "stufe": "A2",
+  "lektion": "b06"
+ },
+ {
+  "t": "Genchi Genbutsu",
+  "d": "Geh an den Ort des Geschehens, statt nur zu vermuten.",
+  "stufe": "B1",
+  "lektion": "l04"
+ },
+ {
+  "t": "Governance",
+  "d": "Spielregeln, die als Leitplanken wirken, nicht als Stoppschilder.",
+  "stufe": "C2",
+  "lektion": "s06"
+ },
+ {
+  "t": "Halluzination",
+  "d": "Eine KI erfindet eine Antwort, die überzeugend klingt, aber falsch ist.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Hypothese",
+  "d": "Eine Annahme, die du lieber kurz testest, statt lange darüber zu diskutieren.",
+  "stufe": "C1",
+  "lektion": "c03"
+ },
+ {
+  "t": "Input",
+  "d": "Was in den Prozess hineingeht: Material, Werkzeug, Informationen.",
+  "stufe": "A1",
+  "lektion": "b03"
+ },
+ {
+  "t": "Ist-Prozess",
+  "d": "So, wie ein Ablauf heute wirklich läuft. Nicht wie er auf dem Papier steht.",
+  "stufe": "A1",
+  "lektion": "k04"
+ },
+ {
+  "t": "Jidoka",
+  "d": "Ein System stoppt sich selbst, sobald etwas nicht stimmt.",
+  "stufe": "C1",
+  "lektion": "l03"
+ },
+ {
+  "t": "Kanban",
+  "d": "Arbeit fließt über ein Board. WIP-Limits begrenzen, wie viel gleichzeitig läuft.",
+  "stufe": "C1",
+  "lektion": "p04"
+ },
+ {
+  "t": "Kennzahl",
+  "d": "Zeigt, ob ein Prozessziel erreicht wird. Lieber 2 bis 3 pro Ziel als eine Zahlenflut.",
+  "stufe": "B2",
+  "lektion": "b04"
+ },
+ {
+  "t": "Kennzahl-Steckbrief",
+  "d": "Halbe Seite pro Kennzahl: wofür, wie berechnet, wer schaut drauf, was passiert bei schlechten Werten.",
+  "stufe": "B2",
+  "lektion": "g06"
+ },
+ {
+  "t": "Kernprozess",
+  "d": "Das, wofür der Kunde bezahlt. Ohne ihn läuft nichts.",
+  "stufe": "A2",
+  "lektion": "b06"
+ },
+ {
+  "t": "KI als Dienst",
+  "d": "Fertige KI, die man über das Internet mietet, statt sie selbst zu bauen. Schnell, aber man wird abhängig.",
+  "stufe": "C1",
+  "lektion": "e06"
+ },
+ {
+  "t": "KI-Agent",
+  "d": "Erledigt nach festen Regeln auch die Aufgabe, statt nur zu antworten.",
+  "stufe": "C1",
+  "lektion": "i01"
+ },
+ {
+  "t": "Kollegiale Fallberatung",
+  "d": "Kolleginnen und Kollegen beraten in fester Reihenfolge zu einem konkreten Problem. Der Fallgeber hört erst zu und entscheidet dann selbst.",
+  "stufe": "B2",
+  "lektion": "k09"
+ },
+ {
+  "t": "Konvention",
+  "d": "Eine vereinbarte Regel, wie etwas gemacht wird. Hält nur mit sichtbarem Nutzen.",
+  "stufe": "B1",
+  "lektion": "b07"
+ },
+ {
+  "t": "Kraftfeldanalyse",
+  "d": "Was treibt ein Ziel an, was bremst es? Bremsen lösen, Treiber verstärken.",
+  "stufe": "B2",
+  "lektion": "k12"
+ },
+ {
+  "t": "Lean",
+  "d": "Denkweise aus der Autoindustrie (Toyota): alles weglassen, was dem Kunden nichts bringt.",
+  "stufe": "C1",
+  "lektion": "l01"
+ },
+ {
+  "t": "Live-Gang",
+  "d": "Der Tag, ab dem ein neuer oder geänderter Ablauf im Alltag gilt.",
+  "stufe": "B2",
+  "lektion": null
+ },
+ {
+  "t": "Maschinelles Lernen",
+  "d": "Der Computer leitet Regeln aus vielen Beispielen selbst ab, statt dass jemand jede Regel programmiert.",
+  "stufe": "C1",
+  "lektion": "e02"
+ },
+ {
+  "t": "Meilenstein",
+  "d": "Wichtiger Zwischenpunkt in einem Projekt, an dem etwas Bestimmtes fertig sein soll.",
+  "stufe": "C1",
+  "lektion": "p02"
+ },
+ {
+  "t": "Moderation",
+  "d": "Ein Treffen so leiten, dass alle zu Wort kommen und am Ende ein Ergebnis steht. Die Moderation entscheidet nicht über den Inhalt.",
+  "stufe": "B2",
+  "lektion": "k16"
+ },
+ {
+  "t": "Neuronales Netz",
+  "d": "Rechenmodell, grob dem Gehirn nachempfunden: viele verbundene Rechenknoten, die gemeinsam Muster erkennen.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Nutzen-Aufwand-Matrix",
+  "d": "Ordnet Maßnahmen nach Nutzen und Aufwand. Viel Nutzen, wenig Aufwand zuerst.",
+  "stufe": "B2",
+  "lektion": "k10"
+ },
+ {
+  "t": "Output",
+  "d": "Was am Ende herauskommt, und für wen.",
+  "stufe": "A1",
+  "lektion": "b03"
+ },
+ {
+  "t": "Poka Yoke",
+  "d": "Fehler technisch unmöglich machen, statt sie nur zu verbieten.",
+  "stufe": "C1",
+  "lektion": "l05"
+ },
+ {
+  "t": "Process Board",
+  "d": "Kleines Gremium aus Process Ownern, das übergreifend über Prozesse entscheidet.",
+  "stufe": "C2",
+  "lektion": "s06"
+ },
+ {
+  "t": "Process Mining",
+  "d": "Wertet die Datenspuren eines Prozesses aus. Sieht nur, was digital läuft.",
+  "stufe": "C1",
+  "lektion": "i12"
+ },
+ {
+  "t": "Process Owner",
+  "d": "Trägt die langfristige Verantwortung und entscheidet über größere Änderungen.",
+  "stufe": "A2",
+  "lektion": "b02"
+ },
+ {
+  "t": "Projekt",
+  "d": "Einmalig, mit Start, Ende und eigenem Ziel. Zum Beispiel ein Umzug.",
+  "stufe": "A1",
+  "lektion": "b05"
+ },
+ {
+  "t": "Prompt",
+  "d": "Der Arbeitsauftrag an die KI. Gut gebaut aus Rolle, Kontext, Aufgabe, Leitplanken, Ergebnis.",
+  "stufe": "C1",
+  "lektion": "i05"
+ },
+ {
+  "t": "Prozess",
+  "d": "Eine Abfolge von Schritten, die immer wieder gleich zu einem Ergebnis führt. Wiederholbar ist das Entscheidende.",
+  "stufe": "A1",
+  "lektion": "b01"
+ },
+ {
+  "t": "Prozess-Neugestaltung",
+  "d": "Einen Ablauf grundlegend neu denken statt nur kleine Stellen zu flicken. Im Englischen oft „Redesign“ genannt.",
+  "stufe": "B2",
+  "lektion": null
+ },
+ {
+  "t": "Prozessbegehung",
+  "d": "Den Prozess vor Ort mit den Ausführenden durchgehen, statt nur Papier zu lesen.",
+  "stufe": "B1",
+  "lektion": "k07"
+ },
+ {
+  "t": "Prozessebenen",
+  "d": "Wie ein Inhaltsverzeichnis: oben der große Ablauf, darunter Teilschritte, ganz unten die Handgriffe.",
+  "stufe": "A2",
+  "lektion": null
+ },
+ {
+  "t": "Prozesskreislauf",
+  "d": "Die Abfolge vom Ziel über Aufnehmen, Untersuchen und Verbessern bis zur Einführung und zum Messen. Danach beginnt es von vorn.",
+  "stufe": "B2",
+  "lektion": "k01"
+ },
+ {
+  "t": "Prozesslandkarte",
+  "d": "Übersicht aller wichtigen Abläufe eines Bereichs, ohne jeden Handgriff.",
+  "stufe": "A2",
+  "lektion": "b06"
+ },
+ {
+  "t": "Prozessmanager",
+  "d": "Hält den Prozess im Alltag am Laufen und treibt Verbesserungen voran.",
+  "stufe": "A2",
+  "lektion": "b02"
+ },
+ {
+  "t": "Prozessportfolio",
+  "d": "Überblick, welche Prozesse wie wichtig sind und wie gut sie laufen. Hilft zu entscheiden, wo man zuerst anpackt.",
+  "stufe": "C2",
+  "lektion": "s04"
+ },
+ {
+  "t": "Prozesssteckbrief",
+  "d": "Ein-Seiten-Ausweis eines Prozesses: Name, Ziel, Start, Ende, Verantwortung, Kennzahl.",
+  "stufe": "A2",
+  "lektion": "b04"
+ },
+ {
+  "t": "PUSH und PULL",
+  "d": "PUSH: vom Input vorwärts, für den IST-Prozess. PULL: vom Ergebnis rückwärts, für den SOLL-Prozess.",
+  "stufe": "B2",
+  "lektion": "k04"
+ },
+ {
+  "t": "Regelkreis",
+  "d": "Planen, machen, prüfen, nachsteuern. Und dann von vorn, mit festem Prüftermin.",
+  "stufe": "B1",
+  "lektion": "g05"
+ },
+ {
+  "t": "Reifegrad",
+  "d": "Wo eure Prozesse stehen, von chaotisch bis systematisch verbessert. Ein Standort, kein Urteil.",
+  "stufe": "C2",
+  "lektion": "s05"
+ },
+ {
+  "t": "Schnittstelle",
+  "d": "Die Übergabe zwischen zwei Beteiligten. Hier geht am meisten verloren.",
+  "stufe": "B1",
+  "lektion": "v08"
+ },
+ {
+  "t": "Schwimmbahn",
+  "d": "Eine Bahn pro beteiligter Person im Ablaufbild. Wechselt ein Pfeil die Bahn, ist das eine Übergabe.",
+  "stufe": "A2",
+  "lektion": "g03"
+ },
+ {
+  "t": "Scrum",
+  "d": "Arbeitsweise für Teams: in kurzen, festen Zeitabschnitten etwas Fertiges liefern und danach gemeinsam zurückschauen.",
+  "stufe": "C1",
+  "lektion": "p04"
+ },
+ {
+  "t": "SIPOC",
+  "d": "Englische Abkürzung für die Bierdeckel-Skizze: Lieferant, Eingang, Schritte, Ergebnis, Empfänger.",
+  "stufe": "A2",
+  "lektion": "g04"
+ },
+ {
+  "t": "SMART",
+  "d": "Spezifisch, Messbar, Attraktiv, Realistisch, Terminiert: die Prüfliste für Ziele.",
+  "stufe": "B2",
+  "lektion": "k02"
+ },
+ {
+  "t": "SMED",
+  "d": "Schnelles Umrüsten: vorbereiten, solange Zeit ist.",
+  "stufe": "C1",
+  "lektion": "l01"
+ },
+ {
+  "t": "Soll-Prozess",
+  "d": "So, wie ein Ablauf künftig laufen soll.",
+  "stufe": "A1",
+  "lektion": "k01"
+ },
+ {
+  "t": "Sprachmodell",
+  "d": "KI, die gelernt hat, welches Wort wahrscheinlich als Nächstes kommt. Steckt hinter Chatbots.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Sprint",
+  "d": "Fester Zeitabschnitt in Scrum, meist ein bis vier Wochen.",
+  "stufe": "C1",
+  "lektion": "p04"
+ },
+ {
+  "t": "Stakeholder",
+  "d": "Alle, die von einer Veränderung betroffen sind. Eingeschätzt nach Einfluss und Einstellung.",
+  "stufe": "B2",
+  "lektion": "k06"
+ },
+ {
+  "t": "Start-Auslöser",
+  "d": "Das Ereignis, mit dem ein Prozess beginnt. Etwa: Rechnung kommt an.",
+  "stufe": "A1",
+  "lektion": null
+ },
+ {
+  "t": "Trainingsdaten",
+  "d": "Die Beispiele, aus denen eine KI lernt. Sind sie einseitig, wird auch die KI einseitig.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Überanpassung",
+  "d": "Die KI hat ihre Beispiele auswendig gelernt statt die Regel dahinter und versagt bei neuen Fällen.",
+  "stufe": "C1",
+  "lektion": "e03"
+ },
+ {
+  "t": "Übergabe",
+  "d": "Die Stelle, an der Arbeit von einer Person oder Abteilung zur nächsten wandert. Hier geht am meisten Zeit und Wissen verloren.",
+  "stufe": "B1",
+  "lektion": "g01"
+ },
+ {
+  "t": "Unterstützungsprozess",
+  "d": "Hält den Kern am Laufen, zum Beispiel Buchhaltung oder IT.",
+  "stufe": "A2",
+  "lektion": "b06"
+ },
+ {
+  "t": "Veränderungsmanagement",
+  "d": "Menschen durch eine Veränderung begleiten, damit sie verstehen, mitmachen und dabei bleiben. Im Englischen „Change Management“.",
+  "stufe": "C1",
+  "lektion": null
+ },
+ {
+  "t": "Verschwendung",
+  "d": "Alles, was Zeit kostet, aber keinen Wert schafft: Warten, Suchen, Nacharbeit, unnötige Wege.",
+  "stufe": "B1",
+  "lektion": "v13"
+ },
+ {
+  "t": "Verzerrung",
+  "d": "Eine KI bevorzugt oder benachteiligt etwas, weil ihre Trainingsdaten einseitig waren. Im Englischen „Bias“.",
+  "stufe": "C1",
+  "lektion": "e03"
+ },
+ {
+  "t": "Workshop",
+  "d": "Arbeitstreffen, in dem eine Gruppe gemeinsam an einer Frage arbeitet. Mit Ziel, Ablauf und festgehaltenem Ergebnis.",
+  "stufe": "A2",
+  "lektion": "k17"
+ }
+]
