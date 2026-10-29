@@ -1,143 +1,143 @@
 [
  {
   "Test": "Seite lädt ohne Fehler: index.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: mediathek.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/mediathek.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/mediathek.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: urkunde.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/urkunde.html?n=Test&k=A1&d=2026-01-01&c=PW-A1-ABC\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/urkunde.html?n=Test&k=A1&d=2026-01-01&c=PW-A1-ABC\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: hilfe.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/hilfe.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/hilfe.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: lektionen.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/lektionen.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/lektionen.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: lektion/b01.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/lektion/b01.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/lektion/b01.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Seite lädt ohne Fehler: lektion/i11.html",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/lektion/i11.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/lektion/i11.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "App: alle Ansichten öffnen",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "CSP blockt fremdes Skript (Gegenprobe)",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | NICHT blockiert"
+  "Ergebnis": "blockiert: script-src-elem",
+  "Details": "blockiert: script-src-elem"
  },
  {
   "Test": "Mediathek: Lied und Video lassen sich einbetten",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/mediathek.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/mediathek.html\", waiting until \"load\"\u001b[22m\n | eingebettet: nichts"
+  "Ergebnis": "eingebettet: www.youtube-nocookie.com, suno.com",
+  "Details": "eingebettet: www.youtube-nocookie.com, suno.com"
  },
  {
   "Test": "App: Lied und Video lassen sich einbetten",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#mediathek\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#mediathek\", waiting until \"load\"\u001b[22m\n | eingebettet: nichts"
+  "Ergebnis": "eingebettet: www.youtube-nocookie.com, suno.com",
+  "Details": "eingebettet: www.youtube-nocookie.com, suno.com"
  },
  {
   "Test": "Urkunde: Schadcode im Namen/Code",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/urkunde.html?n=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&c=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&k=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&d=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/urkunde.html?n=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&c=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&k=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E&d=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Link #lektion= mit Schadcode",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#lektion=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#lektion=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Link #problem= mit Schadcode",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#problem=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#problem=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Link #hilfe= mit Schadcode",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#hilfe=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#hilfe=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Team-Link mit Schadcode im Namen",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#team=b01.b02&name=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#team=b01.b02&name=%22%3E%3Cimg%20src%3Dx%20onerror%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E%3Csvg%20onload%3D%22window.__x%3D(window.__x%7C%7C0)%2B1%22%3E\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Speicherlink mit Schadcode (Name, Ziel)",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7ImIiOiJmIn0sImsiOltdLCJiIjp7fSwibiI6IlwiPjxpbWcgc3JjPXggb25lcnJvcj1cIndpbmRvdy5fX3g9KHdpbmRvdy5fX3h8fDApKzFcIj48c3ZnIG9ubG9hZD1cIndpbmRvdy5fX3g9KHdpbmRvdy5fX3h8fDApKzFcIj4iLCJnIjoiXCI-PGltZyBzcmM9eCBvbmVycm9yPVwid2luZG93Ll9feD0od2luZG93Ll9feHx8MCkrMVwiPjxzdmcgb25sb2FkPVwid2luZG93Ll9feD0od2luZG93Ll9feHx8MCkrMVwiPiJ9\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7ImIiOiJmIn0sImsiOltdLCJiIjp7fSwibiI6IlwiPjxpbWcgc3JjPXggb25lcnJvcj1cIndpbmRvdy5fX3g9KHdpbmRvdy5fX3h8fDApKzFcIj48c3ZnIG9ubG9hZD1cIndpbmRvdy5fX3g9KHdpbmRvdy5fX3h8fDApKzFcIj4iLCJnIjoiXCI-PGltZyBzcmM9eCBvbmVycm9yPVwid2luZG93Ll9feD0od2luZG93Ll9feHx8MCkrMVwiPjxzdmcgb25sb2FkPVwid2luZG93Ll9feD0od2luZG93Ll9feHx8MCkrMVwiPiJ9\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Speicherlink mit __proto__",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7fSwiayI6W10sImIiOnsiX19wcm90b19fIjp7InBvbGx1dGVkIjoiamEifX19\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7fSwiayI6W10sImIiOnsiX19wcm90b19fIjp7InBvbGx1dGVkIjoiamEifX19\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Speicherlink kaputt",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#p=%%%%\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#p=%%%%\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Browserspeicher mit Schadcode",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Browserspeicher kaputt (falsche Typen)",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Browserspeicher kein JSON",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n"
+  "Ergebnis": "ok",
+  "Details": ""
  },
  {
   "Test": "Fälschung: Speicherlink mit allem erledigt + Prüfung + GESAMT",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7ImIiOiJmZmZmZmYiLCJjIjoiZmZmZmZmIiwiZSI6ImZmZmZmZiIsImciOiJmZmZmZmYiLCJpIjoiZmZmZmZmIiwiayI6ImZmZmZmZiIsImwiOiJmZmZmZmYiLCJwIjoiZmZmZmZmIiwicyI6ImZmZmZmZiIsInYiOiJmZmZmZmYifSwiayI6W10sImIiOnsiUFJVRUZVTkciOiIyNjAxMDEiLCJHRVNBTVQiOiIyNjAxMDEifSwibiI6IlRlc3QifQ\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html#p=eyJ2IjoxLCJkIjp7ImIiOiJmZmZmZmYiLCJjIjoiZmZmZmZmIiwiZSI6ImZmZmZmZiIsImciOiJmZmZmZmYiLCJpIjoiZmZmZmZmIiwiayI6ImZmZmZmZiIsImwiOiJmZmZmZmYiLCJwIjoiZmZmZmZmIiwicyI6ImZmZmZmZiIsInYiOiJmZmZmZmYifSwiayI6W10sImIiOnsiUFJVRUZVTkciOiIyNjAxMDEiLCJHRVNBTVQiOiIyNjAxMDEifSwibiI6IlRlc3QifQ\", waiting until \"load\"\u001b[22m\n | 0 Lektionen übernommen, Meister-Prüfung nicht übernommen"
+  "Ergebnis": "99 Lektionen übernommen, Meister-Prüfung nicht übernommen",
+  "Details": "99 Lektionen übernommen, Meister-Prüfung nicht übernommen"
  },
  {
   "Test": "Feedback: Fangfeld blockt Spam-Programm",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | Fehler: page.fill: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#fbText')\u001b[22m\n"
+  "Ergebnis": "Spam nicht gesendet",
+  "Details": "Spam nicht gesendet"
  },
  {
   "Test": "Feedback: echte Nachricht kommt durch",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | Fehler: page.fill: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#fbText')\u001b[22m\n"
+  "Ergebnis": "gesendet",
+  "Details": "gesendet"
  },
  {
   "Test": "Urkunde erzeugen (Bild, LinkedIn-Knopf)",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | Urkundenbild erzeugt"
+  "Ergebnis": "Urkundenbild erzeugt",
+  "Details": "Urkundenbild erzeugt"
  },
  {
   "Test": "Meister-Prüfung: keine Lösungen, neuer Versuch erst morgen",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | Fehler: page.evaluate: SecurityError: Failed to read the 'localStorage' property from 'Window': Access is denied for this document.\n    at UtilityScript.evaluate (<anonymous>:313:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+  "Ergebnis": "keine Lösungen gezeigt, zweiter Versuch heute gesperrt",
+  "Details": "keine Lösungen gezeigt, zweiter Versuch heute gesperrt"
  },
  {
   "Test": "Urkunde: erst nach Ehrenwort herunterladen",
-  "Ergebnis": "FEHLER",
-  "Details": "Laden: page.goto: net::ERR_CONNECTION_REFUSED at http://localhost:8800/index.html\nCall log:\n\u001b[2m  - navigating to \"http://localhost:8800/index.html\", waiting until \"load\"\u001b[22m\n | Fehler: page.check: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#certHonor')\u001b[22m\n"
+  "Ergebnis": "ohne Bestätigung gesperrt, mit Bestätigung geladen",
+  "Details": "ohne Bestätigung gesperrt, mit Bestätigung geladen"
  },
  {
   "Test": "Zähl-Skript überall mit Prüfsumme",

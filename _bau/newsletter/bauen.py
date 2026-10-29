@@ -84,7 +84,7 @@ zitat = f'''<div style="font-family:{F};font-size:12px;font-weight:bold;letter-s
 <div style="margin-top:8px;font-family:{F};font-size:14px;color:{GRAU};">{ZITAT["wer"]}</div></td></tr></table>
 <p style="{P}">{ZITAT["reaktion"]}</p>'''
 body.append(zitat + HR)
-schluss = f'''<p style="{P}">{SCHLUSS.replace("prozesswurm@gmail.com", f'<a style="{LINK}" href="mailto:prozesswurm@gmail.com">prozesswurm@gmail.com</a>')}</p>
+schluss = f'''<p style="{P}">{SCHLUSS.replace("info@prozesswurm.de", f'<a style="{LINK}" href="mailto:info@prozesswurm.de">info@prozesswurm.de</a>')}</p>
 <table role="presentation" cellpadding="0" cellspacing="0" style="margin:6px 0 4px;"><tr><td valign="middle" style="padding-right:12px;"><img src="{IMG_BASE}wurm.png" width="56" alt="Der Prozesswurm" style="display:block;width:56px;height:auto;border:0;"></td>
 <td valign="middle" style="font-family:{F};font-size:17px;font-weight:bold;color:{DUNKEL};">Dein Prozesswurm</td></tr></table>
 {btn("Diese Ausgabe auf prozesswurm.de lesen", AUSGABE_URL)}'''

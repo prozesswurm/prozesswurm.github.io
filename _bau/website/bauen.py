@@ -80,7 +80,7 @@ MENUE = [
     ("ueber-uns", "Über uns", "ueber-uns/"),
 ]
 STARTTITEL = "Prozesswurm – Prozessmanagement einfach erklärt"
-FEEDBACK = ("mailto:prozesswurm@gmail.com?subject=" + "R%C3%BCckmeldung%20zur%20Website"
+FEEDBACK = ("mailto:info@prozesswurm.de?subject=" + "R%C3%BCckmeldung%20zur%20Website"
             + "&body=" + "Das%20gef%C3%A4llt%20mir%3A%0A%0ADas%20fehlt%20mir%3A%0A%0AHier%20hakt%20es%3A%0A")
 VORSCHAU = []  # wird beim Bauen gefüllt, daraus entstehen die Vorschaubilder
 
@@ -191,7 +191,7 @@ def fuss(p):
     <div class="footer-brand">
       <strong>Prozesswurm</strong>
       <p>Prozessmanagement, endlich verständlich. Keine Cookies. Keine Werbung. Kein Google-Tracking.</p>
-      <p class="copy-mail">Kontakt: <code>prozesswurm@gmail.com</code> <button type="button" data-copy="prozesswurm@gmail.com">Kopieren</button></p>
+      <p class="copy-mail">Kontakt: <code>info@prozesswurm.de</code> <button type="button" data-copy="info@prozesswurm.de">Kopieren</button></p>
       <p><a href="{FEEDBACK}">Rückmeldung zur Website geben</a></p>
     </div>
     <nav aria-labelledby="fuss-entdecken">

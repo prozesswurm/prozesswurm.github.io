@@ -29,7 +29,7 @@ o+=['## 7. Zum Schluss: Ein Satz zum Mitnehmen', f'*„{ZITAT["text"]}“*', ZIT
 f'**Erste Zeile (ersetzt den Einstieg):** {LI_ERSTE_ZEILE}', f'**Frage vor dem Schlusssatz:** {LI_FRAGE}', 'Sonst gleicher Text wie Fassung A. Titelbild: titel.jpg.',
 '### Begleittext für den Beitrag', LI_BEGLEIT, LI_TAGS,
 '## Fassung C – Brevo (E-Mail)',
-'- Absendername: Prozesswurm', '- Antwortadresse: prozesswurm@gmail.com', f'- Betreff: {BETREFF}', f'- Betreff zum Testen: {BETREFF_ALT}', f'- Vorschautext: {VORSCHAU}',
+'- Absendername: Prozesswurm', '- Antwortadresse: info@prozesswurm.de', f'- Betreff: {BETREFF}', f'- Betreff zum Testen: {BETREFF_ALT}', f'- Vorschautext: {VORSCHAU}',
 '- Inhalt: die ganze Ausgabe im neuen Layout (Datei newsletter-brevo.html, mit Bildern, Kuddelmuddel-Kästen, Knöpfen). Ab dieser Ausgabe kommt die ganze Ausgabe per E-Mail, nicht mehr die Kurzfassung.',
 '- Fußzeile von Brevo mit Abmeldelink und Impressum muss aktiv sein.',
 '## Webseiten-Vorlage',

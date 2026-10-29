@@ -101,7 +101,7 @@ ZITAT = dict(
  quelle=L_DEMING,
 )
 
-SCHLUSS = "Dieser Newsletter erscheint weiterhin jeden Montag. Vielen Dank für deine Zeit. Feedback, Anmerkungen oder Themenvorschläge? Schreib mir gern an prozesswurm@gmail.com."
+SCHLUSS = "Dieser Newsletter erscheint weiterhin jeden Montag. Vielen Dank für deine Zeit. Feedback, Anmerkungen oder Themenvorschläge? Schreib mir gern an info@prozesswurm.de."
 
 # LinkedIn
 LI_ERSTE_ZEILE = "Über 70 Arten von Beauftragten, bis zu 50 in einem Betrieb. Und wenn es brennt, fühlt sich trotzdem keiner zuständig."
