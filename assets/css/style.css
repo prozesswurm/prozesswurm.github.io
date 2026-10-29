@@ -552,6 +552,18 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tile > span:not(.eyebrow) { color: var(--fg-soft); font-size: 0.98rem; line-height: 1.45; }
 .tile i { margin-top: auto; padding-top: 4px; font-style: normal; font-weight: 800; color: var(--worm); }
 .tile-main { background: var(--worm-soft); border-color: transparent; }
+/* Bildkacheln auf der Startseite: Bild oben, Text darunter, damit sie sich von den Ärgernis-Kacheln abheben */
+.tiles-pic { gap: 18px; }
+.tiles-pic .tile { padding: 0; gap: 0; overflow: hidden; border-radius: var(--radius-l); box-shadow: 0 6px 22px rgba(22, 32, 26, 0.08); transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease; }
+.tiles-pic .tile:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(22, 32, 26, 0.14); }
+.tile-img { aspect-ratio: 16 / 9; border-radius: 0; }
+.tile-img img { transition: transform 0.35s ease; }
+.tiles-pic .tile:hover .tile-img img { transform: scale(1.04); }
+.tile-body { flex: 1; display: flex; flex-direction: column; gap: 6px; padding: 18px 22px 20px; }
+.tile-body > span:not(.eyebrow) { color: var(--fg-soft); font-size: 0.98rem; line-height: 1.45; }
+.tile-body i { margin-top: auto; padding-top: 8px; font-style: normal; font-weight: 800; color: var(--worm); }
+.tiles-pic .tile-main { background: var(--worm); }
+.tiles-pic .tile-main .tile-body, .tiles-pic .tile-main .tile-body * { color: var(--on-worm); }
 .feedback-line { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; text-align: center; color: var(--fg-soft); }
 .feedback-btn { min-height: 46px; padding: 0 18px; font-size: 1rem; border-color: var(--worm); color: var(--worm); }
 .feedback-btn:hover { background: var(--worm-soft); color: var(--worm); }
