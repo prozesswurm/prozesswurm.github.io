@@ -22,8 +22,8 @@ Regeln seit 29.10.2026 (bitte einhalten):
 - Handgriff der Woche als Text (Liste) im Kasten; eine Beispieltabelle als echte HTML-Tabelle
   (class="example-table" in div.table-wrap), nicht als Bild, damit sie vorlesbar ist.
 - Lektionen und Fachbegriffe holt das Skript selbst aus lernwerkstatt/index.html
-  (aus-lernwerkstatt.js → daten/lektionen.json und daten/begriffe.json). Neue Begriffe in der
-  Lernwerkstatt (CARDS, GLOSS_EXTRA) erscheinen damit automatisch unter /begriffe/.
+  (aus-lernwerkstatt.js → daten/lektionen.json). Lerninhalte (Lektionen, Begriffe) bleiben in der
+  Lernwerkstatt; die Website verlinkt nur dorthin und zeigt sie nicht noch einmal (Wunsch 29.10.2026).
 - Platzhalter für Seiten: {{lektionen:b01,b02}} (Lektionskarten), {{lernpfad:Name|b01,b02}}
   (fertiger Team-Lernpfad mit Link), {{neueste_gross}}, {{einstieg}} (Auswahl aus daten/einstieg.json),
   {{feedback}} (Mail-Link für Rückmeldungen). Unbekannte Platzhalter brechen den Bau ab.
@@ -76,7 +76,6 @@ KANAELE = [
 MENUE = [
     ("teams", "Für Teams", "fuer-teams/"),
     ("montags-wurm", "Montags-Wurm", "montags-wurm/"),
-    ("begriffe", "Begriffe", "begriffe/"),
     ("hoeren", "Hören und sehen", "hoeren-und-sehen/"),
     ("ueber-uns", "Über uns", "ueber-uns/"),
 ]
@@ -200,9 +199,7 @@ def fuss(p):
       <ul>
         <li><a href="{p}{LERNWERKSTATT}">Lernwerkstatt</a></li>
         <li><a href="{p}fuer-teams/">Für Teams und Führungskräfte</a></li>
-        <li><a href="{p}fuer-dich/">Für Azubis, Vereine und Familien</a></li>
         <li><a href="{p}montags-wurm/">Montags-Wurm</a></li>
-        <li><a href="{p}begriffe/">Begriffe von A bis Z</a></li>
         <li><a href="{p}hoeren-und-sehen/">Hören und sehen</a></li>
         <li><a href="{p}ueber-uns/">Über uns</a></li>
       </ul>
@@ -505,8 +502,7 @@ def lernpfad(p, name, ids):
     punkte = "".join(f"<li>{e(lek[i]['t'])} <span class=\"muted nowrap\">({lek[i]['stufe']}, {lek[i]['min']} Min.)</span></li>" for i in ids)
     return f"""<article class="path-card">
   <h3>{e(name)}</h3>
-  <p class="muted">{len(ids)} Lektionen, zusammen etwa {minuten} Minuten</p>
-  <ol>{punkte}</ol>
+  <p class="muted">{len(ids)} kurze Lektionen, zusammen etwa {minuten} Minuten</p>
   <div class="share-row">
     <a class="share-btn share-main" href="{p}{LERNWERKSTATT}#{e(frag)}">Lernpfad öffnen</a>
     <span class="share-copy"><code class="visually-hidden">{e(voll)}</code><button type="button" class="share-btn" data-copy="{e(voll)}">{ICON["kette"]}Link fürs Team kopieren</button></span>
@@ -594,8 +590,6 @@ def bauen():
         for x in liste:
             suche.append({"titel": x["t"], "url": f'{LERNWERKSTATT}#problem={x["id"]}',
                           "text": f'Lernwerkstatt · {bereich}: {x["k"]}', "stichworte": "problem nervt hilfe"})
-    for x in daten("begriffe.json"):
-        suche.append({"titel": x["t"], "url": f'begriffe/#{begriff_anker(x["t"])}', "text": "Begriff: " + x["d"], "stichworte": "begriff erklärung was ist"})
     medien = json.load(open(os.path.join(DATEN, "medien.json"), encoding="utf-8"))
     for x in medien["lieder"]:
         suche.append({"titel": x["titel"], "url": f'https://suno.com/song/{x["id"]}', "text": "Lied auf Suno", "stichworte": "lied musik song"})
