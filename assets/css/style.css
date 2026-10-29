@@ -537,3 +537,20 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 }
 .issue-img .ai-note { font-size: 0.6rem; right: 4px; bottom: 4px; padding: 0 6px; }
 .brand { flex: none; }
+
+/* Kompakte Startseite (29.10.2026) */
+.hero-compact { padding-block: 36px 28px; }
+.hero-compact .hero-text { gap: 18px; }
+.hero-img { flex: 0 1 18rem; max-width: 20rem; margin: 0 auto; border-radius: var(--radius-l); aspect-ratio: 1 / 1; }
+.hero-img img { object-position: 50% 40%; }
+.facts-line { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: 0.95rem; font-weight: 700; }
+.facts-line li::before { content: "✓"; color: var(--worm); margin-right: 6px; }
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 14px; }
+.tile { height: 100%; display: flex; flex-direction: column; gap: 6px; padding: 20px 22px; border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); color: var(--fg); text-decoration: none; }
+.tile:hover { border-color: var(--worm); color: var(--fg); }
+.tile b { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; line-height: 1.2; letter-spacing: -0.01em; }
+.tile > span:not(.eyebrow) { color: var(--fg-soft); font-size: 0.98rem; line-height: 1.45; }
+.tile i { margin-top: auto; padding-top: 4px; font-style: normal; font-weight: 800; color: var(--worm); }
+.tile-main { background: var(--worm-soft); border-color: transparent; }
+.feedback-line { margin-top: 14px; text-align: center; color: var(--muted); font-size: 0.98rem; }
+@media (max-width: 640px) { .hero-img { display: none; } }

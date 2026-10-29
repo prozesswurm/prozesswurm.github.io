@@ -100,11 +100,24 @@
   </div>
 </section>
 
-<section class="section" aria-labelledby="duo2-titel">
-  <div class="wrap narrow">
-    <div class="panel">
-      <h2 id="duo2-titel">Das ewige Duo</h2>
-      <p>Doktor Kuddelmuddel ist nicht nur der Böse. Er deckt Schwachstellen schonungslos auf und sorgt dafür, dass alle merken: So geht es nicht weiter. Der Prozesswurm schaut sich die Trümmer an und baut daraus etwas Stabileres. Zusammen sind die beiden der Motor für dauerhafte Verbesserung.</p>
+<section class="section duo" aria-labelledby="duo-titel">
+  <div class="wrap">
+    <div class="compare" data-compare>
+      <img src="../assets/img/vorher-kuddelmuddel.webp" width="960" height="1088" alt="Vorher: Doktor Kuddelmuddel thront auf einem Berg aus Chaos in einem verwüsteten Zimmer." loading="lazy">
+      <img class="after" src="../assets/img/nachher-prozesswurm.webp" width="960" height="1088" alt="Nachher: Der Prozesswurm bringt mit grünen Blitzen Ordnung in dasselbe Zimmer. Schon besser, aber noch nicht perfekt aufgeräumt." loading="lazy">
+      <span class="compare-tag before">Vorher</span>
+      <span class="compare-tag after-tag">Schon besser</span>
+      <span class="ai-note">Mit KI erstellt</span>
+      <label for="vergleich" class="visually-hidden">Regler: von Vorher (Kuddelmuddel) nach Nachher (Prozesswurm) schieben</label>
+      <input type="range" id="vergleich" min="0" max="100" value="50">
+      <span class="compare-line" aria-hidden="true"></span>
+      <span class="compare-knob" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span>
+    </div>
+    <div class="duo-text">
+      <p class="eyebrow">Das ewige Duo</p>
+      <h2 id="duo-titel">Noch kein Schmetterling</h2>
+      <p>Doktor Kuddelmuddel ist nicht nur der Böse. Er deckt Schwachstellen schonungslos auf und sorgt dafür, dass alle merken: So geht es nicht weiter. Der Prozesswurm schaut sich die Trümmer an und baut daraus etwas Stabileres.</p>
+      <p>Schieb den Regler: Der Prozesswurm räumt auf. Schon viel besser, aber noch nicht perfekt, denn er kriecht noch. Perfekt laufen die Abläufe erst, wenn aus dem Prozesswurm ein Schmetterling wird.</p>
     </div>
   </div>
 </section>

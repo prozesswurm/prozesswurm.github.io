@@ -280,7 +280,7 @@ def baustein_probleme(p, seite=None):
   <button type="button" role="tab" id="tab-job" aria-controls="panel-job" aria-selected="true" data-tab="job">Im Job</button>
   <button type="button" role="tab" id="tab-home" aria-controls="panel-home" aria-selected="false" tabindex="-1" data-tab="home">Zu Hause</button>
 </div>
-<ul class="prob-list" id="panel-job" role="tabpanel" aria-labelledby="tab-job" data-limit="6">
+<ul class="prob-list" id="panel-job" role="tabpanel" aria-labelledby="tab-job" data-limit="4">
 {karten(d["job"])}
 </ul>
 <ul class="prob-list" id="panel-home" role="tabpanel" aria-labelledby="tab-home" hidden>
@@ -416,6 +416,12 @@ def baustein_neueste_gross(p, seite=None):
 </article>"""
 
 
+def baustein_neueste_kachel(p, seite=None):
+    a = daten("ausgaben.json")[0]
+    return (f'<li><a class="tile" href="{p}montags-wurm/{a["pfad"]}/"><span class="eyebrow">Montags-Wurm · {e(a["datum"])}</span>'
+            f'<b>{e(a["titel"])}</b><span>{e(a["teaser"])}</span><i aria-hidden="true">→</i></a></li>')
+
+
 def baustein_teilen(p, seite=None):
     url = DOMAIN + seite["pfad"]
     titel = seite["titel"]
@@ -516,6 +522,7 @@ BAUSTEINE = {
     "medien": baustein_medien,
     "ausgaben": baustein_ausgaben,
     "neueste_gross": baustein_neueste_gross,
+    "neueste_kachel": baustein_neueste_kachel,
     "neueste": baustein_neueste,
     "teilen": baustein_teilen,
     "begriffe": baustein_begriffe,
