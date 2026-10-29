@@ -3,7 +3,7 @@
    Seiten selbst werden immer frisch geholt (damit neue Montags-Wurm-Ausgaben sofort da sind)
    und nur ohne Netz aus dem Speicher gezeigt.
    Bei jeder Änderung an CSS oder JS: VERSION hochzählen. */
-const VERSION = "pw-2026-10-29-3";
+const VERSION = "pw-2026-10-29-4";
 const CORE = [
   "./",
   "assets/css/style.css",

@@ -552,5 +552,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .tile > span:not(.eyebrow) { color: var(--fg-soft); font-size: 0.98rem; line-height: 1.45; }
 .tile i { margin-top: auto; padding-top: 4px; font-style: normal; font-weight: 800; color: var(--worm); }
 .tile-main { background: var(--worm-soft); border-color: transparent; }
-.feedback-line { margin-top: 14px; text-align: center; color: var(--muted); font-size: 0.98rem; }
+.feedback-line { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; text-align: center; color: var(--fg-soft); }
+.feedback-btn { min-height: 46px; padding: 0 18px; font-size: 1rem; border-color: var(--worm); color: var(--worm); }
+.feedback-btn:hover { background: var(--worm-soft); color: var(--worm); }
 @media (max-width: 640px) { .hero-img { display: none; } }
