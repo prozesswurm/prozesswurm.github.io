@@ -441,6 +441,13 @@
   "stufe": "C1"
  },
  {
+  "id": "i19",
+  "t": "Ein Ausweis für den KI-Agenten: wer darf was?",
+  "d": "Jeder Agent braucht einen Verantwortlichen, klare Rechte und einen Aus-Schalter.",
+  "min": 7,
+  "stufe": "C1"
+ },
+ {
   "id": "i04",
   "t": "Fachbereich oder IT: wer entscheidet was?",
   "d": "Das WAS und WARUM gegen das WIE und WOMIT.",
