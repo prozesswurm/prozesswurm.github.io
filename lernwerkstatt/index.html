@@ -1465,7 +1465,7 @@ function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), s
       <span class="shaft-tunnel" style="height:${pos/6.9*100}%"></span>
       ${path.map(x=>`<span class="sl sl${x.i+1}">${x.code}${x.n===x.tot?' ✓':''}</span>`).join('')}
       <span class="sl-gold">${chest}</span>
-      <img src="wurm.png?v=2" width="52" height="47" alt="" class="shaft-worm" style="top:${pos/6.9*100}%">
+      <img src="wurm.png?v=2" width="52" height="47" alt="" class="shaft-worm" style="top:max(30px, ${pos/6.9*100}%)">
     </div>
     <div class="dig-body"><b>${fmtM(m)} tief gegraben</b>
     <span class="dig-goal">${goal}</span>
