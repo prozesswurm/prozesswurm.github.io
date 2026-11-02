@@ -2,7 +2,7 @@
 // Ohne Angaben: alle Standardbilder. Playwright ist vorinstalliert (require('playwright')).
 const { chromium } = require('playwright'); const path = require('path');
 const ziel = process.argv[2] || 'out';
-const std = ['kopf:1200:420','hutliste:1200:760','zahlen:1200:640','sehenswert:1200:560','lied:1200:480','lernwerkstatt:1200:860','cover:1600:900'];
+const std = ['kopf:1200:420','hutliste:1200:760','zahlen:1200:640','sehenswert:1200:560','lied:1200:480','lernwerkstatt:1200:860','cover:1600:900','instagram:1080:1350'];
 const liste = process.argv.length > 3 ? process.argv.slice(3) : std;
 (async()=>{ const b = await chromium.launch();
   for (const e of liste){ const [n,w,h] = e.split(':'); const p = await b.newPage({viewport:{width:+w,height:+h}});
