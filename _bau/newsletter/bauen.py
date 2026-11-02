@@ -1,6 +1,8 @@
 import re, sys, html, json
 sys.path.insert(0, sys.argv[3] if len(sys.argv) > 3 else '.')
 from inhalt import *
+try: EIGENE_SACHE
+except NameError: EIGENE_SACHE = None  # optionaler Kasten „In eigener Sache“: dict(titel=..., blocks=[...])
 
 IMG_BASE = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] != "auto" else f"https://www.prozesswurm.de/newsletter/{BILD_ORDNER}/"
 OUT = sys.argv[2] if len(sys.argv) > 2 else "out/newsletter-brevo.html"
@@ -26,7 +28,8 @@ def img(f, alt, cap):
 
 def src(lst):
     s = " | ".join(f'<a style="color:{GRUEN};text-decoration:none;" target="_blank" href="{u}">{t}</a>' for t, u in lst)
-    return f'<p style="margin:-4px 0 18px;font-family:{F};font-size:13px;color:{GRAU};">Quellen: {s}</p>'
+    wort = "Quelle" if len(lst) == 1 else "Quellen"
+    return f'<p style="margin:-4px 0 18px;font-family:{F};font-size:13px;color:{GRAU};">{wort}: {s}</p>'
 
 def btn(t, u):
     # Knopf-Stil B (seit 26.10.2026): gruener Rahmen, rund, ohne Flaeche
@@ -61,8 +64,9 @@ def section(s):
     return "\n".join(out)
 
 # Wortzahl
-alltext = " ".join(text_of(b[1]) if isinstance(b[1], str) else " ".join(map(text_of, b[1])) if b[0] in ("ul","ol") else "" for s in ABSCHNITTE for b in s["blocks"] if b[0] in ("p","h3","kud","ul","ol"))
-alltext += " ".join(text_of(b[1]) for b in EINSTIEG) + " " + " ".join(b[2] for s in ABSCHNITTE for b in s["blocks"] if b[0]=="box")
+ALLE = ABSCHNITTE + ([EIGENE_SACHE] if EIGENE_SACHE else [])
+alltext = " ".join(text_of(b[1]) if isinstance(b[1], str) else " ".join(map(text_of, b[1])) if b[0] in ("ul","ol") else "" for s in ALLE for b in s["blocks"] if b[0] in ("p","h3","kud","ul","ol"))
+alltext += " " + " ".join(text_of(b[1]) for b in EINSTIEG) + " " + " ".join(b[2] for s in ALLE for b in s["blocks"] if b[0]=="box")
 alltext += " " + ZITAT["text"] + " " + ZITAT["reaktion"] + " " + SCHLUSS
 WORDS = len(alltext.split()); WORDS_R = round(WORDS / 50) * 50; MIN = max(1, round(WORDS / 200))
 
@@ -77,7 +81,15 @@ inhalt = f'''<div style="font-family:{F};font-size:13px;font-weight:bold;letter-
 <b style="color:{DUNKEL};">Heute drin:</b> {HEUTE_DRIN}</td></tr></table>
 '''
 
-body = [intro, HR, inhalt] + [section(s) + HR for s in ABSCHNITTE]
+def eigene_sache(e):
+    # Kasten direkt nach dem Einstieg, gruen umrandet
+    inner = "\n".join(block(b) for b in e["blocks"])
+    return f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0;border:2px solid {GRUEN};border-radius:12px;"><tr><td style="padding:18px 20px 4px;">
+<div style="font-family:{F};font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:{GRUEN};margin:0 0 6px;">In eigener Sache</div>
+<h2 style="margin:0 0 14px;font-family:{F};font-size:22px;line-height:1.25;color:{DUNKEL};">{e["titel"]}</h2>
+{inner}</td></tr></table>'''
+
+body = [intro, HR] + ([eigene_sache(EIGENE_SACHE), HR] if EIGENE_SACHE else []) + [inhalt] + [section(s) + HR for s in ABSCHNITTE]
 zitat = f'''<div style="font-family:{F};font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:{GRUEN};margin:0 0 6px;">7. Zum Schluss: Ein Satz zum Mitnehmen</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:8px 0 14px;"><tr><td style="border-left:5px solid {GRUEN};padding:6px 0 6px 18px;">
 <div style="font-family:Georgia,'Times New Roman',serif;font-size:22px;line-height:1.4;font-style:italic;color:{DUNKEL};">„{ZITAT["text"]}“</div>

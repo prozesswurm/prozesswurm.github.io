@@ -1,6 +1,8 @@
 import sys, re, json
 sys.path.insert(0, sys.argv[1] if len(sys.argv) > 1 else '.')
 from inhalt import *
+try: EIGENE_SACHE
+except NameError: EIGENE_SACHE = None
 
 def blocks_html(blocks, linkedin=False):
     out = []
@@ -12,18 +14,21 @@ def blocks_html(blocks, linkedin=False):
         elif k in ("ul", "ol"): out.append(f"<{k}>" + "".join(f"<li>{i}</li>" for i in b[1]) + f"</{k}>")
         elif k == "box": out.append(f"<p><b>{b[1]}:</b> {b[2]}</p>")
         elif k == "btn": out.append(f'<p><a href="{b[2]}">{b[1]} →</a></p>')
-        elif k == "src": out.append("<p>Quellen: " + " | ".join(f'<a href="{u}">{t}</a>' for t, u in b[1]) + "</p>")
+        elif k == "src": out.append(("<p>Quelle: " if len(b[1]) == 1 else "<p>Quellen: ") + " | ".join(f'<a href="{u}">{t}</a>' for t, u in b[1]) + "</p>")
     return out
 
 def ausgabe(linkedin=False):
     o = [f"<h1>{TITEL}</h1>", f"<h2>{UNTERTITEL}</h2>"]
     if linkedin:
         o.append(f"<p><b>{LI_ERSTE_ZEILE}</b></p>")
-        o.append("<p>Die Bundesregierung will ausmisten. Diese Woche geht es darum, warum ein Titel noch keine Zuständigkeit ist und wie du herausfindest, wer bei euch wirklich den Hut aufhat.</p>")
+        o.append(f"<p>{LI_DANACH}</p>")  # LI_DANACH in inhalt.py: Satz nach der ersten Zeile
         o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
     else:
         o.append(f"<p>{EINSTIEG[0][1]}</p>")
         o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
+    if EIGENE_SACHE:
+        o.append("<h3>" + EIGENE_SACHE["titel"] + "</h3>" if not linkedin else "<h2>" + EIGENE_SACHE["titel"] + "</h2>")
+        o += blocks_html(EIGENE_SACHE["blocks"], linkedin)
     for s in ABSCHNITTE:
         o.append(f"<h3>{s['nr']}. {s['name']}</h3>" if not linkedin else f"<h2>{s['nr']}. {s['name']}</h2>")
         o.append(f"<p><b>{s['headline']}</b></p>")

@@ -1,0 +1,65 @@
+<h1>Der Montags-Wurm – 2. November 2026</h1>
+<h2>Umziehen, ohne dass etwas verloren geht</h2>
+<p><b>75 Prozent halten ihre Rechnungen für digital. Nur 6 Prozent sind für die E-Rechnung wirklich bereit.</b></p>
+<p>Der Prozesswurm ist umgezogen, und viele Betriebe tun es gerade auch: Die Rechnungen ziehen in ein neues System. Diese Woche geht es darum, wie ein Ablauf umzieht, ohne dass unterwegs etwas verloren geht.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Umziehen? Ich lasse lieber alles stehen. Dann merkt wenigstens keiner, was fehlt.“</i></p>
+<h2>Der Prozesswurm ist umgezogen</h2>
+<p>Seit dem 28. Oktober liegt alles an einem Ort: auf <a href="https://www.prozesswurm.de/">www.prozesswurm.de</a>. Dort findest du die <a href="https://www.prozesswurm.de/lernwerkstatt/">Lernwerkstatt</a>, alle Ausgaben des Montags-Wurms, Lieder und Videos unter „Hören und sehen“ und neu die Seite <a href="https://www.prozesswurm.de/fuer-teams/">„Für Teams“</a> mit fertigen Lernpfaden zum Weiterschicken.</p>
+<p>Die Seite ist selbst gebaut statt mit Google Sites: spürbar schneller, ohne Cookies, ohne Werbung, ohne Auswertung durch Google. Sie lässt sich mit der Tastatur bedienen, hat eine gut lesbare Schrift, eine helle und eine dunkle Ansicht und eine Suche über alles. Auf der Startseite tippst du an, was dich gerade nervt, und bekommst einen Handgriff für morgen.</p>
+<p>Ehrlich gesagt: Wer in der Lernwerkstatt Fortschritt gespeichert hatte, sieht ihn unter der neuen Adresse vielleicht nicht mehr. <a href="https://www.prozesswurm.de/lernwerkstatt/#hilfe=umzug">Hier steht, was dann hilft</a>. Und perfekt ist noch nicht alles. Der Prozesswurm kriecht ja auch noch und ist kein Schmetterling.</p>
+<p><b>Was gefällt dir, was fehlt, wo hakt es?</b> Schreib an <a href="mailto:info@prozesswurm.de">info@prozesswurm.de</a>.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Eine Website ohne Cookies? Und wovon soll ich mich in der Kaffeepause ernähren?“</i></p>
+<p><a href="https://www.prozesswurm.de/">Zur neuen Website →</a></p>
+<h2>1. Aktuelles aus dem Prozessmanagement</h2>
+<p><b>Die E-Rechnung kommt: Ein neues System ist noch kein neuer Ablauf</b></p>
+<p>In zwei Monaten wird es ernst. Ab dem 1. Januar 2027 müssen Unternehmen mit mehr als 800.000 Euro Umsatz im Vorjahr ihre Rechnungen an andere Firmen als E-Rechnung schicken. Alle anderen folgen ein Jahr später. Eine E-Rechnung ist eine Datei, die ein Programm direkt lesen kann. Ein PDF im Anhang reicht dafür nicht.</p>
+<p>Viele Betriebe fühlen sich trotzdem gut aufgestellt. In einer Umfrage des Anbieters Quadient halten 75 Prozent ihre Rechnungsabläufe für digital, aber nur 6 Prozent sehen sich als vollständig bereit. Eine Studie der Universitäten Potsdam und Erlangen-Nürnberg kommt zu einem ähnlichen Bild: 71 Prozent der meist mittelständischen Betriebe haben noch keine konkreten Schritte eingeleitet. Beides fasst ein Beitrag in ChannelPartner vom 29. Oktober zusammen, geschrieben von einem Softwareanbieter.</p>
+<p><b>Was das mit deinen Abläufen zu tun hat</b></p>
+<p>Ein neues System ist wie eine neue Wohnung. Wer einfach alle Kisten ungeöffnet hineinträgt, hat danach dasselbe Durcheinander, nur an einem anderen Ort. Bei Rechnungen heißt das: Wird heute ausgedruckt, abgezeichnet und in eine Excel-Liste übertragen, passiert das morgen eben am Bildschirm. Schneller wird dadurch nichts.</p>
+<p>Der bessere Weg: erst aufschreiben, wie der Ablauf heute wirklich läuft, dann entscheiden, was mitkommt. Genau dafür ist eine Prozessbeschreibung da. Und dabei fällt oft auf, dass ein Schritt nur noch existiert, weil ihn nie jemand gestrichen hat.</p>
+<p><b>Handgriff der Woche: die Umzugsliste</b></p>
+<ol><li><b>Aufschreiben, wie es heute läuft.</b> Jeden Schritt, auch den Zettel am Bildschirm und die Liste, die „nur die Müller“ pflegt.</li><li><b>Pro Schritt entscheiden.</b> Mitnehmen, wegwerfen oder neu bauen?</li><li><b>Pro Kiste einen Namen und ein Datum.</b> Wer packt im neuen System aus, und bis wann?</li></ol>
+<p><b>Auch ein Notausgang ist ein Ablauf</b></p>
+<p>Umziehen muss man manchmal auch, wenn man gar nicht will. Laut Bitkom bereiten sich 40 Prozent der Unternehmen, die digitale Technik aus dem Ausland beziehen, darauf vor, wichtige Anbieter und Systeme bei Bedarf auszutauschen (602 befragte Unternehmen, berichtet am 28. Oktober). Wer seine Abläufe aufgeschrieben hat, kann leichter wechseln. Wer sie nur im Programm hat, zieht immer mit dem Programm um.</p>
+<p><b>Der Handgriff:</b> Schreib für jedes wichtige Programm eine Zeile dazu: Welche Daten stecken drin, und wie bekommen wir sie heraus?</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Ich trage einfach alle Kisten ungeöffnet ins neue System. Die mit der Aufschrift ‚Sonstiges‘ mache ich dann 2035 auf.“</i></p>
+<p>Quellen: <a href="https://kostenlose-erechnung.de/ratgeber/e-rechnungspflicht-2027-versandpflicht/">kostenlose-erechnung.de, Stand 5.10.2026</a> | <a href="https://www.channelpartner.de/article/4236986/e-rechnungspflicht-rueckt-naeher.html">ChannelPartner, 29.10.2026</a> | <a href="https://www.mittelstandcafe.de/anbieterwechsel-vorbereiten-40-prozent-der-unternehmen-mit-digitalimporten-wollen-wichtige-software-und-systeme-bei-bedarf-austauschen-k-nnen-2281602.html">Mittelstand Café, 28.10.2026</a></p>
+<h2>2. Märkte und Nachrichten</h2>
+<p><b>KI am liebsten aus Deutschland, Ämter ziehen online um</b></p>
+<p><b>Bitkom: Fast alle wollen KI aus Deutschland, kaum einer will dafür mehr zahlen.</b> Zum Digital-Gipfel hat der Branchenverband Bitkom am 2. November eine Umfrage vorgestellt. 96 Prozent der Unternehmen würden KI am liebsten von deutschen Anbietern beziehen. 64 Prozent wollen dafür aber keine Abstriche machen, also weder mehr zahlen noch auf Funktionen verzichten. US-Anbieter bevorzugen nur noch 41 Prozent, vor einem Jahr waren es 51 Prozent. Befragt wurden je rund 600 Unternehmen ab 20 Beschäftigten.</p>
+<p>Quelle: <a href="https://www.bitkom.org/Presse/Presseinformation/Digital-Gipfel-Unternehmen-wollen-KI-aus-Deutschland">Bitkom, 2.11.2026</a></p>
+<p><b>Staatsmodernisierung: erste Ergebnisse, viel Arbeit übrig.</b> Die Bundesregierung hat dem Bundestag einen Zwischenbericht vorgelegt. Von 23 großen Vorhaben sind 5 abgeschlossen. Der Aufwand, den Firmen für Vorschriften treiben müssen, ist nach Angaben der Regierung unterm Strich um rund 1,7 Milliarden Euro gesunken (Stand 30. Juni 2026). Und rund 66 Millionen Menschen können sich inzwischen online an- und ummelden.</p>
+<p>Quelle: <a href="https://www.bundestag.de/presse/hib/kurzmeldungen-1224224">Deutscher Bundestag, hib, 12.10.2026</a></p>
+<p><b>Was das für dich heißt:</b> Neue Werkzeuge kommen, ob aus Deutschland oder anderswo, und auch die Ämter stellen um. Wer weiß, wie die eigenen Abläufe laufen, kann ein Werkzeug austauschen, ohne jedes Mal von vorn anzufangen.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Abhängig von einem Anbieter? Ich doch nicht. Ich kann jederzeit aufhören. Nächstes Jahr. Vielleicht.“</i></p>
+<h2>3. Zahlen und Erkenntnisse</h2>
+<p><b>Wechsel, Abhängigkeit und Ämter in Zahlen</b></p>
+<ul><li><b>71 Prozent</b> der meist mittelständischen Betriebe haben für die E-Rechnung noch keine konkreten Schritte eingeleitet (Studie Universität Potsdam und FAU Erlangen-Nürnberg, zitiert am 29.10.2026). <i>Heißt:</i> Zwei Monate vor dem Stichtag steht bei vielen noch der ganze Umzug an.</li><li><b>87 Prozent</b> der Unternehmen, die digitale Technik aus den USA nutzen, fühlen sich davon abhängig, 47 Prozent sogar stark (Bitkom, 30.10.2026, 602 Unternehmen). <i>Heißt:</i> Ein Plan für den Wechsel gehört zur Grundausstattung.</li><li><b>42 Prozent</b> der Unternehmen nennen Programme, die nicht miteinander verbunden sind, als Problem im Umgang mit Behörden (Bitkom, 12.10.2026, 603 Unternehmen). <i>Heißt:</i> Wo Systeme nicht zusammenpassen, tippt am Ende ein Mensch alles zweimal ab.</li></ul>
+<p>Quellen: <a href="https://www.channelpartner.de/article/4236986/e-rechnungspflicht-rueckt-naeher.html">ChannelPartner, 29.10.2026</a> | <a href="https://www.bitkom.org/Presse/Presseinformation/Midterms-Unternehmen-wuenschen-mehr-Verlaesslichkeit-von-USA">Bitkom, 30.10.2026</a> | <a href="https://www.bitkom.org/Presse/Presseinformation/Analoge-Aemter-bremsen-Wirtschaft-aus">Bitkom, 12.10.2026</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Zwei Monate bis zur Frist sind ein entspanntes Polster. Ich fange immer an Silvester an, kurz nach dem Raclette.“</i></p>
+<h2>4. Sehenswert</h2>
+<p><b>Re: Das ewige Pendeln des EU-Parlaments (ARTE, 31 Min.)</b></p>
+<p>Jeden Monat zieht das Europäische Parlament für knapp vier Tage von Brüssel nach Straßburg, mit Akten, Technik und Personal. Und danach wieder zurück. Die Reportage fragt, ob sich Europa diesen Wanderzirkus noch leisten kann.</p>
+<p>Warum sich die 31 Minuten lohnen: Hier sieht man, was ein Umzug kostet, wenn er zur Gewohnheit geworden ist. Ein Ablauf, den keiner mehr erfunden hat, den aber auch keiner abschaffen kann. In der ARTE-Mediathek bis 16. Februar 2027.</p>
+<p><a href="https://www.arte.tv/de/videos/120880-013-A/re-das-ewige-pendeln-des-eu-parlaments/">Zur ARTE-Mediathek →</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Jeden Monat umziehen ist herrlich. Man muss nie aufräumen, man packt einfach alles wieder ein.“</i></p>
+<h2>5. Aus der Lernwerkstatt</h2>
+<p><b>Erst fragen, dann schulen</b></p>
+<p>Zum Umzug passt die Lektion <b>„Erst fragen, dann schulen: andere fit machen für einen neuen Ablauf“</b> aus Stufe B2. Dauer: sieben Minuten. Ein kleiner Auszug:</p>
+<p><b>Zum Merken:</b> Wer vorher fragt, schult nicht am Bedarf vorbei. Ein kurzes Häppchen für alle schlägt einen langen Tag für niemanden.</p>
+<p><b>Mini-Übung:</b> Denk an eine Schulung, die wenig gebracht hat. Was hättest du vorher gebraucht? Welche drei Dinge hättest du wirklich wissen müssen?</p>
+<p><b>Teste dich:</b> Wer bekommt bei einem neuen Ablauf die ausführliche Vertiefung? Die Auflösung steht in der Lektion.</p>
+<p><a href="https://www.prozesswurm.de/lernwerkstatt/#lektion=k18">Lektion öffnen →</a></p>
+<p><b>Dein Fortschritt zieht mit: der Speicherlink</b></p>
+<p>Jeden Montag wartet auf der Startseite der Lernwerkstatt eine neue Lektion der Woche. Und damit dein Fortschritt nicht noch einmal verloren geht: Unter „Fortschritt mitnehmen“ tippst du auf „Speicherlink kopieren“. Den Link legst du als Lesezeichen ab oder schickst ihn dir selbst. Öffnest du ihn auf einem anderen Gerät, ist dein Stand sofort wieder da. Alles kostenlos und ohne Anmeldung.</p>
+<p><a href="https://www.prozesswurm.de/lernwerkstatt/#lektion-der-woche">Zur Lektion der Woche →</a></p>
+<h2>6. Lied oder Kurzvideo der Woche</h2>
+<p><b>Kurzvideo: Wir verändern mit dir die Welt</b></p>
+<p>Sechs Sekunden Schwung für den Montag: Der Prozesswurm dreht eine Runde, die Pfeile zeigen nach vorn. Die Botschaft passt zum Umzug: Veränderung fängt nicht beim neuen System an, sondern bei dir.</p>
+<p><a href="https://www.youtube.com/shorts/Akp8DEreL5s">Video ansehen →</a></p>
+<p>Alle Lieder und Videos findest du auf <a href="https://www.prozesswurm.de/hoeren-und-sehen/">prozesswurm.de unter „Hören und sehen“</a>.</p>
+<h2>7. Zum Schluss: Ein Satz zum Mitnehmen</h2>
+<p><i>„Die größte Gefahr in Zeiten des Umbruchs ist nicht der Umbruch selbst, sondern mit der Logik von gestern zu handeln.“</i></p><p>Peter F. Drucker (zugeschrieben), Vordenker des modernen Managements</p><p>Der Prozesswurm nickt: Deshalb erst die Umzugsliste, dann das neue System. Doktor Kuddelmuddel ist begeistert: „Logik von gestern? Ich habe nicht mal Logik von heute. Damit bin ich ja völlig zukunftssicher.“</p>
+<p><b>Frage an dich:</b> Was habt ihr beim letzten Systemwechsel ungeöffnet mitgeschleppt? Schreib es in die Kommentare.</p>
+<p>Dieser Newsletter erscheint weiterhin jeden Montag. Vielen Dank für deine Zeit. Feedback, Anmerkungen oder Themenvorschläge? Schreib mir gern an info@prozesswurm.de.</p><p><b>Dein Prozesswurm</b></p>
+<p>Den Montags-Wurm gibt es auch per E-Mail: <a href="https://www.prozesswurm.de/montags-wurm/">prozesswurm.de/montags-wurm</a></p>
