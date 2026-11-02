@@ -514,6 +514,15 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .value-grid li { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-radius: var(--radius-m); background: var(--surface); border: 1px solid var(--line); }
 .value-grid b { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
 .value-grid span { color: var(--fg-soft); }
+.feel-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 12px; }
+.feel-grid li { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px; border-radius: var(--radius-m); background: var(--surface); border: 1px solid var(--line); }
+.feel-k { font-family: var(--font-display); font-weight: 800; font-size: 1.15rem; }
+.feel-grid p { margin: 0; padding: 10px 12px; border-radius: 10px; }
+.feel-grid p b { display: block; font-size: .8rem; letter-spacing: .02em; margin-bottom: 2px; }
+.feel-vorher { background: var(--kuddel-soft); color: var(--fg-soft); }
+.feel-vorher b { color: var(--kuddel); }
+.feel-nachher { background: var(--worm-soft); }
+.feel-nachher b { color: var(--worm); }
 .steps { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 12px; }
 .steps li { padding-left: 4px; color: var(--fg-soft); }
 .steps li b { color: var(--fg); }
