@@ -15,6 +15,13 @@ const levelsSrc = html.match(/const LEVELS = (\[[\s\S]*?\n\]);\nLEVELS\.forEach/
 const levels = vm.runInNewContext('(' + levelsSrc + ')');
 levels.forEach(lv => { if (lv.branches) lv.ids = lv.branches.flatMap(b => b.ids); });
 const L = Object.fromEntries(all.map(l => [l.id, l]));
+const kernM = html.match(/const KERN = (\{.*?\});\n/s);
+const KERN = kernM ? JSON.parse(kernM[1]) : {};
+// Text mit fetten Kernsätzen (wie in der App), jede Stelle einmal pro Lektion
+const escK = (t, done, id) => { let s = String(t), out = '', last = 0; const hits = [];
+  (KERN[id] || []).forEach(ph => { if (done.has(ph)) return; const i = s.indexOf(ph); if (i >= 0) hits.push([i, i + ph.length, ph]); });
+  hits.sort((x, y) => x[0] - y[0]).forEach(([a, b, ph]) => { if (a < last) return; done.add(ph); out += esc(s.slice(last, a)) + '<strong>' + esc(s.slice(a, b)) + '</strong>'; last = b; });
+  return out + esc(s.slice(last)); };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = new Date().toISOString().slice(0, 10);
@@ -73,8 +80,7 @@ ${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="" width="1200" style="width:1
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
-${l.exp.map(p => `<p>${esc(p)}</p>`).join('\n')}
-${l.steps ? `<ol>${l.steps.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : ''}
+${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`).join('\n') + (l.steps ? `<ol>${l.steps.map(x => `<li>${escK(x, d, id)}</li>`).join('')}</ol>` : ''); })()}
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
 <div class="box aha">Zum Merken: ${esc(l.aha)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
