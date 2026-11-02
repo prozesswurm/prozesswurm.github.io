@@ -85,6 +85,43 @@ FEEDBACK = ("mailto:info@prozesswurm.de?subject=" + "R%C3%BCckmeldung%20zur%20We
 VORSCHAU = []  # wird beim Bauen gefüllt, daraus entstehen die Vorschaubilder
 
 
+MONATE = {"januar": 1, "februar": 2, "märz": 3, "april": 4, "mai": 5, "juni": 6, "juli": 7, "august": 8,
+          "september": 9, "oktober": 10, "november": 11, "dezember": 12}
+ORG = {"@type": "Organization", "@id": DOMAIN + "#org", "name": "Prozesswurm", "url": DOMAIN,
+       "logo": DOMAIN + "assets/img/favicon-180.png", "email": "info@prozesswurm.de",
+       "description": "Prozesswurm erklärt Prozessmanagement so einfach wie die Sendung mit der Maus: kostenlose Lernwerkstatt, Montags-Wurm, Lieder und Comics.",
+       "sameAs": [k[3] for k in KANAELE]}
+
+
+def strukturdaten(seite):
+    """Strukturierte Daten (JSON-LD) für Google und KI-Suchen. Nur Daten, kein ausführbares Skript."""
+    pfad = seite["pfad"]
+    if seite.get("verstecken") or pfad == "404.html":
+        return []
+    url = DOMAIN + pfad
+    teile = [ORG]
+    if pfad == "":
+        teile.append({"@type": "WebSite", "@id": DOMAIN + "#web", "url": DOMAIN, "name": "Prozesswurm",
+                      "inLanguage": "de", "publisher": {"@id": DOMAIN + "#org"}})
+    krumen = [{"@type": "ListItem", "position": 1, "name": "Prozesswurm", "item": DOMAIN}]
+    if pfad.startswith("montags-wurm/") and pfad != "montags-wurm/":
+        krumen.append({"@type": "ListItem", "position": 2, "name": "Montags-Wurm", "item": DOMAIN + "montags-wurm/"})
+        tag, monat, jahr = pfad.split("/")[1].split("-")
+        art = {"@type": "Article", "headline": seite["titel"], "description": seite["beschreibung"], "url": url,
+               "inLanguage": "de", "datePublished": f"{jahr}-{MONATE[monat]:02d}-{int(tag):02d}",
+               "author": {"@id": DOMAIN + "#org"}, "publisher": {"@id": DOMAIN + "#org"},
+               "isPartOf": {"@type": "Periodical", "name": "Der Montags-Wurm", "url": DOMAIN + "montags-wurm/"}}
+        if seite.get("bild"):
+            art["image"] = DOMAIN + seite["bild"]
+        teile.append(art)
+    if pfad:
+        krumen.append({"@type": "ListItem", "position": len(krumen) + 1, "name": seite["titel"], "item": url})
+        teile.append({"@type": "BreadcrumbList", "itemListElement": krumen})
+    daten_ld = {"@context": "https://schema.org", "@graph": teile}
+    text = json.dumps(daten_ld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+    return ['<script type="application/ld+json">' + text + "</script>"]
+
+
 def e(text):
     return html.escape(text, quote=True)
 
@@ -143,6 +180,7 @@ def kopf(seite, p):
         '<script type="speculationrules">',
         '{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/lernwerkstatt/*"}},{"not":{"href_matches":"/newsletter/*"}}]},"eagerness":"moderate"}]}',
         "</script>",
+    ] + strukturdaten(seite) + [
         '<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>',
         "</head>",
         "<body>",
@@ -627,8 +665,45 @@ def bauen():
     print("weiterleitungen lernwerkstatt:", len(alte))
 
     open(os.path.join(HAUPT, "CNAME"), "w").write("www.prozesswurm.de\n")
+    # Suchmaschinen und KI-Suchen ausdrücklich willkommen
+    ki = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+          "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot", "CCBot"]
     open(os.path.join(HAUPT, "robots.txt"), "w").write(
-        f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}sitemap.xml\nSitemap: {DOMAIN}lernwerkstatt/sitemap.xml\n")
+        "User-agent: *\nAllow: /\nDisallow: /_bau/\n\n" + "".join(f"User-agent: {b}\n" for b in ki) + "Allow: /\n\n"
+        + f"Sitemap: {DOMAIN}sitemap.xml\nSitemap: {DOMAIN}lernwerkstatt/sitemap.xml\n")
+
+    # llms.txt: Kurzüberblick für KI-Suchen (Vorschlag llmstxt.org)
+    lek = daten("lektionen.json")
+    stufen = []
+    for l in lek:
+        if l["stufe"] not in stufen:
+            stufen.append(l["stufe"])
+    zeilen = ["# Prozesswurm", "",
+              "> Prozesswurm erklärt Prozessmanagement so einfach wie die Sendung mit der Maus. Für alle, die plötzlich Prozesse am Hals haben: "
+              "Teamleitungen, Sachbearbeitung, Meister, Assistenz, Mittelstand. Kostenlos, ohne Anmeldung, auf Deutsch.", "",
+              "Kernidee: Ein Prozess ist ein Weg, den man immer wieder gleich geht und der zu einem Ergebnis führt. "
+              "Der Prozesswurm zeigt in kurzen Lektionen, Liedern und Comics, wie aus Durcheinander ein ruhiger Arbeitstag wird, "
+              "jeweils mit einem Handgriff für morgen. Gegenspieler ist Doktor Kuddelmuddel, der für Chaos steht.", "",
+              "Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.", "",
+              "## Wichtigste Seiten", "",
+              f"- [Startseite]({DOMAIN}): Was nervt dich gerade? Einstieg über typische Ärgernisse im Job",
+              f"- [Lernwerkstatt]({DOMAIN}lernwerkstatt/): kostenlose Lern-App mit Lektionen von A1 bis C2, Quiz, Abzeichen und Abschlussurkunde",
+              f"- [Alle Lektionen zum Nachlesen]({DOMAIN}lernwerkstatt/lektionen.html)",
+              f"- [Für Teams und Führungskräfte]({DOMAIN}fuer-teams/): fertige Lernpfade zum Weiterschicken",
+              f"- [Montags-Wurm]({DOMAIN}montags-wurm/): wöchentlicher Impuls mit einem Handgriff der Woche",
+              f"- [Hören und sehen]({DOMAIN}hoeren-und-sehen/): Lieder und Kurzvideos zum Prozessmanagement",
+              f"- [Hilfe zur Lernwerkstatt]({DOMAIN}lernwerkstatt/hilfe.html)",
+              "", "## Lektionen"]
+    for st in stufen:
+        zeilen += ["", f"### Stufe {st}", ""]
+        zeilen += [f"- [{l['t']}]({DOMAIN}lernwerkstatt/lektion/{l['id']}.html): {l['d']}" for l in lek if l["stufe"] == st]
+    zeilen += ["", "## Montags-Wurm", ""]
+    zeilen += [f"- [{a['titel']}]({DOMAIN}montags-wurm/{a['pfad']}/) ({a['datum']}): {a['teaser']}" for a in daten("ausgaben.json")]
+    zeilen += ["", "## Optional", "",
+               f"- [Über uns]({DOMAIN}ueber-uns/)", f"- [Impressum]({DOMAIN}impressum/)", f"- [Datenschutz]({DOMAIN}datenschutz/)",
+               *[f"- [{k[1]}]({k[3]}): {k[2]}" for k in KANAELE], ""]
+    open(os.path.join(HAUPT, "llms.txt"), "w", encoding="utf-8").write("\n".join(zeilen))
+    print("gebaut: robots.txt, llms.txt")
 
     # Seitenverzeichnis für Suchmaschinen
     urls = [s["pfad"] for s in seiten if not s.get("verstecken") and not s["pfad"].endswith(".html")]

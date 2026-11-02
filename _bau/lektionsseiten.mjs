@@ -30,9 +30,9 @@ const levelOf = id => levels.find(lv => lv.ids.includes(id));
 const branchOf = id => { const lv = levelOf(id); return lv && lv.branches ? lv.branches.find(b => b.ids.includes(id)) : null; };
 
 const css = `
-@font-face{font-family:"Atkinson Hyperlegible";src:url(/fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
-@font-face{font-family:"Atkinson Hyperlegible";src:url(/fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
-@font-face{font-family:"Bricolage Grotesque";src:url(/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(/lernwerkstatt/fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url(/lernwerkstatt/fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Bricolage Grotesque";src:url(/lernwerkstatt/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{--bg:#F2F5F0;--surface:#fff;--fg:#1C241D;--muted:#5A675C;--worm:#2E9A43;--ink:#1D7432;--soft:#DDF1DF;--line:#D3DBCE}
 @media (prefers-color-scheme:dark){:root{--bg:#131915;--surface:#1C231E;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--ink:#86E294;--soft:#1F3A24;--line:#334036}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
@@ -52,13 +52,22 @@ footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:va
 
 // Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
 const picOf = id => fs.existsSync(path.join(ROOT, 'bilder', `${id}.webp`)) ? `bilder/${id}.webp` : null;
-const head = (title, desc, url, img) => `<!doctype html>
+// Strukturierte Daten (JSON-LD) für Google und KI-Suchen. Nur Daten, kein ausführbares Skript.
+const ORG = { '@type': 'Organization', '@id': 'https://www.prozesswurm.de/#org', name: 'Prozesswurm', url: 'https://www.prozesswurm.de/' };
+const COURSE = { '@type': 'Course', '@id': `${BASE}#kurs`, name: 'Prozesswurm Lernwerkstatt', url: BASE, inLanguage: 'de',
+  description: 'Kostenlose Lern-App: Prozessmanagement einfach erklärt, in Stufen von A1 bis C2 wie beim Sprachenlernen.',
+  provider: ORG, isAccessibleForFree: true, offers: { '@type': 'Offer', price: 0, priceCurrency: 'EUR', category: 'Free' },
+  hasCourseInstance: { '@type': 'CourseInstance', courseMode: 'Online', courseWorkload: 'PT8H' } };
+const ldTag = obj => obj ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...obj }).replace(/</g, '\\u003c')}</script>\n` : '';
+const crumbs = list => ({ '@type': 'BreadcrumbList', itemListElement: list.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) });
+const cut = (t, n) => t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)) + ' …';
+const head = (title, desc, url, img, ld) => `<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}"><link rel="icon" href="/lernwerkstatt/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
-<style>${css}</style>
+${ldTag(ld)}<style>${css}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 </head><body><main>
 <a class="top" href="/lernwerkstatt/"><img src="/lernwerkstatt/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
@@ -75,14 +84,19 @@ for (const id of order) {
   const where = `${lv.code} · ${br ? 'Vertiefung ' + br.name : lv.name}`;
   const url = `${BASE}lektion/${id}.html`;
   const pic = picOf(id);
-  const page = head(`${l.t} – einfach erklärt | Prozesswurm`, l.d, url, pic) + `
+  const ld = { '@graph': [
+    { '@type': 'LearningResource', '@id': url + '#lektion', name: l.t, headline: l.t, description: l.d, abstract: l.aha, url, inLanguage: 'de',
+      image: `${BASE}${pic || 'app-og.jpg'}`, timeRequired: `PT${l.min}M`, educationalLevel: lv.code, learningResourceType: 'Lektion',
+      isAccessibleForFree: true, teaches: (KERN[id] || []).join('; ') || l.aha, author: ORG, publisher: ORG, isPartOf: { '@id': `${BASE}#kurs`, '@type': 'Course', name: COURSE.name, url: BASE } },
+    crumbs([['Prozesswurm', 'https://www.prozesswurm.de/'], ['Lernwerkstatt', BASE], ['Alle Lektionen', `${BASE}lektionen.html`], [l.t, url]])] };
+  const page = head(`${l.t} – einfach erklärt | Prozesswurm`, cut(`${l.d} ${l.aha}`, 158), url, pic, ld) + `
 ${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
+<div class="box aha">Kurz gesagt: ${esc(l.aha)}</div>
 ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`).join('\n') + (l.steps ? `<ol>${l.steps.map(x => `<li>${escK(x, d, id)}</li>`).join('')}</ol>` : ''); })()}
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
-<div class="box aha">Zum Merken: ${esc(l.aha)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
 <a class="cta" href="/lernwerkstatt/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} Fragen beantworten →</a>
 <div class="nav">${prev ? `<a href="${prev}.html">← ${esc(L[prev].t)}</a>` : '<span></span>'}${next ? `<a href="${next}.html">${esc(L[next].t)} →</a>` : ''}</div>
@@ -93,7 +107,9 @@ ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`
 // Übersicht aller Lektionen
 const overview = head('Prozessmanagement einfach erklärt: alle Lektionen | Prozesswurm',
   'Alle Lektionen der kostenlosen Prozesswurm Lernwerkstatt von A1 bis C2: Prozesse, Rollen, Prozesslandkarte, Werkzeuge, Lean, Veränderung und KI, einfach erklärt.',
-  `${BASE}lektionen.html`) + `
+  `${BASE}lektionen.html`, null, { '@graph': [COURSE, { '@type': 'ItemList', name: 'Alle Lektionen der Prozesswurm Lernwerkstatt',
+    itemListElement: order.map((id, i) => ({ '@type': 'ListItem', position: i + 1, url: `${BASE}lektion/${id}.html`, name: L[id].t })) },
+    crumbs([['Prozesswurm', 'https://www.prozesswurm.de/'], ['Lernwerkstatt', BASE], ['Alle Lektionen', `${BASE}lektionen.html`]])] }) + `
 <h1>Prozessmanagement einfach erklärt</h1>
 <p class="lead">Alle Lektionen der Prozesswurm Lernwerkstatt zum Nachlesen. Kostenlos und ohne Anmeldung. Mit Quiz, Abzeichen und Fortschritt geht es in der <a href="/lernwerkstatt/">Lernwerkstatt</a>.</p>
 ${levels.map(lv => `<h2>${lv.code} · ${esc(lv.name)}</h2><p>${esc(lv.sub)}</p>` + (lv.branches
@@ -109,7 +125,8 @@ const slug = g => g.toLowerCase().replace(/[^a-zäöüß]+/g, '-').replace(/^-|-
 const helpBody = h => [...(h.a || []).map(p => `<p>${esc(p)}</p>`), h.s ? `<ol>${h.s.map(x => `<li>${esc(x)}</li>`).join('')}</ol>` : '', ...(h.a2 || []).map(p => `<p>${esc(p)}</p>`)].join('\n');
 const helpPage = head('Hilfe: So funktioniert die Prozesswurm Lernwerkstatt',
   'Anleitung zur kostenlosen Prozesswurm Lernwerkstatt: erste Schritte, Lektionen, Werkzeuge, Team-Lernpfad, Urkunden, Fortschritt sichern und Datenschutz.',
-  `${BASE}hilfe.html`) + `
+  `${BASE}hilfe.html`, null, { '@type': 'FAQPage', mainEntity: help.map(h => ({ '@type': 'Question', name: h.q,
+    acceptedAnswer: { '@type': 'Answer', text: [...(h.a || []), ...(h.s || []).map((x, i) => `${i + 1}. ${x}`), ...(h.a2 || [])].join(' ') } })) }) + `
 <h1>Hilfe: So funktioniert die Lernwerkstatt</h1>
 <p class="lead">Alle Fragen und Antworten zur Prozesswurm Lernwerkstatt. Zum Nachlesen, Ausdrucken und Weiterschicken, zum Beispiel an dein Team oder deine Kursgruppe.</p>
 <div class="box">${helpGroups.map(g => `<a href="#${slug(g)}">${esc(g)}</a>`).join(' · ')}</div>

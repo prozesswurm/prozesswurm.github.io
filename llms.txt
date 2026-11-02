@@ -1,0 +1,155 @@
+# Prozesswurm
+
+> Prozesswurm erklärt Prozessmanagement so einfach wie die Sendung mit der Maus. Für alle, die plötzlich Prozesse am Hals haben: Teamleitungen, Sachbearbeitung, Meister, Assistenz, Mittelstand. Kostenlos, ohne Anmeldung, auf Deutsch.
+
+Kernidee: Ein Prozess ist ein Weg, den man immer wieder gleich geht und der zu einem Ergebnis führt. Der Prozesswurm zeigt in kurzen Lektionen, Liedern und Comics, wie aus Durcheinander ein ruhiger Arbeitstag wird, jeweils mit einem Handgriff für morgen. Gegenspieler ist Doktor Kuddelmuddel, der für Chaos steht.
+
+Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
+
+## Wichtigste Seiten
+
+- [Startseite](https://www.prozesswurm.de/): Was nervt dich gerade? Einstieg über typische Ärgernisse im Job
+- [Lernwerkstatt](https://www.prozesswurm.de/lernwerkstatt/): kostenlose Lern-App mit Lektionen von A1 bis C2, Quiz, Abzeichen und Abschlussurkunde
+- [Alle Lektionen zum Nachlesen](https://www.prozesswurm.de/lernwerkstatt/lektionen.html)
+- [Für Teams und Führungskräfte](https://www.prozesswurm.de/fuer-teams/): fertige Lernpfade zum Weiterschicken
+- [Montags-Wurm](https://www.prozesswurm.de/montags-wurm/): wöchentlicher Impuls mit einem Handgriff der Woche
+- [Hören und sehen](https://www.prozesswurm.de/hoeren-und-sehen/): Lieder und Kurzvideos zum Prozessmanagement
+- [Hilfe zur Lernwerkstatt](https://www.prozesswurm.de/lernwerkstatt/hilfe.html)
+
+## Lektionen
+
+### Stufe A1
+
+- [Was ist überhaupt ein Prozess?](https://www.prozesswurm.de/lernwerkstatt/lektion/b01.html): Die Basis-Definition, mit der alles beginnt.
+- [Prozess, Projekt oder Aufgabe?](https://www.prozesswurm.de/lernwerkstatt/lektion/b05.html): Drei Begriffe, die ständig verwechselt werden.
+- [Die Bausteine eines Prozesses](https://www.prozesswurm.de/lernwerkstatt/lektion/b03.html): Name, Verantwortung, Zweck, Input und Output.
+- [Vom Kunden zum Kunden: der ganze Weg](https://www.prozesswurm.de/lernwerkstatt/lektion/g01.html): Warum ein Prozess nicht an der Bürotür aufhört.
+- [Warum die Zutaten stimmen müssen](https://www.prozesswurm.de/lernwerkstatt/lektion/v14.html): Bei einem falschen Ergebnis zuerst den Input prüfen.
+- [Woran erkennst du, dass du Prozesse brauchst?](https://www.prozesswurm.de/lernwerkstatt/lektion/v01.html): Vier Anzeichen, die zeigen, dass ein Ablauf klarer geregelt sein sollte.
+- [Der Prozesswurm: deine Methode für einfache Lösungen](https://www.prozesswurm.de/lernwerkstatt/lektion/b08.html): Schritt für Schritt statt großer Ruck.
+- [KI für Routinearbeit](https://www.prozesswurm.de/lernwerkstatt/lektion/i09.html): Wie KI wiederkehrende Aufgaben übernehmen kann.
+- [Wissen häppchenweise lernen: der Babbel-Effekt](https://www.prozesswurm.de/lernwerkstatt/lektion/v10.html): Kleine, wiederkehrende Häppchen statt dickes Handbuch.
+
+### Stufe A2
+
+- [Prozessmanagement-Rollen: wer macht eigentlich was?](https://www.prozesswurm.de/lernwerkstatt/lektion/b02.html): Verantwortung, Steuerung, Ausführung: die drei Rollen einfach erklärt.
+- [Der Prozesssteckbrief: dein Prozess auf einen Blick](https://www.prozesswurm.de/lernwerkstatt/lektion/b04.html): Alles Wichtige zu einem Prozess auf einer Seite.
+- [Wer liefert, wer bekommt? Der Prozess auf einem Bierdeckel](https://www.prozesswurm.de/lernwerkstatt/lektion/g04.html): Fünf Fragen, mit denen du jeden Ablauf in zwei Minuten umreißt.
+- [Die Prozesslandkarte](https://www.prozesswurm.de/lernwerkstatt/lektion/b06.html): Alle Abläufe sichtbar machen, statt sie im Kopf zu behalten.
+- [Vom Großen ins Kleine: Prozesse in Ebenen](https://www.prozesswurm.de/lernwerkstatt/lektion/g02.html): Wie ein Inhaltsverzeichnis Ordnung in deine Abläufe bringt.
+- [Prozesse zeichnen: Schwimmbahnen statt Wimmelbild](https://www.prozesswurm.de/lernwerkstatt/lektion/g03.html): Eine einfache Art, Abläufe so aufzumalen, dass jeder sie versteht.
+- [Die Prozesslandkarte bauen: das Google-Maps-Prinzip](https://www.prozesswurm.de/lernwerkstatt/lektion/v11.html): Schritt für Schritt hineinzoomen statt alles auf einmal zeichnen.
+- [Wer hat den Hut auf? Die 51-Prozent-Regel](https://www.prozesswurm.de/lernwerkstatt/lektion/v07.html): Bei mehreren Beteiligten die Hauptverantwortung klären.
+- [Der Mensch ist der Motor jedes Prozesses](https://www.prozesswurm.de/lernwerkstatt/lektion/v03.html): Warum ein Prozess nur so gut ist wie die Menschen, die ihn tragen.
+- [Prozessmanagement ist Teamsache](https://www.prozesswurm.de/lernwerkstatt/lektion/v05.html): Warum Prozessverbesserung eine gemeinsame Aufgabe ist.
+- [Prozessmanagement und Kreativität](https://www.prozesswurm.de/lernwerkstatt/lektion/b09.html): Warum klare Abläufe Kreativität ermöglichen.
+- [Wie oft solltest du deine Prozesse prüfen?](https://www.prozesswurm.de/lernwerkstatt/lektion/v02.html): Der richtige Zeitpunkt, um Abläufe noch einmal durchzugehen.
+- [Erfolg messen, ohne Kennzahlen-Wahn](https://www.prozesswurm.de/lernwerkstatt/lektion/v04.html): Erfolg erkennen, ohne dich in Zahlen zu verlieren.
+
+### Stufe B1
+
+- [Abläufe neu gestalten: erst reden, dann zeichnen](https://www.prozesswurm.de/lernwerkstatt/lektion/v06.html): Warum ein neuer Ablauf im Gespräch mit den Ausführenden entsteht.
+- [Prozesse analysieren: die Prozessbegehung](https://www.prozesswurm.de/lernwerkstatt/lektion/k07.html): Einen Prozess live anschauen, nicht nur auf dem Papier.
+- [Mit der richtigen Frage zum Kern vordringen](https://www.prozesswurm.de/lernwerkstatt/lektion/k13.html): Warum eine geschickte Frage mehr ans Licht bringt als eine direkte.
+- [Was der Fußball über gute Prozesse lehrt](https://www.prozesswurm.de/lernwerkstatt/lektion/v08.html): Klare Schnittstellen und gelebte Kultur.
+- [Die 7 Verschwendungsarten](https://www.prozesswurm.de/lernwerkstatt/lektion/l01.html): Wo deine Zeit wirklich hinfließt, am Beispiel Kuchenbacken.
+- [Genchi Genbutsu und 5-Why: der Wurzel auf der Spur](https://www.prozesswurm.de/lernwerkstatt/lektion/l04.html): Mit fünfmal „Warum?“ die Ursache statt das Symptom finden.
+- [Was ein Küchengerät über gute Abläufe lehrt](https://www.prozesswurm.de/lernwerkstatt/lektion/v12.html): Drei Prinzipien guter Kücheninstruktion für deine Abläufe.
+- [Dokument zuerst, Prozess danach: wie viel Modell braucht es?](https://www.prozesswurm.de/lernwerkstatt/lektion/v15.html): Doppelt modellieren, ganz spartanisch oder erst einmal ausrollen? Ein Fall aus der Praxis.
+- [Eine Konvention einführen, ohne dass sie ignoriert wird](https://www.prozesswurm.de/lernwerkstatt/lektion/b07.html): Warum Regeln scheitern und wie du es besser machst.
+- [Einen Prozess-Workshop leiten, ohne dass er ausufert](https://www.prozesswurm.de/lernwerkstatt/lektion/k16.html): Klares Ziel und feste Agenda statt endloser Runde.
+- [Was im Workshop passiert, muss danach noch da sein](https://www.prozesswurm.de/lernwerkstatt/lektion/k17.html): Damit Ergebnisse umgesetzt statt vergessen werden.
+- [Planen, machen, prüfen, nachsteuern: der Regelkreis](https://www.prozesswurm.de/lernwerkstatt/lektion/g05.html): Warum ein Prozess nie fertig ist und das gut so ist.
+- [Der grüne Blick auf deine Prozesse](https://www.prozesswurm.de/lernwerkstatt/lektion/v13.html): Bestehende Prozesse mit einer grünen Brille betrachten.
+
+### Stufe B2
+
+- [Der Prozesskreislauf: deine Landkarte](https://www.prozesswurm.de/lernwerkstatt/lektion/k01.html): Welche Stationen ein Prozess vom Ziel bis zur laufenden Ausführung durchläuft.
+- [Kundenanforderungen und SMARTe Prozessziele](https://www.prozesswurm.de/lernwerkstatt/lektion/k02.html): Erst verstehen, was gebraucht wird, dann ein messbares Ziel formulieren.
+- [Prozesse messen: die richtigen Kennzahlen finden](https://www.prozesswurm.de/lernwerkstatt/lektion/k03.html): Wenige, aber aussagekräftige Kennzahlen statt Zahlenflut.
+- [Eine Kennzahl, die jeder versteht: der Kennzahl-Steckbrief](https://www.prozesswurm.de/lernwerkstatt/lektion/g06.html): Sieben Fragen, damit eine Zahl nicht nur gemessen, sondern auch genutzt wird.
+- [SOLL-Prozesse gestalten: PUSH und PULL](https://www.prozesswurm.de/lernwerkstatt/lektion/k04.html): Vom Input nach vorn oder vom Ergebnis rückwärts denken.
+- [Wer gibt den Auftrag? Top-down oder Bottom-up](https://www.prozesswurm.de/lernwerkstatt/lektion/k05.html): Führung gibt die Richtung vor, oder ein Team startet unten.
+- [Ursachen aufspüren: das Fischgräten-Diagramm](https://www.prozesswurm.de/lernwerkstatt/lektion/k08.html): Systematisch nach Ursachen suchen, statt zu raten.
+- [Die Kraftfeldanalyse: was bremst, was treibt an?](https://www.prozesswurm.de/lernwerkstatt/lektion/k12.html): Welche Kräfte für und gegen ein Ziel wirken.
+- [Zeit- und Informationsanalyse: wo genau hakt es?](https://www.prozesswurm.de/lernwerkstatt/lektion/k11.html): Wo geht die Zeit hin, und wo hakt der Informationsfluss?
+- [Gut moderieren: Auftragsklärung und kollegiale Fallberatung](https://www.prozesswurm.de/lernwerkstatt/lektion/k09.html): Workshops auf sichere Füße stellen und festgefahrene Fragen lösen.
+- [Prozesse einführen: Beteiligte und Kommunikation](https://www.prozesswurm.de/lernwerkstatt/lektion/k06.html): Wer ist betroffen, was braucht diese Person, wie erreichst du sie?
+- [Erst fragen, dann schulen: andere fit machen für einen neuen Ablauf](https://www.prozesswurm.de/lernwerkstatt/lektion/k18.html): Ein kurzes Häppchen für alle, Tiefe nur für die, die es brauchen.
+- [Einführungsmaßnahmen priorisieren: die Nutzen-Aufwand-Matrix](https://www.prozesswurm.de/lernwerkstatt/lektion/k10.html): Maßnahmen nach Nutzen und Aufwand sortieren.
+- [Die Einführungsfreigabe: bevor der Prozess live geht](https://www.prozesswurm.de/lernwerkstatt/lektion/k14.html): Ein formaler Check vor dem Startschuss.
+- [Der Prozess geht live: von der Planung in den Alltag](https://www.prozesswurm.de/lernwerkstatt/lektion/k15.html): Wie ein freigegebener Prozess Alltag wird und sich der Kreis schließt.
+
+### Stufe C1
+
+- [Was KI wirklich ist und was nicht](https://www.prozesswurm.de/lernwerkstatt/lektion/e01.html): Ohne Science-Fiction: was heutige KI kann und wo sie aufhört.
+- [Wie eine Maschine lernt: drei Wege](https://www.prozesswurm.de/lernwerkstatt/lektion/e02.html): Mit Lösung lernen, Muster selbst finden, durch Lob und Tadel.
+- [Schlechte Daten rein, schlechte KI raus](https://www.prozesswurm.de/lernwerkstatt/lektion/e03.html): Warum KI ungerecht werden kann und wie man das merkt.
+- [Ein KI-Vorhaben Schritt für Schritt](https://www.prozesswurm.de/lernwerkstatt/lektion/e04.html): Vom Problem bis zum Einsatz im Alltag, ohne sich zu verlaufen.
+- [Wo lohnt sich KI zuerst?](https://www.prozesswurm.de/lernwerkstatt/lektion/e05.html): Ideen finden, bewerten und die richtige zuerst anpacken.
+- [KI kaufen oder selbst bauen?](https://www.prozesswurm.de/lernwerkstatt/lektion/e06.html): Fertige KI als Dienst oder eigene Lösung: was jeweils dafür spricht.
+- [Chatbot oder KI-Agent: was ist der Unterschied?](https://www.prozesswurm.de/lernwerkstatt/lektion/i01.html): Ein Chatbot antwortet, ein Agent erledigt Aufgaben.
+- [Fragen statt suchen: KI im eigenen Wissensordner](https://www.prozesswurm.de/lernwerkstatt/lektion/i02.html): Warum die Suche oft nichts findet und wie KI nach Bedeutung sucht.
+- [Dein Wissen als Chatbot](https://www.prozesswurm.de/lernwerkstatt/lektion/i06.html): Eigenes Fachwissen über einen Chatbot abrufbar machen, ohne zu programmieren.
+- [Ein guter Prompt in fünf Bausteinen](https://www.prozesswurm.de/lernwerkstatt/lektion/i05.html): Eine Bauanleitung für Arbeitsaufträge an die KI, die du gezielt nachbessern kannst.
+- [Fester Plan oder Leitplanke?](https://www.prozesswurm.de/lernwerkstatt/lektion/i03.html): Wann ein Schritt-für-Schritt-Plan reicht und wann du mehr Spielraum brauchst.
+- [Erst aufschreiben, dann abgeben: die Arbeitsanweisung als Bauplan für den KI-Agenten](https://www.prozesswurm.de/lernwerkstatt/lektion/i17.html): Ein Agent kann nur so gut arbeiten, wie der Ablauf beschrieben ist.
+- [Prüfen statt hoffen: KI-Ergebnisse im Griff behalten](https://www.prozesswurm.de/lernwerkstatt/lektion/i18.html): Kleine Bausteine, feste Prüfregeln und klare Grenzen, was nie in einen Chatbot gehört.
+- [Ein Ausweis für den KI-Agenten: wer darf was?](https://www.prozesswurm.de/lernwerkstatt/lektion/i19.html): Jeder Agent braucht einen Verantwortlichen, klare Rechte und einen Aus-Schalter.
+- [Fachbereich oder IT: wer entscheidet was?](https://www.prozesswurm.de/lernwerkstatt/lektion/i04.html): Das WAS und WARUM gegen das WIE und WOMIT.
+- [Prozesse hören, sehen, erleben: Formate statt Textwüsten](https://www.prozesswurm.de/lernwerkstatt/lektion/i10.html): Warum das 50-seitige Handbuch selten gelesen wird.
+- [KI als Vorprüfer für Prozessmodelle](https://www.prozesswurm.de/lernwerkstatt/lektion/i13.html): Prozessmodelle von der KI auf Logik, Regeln und Übergaben vorprüfen lassen.
+- [Process Mining: der digitale Detektiv](https://www.prozesswurm.de/lernwerkstatt/lektion/i12.html): Warum Process Mining erst funktioniert, wenn der Prozess digital läuft.
+- [Drei KI-Entwicklungen, die man kennen sollte](https://www.prozesswurm.de/lernwerkstatt/lektion/i07.html): Roboter, Agenten und die Frage, wie man die Menschen mitnimmt.
+- [Wenn „läuft doch“ zur Falle wird](https://www.prozesswurm.de/lernwerkstatt/lektion/i14.html): Warum es sich lohnt, auch gut laufende Abläufe grundsätzlich zu hinterfragen.
+- [Der Clean Core: Standard-Software plus KI-Wächter](https://www.prozesswurm.de/lernwerkstatt/lektion/i15.html): Eine KI-Schicht statt endloser Sonderanpassungen.
+- [Die BPM-Blaupause: einmal bauen, überall einsetzen](https://www.prozesswurm.de/lernwerkstatt/lektion/i16.html): Mit KI als Architekt ein übertragbares Prozess-Fundament bauen.
+- [Der Jurawurm: KI als Frühwarnsystem fürs Recht](https://www.prozesswurm.de/lernwerkstatt/lektion/i08.html): Rechtliche Risiken früh sichtbar machen, ohne die Entscheidung abzugeben.
+- [Der Aktwurm: was der AI Act von deinen Prozessen verlangt](https://www.prozesswurm.de/lernwerkstatt/lektion/i11.html): Kennzeichnungspflicht jetzt, Hochrisiko-Pflichten später.
+- [5S: für jedes Ding einen festen Platz](https://www.prozesswurm.de/lernwerkstatt/lektion/l02.html): Die einfachste Lean-Methode gegen tägliches Suchen.
+- [Jidoka und Andon: stoppen statt fehlerhaft weitermachen](https://www.prozesswurm.de/lernwerkstatt/lektion/l03.html): Warum ein System sich selbst stoppen sollte.
+- [Poka Yoke: Fehler unmöglich machen](https://www.prozesswurm.de/lernwerkstatt/lektion/l05.html): Fehler technisch verhindern, statt sie nur zu verbieten.
+- [SMED: der Blitz-Start](https://www.prozesswurm.de/lernwerkstatt/lektion/l06.html): Umrüstzeiten verkürzen, indem du vorbereitest statt improvisierst.
+- [Was ist Lean Change?](https://www.prozesswurm.de/lernwerkstatt/lektion/c01.html): Der Grundgedanke hinter Lean Change in einfachen Worten.
+- [Ausprobieren, beobachten, anpassen: die Schleife](https://www.prozesswurm.de/lernwerkstatt/lektion/c05.html): Warum eine kleine Schleife wichtiger ist als ein großer Plan.
+- [Eine Hypothese testen, statt zu diskutieren](https://www.prozesswurm.de/lernwerkstatt/lektion/c03.html): Eine Annahme in der Praxis prüfen.
+- [Mit Widerstand umgehen, ohne Druck zu machen](https://www.prozesswurm.de/lernwerkstatt/lektion/c04.html): Warum Menschen sich wehren und wie du damit umgehst.
+- [Kotter und ADKAR: zwei bekannte Change-Modelle](https://www.prozesswurm.de/lernwerkstatt/lektion/c02.html): Die zwei bekanntesten Modelle in Kürze, und warum Lean Change anders tickt.
+- [Was ist ein Projekt?](https://www.prozesswurm.de/lernwerkstatt/lektion/p01.html): Was ein Projekt von einem Prozess unterscheidet.
+- [Ziele und Meilensteine setzen](https://www.prozesswurm.de/lernwerkstatt/lektion/p02.html): Warum Zwischenstationen wichtiger sind als das Endziel allein.
+- [Der erste Schritt: ein Projekt starten](https://www.prozesswurm.de/lernwerkstatt/lektion/p05.html): Drei Fragen, die reichen, um loszulegen.
+- [Klassisch oder anpassend: welcher Ansatz passt?](https://www.prozesswurm.de/lernwerkstatt/lektion/p03.html): Zwei Vorgehensweisen, und wann welche passt.
+- [Scrum, Kanban und Co.: agile Grundbegriffe](https://www.prozesswurm.de/lernwerkstatt/lektion/p04.html): Sprints, Rollen, Board und Begrenzung gleichzeitiger Aufgaben.
+
+### Stufe C2
+
+- [Strategisch oder operativ? Zwei Blickwinkel](https://www.prozesswurm.de/lernwerkstatt/lektion/s01.html): Feilst du an einem Prozess oder entscheidest du, welcher drankommt?
+- [Die Prozesslandkarte fürs ganze Unternehmen](https://www.prozesswurm.de/lernwerkstatt/lektion/s02.html): Kern, Führung, Unterstützung: übersichtlich sortiert.
+- [Vom Unternehmensziel zum Prozessziel: die Strategie-Brücke](https://www.prozesswurm.de/lernwerkstatt/lektion/s03.html): Große Ziele in konkrete Prozessziele übersetzen.
+- [Welchen Prozess zuerst? Das Prozessportfolio](https://www.prozesswurm.de/lernwerkstatt/lektion/s04.html): Wichtig und dringend sind zwei Paar Schuhe.
+- [Wie reif sind eure Prozesse? Reifegradmodelle](https://www.prozesswurm.de/lernwerkstatt/lektion/s05.html): Wo ihr heute steht und was der nächste sinnvolle Schritt ist.
+- [Wer entscheidet über Prozesse? Gremien und Spielregeln](https://www.prozesswurm.de/lernwerkstatt/lektion/s06.html): Eine gemeinsame Entscheidungsinstanz, damit sich niemand ins Gehege kommt.
+- [Quer durchs Organigramm: wer verbessert, wer entscheidet?](https://www.prozesswurm.de/lernwerkstatt/lektion/s10.html): Abteilungen stehen senkrecht, Prozesse laufen quer. Beides darf bleiben.
+- [Vom Wilden Westen zur Wohlfühl-Zone](https://www.prozesswurm.de/lernwerkstatt/lektion/b10.html): Klare Spielregeln als Möglichmacher statt Verbotsliste.
+- [Prozessorientierung zur Gewohnheit machen](https://www.prozesswurm.de/lernwerkstatt/lektion/s07.html): Kultur statt Projekt mit Enddatum.
+- [Ein Beet statt des ganzen Gartens: Prozessmanagement im Betrieb starten](https://www.prozesswurm.de/lernwerkstatt/lektion/s09.html): Rückendeckung von oben, ein kleiner Versuch unten, und Geduld dazwischen.
+- [Strategie und IT: wo Prozesse auf Digitalisierung treffen](https://www.prozesswurm.de/lernwerkstatt/lektion/s08.html): Warum Software einen unklaren Prozess nicht rettet.
+- [Warum blindes Sparen teurer ist als sauber aufräumen](https://www.prozesswurm.de/lernwerkstatt/lektion/v09.html): Pauschale Kürzungen gegen gezieltes Aufräumen.
+
+## Montags-Wurm
+
+- [Viele Hüte, keiner zuständig](https://www.prozesswurm.de/montags-wurm/26-oktober-2026/) (26. Oktober 2026): Über 70 Arten von Beauftragten, und wer kümmert sich wirklich? Dazu die Hutliste in drei Schritten.
+- [Das Kauderwelsch-Monster](https://www.prozesswurm.de/montags-wurm/19-oktober-2026/) (19. Oktober 2026): Was kein Mensch versteht, versteht auch keine KI. Wie du Abläufe so aufschreibst, dass Neue sie verstehen.
+- [Das Schatten-IT-Monster](https://www.prozesswurm.de/montags-wurm/12-oktober-2026/) (12. Oktober 2026): Wenn KI heimlich durch die Hintertür in die Abläufe kriecht, und wie du sie sicher hereinholst.
+- [Wenn die Maschine den Chef ersetzt](https://www.prozesswurm.de/montags-wurm/05-oktober-2026/) (5. Oktober 2026): Weniger Chefs, mehr Maschinen: Wer schreibt dann die Abläufe auf?
+
+## Optional
+
+- [Über uns](https://www.prozesswurm.de/ueber-uns/)
+- [Impressum](https://www.prozesswurm.de/impressum/)
+- [Datenschutz](https://www.prozesswurm.de/datenschutz/)
+- [Instagram](https://www.instagram.com/prozesswurm/): Comics und kurze Clips
+- [LinkedIn](https://www.linkedin.com/company/prozesswurm/): Montags-Wurm und Praxistipps
+- [YouTube](https://www.youtube.com/@Prozesswurm): Lieder und Kurzvideos
+- [Spotify](https://open.spotify.com/show/1HXgfdJge3mqgA1BxTc2V4): Der Podcast
+- [Suno](https://suno.com/@prozesswurm): Alle Lieder
