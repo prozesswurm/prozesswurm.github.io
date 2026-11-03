@@ -715,7 +715,7 @@ def bauen():
     zeilen += ["", "## Montags-Wurm", ""]
     zeilen += [f"- [{a['titel']}]({DOMAIN}montags-wurm/{a['pfad']}/) ({a['datum']}): {a['teaser']}" for a in daten("ausgaben.json")]
     zeilen += ["", "## Optional", "",
-               f"- [Über uns]({DOMAIN}ueber-uns/)", f"- [Impressum]({DOMAIN}impressum/)", f"- [Datenschutz]({DOMAIN}datenschutz/)",
+               f"- [Über uns]({DOMAIN}ueber-uns/)", f"- [Datenschutz]({DOMAIN}datenschutz/)",
                *[f"- [{k[1]}]({k[3]}): {k[2]}" for k in KANAELE], ""]
     open(os.path.join(HAUPT, "llms.txt"), "w", encoding="utf-8").write("\n".join(zeilen))
     print("gebaut: robots.txt, llms.txt")

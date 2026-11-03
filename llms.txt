@@ -147,7 +147,6 @@ Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
 ## Optional
 
 - [Über uns](https://www.prozesswurm.de/ueber-uns/)
-- [Impressum](https://www.prozesswurm.de/impressum/)
 - [Datenschutz](https://www.prozesswurm.de/datenschutz/)
 - [Instagram](https://www.instagram.com/prozesswurm/): Comics und kurze Clips
 - [LinkedIn](https://www.linkedin.com/company/prozesswurm/): Montags-Wurm und Praxistipps
