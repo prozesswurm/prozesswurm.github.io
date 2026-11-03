@@ -672,6 +672,21 @@ def bauen():
         "User-agent: *\nAllow: /\nDisallow: /_bau/\n\n" + "".join(f"User-agent: {b}\n" for b in ki) + "Allow: /\n\n"
         + f"Sitemap: {DOMAIN}sitemap.xml\nSitemap: {DOMAIN}lernwerkstatt/sitemap.xml\n")
 
+    # security.txt: wohin man eine Sicherheitslücke melden kann (RFC 9116), gilt 12 Monate ab dem 1. des Monats
+    import datetime as _dt
+    _heute = _dt.date.today().replace(day=1)
+    _ablauf = _heute.replace(year=_heute.year + 1)
+    os.makedirs(os.path.join(HAUPT, ".well-known"), exist_ok=True)
+    open(os.path.join(HAUPT, ".well-known", "security.txt"), "w", encoding="utf-8").write(
+        "Contact: mailto:info@prozesswurm.de\n"
+        f"Expires: {_ablauf.isoformat()}T00:00:00Z\n"
+        "Preferred-Languages: de, en\n"
+        f"Canonical: {DOMAIN}.well-known/security.txt\n")
+    # Jekyll (GitHub Pages) veröffentlicht Ordner mit Punkt nur, wenn sie hier stehen; _bau bleibt ausgeschlossen
+    open(os.path.join(HAUPT, "_config.yml"), "w", encoding="utf-8").write(
+        "# Von _bau/website/bauen.py erzeugt. Ordner mit Unterstrich (z. B. _bau) werden nicht veröffentlicht.\n"
+        "include:\n  - .well-known\n")
+
     # llms.txt: Kurzüberblick für KI-Suchen (Vorschlag llmstxt.org)
     lek = daten("lektionen.json")
     stufen = []

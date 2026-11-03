@@ -113,6 +113,6 @@ const KEY = 'wurmLernwerkstatt.v2';
   const leaks = htmls.filter(f => secret.test(fs.readFileSync(f, 'utf8')));
   rows.push({ Test: 'Keine Zugangsschlüssel in Seiten', Ergebnis: leaks.length ? 'FEHLER' : 'ok', Details: leaks.join(', ') });
   console.table(rows);
-  fs.writeFileSync(process.env.OUT || 'sicherheit-ergebnis.json', JSON.stringify(rows, null, 1));
+  fs.writeFileSync(process.env.OUT || require('path').join(require('os').tmpdir(), 'sicherheit-ergebnis.json'), JSON.stringify(rows, null, 1));
   process.exit(rows.some(r => r.Ergebnis.startsWith('FEHLER')) ? 1 : 0);
 })();

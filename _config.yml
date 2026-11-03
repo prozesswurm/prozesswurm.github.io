@@ -1,0 +1,3 @@
+# Von _bau/website/bauen.py erzeugt. Ordner mit Unterstrich (z. B. _bau) werden nicht veröffentlicht.
+include:
+  - .well-known

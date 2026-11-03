@@ -3,7 +3,7 @@
    Seiten selbst werden immer frisch geholt (damit neue Montags-Wurm-Ausgaben sofort da sind)
    und nur ohne Netz aus dem Speicher gezeigt.
    Bei jeder Änderung an CSS oder JS: VERSION hochzählen. */
-const VERSION = "pw-2026-11-02-4";
+const VERSION = "pw-2026-11-03-1";
 const CORE = [
   "./",
   "assets/css/style.css",
@@ -38,8 +38,8 @@ self.addEventListener("fetch", (event) => {
   if (req.mode === "navigate") {
     event.respondWith(
       fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(VERSION).then((c) => c.put(req, copy));
+        // Nur fehlerfreie Seiten ohne ?-Teil speichern (der ?-Teil kann Namen enthalten, z. B. alte Urkunden-Links)
+        if (res.ok && !url.search) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
         return res;
       }).catch(() => caches.match(req).then((r) => r || caches.match("./")))
     );
@@ -50,7 +50,7 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(req).then((cached) => {
       const fresh = fetch(req).then((res) => {
-        if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
+        if (res.ok && !url.search) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(req, copy)); }
         return res;
       }).catch(() => cached);
       return cached || fresh;
