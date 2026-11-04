@@ -576,4 +576,16 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .feedback-line { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; text-align: center; color: var(--fg-soft); }
 .feedback-btn { min-height: 46px; padding: 0 18px; font-size: 1rem; border-color: var(--worm); color: var(--worm); }
 .feedback-btn:hover { background: var(--worm-soft); color: var(--worm); }
-@media (max-width: 640px) { .hero-img { display: none; } }
+/* Handy: Startbild als Band über der Überschrift, damit der erste Eindruck ein Gefühl hat (04.11.2026) */
+@media (max-width: 640px) {
+  .hero-compact { padding-top: 16px; }
+  .hero .wrap { gap: 18px; }
+  .hero-img { order: -1; flex: 1 1 100%; max-width: none; width: 100%; aspect-ratio: 16 / 10; }
+  .hero-img img { object-position: 50% 42%; }
+}
+/* Handy: Vorher-nachher-Karten zum Wischen nebeneinander statt untereinander */
+@media (max-width: 640px) {
+  .feel-grid { grid-auto-flow: column; grid-template-columns: none; grid-auto-columns: 86%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; margin-inline: -16px; padding: 2px 16px 10px; scrollbar-width: none; }
+  .feel-grid::-webkit-scrollbar { display: none; }
+  .feel-grid li { scroll-snap-align: start; }
+}
