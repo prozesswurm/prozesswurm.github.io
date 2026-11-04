@@ -28,6 +28,7 @@ Regeln seit 29.10.2026 (bitte einhalten):
   (fertiger Team-Lernpfad mit Link), {{neueste_gross}}, {{einstieg}} (Auswahl aus daten/einstieg.json),
   {{feedback}} (Mail-Link für Rückmeldungen). Unbekannte Platzhalter brechen den Bau ab.
 """
+import datetime
 import html
 import json
 import os
@@ -236,6 +237,7 @@ def fuss(p):
       <h2 id="fuss-entdecken">Entdecken</h2>
       <ul>
         <li><a href="{p}{LERNWERKSTATT}">Lernwerkstatt</a></li>
+        <li><a href="{p}lernwerkstatt/lektionen.html">Alle Lektionen im Überblick</a></li>
         <li><a href="{p}fuer-teams/">Für Teams und Führungskräfte</a></li>
         <li><a href="{p}montags-wurm/">Montags-Wurm</a></li>
         <li><a href="{p}hoeren-und-sehen/">Hören und sehen</a></li>
@@ -581,6 +583,7 @@ def bauen():
             sys.exit(f"Kopfzeile fehlt in {name}")
         seite = json.loads(m.group(1))
         seite["inhalt"] = text[m.end():]
+        seite["_quelle"] = name
         seiten.append(seite)
 
     for seite in seiten:
@@ -721,10 +724,19 @@ def bauen():
     print("gebaut: robots.txt, llms.txt")
 
     # Seitenverzeichnis für Suchmaschinen
-    urls = [s["pfad"] for s in seiten if not s.get("verstecken") and not s["pfad"].endswith(".html")]
+    urls = [(s["pfad"], s["_quelle"]) for s in seiten if not s.get("verstecken") and not s["pfad"].endswith(".html")]
+
+    def geaendert(quelle):
+        """Letzte Änderung der Quelldatei laut Git, sonst heute (für das Feld lastmod)."""
+        try:
+            tag = subprocess.run(["git", "log", "-1", "--format=%cs", "--", os.path.join(QUELLE, quelle)],
+                                 cwd=HAUPT, capture_output=True, text=True, check=True).stdout.strip()
+        except (OSError, subprocess.CalledProcessError):
+            tag = ""
+        return tag or datetime.date.today().isoformat()
     open(os.path.join(HAUPT, "sitemap.xml"), "w", encoding="utf-8").write(
         '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"  <url><loc>{DOMAIN}{u}</loc></url>\n" for u in sorted(urls))
+        + "".join(f"  <url><loc>{DOMAIN}{u}</loc><lastmod>{geaendert(q)}</lastmod></url>\n" for u, q in sorted(urls))
         + "</urlset>\n"
     )
     print("gebaut: sitemap.xml")

@@ -1,0 +1,43 @@
+{
+  "_hinweis": "Häufige Fragen unter den Lektionsseiten (lektion/<id>.html). Pro Lektion 2 bis 3 Fragen, so formuliert, wie Leute sie in Google oder ChatGPT eintippen. Antworten kurz, nur mit dem, was die Lektion selbst sagt. Danach: node _bau/lektionsseiten.mjs",
+  "b01": [
+    ["Was ist ein Prozess einfach erklärt?", "Ein Prozess ist ein Weg, den man immer wieder gleich geht und der zu einem Ergebnis führt. Er hat einen Auslöser am Anfang, feste Schritte dazwischen und ein Ergebnis am Ende."],
+    ["Muss ein Prozess kompliziert sein?", "Nein. Ein Prozess muss nur wiederholbar sein. Morgens Kaffee kochen ist genauso ein Prozess wie das Bearbeiten einer Rechnung."],
+    ["Was ist ein Beispiel für einen Prozess im Alltag?", "Kaffee kochen: Wasser aufsetzen, Kaffee dosieren, aufbrühen, eingießen. Immer die gleichen Schritte, immer das gleiche Ergebnis."]
+  ],
+  "b05": [
+    ["Was ist der Unterschied zwischen Prozess und Projekt?", "Ein Prozess wiederholt sich immer wieder, zum Beispiel Rechnungen stellen. Ein Projekt passiert einmal, hat Start, Ende und ein eigenes Ziel, zum Beispiel eine neue Website bauen."],
+    ["Was ist eine Aufgabe im Unterschied zum Prozess?", "Eine Aufgabe ist ein einzelner Schritt innerhalb eines Prozesses oder Projekts, etwa eine Rechnung verschicken."],
+    ["Warum ist der Unterschied wichtig?", "Wer Prozess, Projekt und Aufgabe verwechselt, greift zum falschen Werkzeug. Ein Projektplan hilft wenig bei etwas, das jede Woche wiederkommt."]
+  ],
+  "b03": [
+    ["Welche Bausteine hat ein Prozess?", "Jeder Prozess hat einen Namen, eine verantwortliche Person, einen Zweck, einen Input und einen Output. Dazwischen liegen die Schritte."],
+    ["Was ist Input und Output bei einem Prozess?", "Input ist alles, was hineingeht: Material, Werkzeug, Informationen. Output ist das, was am Ende herauskommt."],
+    ["Was ist der Zweck eines Prozesses?", "Der Zweck sagt, warum es den Prozess überhaupt gibt. Beim Kuchenbacken etwa: Freunde glücklich machen."]
+  ],
+  "g01": [
+    ["Was bedeutet „vom Kunden zum Kunden“ im Prozessmanagement?", "Ein Prozess beginnt mit dem Wunsch eines Kunden und endet erst, wenn der Kunde bekommen hat, was er wollte – nicht an der Grenze der eigenen Abteilung."],
+    ["Wo geht in Prozessen die meiste Zeit verloren?", "Fast immer an den Übergaben zwischen Abteilungen, nicht bei der eigentlichen Arbeit. Jeder macht seinen Teil gut, und trotzdem wartet der Kunde."],
+    ["Kann ein Kollege auch Kunde eines Prozesses sein?", "Ja. Kunde ist jeder, der mit dem Ergebnis weiterarbeitet, also auch ein Kollege in der nächsten Abteilung."]
+  ],
+  "v14": [
+    ["Was tun, wenn ein Prozess ein falsches Ergebnis liefert?", "Zuerst das prüfen, was in den Prozess hineinkommt, nicht nur die Schritte. Ein Ablauf ist nur so gut wie sein Input."],
+    ["Warum ist der Input so wichtig?", "Auch ein guter Ablauf liefert Unsinn, wenn eine Zutat falsch ist. Wie beim Bäcker, der mit vertauschtem Mehl exakt sein Rezept befolgt und trotzdem hartes Brot backt."]
+  ],
+  "v01": [
+    ["Woran erkennt man, dass man Prozesse braucht?", "Ein deutliches Zeichen: Dieselbe Frage kommt immer wieder. Dann fehlt meist ein klarer Ablauf."],
+    ["Braucht man Prozesse auch außerhalb der Arbeit?", "Ja. Wird in der Familie jeden Abend neu diskutiert, wer den Müll rausbringt, hilft schon ein einfacher Plan nach Wochentagen."]
+  ],
+  "b08": [
+    ["Wie löst man einen komplizierten Ablauf?", "Schritt für Schritt statt mit einem großen Ruck. Wie bei einem verknoteten Wollfaden: nicht ziehen, sondern Knoten für Knoten entwirren."],
+    ["Braucht man für Prozessverbesserung viele Fachbegriffe?", "Nein. Du brauchst keinen dicken Bericht, sondern einen Weg, den du selbst gehen kannst."]
+  ],
+  "i09": [
+    ["Welche Aufgaben kann KI im Büro übernehmen?", "Mühsame, sich wiederholende Arbeit, zum Beispiel Rechnungen sortieren oder Kundendaten anlegen."],
+    ["Muss man Ergebnisse von KI prüfen?", "Ja, gerade am Anfang. KI kann Routine übernehmen, prüfen und entscheiden bleibt bei dir."]
+  ],
+  "v10": [
+    ["Wie lernt man Arbeitswissen am besten?", "In kleinen Häppchen, regelmäßig wiederholt. Das bleibt besser hängen als viel Stoff auf einmal."],
+    ["Warum funktionieren dicke Handbücher selten?", "Wer 120 Seiten auf einmal lernt, hat das meiste schnell wieder vergessen. Kurze, wiederkehrende Erinnerungen halten das Wissen präsent."]
+  ]
+}

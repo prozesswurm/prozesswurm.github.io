@@ -130,7 +130,9 @@ button.rv-chip.no{cursor:pointer}
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
-<title>Prozesswurm Lernwerkstatt</title>
+<title>Lernwerkstatt: Prozessmanagement in kurzen Lektionen | Prozesswurm</title>
+<link rel="canonical" href="https://www.prozesswurm.de/lernwerkstatt/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Course","@id":"https://www.prozesswurm.de/lernwerkstatt/#kurs","name":"Prozesswurm Lernwerkstatt","url":"https://www.prozesswurm.de/lernwerkstatt/","inLanguage":"de","description":"Kostenlose Lern-App: Prozessmanagement einfach erklärt, in Stufen von A1 bis C2 wie beim Sprachenlernen.","provider":{"@type":"Organization","@id":"https://www.prozesswurm.de/#org","name":"Prozesswurm","url":"https://www.prozesswurm.de/"},"isAccessibleForFree":true,"offers":{"@type":"Offer","price":0,"priceCurrency":"EUR","category":"Free"},"hasCourseInstance":{"@type":"CourseInstance","courseMode":"Online","courseWorkload":"PT8H"}}</script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Schriften liegen auf dem eigenen Server (keine Verbindung zu Google Fonts) */
@@ -179,7 +181,8 @@ button:focus-visible,textarea:focus-visible,a:focus-visible{outline:3px solid va
 .top{display:flex;align-items:center;gap:14px}
 .top .wimg{flex:none}
 .wimg{object-fit:contain;display:block}
-.top h1{font-size:28px;font-weight:800}
+.top h1.eyebrow{font-family:inherit;font-size:12px;line-height:1.3}
+.top .salve{font-family:var(--display);line-height:1.15;font-size:28px;font-weight:800}
 .top p{margin:2px 0 0;color:var(--muted);font-size:15px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:10px 12px;min-width:0}
@@ -427,7 +430,7 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 :root{--r:18px;--shadow:0 1px 2px rgba(28,36,29,.06),0 8px 24px rgba(28,36,29,.07)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}}
 :root[data-theme="dark"]{--shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.25)}
-.top h1{font-size:26px}
+.top .salve{font-size:26px}
 .hero{margin-top:20px;border-radius:24px;padding:22px 20px 18px;color:#fff;background:radial-gradient(120% 140% at 100% 0%,#3DB356 0%,#1D7432 55%,#145424 100%);box-shadow:0 14px 34px rgba(29,116,50,.28);position:relative;overflow:hidden}
 .hero::after{content:"";position:absolute;right:-40px;top:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.08)}
 .hero-top{display:flex;align-items:center;gap:10px;margin-bottom:12px}
@@ -803,8 +806,8 @@ body.in-lesson .app{padding-bottom:120px}
   <header class="top">
     <img src="wurm.png?v=2" width="56" height="50" alt="Prozesswurm" class="wimg">
     <div>
-      <div class="eyebrow">Prozesswurm Lernwerkstatt</div>
-      <h1>SALVE!</h1>
+      <h1 class="eyebrow">Prozesswurm Lernwerkstatt</h1>
+      <div class="salve">SALVE!</div>
       <p>Weniger Durcheinander. Mehr Feierabend.</p>
     </div>
     <button type="button" class="dig-chip" id="digChip" aria-label="Grabungstiefe und Serie, zu Mein Stand"></button>

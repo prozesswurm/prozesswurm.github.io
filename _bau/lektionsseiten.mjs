@@ -17,6 +17,13 @@ levels.forEach(lv => { if (lv.branches) lv.ids = lv.branches.flatMap(b => b.ids)
 const L = Object.fromEntries(all.map(l => [l.id, l]));
 const kernM = html.match(/const KERN = (\{.*?\});\n/s);
 const KERN = kernM ? JSON.parse(kernM[1]) : {};
+// Bildbeschreibungen wie in der App (const PICS: id -> [Beschreibung, Seitenverhältnis, Höhe])
+const picsM = html.match(/const PICS = (\{[\s\S]*?\n\});\n/);
+const PICS = picsM ? vm.runInNewContext('(' + picsM[1] + ')') : {};
+const altOf = id => (PICS[id] && PICS[id][0]) || '';
+// Häufige Fragen je Lektion, von Hand gepflegt in _bau/lektions-fragen.json
+const fragenDatei = path.join(path.dirname(new URL(import.meta.url).pathname), 'lektions-fragen.json');
+const FRAGEN = fs.existsSync(fragenDatei) ? JSON.parse(fs.readFileSync(fragenDatei, 'utf8')) : {};
 // Text mit fetten Kernsätzen (wie in der App), jede Stelle einmal pro Lektion
 const escK = (t, done, id) => { let s = String(t), out = '', last = 0; const hits = [];
   (KERN[id] || []).forEach(ph => { if (done.has(ph)) return; const i = s.indexOf(ph); if (i >= 0) hits.push([i, i + ph.length, ph]); });
@@ -48,6 +55,7 @@ h1{font-size:30px;margin:8px 0}h2{font-size:21px;margin:28px 0 8px}
 .nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;font-size:15px}
 ol{padding-left:22px}li{margin-bottom:6px}
 .list a{display:block;padding:6px 0;text-decoration:none}.list small{color:var(--muted)}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:8px 0}.faq summary{display:flex;justify-content:space-between;gap:14px;cursor:pointer;padding:12px 16px;font-weight:700;list-style:none}.faq summary::-webkit-details-marker{display:none}.faq summary::after{content:'+';flex:none;color:var(--muted)}.faq details[open] summary::after{content:'–'}.faq details p{margin:0;padding:0 16px 14px}
 footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:var(--muted)}`;
 
 // Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
@@ -89,8 +97,10 @@ for (const id of order) {
       image: `${BASE}${pic || 'app-og.jpg'}`, timeRequired: `PT${l.min}M`, educationalLevel: lv.code, learningResourceType: 'Lektion',
       isAccessibleForFree: true, teaches: (KERN[id] || []).join('; ') || l.aha, author: ORG, publisher: ORG, isPartOf: { '@id': `${BASE}#kurs`, '@type': 'Course', name: COURSE.name, url: BASE } },
     crumbs([['Prozesswurm', 'https://www.prozesswurm.de/'], ['Lernwerkstatt', BASE], ['Alle Lektionen', `${BASE}lektionen.html`], [l.t, url]])] };
+  const faq = (FRAGEN[id] || []).map(([q, a]) => ({ q, a }));
+  if (faq.length) ld['@graph'].push({ '@type': 'FAQPage', mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
   const page = head(`${l.t} – einfach erklärt | Prozesswurm`, cut(`${l.d} ${l.aha}`, 158), url, pic, ld) + `
-${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
+${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="${esc(altOf(id))}" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
@@ -98,6 +108,7 @@ ${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="" width="1200" style="width:1
 ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`).join('\n') + (l.steps ? `<ol>${l.steps.map(x => `<li>${escK(x, d, id)}</li>`).join('')}</ol>` : ''); })()}
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
+${faq.length ? `<h2>Häufige Fragen</h2>\n<div class="faq">${faq.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>` : ''}
 <a class="cta" href="/lernwerkstatt/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} Fragen beantworten →</a>
 <div class="nav">${prev ? `<a href="${prev}.html">← ${esc(L[prev].t)}</a>` : '<span></span>'}${next ? `<a href="${next}.html">${esc(L[next].t)} →</a>` : ''}</div>
 ` + foot;
@@ -105,12 +116,12 @@ ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`
 }
 
 // Übersicht aller Lektionen
-const overview = head('Prozessmanagement einfach erklärt: alle Lektionen | Prozesswurm',
-  'Alle Lektionen der kostenlosen Prozesswurm Lernwerkstatt von A1 bis C2: Prozesse, Rollen, Prozesslandkarte, Werkzeuge, Lean, Veränderung und KI, einfach erklärt.',
+const overview = head('Alle Lektionen: Prozessmanagement Schritt für Schritt | Prozesswurm',
+  'Alle Lektionen der kostenlosen Prozesswurm Lernwerkstatt von A1 bis C2: Prozesse, Rollen, Prozesslandkarte, Werkzeuge, Lean, Veränderung und KI zum Nachlesen.',
   `${BASE}lektionen.html`, null, { '@graph': [COURSE, { '@type': 'ItemList', name: 'Alle Lektionen der Prozesswurm Lernwerkstatt',
     itemListElement: order.map((id, i) => ({ '@type': 'ListItem', position: i + 1, url: `${BASE}lektion/${id}.html`, name: L[id].t })) },
     crumbs([['Prozesswurm', 'https://www.prozesswurm.de/'], ['Lernwerkstatt', BASE], ['Alle Lektionen', `${BASE}lektionen.html`]])] }) + `
-<h1>Prozessmanagement einfach erklärt</h1>
+<h1>Alle Lektionen: Prozessmanagement Schritt für Schritt</h1>
 <p class="lead">Alle Lektionen der Prozesswurm Lernwerkstatt zum Nachlesen. Kostenlos und ohne Anmeldung. Mit Quiz, Abzeichen und Fortschritt geht es in der <a href="/lernwerkstatt/">Lernwerkstatt</a>.</p>
 ${levels.map(lv => `<h2>${lv.code} · ${esc(lv.name)}</h2><p>${esc(lv.sub)}</p>` + (lv.branches
   ? lv.branches.map(b => `<p class="k">Vertiefung ${esc(b.name)}</p><div class="list">${b.ids.map(id => `<a href="lektion/${id}.html">${esc(L[id].t)}<br><small>${esc(L[id].d)}</small></a>`).join('')}</div>`).join('')
@@ -136,7 +147,7 @@ ${helpGroups.map(g => `<h2 id="${slug(g)}">${esc(g)}</h2>\n` + help.filter(h => 
 fs.writeFileSync(path.join(ROOT, 'hilfe.html'), helpPage);
 
 // Sitemap und robots.txt
-const urls = [BASE, `${BASE}lektionen.html`, `${BASE}hilfe.html`, `${BASE}mediathek.html`, ...order.map(id => `${BASE}lektion/${id}.html`)];
+const urls = [BASE, `${BASE}lektionen.html`, `${BASE}hilfe.html`, ...order.map(id => `${BASE}lektion/${id}.html`)];
 fs.writeFileSync(path.join(ROOT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urls.map(u => `  <url><loc>${u}</loc><lastmod>${today}</lastmod></url>`).join('\n')}
