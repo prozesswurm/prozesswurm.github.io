@@ -13,9 +13,9 @@ GC_NEW = 'async src="/assets/js/zaehlen.js"></script>'
 # 2) Sicherheitsregeln für den Browser
 CSP = ("default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; "
        "img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; "
-       "connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; "
+       "connect-src 'self' https://prozesswurm.goatcounter.com; "
        "frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; "
-       "object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests")
+       "object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests")
 CSP_TAG = f'<meta http-equiv="Content-Security-Policy" content="{CSP}">'
 CHARSET = re.compile(r'<meta charset="utf-8">', re.I)
 
