@@ -70,13 +70,13 @@ const ldTag = obj => obj ? `<script type="application/ld+json">${JSON.stringify(
 const crumbs = list => ({ '@type': 'BreadcrumbList', itemListElement: list.map(([name, item], i) => ({ '@type': 'ListItem', position: i + 1, name, item })) });
 const cut = (t, n) => t.length <= n ? t : t.slice(0, t.lastIndexOf(' ', n - 1)) + ' …';
 const head = (title, desc, url, img, ld) => `<!doctype html>
-<html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="de"><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com https://docs.google.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://docs.google.com; upgrade-insecure-requests"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)}</title><meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${url}"><link rel="icon" href="/lernwerkstatt/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
 ${ldTag(ld)}<style>${css}</style>
-<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>
+<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="/assets/js/zaehlen.js"></script>
 </head><body><main>
 <a class="top" href="/lernwerkstatt/"><img src="/lernwerkstatt/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
 

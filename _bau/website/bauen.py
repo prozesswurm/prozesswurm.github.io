@@ -45,7 +45,7 @@ BREVO = ("https://f509acc4.sibforms.com/serve/MUIFAG7E7H_pxKUm92N5L95yq3kpYnnNVd
 DOMAIN = "https://www.prozesswurm.de/"
 
 CSP = ("default-src 'self'; img-src 'self' data: https://prozesswurm.goatcounter.com; style-src 'self'; font-src 'self'; "
-       "script-src 'self' 'inline-speculation-rules' https://gc.zgo.at; "
+       "script-src 'self' 'inline-speculation-rules'; "
        "connect-src 'self' https://prozesswurm.goatcounter.com; form-action 'none'; "
        "base-uri 'self'; object-src 'none'; upgrade-insecure-requests")
 
@@ -182,7 +182,7 @@ def kopf(seite, p):
         '{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/lernwerkstatt/*"}},{"not":{"href_matches":"/newsletter/*"}}]},"eagerness":"moderate"}]}',
         "</script>",
     ] + strukturdaten(seite) + [
-        '<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="https://gc.zgo.at/count.v5.js" crossorigin="anonymous" integrity="sha384-atnOLvQb9t+jTSipvd75X2yginT4PjVbqDdlJAmxMm+wYElFmeR6EmLP5bYeoRVQ"></script>',
+        '<script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="/assets/js/zaehlen.js"></script>',
         "</head>",
         "<body>",
         '<a class="skip-link" href="#inhalt">Zum Inhalt springen</a>',
