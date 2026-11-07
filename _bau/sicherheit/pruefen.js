@@ -64,17 +64,16 @@ const KEY = 'wurmLernwerkstatt.v2';
   await t('Fälschung: Speicherlink mit allem erledigt + Prüfung + GESAMT', 'index.html#p=' + b64({ v: 1, d, k: [], b: { PRUEFUNG: '260101', GESAMT: '260101' }, n: 'Test' }), { expect: 'info', after: async p => {
     const s = await p.evaluate(k => { try { return JSON.parse(localStorage.getItem(k)); } catch (e) { return null; } }, KEY);
     return (s && s.exam && s.exam.passed) ? 'FEHLER: Meister-Prüfung per Link übernommen' : `${(s && s.done || []).length} Lektionen übernommen, Meister-Prüfung nicht übernommen`; } });
-  // Feedback-Schutz
-  await t('Feedback: Fangfeld blockt Spam-Programm', 'index.html', { expect: 'info', after: async p => {
-    let sent = false; await p.route('https://docs.google.com/**', r => { sent = true; r.abort(); });
+  // Feedback: seit 07.11.2026 nur über das eigene E-Mail-Programm, kein fremder Dienst
+  await t('Feedback: geht nur per E-Mail, nichts an fremde Dienste', 'index.html', { expect: 'info', after: async p => {
+    const fremd = []; await p.route('**/*', r => { const u = r.request().url(); if (/^https?:/.test(u) && !/localhost|127\.0\.0\.1|goatcounter\.com/.test(u)) { fremd.push(u); return r.abort(); } return r.continue(); });
     await p.evaluate(() => { const b = document.querySelector('[data-feedback]'); if (b) b.click(); });
-    await p.waitForTimeout(3200); await p.fill('#fbText', 'Spam'); await p.evaluate(() => { const w = document.querySelector('#fbWeb'); if (w) w.value = 'http://spam'; });
-    await p.click('#fbSend').catch(() => {}); await p.waitForTimeout(500); return sent ? 'FEHLER: Spam wurde gesendet' : 'Spam nicht gesendet'; } });
-  await t('Feedback: echte Nachricht kommt durch', 'index.html', { expect: 'info', after: async p => {
-    let sent = false; await p.route('https://docs.google.com/**', r => { sent = true; r.fulfill({ status: 200, body: '' }); });
-    await p.evaluate(() => { const b = document.querySelector('[data-feedback]'); if (b) b.click(); });
-    await p.waitForTimeout(3200); await p.fill('#fbText', 'Test'); await p.click('#fbSend').catch(() => {}); await p.waitForTimeout(800);
-    return sent ? 'gesendet' : 'FEHLER: nicht gesendet'; } });
+    await p.waitForTimeout(300); await p.fill('#fbText', '<img src=x onerror=window.__x=1>Test'); await p.click('#fbSend').catch(() => {}); await p.waitForTimeout(600);
+    const txt = await p.evaluate(() => (document.querySelector('#fbCopyText') || {}).textContent || '');
+    const x = await p.evaluate(() => window.__x);
+    if (fremd.length) return 'FEHLER: Daten an ' + fremd[0];
+    if (x) return 'FEHLER: Schadcode ausgeführt';
+    return /Test/.test(txt) ? 'E-Mail-Text erzeugt, nichts gesendet' : 'FEHLER: kein E-Mail-Text'; } });
   await t('Urkunde erzeugen (Bild, LinkedIn-Knopf)', 'index.html', { expect: 'info', ls: JSON.stringify({ done: [], known: [], notes: {}, badges: { A1: '2026-10-01' }, name: 'Erika Muster' }), after: async p => {
     await p.evaluate(() => { const b = document.querySelector('[data-badge="A1"]'); if (b) b.click(); }); await p.waitForTimeout(900);
     const img = await p.$$eval('img', a => a.filter(x => x.src.startsWith('data:image/png')).length); return img ? 'Urkundenbild erzeugt' : 'FEHLER: kein Urkundenbild'; } });
@@ -102,8 +101,9 @@ const KEY = 'wurmLernwerkstatt.v2';
   // Prüfungen am Quelltext
   const root = process.env.SITE_ROOT || '.';
   const htmls = []; (function walk(dir) { for (const f of fs.readdirSync(dir, { withFileTypes: true })) { if (f.name === '.git' || f.name === 'node_modules') continue; const p = dir + '/' + f.name; if (f.isDirectory()) walk(p); else if (p.endsWith('.html')) htmls.push(p); } })(root);
-  const noSri = htmls.filter(f => /gc\.zgo\.at\/count/.test(fs.readFileSync(f, 'utf8')) && !/integrity="sha384-/.test(fs.readFileSync(f, 'utf8')));
-  rows.push({ Test: 'Zähl-Skript überall mit Prüfsumme', Ergebnis: noSri.length ? 'FEHLER' : 'ok', Details: noSri.slice(0, 3).join(', ') });
+  // Seit 07.11.2026: eigenes Zählskript /assets/js/zaehlen.js (liest nichts aus dem Gerät), kein fremdes Skript von gc.zgo.at
+  const fremdZaehler = htmls.filter(f => { const s = fs.readFileSync(f, 'utf8'); return /gc\.zgo\.at/.test(s) || (/data-goatcounter=/.test(s) && !/src="\/assets\/js\/zaehlen\.js"/.test(s)); });
+  rows.push({ Test: 'Eigenes Zählskript überall (kein fremdes Skript)', Ergebnis: fremdZaehler.length ? 'FEHLER' : 'ok', Details: fremdZaehler.slice(0, 3).join(', ') });
   const appPages = htmls.filter(f => /^\.?\/?(index|mediathek|urkunde|hilfe|lektionen)\.html$/.test(f.replace(root + '/', '')) || /\/lektion\//.test(f));
   const noCsp = appPages.filter(f => !/Content-Security-Policy/.test(fs.readFileSync(f, 'utf8')));
   rows.push({ Test: 'Sicherheitsregeln (CSP) auf allen App-Seiten', Ergebnis: noCsp.length ? 'FEHLER' : 'ok', Details: noCsp.slice(0, 3).join(', ') });
