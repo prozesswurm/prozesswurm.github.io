@@ -17,6 +17,7 @@ def blocks(bl, base):
         elif k=='h3': o.append('### '+b[1])
         elif k=='img': o.append(f'![{b[2]}]({base}{b[1]})' + (f'\n*{b[3]}*' if b[3] else ''))
         elif k=='kud': o.append(f'> **Doktor Kuddelmuddel:** *„{b[1]}“*')
+        elif k=='wurm': o.append(f'**Der Prozesswurm:** „{b[1]}“')
         elif k=='ul': o.append('\n'.join('- '+md(i) for i in b[1]))
         elif k=='ol': o.append('\n'.join(f'{n}. '+md(i) for n,i in enumerate(b[1],1)))
         elif k=='box': o.append(f'**{b[1]}:** {b[2]}')
@@ -25,7 +26,7 @@ def blocks(bl, base):
     return o
 base=f'https://www.prozesswurm.de/newsletter/{BILD_ORDNER}/'
 o=[f'# Montags-Wurm {DATUM}','Bilder liegen unter '+base,
-'## Fassung A – Webseite und E-Mail (gleicher Text)', f'# {TITEL}', f'### {UNTERTITEL}', md(EINSTIEG[0][1]), f'> **Doktor Kuddelmuddel:** *„{EINSTIEG[1][1]}“*']
+'## Fassung A – Webseite und E-Mail (gleicher Text)', f'# {TITEL}', f'### {UNTERTITEL}', md(EINSTIEG[0][1])] + ([f'> **Doktor Kuddelmuddel:** *„{EINSTIEG[1][1]}“*'] if len(EINSTIEG) > 1 else [])
 if EIGENE_SACHE:
     o.append('### '+EIGENE_SACHE['titel']); o+=blocks(EIGENE_SACHE['blocks'],base)
 for s in ABSCHNITTE:

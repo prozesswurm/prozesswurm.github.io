@@ -47,6 +47,7 @@ def block(b):
     if k == "h3": return f'<h3 style="margin:26px 0 10px;font-family:{F};font-size:19px;line-height:1.3;color:{DUNKEL};">{b[1]}</h3>'
     if k == "img": return img(b[1], b[2], b[3])
     if k == "kud": return kud(b[1])
+    if k == "wurm": return f'<p style="{P}"><b style="color:{GRUEN};">Der Prozesswurm:</b> „{b[1]}“</p>'
     if k == "src": return src(b[1])
     if k == "btn": return btn(b[1], b[2])
     if k == "box": return box(b[1], b[2])
@@ -71,7 +72,7 @@ alltext += " " + ZITAT["text"] + " " + ZITAT["reaktion"] + " " + SCHLUSS
 WORDS = len(alltext.split()); WORDS_R = round(WORDS / 50) * 50; MIN = max(1, round(WORDS / 200))
 
 intro = f'''<p style="{P}">{EINSTIEG[0][1]}</p>
-{kud(EINSTIEG[1][1])}
+{kud(EINSTIEG[1][1]) if len(EINSTIEG) > 1 else ""}
 <p style="{P}">Diese Ausgabe hat rund <b>{WORDS_R} Wörter</b>, etwa <b>{MIN} Minuten</b> Lesezeit. Heute ist <b>Montag, der {DATUM}</b>, willkommen in der <b>{KW}</b>.</p>
 <p style="margin:0;font-family:{F};font-size:15px;line-height:1.6;color:{GRAU};">Du kennst jemanden, der plötzlich Prozesse am Hals hat? Leite ihm diese Mail weiter. Anmelden geht kostenlos über <a style="{LINK}" target="_blank" href="https://www.prozesswurm.de/montags-wurm/">prozesswurm.de</a>.</p>'''
 
@@ -84,6 +85,13 @@ inhalt = f'''<div style="font-family:{F};font-size:13px;font-weight:bold;letter-
 def eigene_sache(e):
     # Kasten direkt nach dem Einstieg, gruen umrandet
     inner = "\n".join(block(b) for b in e["blocks"])
+    if e.get("stil") == "kuddel":
+        # lila Kasten im Kuddelmuddel-Stil mit Originalbild (seit 9.11.2026)
+        return f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0;background:{LILA_HELL};border-left:6px solid {LILA};border-radius:12px;"><tr><td style="padding:18px 20px 4px;">
+<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 12px;"><tr><td valign="middle" style="padding-right:12px;"><img src="{IMG_BASE}kuddel.png" width="56" alt="Doktor Kuddelmuddel" style="display:block;width:56px;height:auto;border:0;"></td>
+<td valign="middle"><div style="font-family:{F};font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:{LILA};margin:0 0 4px;">Doktor Kuddelmuddel warnt</div>
+<h2 style="margin:0;font-family:{F};font-size:22px;line-height:1.25;color:{DUNKEL};">{e["titel"]}</h2></td></tr></table>
+{inner}</td></tr></table>'''
     return f'''<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0;border:2px solid {GRUEN};border-radius:12px;"><tr><td style="padding:18px 20px 4px;">
 <div style="font-family:{F};font-size:12px;font-weight:bold;letter-spacing:2px;text-transform:uppercase;color:{GRUEN};margin:0 0 6px;">In eigener Sache</div>
 <h2 style="margin:0 0 14px;font-family:{F};font-size:22px;line-height:1.25;color:{DUNKEL};">{e["titel"]}</h2>

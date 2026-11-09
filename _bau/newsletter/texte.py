@@ -11,6 +11,7 @@ def blocks_html(blocks, linkedin=False):
         if k == "p": out.append(f"<p>{b[1]}</p>")
         elif k == "h3": out.append(f"<p><b>{b[1]}</b></p>")
         elif k == "kud": out.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{b[1]}“</i></p>")
+        elif k == "wurm": out.append(f"<p><b>Der Prozesswurm:</b> „{b[1]}“</p>")
         elif k in ("ul", "ol"): out.append(f"<{k}>" + "".join(f"<li>{i}</li>" for i in b[1]) + f"</{k}>")
         elif k == "box": out.append(f"<p><b>{b[1]}:</b> {b[2]}</p>")
         elif k == "btn": out.append(f'<p><a href="{b[2]}">{b[1]} →</a></p>')
@@ -22,10 +23,10 @@ def ausgabe(linkedin=False):
     if linkedin:
         o.append(f"<p><b>{LI_ERSTE_ZEILE}</b></p>")
         o.append(f"<p>{LI_DANACH}</p>")  # LI_DANACH in inhalt.py: Satz nach der ersten Zeile
-        o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
+        if len(EINSTIEG) > 1: o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
     else:
         o.append(f"<p>{EINSTIEG[0][1]}</p>")
-        o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
+        if len(EINSTIEG) > 1: o.append(f"<p><b>Doktor Kuddelmuddel:</b> <i>„{EINSTIEG[1][1]}“</i></p>")
     if EIGENE_SACHE:
         o.append("<h3>" + EIGENE_SACHE["titel"] + "</h3>" if not linkedin else "<h2>" + EIGENE_SACHE["titel"] + "</h2>")
         o += blocks_html(EIGENE_SACHE["blocks"], linkedin)
