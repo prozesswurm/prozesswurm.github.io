@@ -3,7 +3,7 @@
    Seiten selbst werden immer frisch geholt (damit neue Montags-Wurm-Ausgaben sofort da sind)
    und nur ohne Netz aus dem Speicher gezeigt.
    Bei jeder Änderung an CSS oder JS: VERSION hochzählen. */
-const VERSION = "pw-2026-11-15-1";
+const VERSION = "pw-2026-11-15-2";
 const CORE = [
   "./",
   "assets/css/style.css",
@@ -46,7 +46,19 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Alles andere: sofort aus dem Speicher, im Hintergrund auffrischen
+  // Gestaltung und Skripte: immer erst frisch aus dem Netz (sonst sieht man nach Änderungen alte Regeln
+  // zu neuen Seiten), gespeichert unter der Adresse ohne ?v=…, damit es auch ohne Netz klappt
+  if (/\.(css|js)$/.test(url.pathname)) {
+    event.respondWith(
+      fetch(req).then((res) => {
+        if (res.ok) { const copy = res.clone(); caches.open(VERSION).then((c) => c.put(url.pathname, copy)); }
+        return res;
+      }).catch(() => caches.match(url.pathname, { ignoreSearch: true }).then((r) => r || caches.match(req, { ignoreSearch: true })))
+    );
+    return;
+  }
+
+  // Alles andere (Schriften, Bilder): sofort aus dem Speicher, im Hintergrund auffrischen
   event.respondWith(
     caches.match(req).then((cached) => {
       const fresh = fetch(req).then((res) => {

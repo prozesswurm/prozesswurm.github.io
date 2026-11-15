@@ -27,24 +27,6 @@
     });
   }
 
-  /* Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“: rechnet nur im Browser (220 Arbeitstage, 40-Stunden-Woche) */
-  doc.querySelectorAll("[data-zeitrechner]").forEach(function (box) {
-    var min = box.querySelector("#zr-min");
-    function out(k) { return box.querySelector('[data-out="' + k + '"]'); }
-    function rechne() {
-      var m = +min.value, std = Math.round(m * 220 / 60), wochen = std / 40, satz;
-      if (wochen < 1) satz = "im Jahr. " + Math.round(std / 8) + " volle Arbeitstage.";
-      else if (wochen < 1.5) satz = "im Jahr. Eine ganze Arbeitswoche.";
-      else satz = "im Jahr. " + (Math.round(wochen * 2) / 2).toLocaleString("de-DE") + " Arbeitswochen.";
-      out("min").textContent = m + " Minuten";
-      out("std").textContent = std.toLocaleString("de-DE") + " Stunden";
-      out("satz").textContent = satz;
-      min.setAttribute("aria-valuetext", m + " Minuten am Tag, " + std + " Stunden im Jahr");
-    }
-    min.addEventListener("input", rechne);
-    rechne();
-  });
-
   /* Vorher-Nachher-Regler */
   doc.querySelectorAll("[data-compare]").forEach(function (box) {
     var input = box.querySelector('input[type="range"]');

@@ -134,6 +134,16 @@ def vorschau_name(pfad):
     return (pfad.strip("/").replace("/", "-").replace(".html", "") or "start")
 
 
+def _stand(datei):
+    """Kurzer Fingerabdruck einer Datei: ändert sich die Datei, ändert sich die Adresse, der Browser lädt neu."""
+    import hashlib
+    with open(os.path.join(HAUPT, datei), "rb") as f:
+        return hashlib.sha256(f.read()).hexdigest()[:8]
+
+
+STAND = {"css": _stand("assets/css/style.css"), "theme": _stand("assets/js/theme.js"), "main": _stand("assets/js/main.js")}
+
+
 def kopf(seite, p):
     titel = seite["titel"]
     voller_titel = STARTTITEL if seite["pfad"] == "" else f"{titel} – Prozesswurm"
@@ -177,10 +187,10 @@ def kopf(seite, p):
         f'<link rel="icon" href="{p}assets/img/favicon-32.png" sizes="32x32" type="image/png">',
         f'<link rel="apple-touch-icon" href="{p}assets/img/favicon-180.png">',
         f'<link rel="preload" href="{p}assets/fonts/bricolage-grotesque-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>',
-        f'<link rel="stylesheet" href="{p}assets/css/style.css">',
-        f'<script src="{p}assets/js/theme.js"></script>',
+        f'<link rel="stylesheet" href="{p}assets/css/style.css?v={STAND["css"]}">',
+        f'<script src="{p}assets/js/theme.js?v={STAND["theme"]}"></script>',
     ] + ([f'<script src="{p}assets/js/weiche.js"></script>'] if seite.get("weiche") else []) + [
-        f'<script src="{p}assets/js/main.js" defer></script>',
+        f'<script src="{p}assets/js/main.js?v={STAND["main"]}" defer></script>',
         '<script type="speculationrules">',
         '{"prefetch":[{"where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":"/lernwerkstatt/*"}},{"not":{"href_matches":"/newsletter/*"}}]},"eagerness":"moderate"}]}',
         "</script>",
@@ -578,21 +588,6 @@ def baustein_partner(p, seite):
     </article>"""
 
 
-def baustein_zeitrechner(p, seite):
-    """Schmale Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“: ein Regler, ein Satz (15.11.2026, bewusst klein
-    gehalten, damit die Startseite nicht überfrachtet). Rechnet nur im Browser."""
-    return f"""<div class="zeitleiste" data-zeitrechner>
-      <img src="{p}assets/img/kuddelmuddel.webp" alt="" width="196" height="240" loading="lazy">
-      <div class="zl-ein">
-        <h2 id="rechner-titel">Wie viel Zeit frisst dein Kuddelmuddel?</h2>
-        <label for="zr-min">Suchen und Nachfragen pro Tag: <output for="zr-min" data-out="min">30 Minuten</output></label>
-        <input id="zr-min" type="range" min="5" max="120" step="5" value="30">
-      </div>
-      <p class="zl-aus" aria-live="polite"><b data-out="std">110 Stunden</b><span data-out="satz">im Jahr. 3 Arbeitswochen.</span></p>
-    </div>"""
-
-
-
 def uebersichts_waechter():
     """Wunsch 15.11.2026: Interessenten nicht mit Informationen überschütten. Misst die Startseite nach jedem Bau.
     Grenzen: höchstens 7 Bereiche und 600 Wörter. Wird es mehr, erst etwas wegnehmen, bevor etwas dazukommt."""
@@ -620,7 +615,6 @@ BAUSTEINE = {
     "teilen": baustein_teilen,
     "begriffe": baustein_begriffe,
     "partner": baustein_partner,
-    "zeitrechner": baustein_zeitrechner,
 }
 
 

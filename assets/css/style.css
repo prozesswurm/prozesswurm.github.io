@@ -608,24 +608,6 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .tiles-pic .tile-body i { padding-top: 4px; font-size: 0.9rem; }
 }
 
-/* Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“ (15.11.2026): bewusst schmal, ein Regler, ein Ergebnis */
-.zeitleiste { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px 22px; padding: 16px 22px; border-radius: var(--radius-l); background: var(--kuddel-soft); }
-.zeitleiste img { width: 52px; height: auto; }
-.zl-ein { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
-.zl-ein h2 { font-size: 1.15rem; margin: 0; }
-.zl-ein label { font-size: 0.95rem; color: var(--fg-soft); }
-.zl-ein output { font-weight: 700; color: var(--fg); }
-.zl-ein input { width: 100%; accent-color: var(--kuddel); height: 28px; margin: 0; }
-.zl-aus { margin: 0; text-align: right; line-height: 1.25; }
-.zl-aus b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem); color: var(--kuddel); font-variant-numeric: tabular-nums; white-space: nowrap; }
-.zl-aus span { font-size: 0.92rem; color: var(--fg-soft); }
-@media (max-width: 40rem) {
-  .zeitleiste { grid-template-columns: auto 1fr; padding: 16px; }
-  .zeitleiste img { width: 40px; }
-  .zl-aus { grid-column: 1 / -1; text-align: left; }
-  .zl-aus b { display: inline; margin-right: 6px; }
-}
-
 /* Kooperation ReVibe Institut */
 .partner { display: grid; grid-template-columns: minmax(0, 12rem) 1fr; gap: clamp(18px, 3vw, 32px); align-items: center; padding: clamp(20px, 3vw, 30px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
 .partner h2 { font-size: 1.25rem; margin: 2px 0 6px; }
@@ -639,12 +621,10 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .partner-link svg { width: 18px; height: 18px; }
 @media (max-width: 40rem) { .partner { grid-template-columns: 6.5rem 1fr; gap: 14px; padding: 16px; } .partner-logo { min-height: 4.5rem; padding: 6px; } .partner-wort { font-size: 0.8rem; } .partner-wort b { font-size: 1.05rem; } .partner-wort small { display: none; } .partner p { font-size: 0.95rem; } }
 
-/* Handy: Fußzeile kompakter (Kanäle und Rechtliches nebeneinander), Leiste ruhiger umbrechen (15.11.2026) */
+/* Handy: Fußzeile kompakter (Kanäle und Rechtliches nebeneinander) (15.11.2026) */
 @media (max-width: 40rem) {
   .site-footer > .wrap { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
   .footer-brand, .site-footer nav[aria-labelledby="fuss-entdecken"] { grid-column: 1 / -1; }
-  .zl-ein output { white-space: nowrap; }
-  .zl-aus b { display: block; }
 }
 
 /* Startseite: nur eine Szene, vorher und nachher nebeneinander (15.11.2026) */
