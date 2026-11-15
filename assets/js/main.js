@@ -27,29 +27,21 @@
     });
   }
 
-  /* Rechner „Was kostet dich das Kuddelmuddel?“: rechnet nur im Browser */
+  /* Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“: rechnet nur im Browser (220 Arbeitstage, 40-Stunden-Woche) */
   doc.querySelectorAll("[data-zeitrechner]").forEach(function (box) {
-    var min = box.querySelector("#zr-min"), pers = box.querySelector("#zr-pers");
+    var min = box.querySelector("#zr-min");
     function out(k) { return box.querySelector('[data-out="' + k + '"]'); }
-    function zahl(n) { return Math.round(n).toLocaleString("de-DE"); }
     function rechne() {
-      var m = +min.value, n = +pers.value;
-      var std = m * 220 * n / 60;
-      var wochen = std / 40;
+      var m = +min.value, std = Math.round(m * 220 / 60), wochen = std / 40, satz;
+      if (wochen < 1) satz = "im Jahr. " + Math.round(std / 8) + " volle Arbeitstage.";
+      else if (wochen < 1.5) satz = "im Jahr. Eine ganze Arbeitswoche.";
+      else satz = "im Jahr. " + (Math.round(wochen * 2) / 2).toLocaleString("de-DE") + " Arbeitswochen.";
       out("min").textContent = m + " Minuten";
-      out("pers").textContent = n === 1 ? "nur mir" : n + " Leute";
-      out("std").textContent = zahl(std);
-      var satz;
-      if (wochen < 1) satz = "Das sind " + zahl(std / 8) + " volle Arbeitstage. Weg, einfach so.";
-      else if (wochen < 52) satz = "Das sind " + (Math.round(wochen * 10) / 10).toLocaleString("de-DE") + " volle Arbeitswochen. Weg, einfach so.";
-      else satz = "Das ist mehr als eine ganze Stelle, nur fürs Suchen und Nachfragen.";
+      out("std").textContent = std.toLocaleString("de-DE") + " Stunden";
       out("satz").textContent = satz;
-      out("kuddel").textContent = std < 60 ? "Doktor Kuddelmuddel ist enttäuscht. Hier gibt es wenig zu holen."
-        : std < 400 ? "Doktor Kuddelmuddel reibt sich die Hände."
-        : "Doktor Kuddelmuddel bestellt schon Konfetti.";
+      min.setAttribute("aria-valuetext", m + " Minuten am Tag, " + std + " Stunden im Jahr");
     }
     min.addEventListener("input", rechne);
-    pers.addEventListener("input", rechne);
     rechne();
   });
 

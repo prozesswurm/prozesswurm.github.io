@@ -608,31 +608,41 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .tiles-pic .tile-body i { padding-top: 4px; font-size: 0.9rem; }
 }
 
-/* Rechner „Was kostet dich das Kuddelmuddel?“ (15.11.2026) */
-.rechner { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 22px; margin-top: 14px; }
-.rechner-ein { display: flex; flex-direction: column; gap: 8px; }
-.rechner-ein label { font-weight: 700; line-height: 1.35; }
-.rechner-zeile { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
-.rechner-zeile input { flex: 1; min-width: 0; accent-color: var(--worm); height: 32px; }
-.rechner-zeile output { flex: none; min-width: 7.5rem; text-align: right; font-weight: 700; color: var(--worm-strong); }
-.rechner-aus { display: flex; flex-direction: column; gap: 8px; padding: 20px; border-radius: var(--radius-m); background: var(--sunk); }
-.rechner-aus p { margin: 0; }
-.rechner-zahl { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
-.rechner-zahl b { font-size: clamp(2.6rem, 2rem + 2.5vw, 3.6rem); line-height: 1; color: var(--kuddel); display: block; margin-bottom: 2px; font-variant-numeric: tabular-nums; }
-.rechner-kuddel { display: flex; align-items: center; gap: 10px; color: var(--fg-soft); font-style: italic; }
-.rechner-kuddel img { flex: none; width: 36px; height: auto; }
-.rechner-aus .button { align-self: flex-start; margin-top: 6px; }
-.rechner-fuss { font-size: 0.85rem; color: var(--muted); }
+/* Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“ (15.11.2026): bewusst schmal, ein Regler, ein Ergebnis */
+.zeitleiste { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px 22px; padding: 16px 22px; border-radius: var(--radius-l); background: var(--kuddel-soft); }
+.zeitleiste img { width: 52px; height: auto; }
+.zl-ein { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.zl-ein h2 { font-size: 1.15rem; margin: 0; }
+.zl-ein label { font-size: 0.95rem; color: var(--fg-soft); }
+.zl-ein output { font-weight: 700; color: var(--fg); }
+.zl-ein input { width: 100%; accent-color: var(--kuddel); height: 28px; margin: 0; }
+.zl-aus { margin: 0; text-align: right; line-height: 1.25; }
+.zl-aus b { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(1.6rem, 1.3rem + 1vw, 2rem); color: var(--kuddel); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.zl-aus span { font-size: 0.92rem; color: var(--fg-soft); }
+@media (max-width: 40rem) {
+  .zeitleiste { grid-template-columns: auto 1fr; padding: 16px; }
+  .zeitleiste img { width: 40px; }
+  .zl-aus { grid-column: 1 / -1; text-align: left; }
+  .zl-aus b { display: inline; margin-right: 6px; }
+}
 
 /* Kooperation ReVibe Institut */
-.partner { display: grid; grid-template-columns: minmax(0, 17rem) 1fr; gap: clamp(18px, 3vw, 32px); align-items: center; padding: clamp(20px, 3vw, 30px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
-.partner h2 { font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.8rem); margin: 4px 0 8px; }
+.partner { display: grid; grid-template-columns: minmax(0, 12rem) 1fr; gap: clamp(18px, 3vw, 32px); align-items: center; padding: clamp(20px, 3vw, 30px); border-radius: var(--radius-l); background: var(--surface); border: 1px solid var(--line); }
+.partner h2 { font-size: 1.25rem; margin: 2px 0 6px; }
 .partner p { margin: 0 0 12px; color: var(--fg-soft); max-width: 62ch; }
-.partner-logo { display: flex; align-items: center; justify-content: center; min-height: 7.5rem; padding: 14px; border-radius: var(--radius-m); background: #E7E4DD; color: #2B3A67; text-decoration: none; }
+.partner-logo { display: flex; align-items: center; justify-content: center; min-height: 5.5rem; padding: 10px; border-radius: var(--radius-m); background: #E7E4DD; color: #2B3A67; text-decoration: none; }
 .partner-logo img { width: 100%; height: auto; display: block; }
-.partner-wort { display: flex; flex-direction: column; align-items: center; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: 1.5rem; letter-spacing: 0.02em; }
-.partner-wort b { font-size: 2rem; }
+.partner-wort { display: flex; flex-direction: column; align-items: center; text-align: center; font-family: Georgia, "Times New Roman", serif; font-size: 1.1rem; letter-spacing: 0.02em; }
+.partner-wort b { font-size: 1.5rem; }
 .partner-wort small { font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 4px; }
 .partner-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--worm); }
 .partner-link svg { width: 18px; height: 18px; }
-@media (max-width: 40rem) { .partner { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) { .partner { grid-template-columns: 6.5rem 1fr; gap: 14px; padding: 16px; } .partner-logo { min-height: 4.5rem; padding: 6px; } .partner-wort { font-size: 0.8rem; } .partner-wort b { font-size: 1.05rem; } .partner-wort small { display: none; } .partner p { font-size: 0.95rem; } }
+
+/* Handy: Fußzeile kompakter (Kanäle und Rechtliches nebeneinander), Leiste ruhiger umbrechen (15.11.2026) */
+@media (max-width: 40rem) {
+  .site-footer > .wrap { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+  .footer-brand, .site-footer nav[aria-labelledby="fuss-entdecken"] { grid-column: 1 / -1; }
+  .zl-ein output { white-space: nowrap; }
+  .zl-aus b { display: block; }
+}

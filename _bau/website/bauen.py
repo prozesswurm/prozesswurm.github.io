@@ -572,31 +572,40 @@ def baustein_partner(p, seite):
       <div class="partner-text">
         <span class="eyebrow">Kooperation</span>
         <h2 id="partner-titel">Gemeinsam mit dem ReVibe Institut</h2>
-        <p>Ein neuer Ablauf hält nur, wenn die Menschen ihn mittragen. Der Prozesswurm sortiert den Ablauf. Das ReVibe Institut schaut auf das Miteinander dahinter: Es begleitet Menschen, Familien und Fachkräfte im Raum Hamburg und Schleswig-Holstein und schaut dabei aufs ganze System statt auf einzelne Symptome.</p>
+        <p>Ein neuer Ablauf hält nur, wenn die Menschen ihn mittragen. Der Prozesswurm sortiert den Ablauf, das ReVibe Institut kümmert sich um das Miteinander dahinter.</p>
         <a class="partner-link" href="https://www.revibe-institut.com/" rel="noopener">Zum ReVibe Institut {ICON["pfeil"]}</a>
       </div>
     </article>"""
 
 
 def baustein_zeitrechner(p, seite):
-    """Rechner „Was kostet dich das Kuddelmuddel?“ (Idee nach den Rechnern von Finanzfluss, 15.11.2026).
-    Rechnet nur mit den eigenen Eingaben, keine Daten verlassen die Seite."""
-    return f"""<div class="rechner" data-zeitrechner>
-      <div class="rechner-ein">
-        <label for="zr-min">Wie viele Minuten am Tag gehen bei dir für Suchen, Nachfragen und doppelte Arbeit drauf?</label>
-        <div class="rechner-zeile"><input id="zr-min" type="range" min="5" max="120" step="5" value="30"><output for="zr-min" data-out="min">30 Minuten</output></div>
-        <label for="zr-pers">Wie vielen in deinem Team geht es ähnlich?</label>
-        <div class="rechner-zeile"><input id="zr-pers" type="range" min="1" max="30" step="1" value="1"><output for="zr-pers" data-out="pers">nur mir</output></div>
+    """Schmale Leiste „Wie viel Zeit frisst dein Kuddelmuddel?“: ein Regler, ein Satz (15.11.2026, bewusst klein
+    gehalten, damit die Startseite nicht überfrachtet). Rechnet nur im Browser."""
+    return f"""<div class="zeitleiste" data-zeitrechner>
+      <img src="{p}assets/img/kuddelmuddel.webp" alt="" width="196" height="240" loading="lazy">
+      <div class="zl-ein">
+        <h2 id="rechner-titel">Wie viel Zeit frisst dein Kuddelmuddel?</h2>
+        <label for="zr-min">Suchen und Nachfragen pro Tag: <output for="zr-min" data-out="min">30 Minuten</output></label>
+        <input id="zr-min" type="range" min="5" max="120" step="5" value="30">
       </div>
-      <div class="rechner-aus" aria-live="polite">
-        <p class="rechner-zahl"><b data-out="std">110</b> Stunden im Jahr</p>
-        <p data-out="satz">Das sind 2,8 volle Arbeitswochen. Weg, einfach so.</p>
-        <p class="rechner-kuddel"><img src="{p}assets/img/kuddelmuddel.webp" alt="" width="36" height="44" loading="lazy" data-kuddel> <span data-out="kuddel">Doktor Kuddelmuddel reibt sich die Hände.</span></p>
-        <a class="button button-primary" href="{{lw}}">Zeit zurückholen {ICON["pfeil"]}</a>
-        <p class="rechner-fuss">Gerechnet mit 220 Arbeitstagen und 40 Stunden pro Woche. Deine Eingaben bleiben auf deinem Gerät.</p>
-      </div>
-    </div>""".replace("{lw}", p + LERNWERKSTATT)
+      <p class="zl-aus" aria-live="polite"><b data-out="std">110 Stunden</b><span data-out="satz">im Jahr. 3 Arbeitswochen.</span></p>
+    </div>"""
 
+
+
+def uebersichts_waechter():
+    """Wunsch 15.11.2026: Interessenten nicht mit Informationen überschütten. Misst die Startseite nach jedem Bau.
+    Grenzen: höchstens 7 Bereiche und 600 Wörter. Wird es mehr, erst etwas wegnehmen, bevor etwas dazukommt."""
+    s = open(os.path.join(HAUPT, "index.html"), encoding="utf8").read()
+    teil = s[s.find("<main"):s.find("</main>")]
+    teil = re.sub(r"<script.*?</script>|<style.*?</style>", "", teil, flags=re.S)
+    woerter = len(re.sub(r"<[^>]+>", " ", teil).split())
+    bereiche = teil.count("<section")
+    zeile = f"Übersicht Startseite: {bereiche} Bereiche, {woerter} Wörter"
+    if bereiche > 7 or woerter > 600:
+        print("ACHTUNG, Startseite wird zu voll! " + zeile + " (Grenze: 7 Bereiche, 600 Wörter)")
+    else:
+        print(zeile + " (im grünen Bereich)")
 
 BAUSTEINE = {
     "probleme": baustein_probleme,
@@ -808,3 +817,4 @@ def bauen():
 
 if __name__ == "__main__":
     bauen()
+    uebersichts_waechter()
