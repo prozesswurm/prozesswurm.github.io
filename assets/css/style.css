@@ -646,3 +646,12 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
   .zl-ein output { white-space: nowrap; }
   .zl-aus b { display: block; }
 }
+
+/* Startseite: nur eine Szene, vorher und nachher nebeneinander (15.11.2026) */
+.feel-single li { display: grid; grid-template-columns: 9rem 1fr 1fr; align-items: stretch; gap: 12px; }
+.feel-single .feel-k { align-self: center; }
+.feel-titel { margin: 28px 0 12px; }
+@media (max-width: 40rem) {
+  .feel-grid.feel-single { display: block; overflow: visible; margin-inline: 0; padding: 0; }
+  .feel-single li { grid-template-columns: 1fr; }
+}
