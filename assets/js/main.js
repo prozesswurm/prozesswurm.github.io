@@ -7,23 +7,7 @@
     ? doc.querySelector('link[rel="stylesheet"][href*="assets/css/style.css"]').getAttribute("href").replace("assets/css/style.css", "")
     : "";
 
-  /* Farbdarstellung: Hell, Dunkel oder automatisch nach Gerät */
-  function readTheme() { try { return localStorage.getItem("pw-theme") || "auto"; } catch (e) { return "auto"; } }
-  function applyTheme(value) {
-    if (value === "light" || value === "dark") root.setAttribute("data-theme", value);
-    else root.removeAttribute("data-theme");
-    doc.querySelectorAll("[data-theme-set]").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.getAttribute("data-theme-set") === value));
-    });
-  }
-  applyTheme(readTheme());
-  doc.addEventListener("click", function (e) {
-    var b = e.target.closest("[data-theme-set]");
-    if (!b) return;
-    var v = b.getAttribute("data-theme-set");
-    try { localStorage.setItem("pw-theme", v); } catch (err) { /* ohne Speicher gilt die Wahl nur für diese Seite */ }
-    applyTheme(v);
-  });
+  /* Farbdarstellung: steckt komplett in assets/js/theme.js (gemeinsam mit der Lernwerkstatt) */
 
   /* Menü auf dem Handy */
   var toggle = doc.querySelector(".menu-toggle");
@@ -42,6 +26,32 @@
       }
     });
   }
+
+  /* Rechner „Was kostet dich das Kuddelmuddel?“: rechnet nur im Browser */
+  doc.querySelectorAll("[data-zeitrechner]").forEach(function (box) {
+    var min = box.querySelector("#zr-min"), pers = box.querySelector("#zr-pers");
+    function out(k) { return box.querySelector('[data-out="' + k + '"]'); }
+    function zahl(n) { return Math.round(n).toLocaleString("de-DE"); }
+    function rechne() {
+      var m = +min.value, n = +pers.value;
+      var std = m * 220 * n / 60;
+      var wochen = std / 40;
+      out("min").textContent = m + " Minuten";
+      out("pers").textContent = n === 1 ? "nur mir" : n + " Leute";
+      out("std").textContent = zahl(std);
+      var satz;
+      if (wochen < 1) satz = "Das sind " + zahl(std / 8) + " volle Arbeitstage. Weg, einfach so.";
+      else if (wochen < 52) satz = "Das sind " + (Math.round(wochen * 10) / 10).toLocaleString("de-DE") + " volle Arbeitswochen. Weg, einfach so.";
+      else satz = "Das ist mehr als eine ganze Stelle, nur fürs Suchen und Nachfragen.";
+      out("satz").textContent = satz;
+      out("kuddel").textContent = std < 60 ? "Doktor Kuddelmuddel ist enttäuscht. Hier gibt es wenig zu holen."
+        : std < 400 ? "Doktor Kuddelmuddel reibt sich die Hände."
+        : "Doktor Kuddelmuddel bestellt schon Konfetti.";
+    }
+    min.addEventListener("input", rechne);
+    pers.addEventListener("input", rechne);
+    rechne();
+  });
 
   /* Vorher-Nachher-Regler */
   doc.querySelectorAll("[data-compare]").forEach(function (box) {

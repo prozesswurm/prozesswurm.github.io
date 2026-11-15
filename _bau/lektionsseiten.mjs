@@ -41,7 +41,11 @@ const css = `
 @font-face{font-family:"Atkinson Hyperlegible";src:url(/lernwerkstatt/fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Bricolage Grotesque";src:url(/lernwerkstatt/fonts/bricolage-grotesque-latin-800-normal.woff2) format("woff2");font-weight:800;font-display:swap}
 :root{--bg:#F2F5F0;--surface:#fff;--fg:#1C241D;--muted:#5A675C;--worm:#2E9A43;--ink:#1D7432;--soft:#DDF1DF;--line:#D3DBCE}
-@media (prefers-color-scheme:dark){:root{--bg:#131915;--surface:#1C231E;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--ink:#86E294;--soft:#1F3A24;--line:#334036}}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131915;--surface:#1C231E;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--ink:#86E294;--soft:#1F3A24;--line:#334036;--on:#0E2A14;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131915;--surface:#1C231E;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--ink:#86E294;--soft:#1F3A24;--line:#334036;--on:#0E2A14;color-scheme:dark}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.theme-cycle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;flex:none;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;padding:0}
+.theme-cycle svg{width:20px;height:20px;display:none}.theme-cycle[data-current="auto"] .ic-auto,.theme-cycle[data-current="light"] .ic-light,.theme-cycle[data-current="dark"] .ic-dark{display:block}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "Atkinson Hyperlegible",system-ui,sans-serif}
 main{max-width:680px;margin:0 auto;padding:20px 16px 48px}
 a{color:var(--ink)}h1,h2{font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;line-height:1.2}
@@ -51,7 +55,7 @@ h1{font-size:30px;margin:8px 0}h2{font-size:21px;margin:28px 0 8px}
 .lead{font-size:19px;color:var(--muted)}
 .box{background:var(--surface);border-radius:16px;padding:14px 18px;margin:14px 0;border:1px solid var(--line)}
 .aha{background:var(--soft);border:0;font-weight:700}
-.cta{display:block;text-align:center;background:var(--worm);color:#fff;text-decoration:none;font-weight:700;border-radius:14px;padding:15px;margin:26px 0 10px;font-size:18px}
+.cta{display:block;text-align:center;background:var(--worm);color:var(--on,#fff);text-decoration:none;font-weight:700;border-radius:14px;padding:15px;margin:26px 0 10px;font-size:18px}
 .nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;font-size:15px}
 ol{padding-left:22px}li{margin-bottom:6px}
 .list a{display:block;padding:6px 0;text-decoration:none}.list small{color:var(--muted)}
@@ -75,10 +79,11 @@ const head = (title, desc, url, img, ld) => `<!doctype html>
 <link rel="canonical" href="${url}"><link rel="icon" href="/lernwerkstatt/favicon-64.png">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(desc)}">
 <meta property="og:url" content="${url}"><meta property="og:image" content="${BASE}${img || 'app-og.jpg'}"><meta property="og:locale" content="de_DE">
+<script src="/assets/js/theme.js"></script>
 ${ldTag(ld)}<style>${css}</style>
 <script data-goatcounter="https://prozesswurm.goatcounter.com/count" async src="/assets/js/zaehlen.js"></script>
 </head><body><main>
-<a class="top" href="/lernwerkstatt/"><img src="/lernwerkstatt/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a>`;
+<div class="bar"><a class="top" href="/lernwerkstatt/"><img src="/lernwerkstatt/wurm.png?v=2" width="44" height="40" alt="">Prozesswurm Lernwerkstatt</a><button type="button" class="theme-cycle" data-theme-cycle data-current="auto" aria-label="Darstellung: Automatisch. Antippen zum Wechseln"><svg class="ic-auto" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg><svg class="ic-light" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic-dark" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg></button></div>`;
 
 const foot = `</main><footer>Kostenlos von Prozesswurm, ohne Anmeldung und ohne Werbung. Für dich und dein Team frei nutzbar, bitte „Prozesswurm“ als Quelle nennen.<br>
 <a href="/lernwerkstatt/lektionen.html">Alle Lektionen</a> · <a href="/lernwerkstatt/hilfe.html">Hilfe</a> · <a href="https://www.prozesswurm.de/">prozesswurm.de</a> · <a href="https://www.prozesswurm.de/impressum/">Impressum</a> · <a href="https://www.prozesswurm.de/datenschutz/">Datenschutz</a></footer></body></html>\n`;

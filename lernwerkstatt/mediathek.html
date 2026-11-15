@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.prozesswurm.de/lernwerkstatt https://prozesswurm.goatcounter.com; font-src 'self'; connect-src 'self' https://prozesswurm.goatcounter.com; frame-src https://suno.com https://www.youtube-nocookie.com; media-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<script src="/assets/js/theme.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="author" content="Prozesswurm">
 <meta name="copyright" content="© 2026 Prozesswurm">
@@ -14,6 +15,8 @@
 @font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-400-normal.woff2) format("woff2")}
 @font-face{font-family:"Atkinson Hyperlegible";font-weight:700;font-display:swap;src:url(fonts/atkinson-hyperlegible-latin-700-normal.woff2) format("woff2")}
 :root{--bg:#F2F5F0;--surface:#fff;--line:#D3DBCE;--fg:#1C241D;--muted:#5A675C;--worm:#2E9A43;--worm-ink:#1D7432;--worm-soft:#DDF1DF;--kud:#7A4BB4;--kud-soft:#EEE6F8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#131915;--surface:#1C231E;--line:#334036;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--worm-ink:#86E294;--worm-soft:#1F3A24;--kud:#C7A8F0;--kud-soft:#2D2340;--on:#0E2A14;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#131915;--surface:#1C231E;--line:#334036;--fg:#E7EDE5;--muted:#9CAA9E;--worm:#5BC86C;--worm-ink:#86E294;--worm-soft:#1F3A24;--kud:#C7A8F0;--kud-soft:#2D2340;--on:#0E2A14;color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;line-height:1.5}
 .wrap{max-width:900px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-right,0px)) 40px max(16px,env(safe-area-inset-left,0px))}
@@ -38,7 +41,7 @@ h2{font-size:20px;margin:26px 0 10px}
 .play:focus-visible{outline:3px solid var(--worm);outline-offset:2px}
 iframe{border:0;border-radius:10px;width:100%;display:block}
 .short{max-width:300px;aspect-ratio:9/16}.wide{aspect-ratio:16/9}.song{height:240px}
-.cta{display:inline-block;margin-top:24px;background:var(--worm);color:#fff;text-decoration:none;padding:12px 18px;border-radius:12px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}
+.cta{display:inline-block;margin-top:24px;background:var(--worm);color:var(--on,#fff);text-decoration:none;padding:12px 18px;border-radius:12px;font-family:"Bricolage Grotesque",sans-serif;font-weight:800}
 .foot{margin-top:28px;font-size:12.5px;color:var(--muted)}
 .foot a{color:var(--worm-ink)}
 </style>

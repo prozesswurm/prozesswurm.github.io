@@ -63,6 +63,9 @@ ICON = {
     "ohr": '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/></svg>',
     "kette": '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>',
     "team": '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 5.5 2 5.5 5"/></svg>',
+    "farbe": ('<svg class="ic-auto" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>'
+              '<svg class="ic-light" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>'
+              '<svg class="ic-dark" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>'),
     "zurueck": '<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>',
 }
 
@@ -199,6 +202,9 @@ def kopf(seite, p):
       <span>Prozesswurm</span>
     </a>
     <div class="header-tools">
+      <button type="button" class="icon-button theme-cycle" data-theme-cycle data-current="auto" aria-label="Darstellung: Automatisch. Antippen zum Wechseln">
+        {ICON["farbe"]}
+      </button>
       <button type="button" class="icon-button" data-search-open aria-haspopup="dialog">
         {ICON["suche"]}
         <span class="visually-hidden">Seite durchsuchen</span>
@@ -232,6 +238,7 @@ def fuss(p):
       <p>Prozessmanagement, endlich verständlich. Keine Cookies. Keine Werbung. Kein Google-Tracking.</p>
       <p class="copy-mail">Kontakt: <code>info@prozesswurm.de</code> <button type="button" data-copy="info@prozesswurm.de">Kopieren</button></p>
       <p><a href="{FEEDBACK}">Rückmeldung zur Website geben</a></p>
+      <p>In Kooperation mit dem <a href="https://www.revibe-institut.com/" rel="noopener">ReVibe Institut</a></p>
     </div>
     <nav aria-labelledby="fuss-entdecken">
       <h2 id="fuss-entdecken">Entdecken</h2>
@@ -552,6 +559,45 @@ def lernpfad(p, name, ids):
 </article>"""
 
 
+def baustein_partner(p, seite):
+    """Kooperation mit dem ReVibe Institut (seit November 2026). Logo kommt aus assets/img/partner-revibe.webp,
+    sobald die Datei dort liegt; bis dahin steht der Name als Schriftzug da."""
+    logo = os.path.join(HAUPT, "assets", "img", "partner-revibe.webp")
+    if os.path.exists(logo):
+        marke = f'<img src="{p}assets/img/partner-revibe.webp" width="480" height="173" alt="Logo ReVibe Institut für systemische Entwicklungsdynamik" loading="lazy">'
+    else:
+        marke = '<span class="partner-wort"><b>ReVibe</b> Institut<small>für systemische Entwicklungsdynamik</small></span>'
+    return f"""<article class="partner">
+      <a class="partner-logo" href="https://www.revibe-institut.com/" rel="noopener">{marke}<span class="visually-hidden"> (öffnet die Website des ReVibe Instituts)</span></a>
+      <div class="partner-text">
+        <span class="eyebrow">Kooperation</span>
+        <h2 id="partner-titel">Gemeinsam mit dem ReVibe Institut</h2>
+        <p>Ein neuer Ablauf hält nur, wenn die Menschen ihn mittragen. Der Prozesswurm sortiert den Ablauf. Das ReVibe Institut schaut auf das Miteinander dahinter: Es begleitet Menschen, Familien und Fachkräfte im Raum Hamburg und Schleswig-Holstein und schaut dabei aufs ganze System statt auf einzelne Symptome.</p>
+        <a class="partner-link" href="https://www.revibe-institut.com/" rel="noopener">Zum ReVibe Institut {ICON["pfeil"]}</a>
+      </div>
+    </article>"""
+
+
+def baustein_zeitrechner(p, seite):
+    """Rechner „Was kostet dich das Kuddelmuddel?“ (Idee nach den Rechnern von Finanzfluss, 15.11.2026).
+    Rechnet nur mit den eigenen Eingaben, keine Daten verlassen die Seite."""
+    return f"""<div class="rechner" data-zeitrechner>
+      <div class="rechner-ein">
+        <label for="zr-min">Wie viele Minuten am Tag gehen bei dir für Suchen, Nachfragen und doppelte Arbeit drauf?</label>
+        <div class="rechner-zeile"><input id="zr-min" type="range" min="5" max="120" step="5" value="30"><output for="zr-min" data-out="min">30 Minuten</output></div>
+        <label for="zr-pers">Wie vielen in deinem Team geht es ähnlich?</label>
+        <div class="rechner-zeile"><input id="zr-pers" type="range" min="1" max="30" step="1" value="1"><output for="zr-pers" data-out="pers">nur mir</output></div>
+      </div>
+      <div class="rechner-aus" aria-live="polite">
+        <p class="rechner-zahl"><b data-out="std">110</b> Stunden im Jahr</p>
+        <p data-out="satz">Das sind 2,8 volle Arbeitswochen. Weg, einfach so.</p>
+        <p class="rechner-kuddel"><img src="{p}assets/img/kuddelmuddel.webp" alt="" width="36" height="44" loading="lazy" data-kuddel> <span data-out="kuddel">Doktor Kuddelmuddel reibt sich die Hände.</span></p>
+        <a class="button button-primary" href="{{lw}}">Zeit zurückholen {ICON["pfeil"]}</a>
+        <p class="rechner-fuss">Gerechnet mit 220 Arbeitstagen und 40 Stunden pro Woche. Deine Eingaben bleiben auf deinem Gerät.</p>
+      </div>
+    </div>""".replace("{lw}", p + LERNWERKSTATT)
+
+
 BAUSTEINE = {
     "probleme": baustein_probleme,
     "kanaele": baustein_kanaele,
@@ -564,6 +610,8 @@ BAUSTEINE = {
     "neueste": baustein_neueste,
     "teilen": baustein_teilen,
     "begriffe": baustein_begriffe,
+    "partner": baustein_partner,
+    "zeitrechner": baustein_zeitrechner,
 }
 
 
