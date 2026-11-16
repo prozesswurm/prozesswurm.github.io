@@ -1,25 +1,90 @@
-<html><head><link rel=stylesheet href=base.css><style>
-/* Instagram-Beitrag 1080 x 1350 (4:5). Texte je Ausgabe anpassen, Figuren nie verändern. */
-body{width:1080px;height:1350px;position:relative;overflow:hidden;background:#F4EFE6;
+<html><head><meta charset="utf-8"><link rel=stylesheet href=base.css><style>
+/* Instagram-Karussell 1080 x 1350 (4:5). Ein Bild pro .s, gerendert mit _bau/newsletter/instagram.js.
+   Texte je Ausgabe anpassen, Figuren nie verändern. Höchstens 25 Wörter pro Bild. */
+body{background:#fff}
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;background:#F4EFE6;
  background-image:linear-gradient(#e9e2d4 1px,transparent 1px),linear-gradient(90deg,#e9e2d4 1px,transparent 1px);background-size:40px 40px}
+.s.dunkel{background:#1C241D;background-image:none;color:#fff}
+.s.lila{background:#EEE6F8;background-image:none}
 .bar{position:absolute;left:0;top:0;bottom:0;width:18px;background:#2E7D32}
-.top{position:absolute;left:70px;right:60px;top:64px}
-.pill{display:inline-block;background:#2E7D32;color:#fff;font:800 26px B;letter-spacing:.12em;padding:12px 28px;border-radius:40px}
-h1{font:800 76px/1.04 B;color:#1C2B3A;margin:30px 0 0}
-.bild{position:absolute;left:70px;right:60px;top:380px;height:620px;border-radius:26px;overflow:hidden;border:4px solid #1C241D;background:#fff}
+.inhalt{position:absolute;left:90px;right:80px;top:110px}
+.pill{display:inline-block;background:#2E7D32;color:#fff;font:800 28px B;letter-spacing:.12em;padding:12px 30px;border-radius:40px}
+.kw{font:700 30px A;letter-spacing:.16em;text-transform:uppercase;color:#2E7D32}
+.dunkel .kw{color:#F2C94C}
+.zahl{font:800 300px/1 B;color:#7A4BB4;margin-top:60px;letter-spacing:-.03em}
+h1{font:800 92px/1.05 B;color:#1C2B3A;margin-top:36px}
+.dunkel h1{color:#fff}
+h2{font:800 76px/1.08 B;color:#1C2B3A;margin-top:30px}
+p{font:400 46px/1.35 A;color:#2a332b;margin-top:34px}
+.dunkel p{color:#CFE3C6}
+.nr{width:150px;height:150px;border-radius:50%;background:#2E7D32;color:#fff;font:800 92px/150px B;text-align:center}
+.bild{position:absolute;left:90px;right:80px;bottom:150px;height:520px;border-radius:26px;overflow:hidden;border:4px solid #1C241D;background:#fff}
 .bild img{width:100%;height:100%;object-fit:cover;display:block}
-.ki{position:absolute;right:14px;bottom:12px;background:rgba(28,36,29,.82);color:#fff;font:700 18px A;padding:6px 12px;border-radius:20px}
-.steps{position:absolute;left:70px;right:60px;top:1040px;display:flex;gap:16px}
-.st{flex:1;background:#fff;border:3px solid #3C5A3A;border-radius:18px;padding:16px 18px}
-.st b{display:block;font:800 30px B;color:#2E7D32}.st span{font:400 23px/1.3 A;color:#1C241D}
-.fuss{position:absolute;left:70px;right:60px;bottom:44px;display:flex;justify-content:space-between;font:700 24px A;color:#3C5A3A}
-</style></head><body><div class=bar></div>
-<div class=top><div class=pill>DER MONTAGS-WURM</div>
-<h1>Neues System, alter Ablauf? Die Umzugsliste</h1></div>
-<div class=bild><img src=../../../lernwerkstatt/bilder/k18.webp><span class=ki>Mit KI erstellt</span></div>
-<div class=steps>
-<div class=st><b>1 · Aufschreiben</b><span>wie es heute wirklich läuft</span></div>
-<div class=st><b>2 · Entscheiden</b><span>mitnehmen, wegwerfen oder neu bauen</span></div>
-<div class=st><b>3 · Namen dran</b><span>wer packt aus, bis wann</span></div></div>
-<div class=fuss><span>prozesswurm.de · Link in Bio</span><span>© Prozesswurm</span></div>
+.fig{position:absolute;bottom:120px;right:70px}
+.fuss{position:absolute;left:90px;right:80px;bottom:48px;display:flex;justify-content:space-between;align-items:center;font:700 28px A;color:#3C5A3A}
+.dunkel .fuss{color:#CFE3C6}
+.ki{position:absolute;right:28px;bottom:96px;font:400 20px A;color:#1C241D;opacity:.55}
+.dunkel .ki{color:#fff}
+.bubble{background:#fff;border-radius:30px;padding:30px 36px;font:400 42px/1.3 A;color:#1C241D;position:relative;border:4px solid #7A4BB4}
+.bubble b{display:block;font:800 30px B;color:#7A4BB4;margin-bottom:8px;letter-spacing:.04em}
+.bubble.w{border-color:#2E7D32}.bubble.w b{color:#2E7D32}
+.speichern{display:inline-flex;align-items:center;gap:22px;background:#2E7D32;color:#fff;font:800 50px B;padding:28px 44px;border-radius:24px;margin-top:60px}
+.speichern i{width:42px;height:56px;border:7px solid #fff;border-bottom:none;position:relative;display:block}
+.speichern i:after{content:"";position:absolute;left:-7px;right:-7px;bottom:-14px;border-left:21px solid transparent;border-right:21px solid transparent;border-bottom:18px solid #2E7D32}
+</style></head><body>
+
+<section class=s><div class=bar></div><div class=inhalt>
+<div class=pill>DER MONTAGS-WURM</div>
+<div class=zahl>28&nbsp;%</div>
+<h1>schaffen keine Stunde am Stück ohne Störung.</h1>
+<p>Was dagegen hilft, kostet nichts. Wisch weiter.</p></div>
+<div class=fuss><span>@prozesswurm</span><span>1/7</span></div></section>
+
+<section class=s><div class=bar></div><div class=inhalt>
+<div class=kw>Kennst du das?</div>
+<h1>„Hast du mal kurz?“</h1>
+<p>Drei Wörter, und der Gedanke ist weg. Die Antwort dauert zwei Minuten. Den Faden wiederfinden dauert länger.</p></div>
+<div class=bild><img src=../../../lernwerkstatt/bilder/k11.webp></div><span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>2/7</span></div></section>
+
+<section class=s><div class=bar></div><div class=inhalt>
+<div class=kw>Handgriff der Woche: die Ruhe-Stunde</div>
+<div class=nr style="margin-top:70px">1</div>
+<h2>Eine Stunde festlegen.</h2>
+<p>Im Team, jeden Tag zur gleichen Zeit. In dieser Stunde stört keiner, außer es brennt.</p></div>
+<img class=fig src=../../../lernwerkstatt/wurm-full.png style="height:400px"><span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>3/7</span></div></section>
+
+<section class=s><div class=bar></div><div class=inhalt>
+<div class=kw>Handgriff der Woche: die Ruhe-Stunde</div>
+<div class=nr style="margin-top:70px">2</div>
+<h2>Fragen sammeln statt rufen.</h2>
+<p>Wer eine Frage hat, schreibt sie auf eine gemeinsame Liste. Danach wird alles auf einmal geklärt.</p></div>
+<img class=fig src=../../../lernwerkstatt/wurm-full.png style="height:400px"><span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>4/7</span></div></section>
+
+<section class=s><div class=bar></div><div class=inhalt>
+<div class=kw>Handgriff der Woche: die Ruhe-Stunde</div>
+<div class=nr style="margin-top:70px">3</div>
+<h2>Was zweimal kommt, wird aufgeschrieben.</h2>
+<p>Die Antwort kommt an einen festen Ort. Dann muss beim nächsten Mal keiner mehr fragen.</p></div>
+<img class=fig src=../../../lernwerkstatt/wurm-full.png style="height:400px"><span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>5/7</span></div></section>
+
+<section class="s lila"><div class=bar></div>
+<img src=../../../lernwerkstatt/kuddel-full.png style="position:absolute;left:40px;top:120px;height:560px">
+<div class=bubble style="position:absolute;left:380px;right:70px;top:150px"><b>DOKTOR KUDDELMUDDEL</b>„Unterbrechen ist bei mir keine Störung. Das ist mein Arbeitsablauf.“</div>
+<img src=../../../lernwerkstatt/wurm-full.png style="position:absolute;right:50px;bottom:110px;height:470px">
+<div class="bubble w" style="position:absolute;left:70px;right:460px;top:760px"><b>DER PROZESSWURM</b>„Eine ruhige Stunde am Tag. Dann bleibt der Faden auch mal dran.“</div>
+<span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>6/7</span></div></section>
+
+<section class="s dunkel"><div class=inhalt>
+<div class=kw>Für später</div>
+<div class=speichern>Speichern für später</div>
+<h1 style="font-size:80px;margin-top:80px">Den ganzen <span style="white-space:nowrap">Montags-Wurm</span> gibt’s auf prozesswurm.de</h1>
+<p>Mit Beispieltabelle, Zahlen und ARTE-Tipp. Link in der Bio.</p></div>
+<img class=fig src=../../../lernwerkstatt/wurm-full.png style="height:330px;bottom:110px"><span class=ki>Mit KI erstellt</span>
+<div class=fuss><span>@prozesswurm</span><span>7/7</span></div></section>
+
 </body></html>
