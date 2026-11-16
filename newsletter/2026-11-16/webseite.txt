@@ -1,0 +1,55 @@
+<h1>Der Montags-Wurm – 16. November 2026</h1>
+<h2>Hast du mal kurz?</h2>
+<p><b>SALVE!</b> „Hast du mal kurz?“ Drei Wörter, und der Gedanke ist weg. Ob im Büro, in der Praxis oder in der Werkstatt: Wer ständig unterbrochen wird, fängt jeden Tag dutzende Male von vorn an. Diese Woche geht es darum, wie ein Team Ruhe in den Tag bringt, ohne dass jemand unerreichbar wird.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Unterbrechen ist bei mir keine Störung. Das ist mein Arbeitsablauf.“</i></p>
+<h3>1. Aktuelles aus dem Prozessmanagement</h3>
+<p><b>Hast du mal kurz? Warum jede kleine Frage länger dauert</b></p>
+<p>Im Sommer hat das Meinungsforschungsinstitut YouGov im Auftrag eines Anbieters von Büroflächen 965 Büroangestellte befragt. 28 Prozent sagen: Eine ganze Stunde am Stück ungestört arbeiten, das schaffen sie nicht. Bei den Frauen sind es 31 Prozent, bei den Männern 24 Prozent. Knapp jeder Dritte fühlt sich oft oder sehr oft gestört.</p>
+<p>Spannend ist, was stört. Nicht in erster Linie das Handy oder der Chat, die nennen nur 15 Prozent. Vorne liegen Telefonate und Videoanrufe (34 Prozent), Gespräche anderer (33 Prozent) und spontane Unterbrechungen (28 Prozent). Also Menschen. Meistens nette Menschen mit einer kurzen Frage.</p>
+<p><b>Was das mit deinen Abläufen zu tun hat</b></p>
+<p>Eine Unterbrechung kostet mehr als die zwei Minuten für die Antwort. Danach muss der Kopf den Faden wiederfinden. Eine Tagebuchstudie mit 637 Beschäftigten aus 25 Unternehmen hat das 2022 gemessen: Wissensarbeit wurde rund 15 Mal pro Stunde unterbrochen. Das Wiederhineinfinden kostete mindestens 15 Prozent der Bearbeitungszeit.</p>
+<p>Viele „kurze Fragen“ sind in Wahrheit Lücken im Ablauf. Wer fragt, wo die Vorlage liegt, wer zuständig ist oder wie der Stand ist, fragt, weil es nirgends steht. Jede Frage, die zweimal kommt, gehört aufgeschrieben. Das ist dasselbe Prinzip wie bei der Einarbeitung neuer Kollegen.</p>
+<p><b>Handgriff der Woche: die Ruhe-Stunde</b></p>
+<ol><li><b>Eine Stunde festlegen.</b> Gemeinsam im Team, jeden Tag zur gleichen Zeit, zum Beispiel von 9 bis 10 Uhr. In dieser Stunde wird nicht gestört, außer es brennt wirklich.</li><li><b>Fragen sammeln statt rufen.</b> Wer in der Ruhe-Stunde eine Frage hat, schreibt sie auf eine gemeinsame Liste. Danach wird alles auf einmal geklärt.</li><li><b>Was zweimal kommt, wird aufgeschrieben.</b> Die Antwort kommt an einen festen Ort, den alle kennen. Dann muss beim nächsten Mal keiner mehr fragen.</li></ol>
+<p><b>Ruhe ist keine Frage der Raumgröße</b></p>
+<p>75 Prozent der Büroangestellten in derselben Umfrage sagen, ein Großraumbüro mit sieben oder mehr Plätzen erschwere konzentriertes Arbeiten. Ruhe muss aber nicht teuer sein: ein Zeichen an der Tür, ein Hinweis im Chat, ein Telefon, das in dieser Zeit eine Kollegin übernimmt. Im Laden oder in der Pflege ist eine ganze Stunde oft nicht drin. Zwanzig Minuten für die Dokumentation, in denen jemand anderes die Klingel übernimmt, helfen auch.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Eine Ruhe-Stunde? Dann müsste ich mir meine Fragen ja vorher überlegen. Das ist mir viel zu anstrengend.“</i></p>
+<p>Quellen: <a href="https://www.dashoefer.de/newsletter/artikel/aktuelle-yougov-studie-von-satellite-office-zeigt-das-buero-hat-kein-anwesenheits-sondern-konzentrationsproblem.html">Dashöfer über YouGov für Satellite Office, 23.7.2026</a> | <a href="https://www.personalwirtschaft.de/news/hr-organisation/arbeitsunterbrechungen-verursachen-jaehrlich-114-milliarden-euro-kosten-142087/">Personalwirtschaft über die Studie von Starker u. a., 11.9.2022</a></p>
+<h3>2. Märkte und Nachrichten</h3>
+<p><b>KI mit Not-Aus, am liebsten aus Deutschland</b></p>
+<p><b>Bitkom: 92 Prozent wünschen sich einen Not-Aus für alle KI-Systeme.</b> In einer repräsentativen Telefonumfrage unter 1.006 Menschen ab 16 Jahren wollen 92 Prozent, dass sich jede KI abschalten lässt. 85 Prozent wünschen sich strengere Regeln für besonders leistungsfähige KI. Trotzdem sehen 56 Prozent in KI eher eine Chance als ein Risiko. Veröffentlicht am 10. November.</p>
+<p>Quelle: <a href="https://www.bitkom.org/Presse/Presseinformation/Deutsche-wuenschen-sich-mehr-KI-Sicherheit">Bitkom, 10.11.2026</a></p>
+<p><b>Fast alle Unternehmen hätten gern KI aus Deutschland, aber nicht um jeden Preis.</b> 96 Prozent würden bevorzugt KI von deutschen Anbietern nutzen. 64 Prozent aber nur, wenn sie dafür weder mehr zahlen noch auf Funktionen verzichten müssen. Befragt wurden 603 Unternehmen ab 20 Beschäftigten, veröffentlicht am 2. November zum Digital-Gipfel der Bundesregierung.</p>
+<p>Quelle: <a href="https://www.bitkom.org/Presse/Presseinformation/Digital-Gipfel-Unternehmen-wollen-KI-aus-Deutschland">Bitkom, 2.11.2026</a></p>
+<p><b>Was das für dich heißt:</b> Ein Not-Aus ist im Grunde nur ein klarer Ablauf für den Notfall: Wer merkt, dass etwas schiefläuft, und wer darf anhalten? Das gilt für KI genauso wie für jede andere Maschine. Und wer neue Werkzeuge einführt, sollte zählen, wie viele es schon gibt. Jedes Programm mehr ist ein Fenster mehr, das sich meldet.</p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Not-Aus? Brauche ich nicht. Mein Chaos läuft auch ohne Strom weiter.“</i></p>
+<h3>3. Zahlen und Erkenntnisse</h3>
+<p><b>Unterbrechungen in Zahlen</b></p>
+<ul><li><b>28 Prozent</b> der Büroangestellten schaffen keine Stunde am Stück ohne Störung (YouGov für Satellite Office, 965 Büroangestellte, berichtet am 23.7.2026). <i>Heißt:</i> Für mehr als jeden Vierten ist konzentriertes Arbeiten Glückssache.</li><li><b>15 Mal pro Stunde</b> wurde Wissensarbeit im Schnitt unterbrochen, also etwa alle vier Minuten (Starker u. a., 637 Beschäftigte aus 25 Unternehmen, Tagebuchstudie, berichtet am 11.9.2022). <i>Heißt:</i> Wer eine halbe Stunde für eine Aufgabe braucht, fängt rechnerisch sieben Mal neu an.</li><li><b>34 Prozent</b> nennen Telefonate und Videoanrufe als Störfaktor, Benachrichtigungen und Chats nur 15 Prozent (YouGov für Satellite Office, berichtet am 23.7.2026). <i>Heißt:</i> Die größte Ablenkung ist oft nicht das Handy, sondern der Mensch am anderen Ende der Leitung.</li></ul>
+<p>Quellen: <a href="https://www.dashoefer.de/newsletter/artikel/aktuelle-yougov-studie-von-satellite-office-zeigt-das-buero-hat-kein-anwesenheits-sondern-konzentrationsproblem.html">Dashöfer über YouGov für Satellite Office, 23.7.2026</a> | <a href="https://www.personalwirtschaft.de/news/hr-organisation/arbeitsunterbrechungen-verursachen-jaehrlich-114-milliarden-euro-kosten-142087/">Personalwirtschaft über die Studie von Starker u. a., 11.9.2022</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Alle vier Minuten unterbrochen? Das ist doch keine Störung. Das nenne ich gut vernetzt.“</i></p>
+<h3>4. Sehenswert</h3>
+<p><b>Verliert unser Gehirn den Fokus? (ARTE, 28 Min.)</b></p>
+<p>Push-Nachrichten, kurze Videos, ständig etwas Neues: Das ARTE-Wissensmagazin „42 – Die Antwort auf fast alles“ fragt, ob unsere Konzentration wirklich schwindet. Oder ob sich unsere Aufmerksamkeit nur an eine Welt voller Reize angepasst hat. Keine Panikmache, sondern ein ruhiger Blick auf eine Frage, die viele umtreibt.</p>
+<p>Warum sich die 28 Minuten lohnen: Wer versteht, wie Aufmerksamkeit funktioniert, plant den Tag anders. Schwierige Aufgaben in die ruhige Zeit, Kleinkram gesammelt danach. In der ARTE-Mediathek, verfügbar bis 14. Dezember 2026.</p>
+<p><a href="https://www.arte.tv/de/videos/121326-017-A/verliert-unser-gehirn-den-fokus/">Zur ARTE-Mediathek →</a></p>
+<p><b>Doktor Kuddelmuddel:</b> <i>„Mein Fokus ist nicht verloren. Er ist nur gerade woanders. Wo genau, sage ich dir nach dieser Nachricht.“</i></p>
+<h3>5. Aus der Lernwerkstatt</h3>
+<p><b>Wo geht die Zeit hin?</b></p>
+<p>Zur Ruhe-Stunde passt die Lektion <b>„Zeit- und Informationsanalyse: wo genau hakt es?“</b> aus Stufe B2. Dauer: sieben Minuten. Ein kleiner Auszug:</p>
+<p><b>Zum Merken:</b> Die Zeitanalyse zeigt, wo Zeit verloren geht. Die Informationsanalyse zeigt, wo Informationen hängen bleiben.</p>
+<p><b>Mini-Übung:</b> Denk an einen Ablauf. Schreib eine Stelle auf, an der vermutlich am längsten gewartet wird, und eine, an der dieselben Daten mehrmals eingetippt werden.</p>
+<p><b>Teste dich:</b> Warum sind bei der Zeitanalyse Ausreißer wichtig? Die Auflösung steht in der Lektion.</p>
+<p><a href="https://www.prozesswurm.de/lernwerkstatt/#lektion=k11">Lektion öffnen →</a></p>
+<p><b>Schwarz auf weiß: die Urkunde</b></p>
+<p>Jeden Montag wartet auf der Startseite der Lernwerkstatt eine neue Lektion der Woche. Und wer eine Stufe geschafft hat, bekommt eine Abschlussurkunde. Zum Ausdrucken oder mit einem Klick fürs LinkedIn-Profil. Kostenlos und ohne Anmeldung.</p>
+<p><a href="https://www.prozesswurm.de/lernwerkstatt/#lektion-der-woche">Zur Lektion der Woche →</a></p>
+<h3>6. Lied oder Kurzvideo der Woche</h3>
+<p><b>Kurzvideo: Wichtig oder dringend?</b></p>
+<p>Das Telefon klingelt, eine Mail blinkt, jemand steht in der Tür. Aber ist das gerade wichtig oder nur dringend? Ein kurzes Video vom Prozesswurm zu genau dieser Frage. Passt zur Ruhe-Stunde: erst das Wichtige, dann der Rest.</p>
+<p><a href="https://www.youtube.com/shorts/yz38a2zIz6s">Video ansehen →</a></p>
+<p>Alle Lieder und Videos findest du auf <a href="https://www.prozesswurm.de/hoeren-und-sehen/">prozesswurm.de unter „Hören und sehen“</a>.</p>
+<h3>7. Zum Schluss: Ein Satz zum Mitnehmen</h3>
+<p><i>„Wer überall ist, ist nirgends.“</i></p><p>Seneca, römischer Philosoph, im 2. Brief an seinen Freund Lucilius</p><p>Der Prozesswurm nickt: Wer bei jeder Frage sofort springt, ist bei keiner Aufgabe richtig da. Die Ruhe-Stunde schenkt dem Team wenigstens eine Stunde am Tag, in der jeder ganz bei einer Sache ist. Doktor Kuddelmuddel ist stolz: „Überall gleichzeitig? Das nenne ich Präsenz. Dass mich trotzdem nie einer findet, ist ein ganz anderes Thema.“</p>
+<p>Dieser Newsletter erscheint weiterhin jeden Montag. Vielen Dank für deine Zeit. Feedback, Anmerkungen oder Themenvorschläge? Schreib mir gern an info@prozesswurm.de.</p><p><b>Dein Prozesswurm</b></p>
+<p><a href="https://www.prozesswurm.de/montags-wurm/">← Zur Übersicht aller Ausgaben</a></p>
