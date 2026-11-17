@@ -123,7 +123,7 @@ ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
 ${faq.length ? `<h2>Häufige Fragen</h2>\n<div class="faq">${faq.map(f => `<details><summary>${esc(f.q)}</summary><p>${esc(f.a)}</p></details>`).join('')}</div>` : ''}
-<a class="cta" href="/lernwerkstatt/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} Fragen beantworten →</a>
+<a class="cta" href="/lernwerkstatt/#lektion=${id}">In der Lernwerkstatt lernen und ${l.quiz.length} ${l.quiz.some(q => q.typ) ? 'Aufgaben lösen' : 'Fragen beantworten'} →</a>
 <div class="nav">${prev ? `<a href="${prev}.html">← ${esc(L[prev].t)}</a>` : '<span></span>'}${next ? `<a href="${next}.html">${esc(L[next].t)} →</a>` : ''}</div>
 ` + foot;
   fs.writeFileSync(path.join(ROOT, 'lektion', `${id}.html`), page);
