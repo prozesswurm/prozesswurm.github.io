@@ -369,10 +369,10 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
 .badge{border:2px solid var(--line);background:var(--surface);border-radius:16px;padding:10px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--muted);min-width:0}
 .badge b{font-family:var(--display);font-size:20px;color:var(--muted)}
-.badge .wimg{opacity:.25;filter:grayscale(1)}
+.badge .medal-mini{width:34px;height:34px;opacity:.3;filter:grayscale(1)}
 .badge.on{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
 .badge.on b{color:var(--worm-ink)}
-.badge.on .wimg{opacity:1;filter:none}
+.badge.on .medal-mini{opacity:1;filter:none}
 .badge.gold.on{border-color:#C9A227;background:#FFF6D6;color:#6B5200}
 .badge.gold.on b{color:#6B5200}
 .badge span{line-height:1.25;hyphens:auto;overflow-wrap:anywhere;max-width:100%}
@@ -610,8 +610,8 @@ pre{white-space:pre-wrap;background:var(--sunk);border-radius:10px;padding:12px;
 .confetti i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;animation:conf 2.2s cubic-bezier(.2,.6,.4,1) forwards}
 @keyframes conf{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx),105vh) rotate(var(--r));opacity:.9}}
 .lesson-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:-6px 0 4px}
-.speak{display:inline-flex;align-items:center;gap:8px;border:2px solid var(--line);background:var(--surface);border-radius:99px;padding:7px 14px;font-weight:700;font-size:14px}
-.speak svg{width:18px;height:18px}
+.speak{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:4px 10px;font-weight:700;font-size:12.5px;color:var(--muted)}
+.speak svg{width:14px;height:14px}
 .speak[aria-pressed="true"]{border-color:var(--worm);background:var(--worm-soft);color:var(--worm-ink)}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;background:var(--sunk);border-radius:14px;padding:4px;margin:6px 0 16px}
 .seg button{border:0;background:none;border-radius:11px;padding:10px;font-weight:700;color:var(--muted)}
@@ -937,6 +937,7 @@ body.in-lesson .app{padding-bottom:120px}
 .news-item small{color:var(--muted);font-size:13px}
 .lc-upd{display:flex;gap:8px;align-items:flex-start;justify-content:center;font-size:14.5px;color:var(--muted);margin:8px 0 0}
 div.lc-start:has(.lc-pic) .lc-upd{justify-content:flex-start}
+.dig-far{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
 </style>
 </head>
 <body>
@@ -1668,7 +1669,8 @@ function renderDig(){ const el=$('#digCard'); if(!el) return; const m=depth(), s
     :'<path d="M4 18 Q29 0 54 18Z" fill="#C07E2A"/><rect x="25" y="14" width="8" height="12" rx="2" fill="#F2C94C"/>'}<rect x="4" y="18" width="50" height="24" rx="3" fill="#A0661F"/><rect x="4" y="16" width="50" height="5" fill="#F2C94C"/><rect x="12" y="18" width="4" height="24" fill="#F2C94C" opacity=".8"/><rect x="42" y="18" width="4" height="24" fill="#F2C94C" opacity=".8"/></svg>`;
   const goal = passed&&grand ? `<span><b class="gold">Goldschatz gehoben.</b> Du hast die Meister-Prüfung bestanden.</span>`
     : grand ? `<b class="gold">Der Goldschatz ist frei.</b><button type="button" class="dig-go" data-exam>Zur Meister-Prüfung</button>`
-    : `<span>Noch <b class="gold">${left} ${lessonsWord(left)}</b> bis zum Goldschatz, der Meister-Prüfung</span><span class="dig-bar"><i style="width:${Math.round(done/all*100)}%"></i></span>`;
+    : (()=>{ const st=path.find(x=>x.n<x.tot); if(!st) return `<span>Noch <b class="gold">${left} ${lessonsWord(left)}</b> bis zum Goldschatz</span>`; const r=st.tot-st.n;
+        return `<span>Noch <b class="gold">${r} ${lessonsWord(r)}</b> bis zur Urkunde ${st.code}</span><span class="dig-bar"><i style="width:${Math.round(st.n/st.tot*100)}%"></i></span><small class="dig-far">Bis zum Goldschatz, der Meister-Prüfung, sind es ${left}.</small>`; })();
   el.innerHTML=`<div class="shaft" role="img" aria-label="Grabungsschacht: ${done} von ${all} Lektionen bis zum Goldschatz">
       <span class="shaft-tunnel" style="height:${pos/6.9*100}%"></span>
       ${path.map(x=>`<span class="sl sl${x.i+1}">${x.code}${x.n===x.tot?' ✓':''}</span>`).join('')}
@@ -2458,7 +2460,7 @@ function openLesson(id){
         if(!(qi in first)){ first[qi]=true; unmarkWrong(id,qi); }
       } else { b.classList.add('wrong'); b.disabled=true;
         if(!(qi in first)){ first[qi]=false; markWrong(id,qi); }
-        fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>${pick(KUDDEL)} Schau nochmal in die Erklärung.</span>`; }
+        fb.className='fb k'; fb.innerHTML=`<img src="kuddel.png?v=1" width="33" height="40" alt="" class="wimg"><span>${pick(KUDDEL)} Tipp: ${esc(l.aha)}</span>`; }
     });
   });
   /* Rückmeldung der Aufgaben Zuordnen und Sortieren */
@@ -2703,7 +2705,7 @@ document.addEventListener('click', e=>{
 });
 
 /* ---------- Entdecken als Übersicht (Babbel-Prinzip) ---------- */
-function termOfDay(){ const day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5); return GLOSS[day % GLOSS.length]; }
+function termOfDay(){ const day=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5); const cur=currentLevelIndex(); const pool=GLOSS.filter(g=>{ const k=LEVELS.findIndex(x=>x.code===g.lv); return k>=0 && k<=cur; }); const list=pool.length?pool:GLOSS; return list[day % list.length]; }
 function renderHub(){
   const t=termOfDay();
   $('#hubTerm').innerHTML = t ? `<button type="button" class="hub-card hub-term" data-term="${esc(t.t)}"><span><small class="hub-k">Begriff des Tages · ${esc(t.lv)}</small><b>${esc(t.t)}</b><small>Antippen für die Erklärung</small></span><i class="hub-ico c2"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.8.8 1 1.5 1 2.5h6c0-1 .2-1.7 1-2.5A6 6 0 0 0 12 3z"/></svg></i></button>` : '';
@@ -2933,7 +2935,7 @@ function renderBadges(){
     const prog = b.key===`PRUEFUNG` ? (on?'bestanden':examOpen()?'frei':'noch zu') : gold ? `${levelsDone()}/6 Stufen` : `${countDone(b.ids)}/${b.ids.length}`;
     const code = b.key===`GESAMT` ? `<b class="small">A1–C2</b>` : b.key===`PRUEFUNG` ? `<b>★</b>` : `<b class="lv lv${LVI[b.code]}">${b.code}</b>`;
     return `<button type="button" class="badge ${on?'on':''} ${gold?'gold':''}" data-badge="${b.key}" ${on?'':'aria-disabled="true"'} aria-label="Abzeichen ${esc(b.title)}${on?', geschafft, Urkunde öffnen':', noch offen'}">
-      <img src="wurm.png?v=2" width="44" height="40" alt="" class="wimg">${code}<span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
+      ${MEDAL_MINI}${code}<span>${esc(b.short)}</span><span>${prog}</span></button>`; }).join('');
 }
 $('#badges').addEventListener('click', e=>{ const b=e.target.closest('[data-badge]'); if(!b) return;
   const bd=allBadges().find(x=>x.key===b.dataset.badge); if(isEarned(bd)) openCert(bd.key,false); else if(bd.key===`PRUEFUNG`) openExam(); else toast(`Noch nicht geschafft. Der Prozesswurm gräbt weiter.`); });
