@@ -55,7 +55,8 @@ Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
 - [Die 7 Verschwendungsarten](https://www.prozesswurm.de/lernwerkstatt/lektion/l01.html): Wo deine Zeit wirklich hinfließt, am Beispiel Kuchenbacken.
 - [Genchi Genbutsu und 5-Why: der Wurzel auf der Spur](https://www.prozesswurm.de/lernwerkstatt/lektion/l04.html): Mit fünfmal „Warum?“ die Ursache statt das Symptom finden.
 - [Was ein Küchengerät über gute Abläufe lehrt](https://www.prozesswurm.de/lernwerkstatt/lektion/v12.html): Drei Prinzipien guter Kücheninstruktion für deine Abläufe.
-- [Dokument zuerst, Prozess danach: wie viel Modell braucht es?](https://www.prozesswurm.de/lernwerkstatt/lektion/v15.html): Doppelt modellieren, ganz spartanisch oder erst einmal ausrollen? Ein Fall aus der Praxis.
+- [Dokument zuerst, Prozess danach: erst wirken lassen](https://www.prozesswurm.de/lernwerkstatt/lektion/v15.html): Eine neue Anweisung hilft ab dem ersten Tag. Das Prozessmodell darf nachkommen.
+- [Nie doppelt: was ins Prozessmodell gehört und was nicht](https://www.prozesswurm.de/lernwerkstatt/lektion/v16.html): Das Dokument sagt wie, der Prozess sagt wer und wann.
 - [Eine Konvention einführen, ohne dass sie ignoriert wird](https://www.prozesswurm.de/lernwerkstatt/lektion/b07.html): Warum Regeln scheitern und wie du es besser machst.
 - [Einen Prozess-Workshop leiten, ohne dass er ausufert](https://www.prozesswurm.de/lernwerkstatt/lektion/k16.html): Klares Ziel und feste Agenda statt endloser Runde.
 - [Was im Workshop passiert, muss danach noch da sein](https://www.prozesswurm.de/lernwerkstatt/lektion/k17.html): Damit Ergebnisse umgesetzt statt vergessen werden.
@@ -94,8 +95,10 @@ Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
 - [Ein guter Prompt in fünf Bausteinen](https://www.prozesswurm.de/lernwerkstatt/lektion/i05.html): Eine Bauanleitung für Arbeitsaufträge an die KI, die du gezielt nachbessern kannst.
 - [Fester Plan oder Leitplanke?](https://www.prozesswurm.de/lernwerkstatt/lektion/i03.html): Wann ein Schritt-für-Schritt-Plan reicht und wann du mehr Spielraum brauchst.
 - [Erst aufschreiben, dann abgeben: die Arbeitsanweisung als Bauplan für den KI-Agenten](https://www.prozesswurm.de/lernwerkstatt/lektion/i17.html): Ein Agent kann nur so gut arbeiten, wie der Ablauf beschrieben ist.
-- [Prüfen statt hoffen: KI-Ergebnisse im Griff behalten](https://www.prozesswurm.de/lernwerkstatt/lektion/i18.html): Kleine Bausteine, feste Prüfregeln und klare Grenzen, was nie in einen Chatbot gehört.
+- [Prüfen statt hoffen: KI-Ergebnisse im Griff behalten](https://www.prozesswurm.de/lernwerkstatt/lektion/i18.html): Kleine Bausteine und feste Prüfregeln machen KI-Ergebnisse überprüfbar.
+- [Zwei Leitplanken, bevor alle mit KI loslegen](https://www.prozesswurm.de/lernwerkstatt/lektion/i21.html): Was nie in einen öffentlichen Chatbot gehört und warum Ausprobieren erlaubt sein muss.
 - [Ein Ausweis für den KI-Agenten: wer darf was?](https://www.prozesswurm.de/lernwerkstatt/lektion/i19.html): Jeder Agent braucht einen Verantwortlichen, klare Rechte und einen Aus-Schalter.
+- [Wo die Regeln für den KI-Agenten stehen müssen](https://www.prozesswurm.de/lernwerkstatt/lektion/i22.html): Regeln im Auftrag kann ein Agent übergehen. Regeln im Programm nicht.
 - [Fachbereich oder IT: wer entscheidet was?](https://www.prozesswurm.de/lernwerkstatt/lektion/i04.html): Das WAS und WARUM gegen das WIE und WOMIT.
 - [Prozesse hören, sehen, erleben: Formate statt Textwüsten](https://www.prozesswurm.de/lernwerkstatt/lektion/i10.html): Warum das 50-seitige Handbuch selten gelesen wird.
 - [KI als Vorprüfer für Prozessmodelle](https://www.prozesswurm.de/lernwerkstatt/lektion/i13.html): Prozessmodelle von der KI auf Logik, Regeln und Übergaben vorprüfen lassen.
@@ -105,7 +108,8 @@ Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
 - [Der Clean Core: Standard-Software plus KI-Wächter](https://www.prozesswurm.de/lernwerkstatt/lektion/i15.html): Eine KI-Schicht statt endloser Sonderanpassungen.
 - [Die BPM-Blaupause: einmal bauen, überall einsetzen](https://www.prozesswurm.de/lernwerkstatt/lektion/i16.html): Mit KI als Architekt ein übertragbares Prozess-Fundament bauen.
 - [Der Jurawurm: KI als Frühwarnsystem fürs Recht](https://www.prozesswurm.de/lernwerkstatt/lektion/i08.html): Rechtliche Risiken früh sichtbar machen, ohne die Entscheidung abzugeben.
-- [Der Aktwurm: was der AI Act von deinen Prozessen verlangt](https://www.prozesswurm.de/lernwerkstatt/lektion/i11.html): Kennzeichnungspflicht jetzt, Hochrisiko-Pflichten später.
+- [Der Aktwurm: was der AI Act schon heute verlangt](https://www.prozesswurm.de/lernwerkstatt/lektion/i11.html): Seit August 2026 gilt: Wo eine KI spricht oder Bilder macht, muss das dranstehen.
+- [Der Aktwurm, Teil 2: Hochrisiko-KI und was bis 2027 zu tun ist](https://www.prozesswurm.de/lernwerkstatt/lektion/i20.html): Bewerbungen, Kredite, Bewertungen von Menschen: Hier kommen die strengsten Regeln.
 - [5S: für jedes Ding einen festen Platz](https://www.prozesswurm.de/lernwerkstatt/lektion/l02.html): Die einfachste Lean-Methode gegen tägliches Suchen.
 - [Jidoka und Andon: stoppen statt fehlerhaft weitermachen](https://www.prozesswurm.de/lernwerkstatt/lektion/l03.html): Warum ein System sich selbst stoppen sollte.
 - [Poka Yoke: Fehler unmöglich machen](https://www.prozesswurm.de/lernwerkstatt/lektion/l05.html): Fehler technisch verhindern, statt sie nur zu verbieten.
@@ -129,7 +133,8 @@ Inhalte dürfen mit Quellenangabe „Prozesswurm“ und Link genannt werden.
 - [Welchen Prozess zuerst? Das Prozessportfolio](https://www.prozesswurm.de/lernwerkstatt/lektion/s04.html): Wichtig und dringend sind zwei Paar Schuhe.
 - [Wie reif sind eure Prozesse? Reifegradmodelle](https://www.prozesswurm.de/lernwerkstatt/lektion/s05.html): Wo ihr heute steht und was der nächste sinnvolle Schritt ist.
 - [Wer entscheidet über Prozesse? Gremien und Spielregeln](https://www.prozesswurm.de/lernwerkstatt/lektion/s06.html): Eine gemeinsame Entscheidungsinstanz, damit sich niemand ins Gehege kommt.
-- [Quer durchs Organigramm: wer verbessert, wer entscheidet?](https://www.prozesswurm.de/lernwerkstatt/lektion/s10.html): Abteilungen stehen senkrecht, Prozesse laufen quer. Beides darf bleiben.
+- [Quer durchs Organigramm: wo Prozesse wirklich laufen](https://www.prozesswurm.de/lernwerkstatt/lektion/s10.html): Abteilungen stehen senkrecht, Prozesse laufen quer. Beides darf bleiben.
+- [Wer kümmert sich, wer entscheidet? Zwei Rollen für Abläufe quer durch den Betrieb](https://www.prozesswurm.de/lernwerkstatt/lektion/s11.html): Einer verbessert im Alltag, einer entscheidet, wenn es klemmt.
 - [Vom Wilden Westen zur Wohlfühl-Zone](https://www.prozesswurm.de/lernwerkstatt/lektion/b10.html): Klare Spielregeln als Möglichmacher statt Verbotsliste.
 - [Prozessorientierung zur Gewohnheit machen](https://www.prozesswurm.de/lernwerkstatt/lektion/s07.html): Kultur statt Projekt mit Enddatum.
 - [Ein Beet statt des ganzen Gartens: Prozessmanagement im Betrieb starten](https://www.prozesswurm.de/lernwerkstatt/lektion/s09.html): Rückendeckung von oben, ein kleiner Versuch unten, und Geduld dazwischen.

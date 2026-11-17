@@ -204,9 +204,16 @@
  },
  {
   "id": "v15",
-  "t": "Dokument zuerst, Prozess danach: wie viel Modell braucht es?",
-  "d": "Doppelt modellieren, ganz spartanisch oder erst einmal ausrollen? Ein Fall aus der Praxis.",
-  "min": 7,
+  "t": "Dokument zuerst, Prozess danach: erst wirken lassen",
+  "d": "Eine neue Anweisung hilft ab dem ersten Tag. Das Prozessmodell darf nachkommen.",
+  "min": 5,
+  "stufe": "B1"
+ },
+ {
+  "id": "v16",
+  "t": "Nie doppelt: was ins Prozessmodell gehört und was nicht",
+  "d": "Das Dokument sagt wie, der Prozess sagt wer und wann.",
+  "min": 6,
   "stufe": "B1"
  },
  {
@@ -430,21 +437,35 @@
   "id": "i17",
   "t": "Erst aufschreiben, dann abgeben: die Arbeitsanweisung als Bauplan für den KI-Agenten",
   "d": "Ein Agent kann nur so gut arbeiten, wie der Ablauf beschrieben ist.",
-  "min": 7,
+  "min": 6,
   "stufe": "C1"
  },
  {
   "id": "i18",
   "t": "Prüfen statt hoffen: KI-Ergebnisse im Griff behalten",
-  "d": "Kleine Bausteine, feste Prüfregeln und klare Grenzen, was nie in einen Chatbot gehört.",
-  "min": 7,
+  "d": "Kleine Bausteine und feste Prüfregeln machen KI-Ergebnisse überprüfbar.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "i21",
+  "t": "Zwei Leitplanken, bevor alle mit KI loslegen",
+  "d": "Was nie in einen öffentlichen Chatbot gehört und warum Ausprobieren erlaubt sein muss.",
+  "min": 5,
   "stufe": "C1"
  },
  {
   "id": "i19",
   "t": "Ein Ausweis für den KI-Agenten: wer darf was?",
   "d": "Jeder Agent braucht einen Verantwortlichen, klare Rechte und einen Aus-Schalter.",
-  "min": 7,
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "i22",
+  "t": "Wo die Regeln für den KI-Agenten stehen müssen",
+  "d": "Regeln im Auftrag kann ein Agent übergehen. Regeln im Programm nicht.",
+  "min": 5,
   "stufe": "C1"
  },
  {
@@ -512,9 +533,16 @@
  },
  {
   "id": "i11",
-  "t": "Der Aktwurm: was der AI Act von deinen Prozessen verlangt",
-  "d": "Kennzeichnungspflicht jetzt, Hochrisiko-Pflichten später.",
-  "min": 8,
+  "t": "Der Aktwurm: was der AI Act schon heute verlangt",
+  "d": "Seit August 2026 gilt: Wo eine KI spricht oder Bilder macht, muss das dranstehen.",
+  "min": 6,
+  "stufe": "C1"
+ },
+ {
+  "id": "i20",
+  "t": "Der Aktwurm, Teil 2: Hochrisiko-KI und was bis 2027 zu tun ist",
+  "d": "Bewerbungen, Kredite, Bewertungen von Menschen: Hier kommen die strengsten Regeln.",
+  "min": 6,
   "stufe": "C1"
  },
  {
@@ -659,9 +687,16 @@
  },
  {
   "id": "s10",
-  "t": "Quer durchs Organigramm: wer verbessert, wer entscheidet?",
+  "t": "Quer durchs Organigramm: wo Prozesse wirklich laufen",
   "d": "Abteilungen stehen senkrecht, Prozesse laufen quer. Beides darf bleiben.",
-  "min": 7,
+  "min": 5,
+  "stufe": "C2"
+ },
+ {
+  "id": "s11",
+  "t": "Wer kümmert sich, wer entscheidet? Zwei Rollen für Abläufe quer durch den Betrieb",
+  "d": "Einer verbessert im Alltag, einer entscheidet, wenn es klemmt.",
+  "min": 6,
   "stufe": "C2"
  },
  {
