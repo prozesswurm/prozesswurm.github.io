@@ -879,6 +879,12 @@ body.in-lesson .app{padding-bottom:120px}
 @media (max-width:440px){.ph:not([aria-selected="true"]) small{display:none}.ph[aria-selected="true"]{flex:2 1 0}}
 /* Breite Bildschirme: lange Merkbilder zweispaltig, Sortieren nebeneinander */
 @media (min-width:600px){
+  div.lc-start:has(.lc-pic){display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);column-gap:22px;align-items:center;text-align:left;padding-top:4px}
+  div.lc-start:has(.lc-pic)>*{grid-column:2}
+  div.lc-start:has(.lc-pic)>.lc-pic{grid-column:1;grid-row:1/span 8;margin:0;align-self:center}
+  div.lc-start:has(.lc-pic) .lc-pic img{max-height:min(62vh,460px)}
+  div.lc-start:has(.lc-pic) .lc-chips{justify-content:flex-start}
+  div.lc-start:has(.lc-pic) .speak{margin:0}
   .so-pool{grid-template-columns:1fr 1fr}
   .mk-rows.viele{grid-auto-flow:column;grid-template-rows:repeat(var(--n),auto);grid-template-columns:1fr 1fr;gap:8px 10px;counter-reset:mk}
   .mk-rows.viele.kette li::before,.mk-rows.viele.kreis li::before{display:none}
@@ -898,10 +904,17 @@ body.in-lesson .app{padding-bottom:120px}
   .so-slots li:not(.on){min-height:30px}
   .lc-medal{transform:scale(.8);margin:-10px auto -6px}
   .lc-pic img{max-height:30vh}
+  div.lc-start:has(.lc-pic) .lc-pic img{max-height:50vh}
   .lc-text{font-size:16.5px;line-height:1.5;padding:14px 16px}
   .mk-back{margin-top:6px}
   .so-pool .opt{padding:8px 12px}
   .zu-bin{min-height:84px;padding:8px 6px}
+}
+/* Startkarte der Lektion darf auf breiten Bildschirmen breiter werden, alles andere bleibt schmal */
+@media (min-width:960px){
+  body.in-lesson .app:has(#v-lesson:not([hidden])){max-width:900px}
+  #v-lesson>.lc-top,#v-lesson>section.lc:not(.lc-start){max-width:620px;margin-left:auto;margin-right:auto}
+  #v-lesson div.lc-start:has(.lc-pic){grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:28px}
 }
 </style>
 </head>
