@@ -55,7 +55,7 @@ lektionen.sort((a, b) => reihenfolge.indexOf(a.id) - reihenfolge.indexOf(b.id));
 /* Fachbegriffe: passende Lektion = erste Lektion in Lernreihenfolge, in deren Titel,
    Erklärung oder Merksatz der Begriff (oder eine Schreibvariante) vorkommt. */
 const text = {};
-ALL.forEach(l => { text[l.id] = [l.t, l.d, ...(l.exp || []), l.ex || "", l.aha || "", ...(l.steps || []).map(x => typeof x === "string" ? x : JSON.stringify(x))].join(" "); });
+ALL.forEach(l => { text[l.id] = [l.t, l.d, ...(l.exp || []), l.ex || "", l.aha || "", ...(l.mk ? [l.mk.k || "", l.mk.x || "", ...l.mk.p.map(p => p.slice(1).join(" "))] : []), ...(l.steps || []).map(x => typeof x === "string" ? x : JSON.stringify(x))].join(" "); });
 const esc = w => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 function lektionZu(begriff) {
   const woerter = [begriff, ...(ALIAS[begriff] || [])];

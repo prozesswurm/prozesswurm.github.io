@@ -30,6 +30,11 @@ const escK = (t, done, id) => { let s = String(t), out = '', last = 0; const hit
   hits.sort((x, y) => x[0] - y[0]).forEach(([a, b, ph]) => { if (a < last) return; done.add(ph); out += esc(s.slice(last, a)) + '<strong>' + esc(s.slice(a, b)) + '</strong>'; last = b; });
   return out + esc(s.slice(last)); };
 
+// Merkbild aus der App als einfaches HTML (ohne Symbole), Quelle: l.mk in index.html
+const merkStatic = l => { const m = l.mk; if (!m) return `<p class="mk-s">${esc(l.aha)}</p>`;
+  const flat = ['kacheln', 'gegen'].includes(m.f), weg = ['kette', 'kreis'].includes(m.f);
+  const items = m.p.map(p => `<li><b>${m.f === 'abc' ? esc(p[0]) + ' wie ' : ''}${esc(p[1])}</b>${p[2] ? `<small>${esc(p[2])}</small>` : ''}${p[3] ? `<small> (z. B. ${esc(p[3])})</small>` : ''}</li>`).join('');
+  return `${m.k ? `<p class="mk-k">${esc(m.k)}</p>` : ''}<ul class="mk${flat ? ' n' + m.p.length : ''}${weg ? ' weg' : ''}">${items}</ul>${m.f === 'kreis' ? '<p class="mk-x">Und dann wieder von vorn.</p>' : ''}${m.x ? `<p class="mk-x">${esc(m.x)}</p>` : ''}<p class="mk-s">${esc(l.aha)}</p>`; };
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const today = new Date().toISOString().slice(0, 10);
 const order = levels.flatMap(lv => lv.ids).filter(id => L[id]);
@@ -55,6 +60,10 @@ h1{font-size:30px;margin:8px 0}h2{font-size:21px;margin:28px 0 8px}
 .lead{font-size:19px;color:var(--muted)}
 .box{background:var(--surface);border-radius:16px;padding:14px 18px;margin:14px 0;border:1px solid var(--line)}
 .aha{background:var(--soft);border:0;font-weight:700}
+.mk{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}.mk.n2{grid-template-columns:1fr 1fr}.mk.n3{grid-template-columns:1fr 1fr 1fr}.mk.n4{grid-template-columns:1fr 1fr}
+.mk li{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 10px;margin:0;font-weight:400;line-height:1.3}.mk li b{display:block;font-family:"Bricolage Grotesque","Trebuchet MS",sans-serif;font-weight:800}.mk li small{color:var(--muted)}
+.mk.weg li+li::before{content:"↓ ";color:var(--worm);font-weight:800}.mk-k,.mk-x{font-weight:400;color:var(--muted);margin:6px 0}.mk-s{font-size:20px;margin:12px 0 0;color:var(--ink)}
+@media (max-width:480px){.mk.n3{grid-template-columns:1fr}}
 .cta{display:block;text-align:center;background:var(--worm);color:var(--on,#fff);text-decoration:none;font-weight:700;border-radius:14px;padding:15px;margin:26px 0 10px;font-size:18px}
 .nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;font-size:15px}
 ol{padding-left:22px}li{margin-bottom:6px}
@@ -109,7 +118,7 @@ ${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="${esc(altOf(id))}" width="120
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>
-<div class="box aha">Kurz gesagt: ${esc(l.aha)}</div>
+<div class="box aha">Zum Merken${merkStatic(l)}</div>
 ${(() => { const d = new Set(); return l.exp.map(p => `<p>${escK(p, d, id)}</p>`).join('\n') + (l.steps ? `<ol>${l.steps.map(x => `<li>${escK(x, d, id)}</li>`).join('')}</ol>` : ''); })()}
 <h2>Beispiel aus dem Alltag</h2><div class="box">${esc(l.ex)}</div>
 <h2>Für deinen Alltag</h2><p>${esc(l.task)}</p>
