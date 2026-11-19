@@ -93,7 +93,7 @@ MONATE = {"januar": 1, "februar": 2, "märz": 3, "april": 4, "mai": 5, "juni": 6
           "september": 9, "oktober": 10, "november": 11, "dezember": 12}
 ORG = {"@type": "Organization", "@id": DOMAIN + "#org", "name": "Prozesswurm", "url": DOMAIN,
        "logo": DOMAIN + "assets/img/favicon-180.png", "email": "info@prozesswurm.de",
-       "description": "Prozesswurm erklärt Prozessmanagement so einfach wie die Sendung mit der Maus: kostenlose Lernwerkstatt, Montags-Wurm, Lieder und Comics.",
+       "description": "Prozesswurm erklärt Prozessmanagement so einfach wie möglich: kostenlose Lernwerkstatt, Montags-Wurm, Lieder und Comics.",
        "sameAs": [k[3] for k in KANAELE]}
 
 
@@ -238,47 +238,49 @@ def kopf(seite, p):
 
 def fuss(p):
     kanaele = "\n".join(
-        f'        <li><a href="{url}" rel="noopener">{ICON[k]}{name}</a></li>' for k, name, _, url in KANAELE
+        f'          <li><a href="{url}" rel="noopener" aria-label="{name}" title="{name}">{ICON[k]}</a></li>' for k, name, _, url in KANAELE
     )
     return f"""
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="wrap footer-main">
     <div class="footer-brand">
       <strong>Prozesswurm</strong>
-      <p>Prozessmanagement, endlich verständlich. Keine Cookies. Keine Werbung. Kein Google-Tracking.</p>
-      <p class="copy-mail">Kontakt: <code>info@prozesswurm.de</code> <button type="button" data-copy="info@prozesswurm.de">Kopieren</button></p>
-      <p><a href="{FEEDBACK}">Rückmeldung zur Website geben</a></p>
-      <p>In Kooperation mit dem <a href="https://www.revibe-institut.com/" rel="noopener">ReVibe Institut</a></p>
+      <p>Prozessmanagement, endlich verständlich.</p>
+      <p class="footer-fair">Kostenlos. Keine Cookies, keine Werbung, kein Google-Tracking.</p>
+      <div class="footer-actions">
+        <a class="button button-primary footer-btn" href="mailto:info@prozesswurm.de">{ICON["post"]}info@prozesswurm.de</a>
+        <a class="button button-secondary footer-btn" href="{FEEDBACK}">Rückmeldung geben</a>
+      </div>
     </div>
-    <nav aria-labelledby="fuss-entdecken">
+    <nav class="footer-links" aria-labelledby="fuss-entdecken">
       <h2 id="fuss-entdecken">Entdecken</h2>
       <ul>
         <li><a href="{p}{LERNWERKSTATT}">Lernwerkstatt</a></li>
-        <li><a href="{p}lernwerkstatt/lektionen.html">Alle Lektionen im Überblick</a></li>
-        <li><a href="{p}fuer-teams/">Für Teams und Führungskräfte</a></li>
+        <li><a href="{p}lernwerkstatt/lektionen.html">Alle Lektionen</a></li>
+        <li><a href="{p}fuer-teams/">Für Teams</a></li>
         <li><a href="{p}montags-wurm/">Montags-Wurm</a></li>
         <li><a href="{p}hoeren-und-sehen/">Hören und sehen</a></li>
         <li><a href="{p}ueber-uns/">Über uns</a></li>
       </ul>
     </nav>
-    <nav aria-labelledby="fuss-kanaele">
-      <h2 id="fuss-kanaele">Kanäle</h2>
-      <ul>
+    <div class="footer-follow">
+      <h2 id="fuss-kanaele">Folgen</h2>
+      <nav aria-labelledby="fuss-kanaele">
+        <ul class="social-row">
 {kanaele}
-      </ul>
-    </nav>
-    <nav aria-labelledby="fuss-recht">
-      <h2 id="fuss-recht">Rechtliches</h2>
-      <ul>
-        <li><a href="{p}impressum/">Impressum</a></li>
-        <li><a href="{p}datenschutz/">Datenschutz</a></li>
-        <li><a href="{p}barrierefreiheit/">Barrierefreiheit</a></li>
-      </ul>
-    </nav>
+        </ul>
+      </nav>
+      <p class="footer-partner">In Kooperation mit dem <a href="https://www.revibe-institut.com/" rel="noopener">ReVibe Institut</a></p>
+    </div>
   </div>
   <div class="footer-bottom">
     <div class="wrap">
-      <p>© 2026 Prozesswurm. Texte, Lieder und die Figuren Prozesswurm und Doktor Kuddelmuddel sind urheberrechtlich geschützt. Alle Bilder mit KI erstellt.</p>
+      <p>© 2026 Prozesswurm · Figuren, Lieder und Texte geschützt · Bilder mit KI erstellt</p>
+      <nav class="footer-legal" aria-label="Rechtliches">
+        <a href="{p}impressum/">Impressum</a>
+        <a href="{p}datenschutz/">Datenschutz</a>
+        <a href="{p}barrierefreiheit/">Barrierefreiheit</a>
+      </nav>
       <div class="theme-switch" role="group" aria-label="Farbdarstellung">
         <button type="button" data-theme-set="light" aria-pressed="false">Hell</button>
         <button type="button" data-theme-set="auto" aria-pressed="true">Automatisch</button>
@@ -748,7 +750,7 @@ def bauen():
         if l["stufe"] not in stufen:
             stufen.append(l["stufe"])
     zeilen = ["# Prozesswurm", "",
-              "> Prozesswurm erklärt Prozessmanagement so einfach wie die Sendung mit der Maus. Für alle, die plötzlich Prozesse am Hals haben: "
+              "> Prozesswurm erklärt Prozessmanagement so einfach wie möglich. Für alle, die plötzlich Prozesse am Hals haben: "
               "Teamleitungen, Sachbearbeitung, Meister, Assistenz, Mittelstand. Kostenlos, ohne Anmeldung, auf Deutsch.", "",
               "Kernidee: Ein Prozess ist ein Weg, den man immer wieder gleich geht und der zu einem Ergebnis führt. "
               "Der Prozesswurm zeigt in kurzen Lektionen, Liedern und Comics, wie aus Durcheinander ein ruhiger Arbeitstag wird, "
