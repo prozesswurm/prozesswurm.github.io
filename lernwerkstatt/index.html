@@ -154,6 +154,12 @@ button.rv-chip.no{cursor:pointer}
 #ladder .layer .code{font-size:19px}
 #ladder .layer .body{padding:10px 12px;position:relative}
 #ladder .layer h3{font-size:15.5px;line-height:1.2;-webkit-hyphens:auto;hyphens:auto;overflow-wrap:anywhere;padding-right:4px}
+/* Abzeichen der Stufe rechts oben in der Kachel, nicht über dem Stufenkürzel (19.11.2026) */
+#ladder .layer{position:relative}
+#ladder .layer .code{position:static}
+#ladder .layer .code-medal{top:8px;right:8px;left:auto}
+#ladder .layer:has(.code-medal) h3{padding-right:30px}
+#ladder .layer:has(.code-medal) .chip.neu{right:38px;top:15px}
 @media (max-width:420px){ #ladder .layer{grid-template-columns:44px 1fr} #ladder .layer .body{padding:10px} }
 #ladder .layer p,#ladder .layer .branches,#ladder .layer .chip.ok{display:none}
 #ladder .layer .row{gap:8px;margin-top:8px}
