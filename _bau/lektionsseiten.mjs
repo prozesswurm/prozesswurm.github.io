@@ -73,6 +73,18 @@ footer{max-width:680px;margin:0 auto;padding:0 16px 40px;font-size:14px;color:va
 
 // Hat eine Lektion ein eigenes Bild (bilder/<id>.webp), wird es oben gezeigt und als Vorschaubild beim Teilen genutzt.
 const picOf = id => fs.existsSync(path.join(ROOT, 'bilder', `${id}.webp`)) ? `bilder/${id}.webp` : null;
+// Höhe des Bildes aus dem WebP-Kopf lesen, damit width und height stimmen (die Seite springt beim Laden nicht).
+const picHeight = (pic, w = 1200) => { try { const b = fs.readFileSync(path.join(ROOT, pic)); const k = b.toString('ascii', 12, 16);
+  let W, H; if (k === 'VP8X') { W = 1 + b.readUIntLE(24, 3); H = 1 + b.readUIntLE(27, 3); } else if (k === 'VP8 ') { W = b.readUInt16LE(26) & 0x3fff; H = b.readUInt16LE(28) & 0x3fff; }
+  else if (k === 'VP8L') { const n = b.readUInt32LE(21); W = 1 + (n & 0x3fff); H = 1 + ((n >> 14) & 0x3fff); }
+  return W && H ? Math.round(H * w / W) : null; } catch { return null; } };
+// Titel fürs Suchergebnis: höchstens 65 Zeichen. Passt „einfach erklärt“ nicht mehr hinein, fällt es weg.
+const titleOf = t => { const a = `${t} – einfach erklärt | Prozesswurm`; return [...a].length <= 65 ? a : `${t} | Prozesswurm`; };
+// Eigene Beschreibung für Lektionen, deren Kurzbeschreibung plus Merksatz zu kurz für Suchergebnisse ist.
+const DESC = {
+  c03: 'Eine Annahme in der Praxis prüfen, statt lange zu diskutieren. Der Prozesswurm zeigt, wie ein kleiner Test Streit erspart. Testen statt streiten.',
+  s07: 'Prozessorientierung als Kultur statt als Projekt mit Enddatum. Der Prozesswurm zeigt, wie daraus Alltag wird. Gewohnheit schlägt Großprojekt.',
+};
 // Strukturierte Daten (JSON-LD) für Google und KI-Suchen. Nur Daten, kein ausführbares Skript.
 const ORG = { '@type': 'Organization', '@id': 'https://www.prozesswurm.de/#org', name: 'Prozesswurm', url: 'https://www.prozesswurm.de/' };
 const COURSE = { '@type': 'Course', '@id': `${BASE}#kurs`, name: 'Prozesswurm Lernwerkstatt', url: BASE, inLanguage: 'de',
@@ -113,8 +125,8 @@ for (const id of order) {
     crumbs([['Prozesswurm', 'https://www.prozesswurm.de/'], ['Lernwerkstatt', BASE], ['Alle Lektionen', `${BASE}lektionen.html`], [l.t, url]])] };
   const faq = (FRAGEN[id] || []).map(([q, a]) => ({ q, a }));
   if (faq.length) ld['@graph'].push({ '@type': 'FAQPage', mainEntity: faq.map(f => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
-  const page = head(`${l.t} – einfach erklärt | Prozesswurm`, cut(`${l.d} ${l.aha}`, 158), url, pic, ld) + `
-${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="${esc(altOf(id))}" width="1200" style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
+  const page = head(titleOf(l.t), DESC[id] || cut(`${l.d} ${l.aha}`, 158), url, pic, ld) + `
+${pic ? `<img src="/lernwerkstatt/${pic}?v=1" alt="${esc(altOf(id))}" width="1200"${picHeight(pic) ? ` height="${picHeight(pic)}"` : ''} style="width:100%;height:auto;border-radius:16px;margin:12px 0 4px">` : ''}
 <p class="k">${esc(where)} · ${l.min} Minuten</p>
 <h1>${esc(l.t)}</h1>
 <p class="lead">${esc(l.d)}</p>

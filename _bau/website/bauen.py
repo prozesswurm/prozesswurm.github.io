@@ -474,7 +474,7 @@ def baustein_neueste_gross(p, seite=None):
 
 def baustein_neueste_kachel(p, seite=None):
     a = daten("ausgaben.json")[0]
-    bild = (f'<figure class="ai-figure tile-img"><img src="{p}{e(a["bild"])}" alt="" loading="lazy"><span class="ai-note">Mit KI erstellt</span></figure>'
+    bild = (f'<figure class="ai-figure tile-img"><img src="{p}{e(a["bild"])}" width="960" height="540" alt="" loading="lazy"><span class="ai-note">Mit KI erstellt</span></figure>'
             if a.get("bild") else "")
     return (f'<li><a class="tile" href="{p}montags-wurm/{a["pfad"]}/">{bild}<span class="tile-body"><span class="eyebrow">Montags-Wurm · {e(a["datum"])}</span>'
             f'<b>{e(a["titel"])}</b><span>{e(a["teaser"])}</span><i aria-hidden="true">Lesen →</i></span></a></li>')
