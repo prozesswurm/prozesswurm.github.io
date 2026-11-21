@@ -1,0 +1,44 @@
+# Meldet neue und geänderte Seiten per IndexNow an Bing und andere Suchen.
+# Bei jedem Push auf main: nur die geänderten Seiten. Von Hand gestartet: alle Seiten aus beiden Sitemaps.
+name: IndexNow
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  melden:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Warten, bis GitHub Pages die neue Fassung zeigt
+        run: sleep 120
+      - name: Seiten melden
+        env:
+          ALLE: ${{ github.event_name == 'workflow_dispatch' }}
+        run: |
+          python3 - <<'PY'
+          import json, os, re, subprocess, urllib.request
+          SITE = "https://www.prozesswurm.de"
+          KEY = "9412032eb61eca8f73b2edd81bd1dc56"
+          urls = []
+          for f in ("sitemap.xml", "lernwerkstatt/sitemap.xml"):
+              urls += re.findall(r"<loc>([^<]+)</loc>", open(f, encoding="utf-8").read())
+          if os.environ.get("ALLE") != "true":
+              geaendert = subprocess.run(["git", "diff", "--name-only", "HEAD~1", "HEAD"], capture_output=True, text=True).stdout.split()
+              def pfad(u):
+                  p = u[len(SITE) + 1:]
+                  return p + "index.html" if p == "" or p.endswith("/") else p
+              urls = [u for u in urls if pfad(u) in geaendert]
+          if not urls:
+              print("Keine geänderten Seiten."); raise SystemExit
+          daten = json.dumps({"host": "www.prozesswurm.de", "key": KEY,
+                              "keyLocation": f"{SITE}/{KEY}.txt", "urlList": urls}).encode()
+          req = urllib.request.Request("https://api.indexnow.org/indexnow", data=daten,
+                                       headers={"Content-Type": "application/json; charset=utf-8"})
+          with urllib.request.urlopen(req) as r:
+              print("IndexNow:", r.status, "für", len(urls), "Seiten")
+          PY
