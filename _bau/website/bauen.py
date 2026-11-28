@@ -118,6 +118,10 @@ def strukturdaten(seite):
         if seite.get("bild"):
             art["image"] = DOMAIN + seite["bild"]
         teile.append(art)
+    if seite.get("fragen"):
+        teile.append({"@type": "FAQPage", "url": url, "inLanguage": "de",
+                      "mainEntity": [{"@type": "Question", "name": f, "acceptedAnswer": {"@type": "Answer", "text": a}}
+                                     for f, a in seite["fragen"]]})
     if pfad:
         krumen.append({"@type": "ListItem", "position": len(krumen) + 1, "name": seite["titel"], "item": url})
         teile.append({"@type": "BreadcrumbList", "itemListElement": krumen})
@@ -322,12 +326,16 @@ def erster_satz(text):
 def baustein_probleme(p, seite=None):
     d = daten("probleme.json")
 
+    def ziel(x):
+        """Ärgernisse mit eigener Seite (seit 28.11.2026) führen dorthin, die anderen direkt in die Lernwerkstatt."""
+        return f'{p}{x["seite"]}' if x.get("seite") else f'{p}{LERNWERKSTATT}#problem={e(x["id"])}'
+
     def karten(liste):
         out = []
         for x in liste:
             svg = x["svg"].replace('class="ico"', 'class="prob-ico"')
             out.append(
-                f'<li><a class="prob-card" href="{p}{LERNWERKSTATT}#problem={e(x["id"])}">{svg}'
+                f'<li><a class="prob-card" href="{ziel(x)}">{svg}'
                 f'<span><b>{e(x["t"])}</b><small>{e(erster_satz(x["k"]))}</small></span><i aria-hidden="true">→</i></a></li>'
             )
         return "\n".join(out)
@@ -486,7 +494,8 @@ def baustein_teilen(p, seite=None):
     from urllib.parse import quote
     li = "https://www.linkedin.com/sharing/share-offsite/?url=" + quote(url, safe="")
     mail = ("mailto:?subject=" + quote(f"Lesetipp: {titel}") + "&body="
-            + quote(f"Das könnte dich interessieren: {titel}\n{url}\n\nJeden Montag neu vom Prozesswurm."))
+            + quote(f"Das könnte dich interessieren: {titel}\n{url}\n\n"
+                   + ("Jeden Montag neu vom Prozesswurm." if seite["pfad"].startswith("montags-wurm/") else "Kostenlos vom Prozesswurm.")))
     return f"""<div class="share" role="group" aria-labelledby="teilen-titel">
   <p id="teilen-titel"><b>Weitergeben:</b> Kennst du jemanden, den das Thema gerade nervt?</p>
   <div class="share-row">
@@ -590,6 +599,30 @@ def baustein_partner(p, seite):
     </article>"""
 
 
+def baustein_fragen(p, seite):
+    """Häufige Fragen aus der Kopfzeile ("fragen": [[Frage, Antwort], …]). Dieselben Fragen gehen als FAQPage an Suchmaschinen."""
+    if not seite.get("fragen"):
+        sys.exit(f"{{{{fragen}}}} ohne Feld fragen in {seite['pfad']}")
+    return '<div class="faq-list">\n' + "\n".join(
+        f'  <details class="faq-mini"><summary><h3>{e(f)}</h3></summary><p>{e(a)}</p></details>' for f, a in seite["fragen"]) + "\n</div>"
+
+
+def vorlage(titel, spalten, zeilen=6):
+    """Leere Vorlage zum Ausdrucken: Tabelle mit Überschriften und leeren Zeilen, dazu ein Druckknopf (main.js, data-drucken)."""
+    kopf = "".join(f'<th scope="col">{e(s)}</th>' for s in spalten)
+    leer = "".join("<tr>" + "<td>&nbsp;</td>" * len(spalten) + "</tr>" for _ in range(zeilen))
+    return f"""<div class="vorlage" id="vorlage-blatt">
+  <div class="table-wrap">
+    <table class="example-table vorlage-table">
+      <caption>{e(titel)} <span class="muted">· Vorlage vom Prozesswurm, frei für dich und dein Team</span></caption>
+      <thead><tr>{kopf}</tr></thead>
+      <tbody>{leer}</tbody>
+    </table>
+  </div>
+  <div class="button-row no-print"><button type="button" class="button button-secondary" data-drucken>Vorlage drucken</button></div>
+</div>"""
+
+
 def uebersichts_waechter():
     """Wunsch 15.11.2026: Interessenten nicht mit Informationen überschütten. Misst die Startseite nach jedem Bau.
     Grenzen: höchstens 7 Bereiche und 600 Wörter. Wird es mehr, erst etwas wegnehmen, bevor etwas dazukommt."""
@@ -617,6 +650,7 @@ BAUSTEINE = {
     "teilen": baustein_teilen,
     "begriffe": baustein_begriffe,
     "partner": baustein_partner,
+    "fragen": baustein_fragen,
 }
 
 
@@ -650,6 +684,7 @@ def bauen():
             if "{{" + k + "}}" in inhalt:
                 inhalt = inhalt.replace("{{" + k + "}}", f(p, seite))
         inhalt = re.sub(r"\{\{lernpfad:([^|}]+)\|([a-z0-9, ]+)\}\}", lambda m: lernpfad(p, m.group(1).strip(), m.group(2).split(",")), inhalt)
+        inhalt = re.sub(r"\{\{vorlage:([^}]+)\}\}", lambda m: vorlage(m.group(1).split("|")[0].strip(), [x.strip() for x in m.group(1).split("|")[1:]]), inhalt)
         inhalt = re.sub(r"\{\{lektionen:([a-z0-9, ]+)\}\}", lambda m: lektionen_liste(p, m.group(1).split(",")), inhalt)
         if "{{" in inhalt:
             sys.exit(f"Unbekannter Platzhalter in {seite['pfad']}: " + re.search(r"\{\{[^}]*\}\}", inhalt).group(0))
@@ -684,7 +719,7 @@ def bauen():
     probleme = json.load(open(os.path.join(DATEN, "probleme.json"), encoding="utf-8"))
     for bereich, liste in (("Im Job", probleme["job"]), ("Zu Hause", probleme["home"])):
         for x in liste:
-            suche.append({"titel": x["t"], "url": f'{LERNWERKSTATT}#problem={x["id"]}',
+            suche.append({"titel": x["t"], "url": x.get("seite") or f'{LERNWERKSTATT}#problem={x["id"]}',
                           "text": f'Lernwerkstatt · {bereich}: {x["k"]}', "stichworte": "problem nervt hilfe"})
     medien = json.load(open(os.path.join(DATEN, "medien.json"), encoding="utf-8"))
     for x in medien["lieder"]:
@@ -764,7 +799,11 @@ def bauen():
               f"- [Montags-Wurm]({DOMAIN}montags-wurm/): wöchentlicher Impuls mit einem Handgriff der Woche",
               f"- [Hören und sehen]({DOMAIN}hoeren-und-sehen/): Lieder und Kurzvideos zum Prozessmanagement",
               f"- [Hilfe zur Lernwerkstatt]({DOMAIN}lernwerkstatt/hilfe.html)",
-              "", "## Lektionen"]
+              "", "## Hilfe bei Ärgernissen im Job (mit Vorlage zum Ausdrucken)", ""]
+    for s in seiten:
+        if s.get("fragen") and not s.get("verstecken"):
+            zeilen.append(f"- [{s['titel']}]({DOMAIN}{s['pfad']}): {s['beschreibung']}")
+    zeilen += ["", "## Lektionen"]
     for st in stufen:
         zeilen += ["", f"### Stufe {st}", ""]
         zeilen += [f"- [{l['t']}]({DOMAIN}lernwerkstatt/lektion/{l['id']}.html): {l['d']}" for l in lek if l["stufe"] == st]

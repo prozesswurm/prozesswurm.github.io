@@ -96,6 +96,24 @@
   "bild": "assets/img/titel-zukunftsstadt.webp"
  },
  {
+  "datei": "urlaubsuebergabe",
+  "titel": "Urlaubsübergabe: Vorlage, damit im Urlaub keiner anruft",
+  "oben": "Was nervt dich gerade?",
+  "bild": "assets/img/mw-2026-11-23-titel.webp"
+ },
+ {
+  "datei": "einarbeitung",
+  "titel": "Neue Mitarbeiter einarbeiten: Plan und Vorlage für die ersten Wochen",
+  "oben": "Was nervt dich gerade?",
+  "bild": "assets/img/mw-2026-11-09-titel.webp"
+ },
+ {
+  "datei": "immer-dieselben-fragen",
+  "titel": "Immer dieselben Fragen im Team? So hört das Nachfragen auf",
+  "oben": "Was nervt dich gerade?",
+  "bild": "assets/img/mw-2026-11-16-titel.webp"
+ },
+ {
   "datei": "404",
   "titel": "Seite nicht gefunden",
   "oben": "Prozessmanagement einfach erklärt",

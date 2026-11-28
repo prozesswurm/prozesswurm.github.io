@@ -257,6 +257,16 @@
     }
   });
 
+  /* Vorlage drucken: druckt nur die Überschrift und die leere Vorlage */
+  doc.querySelectorAll("[data-drucken]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      doc.body.classList.add("drucke-vorlage");
+      if (window.goatcounter && goatcounter.count) { try { goatcounter.count({ path: "vorlage/drucken" + location.pathname, title: "Vorlage gedruckt", event: true }); } catch (e) {} }
+      window.print();
+    });
+  });
+  window.addEventListener("afterprint", function () { doc.body.classList.remove("drucke-vorlage"); });
+
   /* Tempo: Seiten vorladen, sobald jemand auf einen Link zeigt */
   var prefetched = {};
   function prefetch(a) {

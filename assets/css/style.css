@@ -665,3 +665,17 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .faq-mini[open] summary::after { transform: rotate(-135deg); margin-top: 4px; }
 .faq-mini summary h2 { margin: 0; }
 .faq-mini .value-list { margin: 4px 0 16px; }
+
+/* Ärgernis-Seiten mit Vorlage (seit 28.11.2026) */
+.faq-list { display: flex; flex-direction: column; gap: 10px; }
+.faq-mini summary h3 { margin: 0; font-size: 1.05rem; }
+.faq-mini p { margin: 0 0 14px; }
+.vorlage { margin: 12px 0 8px; }
+.vorlage-table td { height: 2.6em; }
+.vorlage-table caption .muted { font-weight: 400; font-size: 0.85rem; }
+@media print {
+  .site-header, .site-footer, .no-print, .skip-link { display: none !important; }
+  body.drucke-vorlage main > * > .wrap > *:not(.vorlage):not(#vorlage) { display: none !important; }
+  body.drucke-vorlage .vorlage-table td { height: 3.2em; }
+  .example-table th, .example-table td { border: 1px solid #999 !important; color: #000 !important; background: #fff !important; }
+}
